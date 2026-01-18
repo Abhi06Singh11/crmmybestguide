@@ -1,0 +1,166 @@
+{
+  "placeholderImages": [
+    {
+      "id": "1",
+      "description": "Abstract office architecture",
+      "imageUrl": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvZmZpY2UlMjBhcmNoaXRlY3R1cmV8ZW58MHx8fHwxNzY3NzE5OTUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "office architecture"
+    },
+    {
+      "id": "2",
+      "description": "Code on a screen",
+      "imageUrl": "https://images.unsplash.com/photo-1529429612779-c8e40ef2f36d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjb2RlJTIwc2NyZWVufGVufDB8fHx8MTc2NzY1Mjg2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code screen"
+    },
+    {
+      "id": "3",
+      "description": "Online shopping interface",
+      "imageUrl": "https://images.unsplash.com/photo-1586880244499-5269a3c485f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxvbmxpbmUlMjBzaG9wcGluZ3xlbnwwfHx8fDE3Njc4MTEwMzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "online shopping"
+    },
+    {
+      "id": "4",
+      "description": "Bakery storefront",
+      "imageUrl": "https://images.unsplash.com/photo-1571362539133-16a3ff698516?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYWtlcnklMjBzdG9yZWZyb250fGVufDB8fHx8MTc2NzgwOTA4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bakery storefront"
+    },
+    {
+      "id": "5",
+      "description": "Professional chef cooking",
+      "imageUrl": "https://images.unsplash.com/photo-1600565193348-f74d3c27253a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBjaGVmfGVufDB8fHx8MTc2NzgwOTEyMHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "chef cooking"
+    },
+    {
+      "id": "6",
+      "description": "Fitness trainer with client",
+      "imageUrl": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwdHJhaW5lcnxlbnwwfHx8fDE3Njc4MDkxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fitness trainer"
+    },
+    {
+      "id": "7",
+      "description": "Server room with glowing lights",
+      "imageUrl": "https://images.unsplash.com/photo-1580894908361-967195033215?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxiYWNrZW5kJTIwZGV2ZWxvcG1lbnR8ZW58MHx8fHwxNzY3ODA5MTYxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "backend development"
+    },
+    {
+      "id": "8",
+      "description": "Modern law office interior",
+      "imageUrl": "https://images.unsplash.com/photo-1589998059171-988d887df646?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsYXclMjBvZmZpY2V8ZW58MHx8fHwxNzY3ODA5MTgxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "law office"
+    },
+    {
+      "id": "10",
+      "description": "Portrait of a smiling woman",
+      "imageUrl": "https://images.unsplash.com/photo-1557053908-4793c484d06f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx3b21hbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc2NzY3NzY4NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman portrait"
+    },
+    {
+      "id": "11",
+      "description": "Portrait of a smiling man",
+      "imageUrl": "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc2ODE4NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "12",
+      "description": "Portrait of a person",
+      "imageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3Njc2MzU5OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "13",
+      "description": "Elderly person smiling in a care home",
+      "imageUrl": "https://images.unsplash.com/photo-1599442553862-2882c47d3419?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwY2FyZSUyMGhvbWV8ZW58MHx8fHwxNzY4Mzg2NjI1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "senior care"
+    },
+    {
+      "id": "14",
+      "description": "Online learning setup on a desk",
+      "imageUrl": "https://images.unsplash.com/photo-1516321497487-e288fb19713f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjBsZWFybmluZ3xlbnwwfHx8fDE3NjgzODY2NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "online learning"
+    },
+    {
+      "id": "15",
+      "description": "Insurance documents and a pen",
+      "imageUrl": "https://images.unsplash.com/photo-1556742044-53a99a8a3ee8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbnN1cmFuY2UlMjBkb2N1bWVudHN8ZW58MHx8fHwxNzY4Mzg2NzA1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "insurance documents"
+    },
+    {
+      "id": "16",
+      "description": "Creative agency brainstorming session",
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjcmVhdGl2ZSUyMGFnZW5jeXxlbnwwfHx8fDE3NjgzODY3MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "creative agency"
+    },
+    {
+      "id": "17",
+      "description": "Law books and gavel",
+      "imageUrl": "https://images.unsplash.com/photo-1589216532372-1c2a36790049?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsYXclMjBib29rc3xlbnwwfHx8fDE3NjgzODY3NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "law books"
+    },
+    {
+      "id": "18",
+      "description": "Home healthcare nurse with patient",
+      "imageUrl": "https://images.unsplash.com/photo-1584515933487-779824d29309?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxob21lJTIwaGVhbHRoJTIwY2FyZXxlbnwwfHx8fDE3NjgzODY3ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "home healthcare"
+    },
+    {
+      "id": "19",
+      "description": "Logistics and transportation hub",
+      "imageUrl": "https://images.unsplash.com/photo-1577482885962-a6c3a8e97435?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxs%3D%3D",
+      "imageHint": "logistics transportation"
+    },
+    {
+      "id": "20",
+      "description": "Visa and passport documents",
+      "imageUrl": "https://images.unsplash.com/photo-1559902599-a3c3b0a724a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aXNhJTIwZG9jdW1lbnRzfGVufDB8fHx8MTc2ODM4NjkwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "visa documents"
+    },
+    {
+      "id": "21",
+      "description": "Luxury car interior",
+      "imageUrl": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaXV4dXJ5JTIwY2FyfGVufDB8fHx8MTc2ODM4NjkzMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury car"
+    },
+    {
+      "id": "22",
+      "description": "African governance meeting",
+      "imageUrl": "https://images.unsplash.com/photo-1541892019803-a12b61f9b331?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwZ292ZXJuYW5jZXxlbnwwfHx8fDE3NjgzODY5NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "african governance"
+    },
+    {
+      "id": "23",
+      "description": "Classroom with students",
+      "imageUrl": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGluJTIwY2xhc3Nyb29tfGVufDB8fHx8MTc2ODM4Njk4OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "students classroom"
+    },
+    {
+      "id": "24",
+      "description": "HR meeting with charts",
+      "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxIUiUyMG1lZXRpbmd8ZW58MHx8fHwxNzY4Mzg3MDE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "HR meeting"
+    },
+    {
+      "id": "25",
+      "description": "Portrait of a female professional",
+      "imageUrl": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9qZWN0JTIwbWFuYWdlciUyMHdvbWFufGVufDB8fHx8MTc2ODQ2OTkwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "26",
+      "description": "Portrait of a male technical lead",
+      "imageUrl": "https://images.unsplash.com/photo-1557862921-37829c790f19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNobmljYWwlMjBsZWFkJTIwbWFufGVufDB8fHx8MTc2ODQ2OTkzNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "technical lead"
+    },
+    {
+      "id": "27",
+      "description": "Portrait of a male lead developer",
+      "imageUrl": "https://images.unsplash.com/photo-1624561172888-ac93c690e10c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsZWFkJTIwZGV2ZWxvcGVyJTIwbWFufGVufDB8fHx8MTc2ODQ2OTk1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lead developer"
+    },
+    {
+      "id": "28",
+      "description": "Team collaborating in a modern office",
+      "imageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb21wYW55JTIwc3Rvcnl8ZW58MHx8fHwxNzY4NDcwMDE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "team collaboration"
+    }
+  ]
+}
