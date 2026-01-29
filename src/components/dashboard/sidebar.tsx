@@ -34,52 +34,27 @@ const navLinks = {
   ],
   Developer: [
     { href: "/dashboard/developer", label: "Dashboard", icon: Code },
-    { href: "/dashboard/projects", label: "Projects", icon: Briefcase },
-    { href: "/dashboard/tasks", label: "Tasks", icon: CheckSquare },
+    { href: "/dashboard/developer/projects", label: "Projects", icon: Briefcase },
+    { href: "/dashboard/developer/tasks", label: "Tasks", icon: CheckSquare },
   ],
   Support: [
     { href: "/dashboard/support", label: "Dashboard", icon: LifeBuoy },
-    { href: "/dashboard/tickets", label: "Tickets", icon: FileText },
-    { href: "/dashboard/clients", label: "Clients", icon: Users },
+    { href: "/dashboard/support/tickets", label: "Tickets", icon: FileText },
+    { href: "/dashboard/support/clients", label: "Clients", icon: Users },
   ],
   'Super Admin': [
     { href: "/dashboard/admin", label: "Admin Panel", icon: ShieldCheck },
-    { href: "/dashboard/users", label: "Manage Users", icon: Users },
-    { href: "/dashboard/settings", label: "System Settings", icon: Settings },
+    { href: "/dashboard/admin/users", label: "Manage Users", icon: Users },
+    { href: "/dashboard/admin/settings", label: "System Settings", icon: Settings },
   ],
 };
 
 
-export default function DashboardSidebar() {
+export default function DashboardSidebar({ role }: { role: string }) {
   const pathname = usePathname();
 
-  const getRoleFromPath = () => {
-    if (pathname.startsWith('/dashboard/marketer')) return 'Marketer';
-    if (pathname.startsWith('/dashboard/developer')) return 'Developer';
-    if (pathname.startsWith('/dashboard/support')) return 'Support';
-    if (pathname.startsWith('/dashboard/admin')) return 'Super Admin';
-
-    // Handle nested marketer routes
-    if (pathname.startsWith('/dashboard/')) {
-        const rolePath = pathname.split('/')[2];
-        if (rolePath === 'clients' || rolePath === 'projects' || rolePath === 'tasks' || rolePath === 'team' || rolePath === 'earnings' || rolePath === 'invoices' || rolePath === 'analytics' || rolePath === 'profile') {
-            return 'Marketer';
-        }
-    }
-    return 'Marketer'; // Default
-  }
-
-  const role = getRoleFromPath();
-  let links = navLinks[role as keyof typeof navLinks] || [];
+  const links = navLinks[role as keyof typeof navLinks] || [];
   
-  // A temporary fix to ensure correct links are shown for shared routes
-  if ((role === 'Developer' || role === 'Support') && (pathname.includes('/clients') || pathname.includes('/projects') || pathname.includes('/tasks'))) {
-    // Keep the dev/support links
-  } else if (role !== 'Marketer' && (pathname.startsWith('/dashboard/marketer') || ['clients', 'projects', 'tasks', 'team', 'earnings', 'invoices', 'analytics', 'profile'].includes(pathname.split('/')[2]))) {
-     links = navLinks['Marketer'];
-  }
-
-
   const settingsLink = { href: `/dashboard/${role.toLowerCase().replace(' ', '')}/settings`, label: "Settings", icon: Settings };
 
 
@@ -92,9 +67,8 @@ export default function DashboardSidebar() {
       </div>
       <nav className="flex-1 space-y-1 p-4">
         {links.map((link) => {
-          // Check for exact match for the main dashboard pages
           const isMainDashboard = link.href === `/dashboard/${role.toLowerCase().replace(' ', '')}`;
-          const isActive = isMainDashboard ? pathname === link.href : pathname.startsWith(link.href);
+          const isActive = isMainDashboard ? pathname === link.href : (pathname.startsWith(link.href) && link.href !== `/dashboard/${role.toLowerCase().replace(' ', '')}`);
 
           return (
             <Link

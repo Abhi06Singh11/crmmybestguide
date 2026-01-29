@@ -9,7 +9,7 @@ import { PanelLeft } from 'lucide-react';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies();
-  const role = cookieStore.get('dev-auth-role')?.value;
+  const role = cookieStore.get('dev-auth-role')?.value as string;
 
   if (!role) {
     redirect('/login');
@@ -18,7 +18,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <div className="flex h-screen w-full bg-secondary/50">
       <div className="hidden md:flex">
-        <DashboardSidebar />
+        <DashboardSidebar role={role} />
       </div>
       <div className="flex flex-1 flex-col">
         <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -30,7 +30,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="left" className="p-0 w-64 sm:max-w-xs">
-                    <DashboardSidebar />
+                    <DashboardSidebar role={role} />
                 </SheetContent>
             </Sheet>
             <DashboardHeader role={role as string} />
