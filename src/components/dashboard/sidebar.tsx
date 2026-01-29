@@ -17,6 +17,8 @@ import {
   LifeBuoy,
   ShieldCheck,
   User,
+  FileClock,
+  Bell,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -39,9 +41,13 @@ const navLinks = {
     { href: "/dashboard/developer/earnings", label: "Earnings", icon: DollarSign },
   ],
   Support: [
-    { href: "/dashboard/support", label: "Dashboard", icon: LifeBuoy },
-    { href: "/dashboard/support/tickets", label: "Tickets", icon: FileText },
-    { href: "/dashboard/support/clients", label: "Clients", icon: Users },
+    { href: "/dashboard/support", label: "Dashboard", icon: LayoutGrid },
+    { href: "/dashboard/support/profile", label: "Profile", icon: User },
+    { href: "/dashboard/support/tasks", label: "Support Tasks", icon: CheckSquare },
+    { href: "/dashboard/support/projects", label: "Active Projects", icon: Briefcase },
+    { href: "/dashboard/support/earnings", label: "Earnings", icon: DollarSign },
+    { href: "/dashboard/support/logs", label: "Logs & Reports", icon: FileClock },
+    { href: "/dashboard/support/notifications", label: "Notifications", icon: Bell },
   ],
   'Super Admin': [
     { href: "/dashboard/admin", label: "Admin Panel", icon: ShieldCheck },
@@ -55,9 +61,15 @@ export default function DashboardSidebar({ role }: { role: string }) {
   const roleKey = role as keyof typeof navLinks;
 
   const links = navLinks[roleKey] || [];
+  
+  // A bit of a hack to ensure the settings link is correct for 'Super Admin'
   const settingsLinkPath = roleKey === 'Super Admin' 
     ? `/dashboard/admin/settings`
-    : `/dashboard/${roleKey.toLowerCase()}/settings`;
+    : roleKey === 'Support'
+    ? `/dashboard/support/settings`
+    : roleKey === 'Developer'
+    ? `/dashboard/developer/settings`
+    : `/dashboard/marketer/settings`;
   
   const settingsLink = { href: settingsLinkPath, label: "Settings", icon: Settings };
 
