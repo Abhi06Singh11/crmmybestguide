@@ -33,9 +33,10 @@ const navLinks = {
     { href: "/dashboard/marketer/analytics", label: "Analytics", icon: BarChartBig },
   ],
   Developer: [
-    { href: "/dashboard/developer", label: "Dashboard", icon: Code },
+    { href: "/dashboard/developer", label: "Dashboard", icon: LayoutGrid },
+    { href: "/dashboard/developer/profile", label: "Profile", icon: User },
     { href: "/dashboard/developer/projects", label: "Projects", icon: Briefcase },
-    { href: "/dashboard/developer/tasks", label: "Tasks", icon: CheckSquare },
+    { href: "/dashboard/developer/earnings", label: "Earnings", icon: DollarSign },
   ],
   Support: [
     { href: "/dashboard/support", label: "Dashboard", icon: LifeBuoy },
@@ -45,18 +46,20 @@ const navLinks = {
   'Super Admin': [
     { href: "/dashboard/admin", label: "Admin Panel", icon: ShieldCheck },
     { href: "/dashboard/admin/users", label: "Manage Users", icon: Users },
-    { href: "/dashboard/admin/settings", label: "System Settings", icon: Settings },
   ],
 };
 
 
 export default function DashboardSidebar({ role }: { role: string }) {
   const pathname = usePathname();
+  const roleKey = role as keyof typeof navLinks;
 
-  const links = navLinks[role as keyof typeof navLinks] || [];
+  const links = navLinks[roleKey] || [];
+  const settingsLinkPath = roleKey === 'Super Admin' 
+    ? `/dashboard/admin/settings`
+    : `/dashboard/${roleKey.toLowerCase()}/settings`;
   
-  const settingsLink = { href: `/dashboard/${role.toLowerCase().replace(' ', '')}/settings`, label: "Settings", icon: Settings };
-
+  const settingsLink = { href: settingsLinkPath, label: "Settings", icon: Settings };
 
   return (
     <aside className="w-64 flex-col border-r bg-background">
@@ -67,8 +70,7 @@ export default function DashboardSidebar({ role }: { role: string }) {
       </div>
       <nav className="flex-1 space-y-1 p-4">
         {links.map((link) => {
-          const isMainDashboard = link.href === `/dashboard/${role.toLowerCase().replace(' ', '')}`;
-          const isActive = isMainDashboard ? pathname === link.href : (pathname.startsWith(link.href) && link.href !== `/dashboard/${role.toLowerCase().replace(' ', '')}`);
+          const isActive = pathname === link.href;
 
           return (
             <Link
