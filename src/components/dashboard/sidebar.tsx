@@ -19,6 +19,8 @@ import {
   User,
   FileClock,
   Bell,
+  CheckCheck,
+  Cog,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -50,8 +52,14 @@ const navLinks = {
     { href: "/dashboard/support/notifications", label: "Notifications", icon: Bell },
   ],
   'Super Admin': [
-    { href: "/dashboard/admin", label: "Admin Panel", icon: ShieldCheck },
-    { href: "/dashboard/admin/users", label: "Manage Users", icon: Users },
+    { href: "/dashboard/admin", label: "Global Dashboard", icon: LayoutGrid },
+    { href: "/dashboard/admin/users", label: "User Management", icon: Users },
+    { href: "/dashboard/admin/projects", label: "Project Oversight", icon: Briefcase },
+    { href: "/dashboard/admin/approvals", label: "Approvals Queue", icon: CheckCheck },
+    { href: "/dashboard/admin/payments", label: "Payments", icon: DollarSign },
+    { href: "/dashboard/admin/analytics", label: "Platform Analytics", icon: BarChartBig },
+    { href: "/dashboard/admin/rules", label: "System Rules", icon: Cog },
+    { href: "/dashboard/admin/logs", label: "Audit Logs", icon: FileClock },
   ],
 };
 
