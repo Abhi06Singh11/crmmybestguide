@@ -1,3 +1,4 @@
+
 'use client';
 
 import AdminDashboardHeader from '@/components/dashboard/admin-header';
@@ -29,7 +30,7 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
           {tabs.map(tab => (
             <Link key={tab.href} href={tab.href} className={cn(
               'px-3 py-2 text-sm font-medium rounded-md',
-              pathname === tab.href ? 'bg-muted text-primary' : 'text-muted-foreground hover:bg-muted/50'
+              pathname === tab.href ? 'bg-primary text-primary-foreground' : 'text-muted-foreground hover:bg-muted/50'
             )}>
               {tab.label}
             </Link>
