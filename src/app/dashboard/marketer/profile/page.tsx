@@ -14,6 +14,7 @@ import { Button } from '@/components/ui/button';
 import {
   Eye,
   Star,
+  Edit,
 } from 'lucide-react';
 import { marketerProfileData } from '@/lib/dashboard-data';
 import Link from 'next/link';
@@ -50,11 +51,11 @@ export default function ProfilePage() {
               </div>
             </div>
             <div className="flex gap-2 mt-6">
-                <Link href="/p/alex-ray" passHref className='w-full'>
+                <Link href="/d/marketer/profile/view" passHref className='w-full'>
                     <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Public Profile</Button>
                 </Link>
-                <Link href="/d/marketer/settings" passHref className='w-full'>
-                    <Button variant="outline" className="w-full">Edit Profile</Button>
+                <Link href="/d/marketer/profile/edit" passHref className='w-full'>
+                    <Button variant="outline" className="w-full"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
                 </Link>
             </div>
           </CardContent>
