@@ -17,9 +17,13 @@ import Link from "next/link";
 import { ThemeToggle } from "../theme-toggle";
 
 export default function DashboardHeader({ role }: { role: string }) {
-  const rolePath = role.toLowerCase().replace(' ', '');
-  const profileLink = rolePath === 'superadmin' ? null : `/dashboard/${rolePath}/profile`;
-  const settingsLink = `/dashboard/${rolePath}/settings`;
+  let rolePath = role.toLowerCase().replace(' ', '');
+  if (role === 'Super Admin') {
+    rolePath = 'admin';
+  }
+  
+  const profileLink = rolePath === 'admin' ? null : `/d/${rolePath}/profile`;
+  const settingsLink = `/d/${rolePath}/settings`;
 
   return (
     <>

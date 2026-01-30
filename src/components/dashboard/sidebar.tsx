@@ -26,40 +26,40 @@ import { cn } from "@/lib/utils";
 
 const navLinks = {
   Marketer: [
-    { href: "/dashboard/marketer", label: "Dashboard", icon: LayoutGrid },
-    { href: "/dashboard/marketer/profile", label: "Profile", icon: User },
-    { href: "/dashboard/marketer/clients", label: "Clients", icon: Users },
-    { href: "/dashboard/marketer/projects", label: "Projects", icon: Briefcase },
-    { href: "/dashboard/marketer/tasks", label: "Tasks", icon: CheckSquare },
-    { href: "/dashboard/marketer/team", label: "Team / Developers", icon: UsersRound },
-    { href: "/dashboard/marketer/earnings", label: "Earnings", icon: DollarSign },
-    { href: "/dashboard/marketer/invoices", label: "Invoices", icon: FileText },
-    { href: "/dashboard/marketer/analytics", label: "Analytics", icon: BarChartBig },
+    { href: "/d/marketer", label: "Dashboard", icon: LayoutGrid },
+    { href: "/d/marketer/profile", label: "Profile", icon: User },
+    { href: "/d/marketer/clients", label: "Clients", icon: Users },
+    { href: "/d/marketer/projects", label: "Projects", icon: Briefcase },
+    { href: "/d/marketer/tasks", label: "Tasks", icon: CheckSquare },
+    { href: "/d/marketer/team", label: "Team / Developers", icon: UsersRound },
+    { href: "/d/marketer/earnings", label: "Earnings", icon: DollarSign },
+    { href: "/d/marketer/invoices", label: "Invoices", icon: FileText },
+    { href: "/d/marketer/analytics", label: "Analytics", icon: BarChartBig },
   ],
   Developer: [
-    { href: "/dashboard/developer", label: "Dashboard", icon: LayoutGrid },
-    { href: "/dashboard/developer/profile", label: "Profile", icon: User },
-    { href: "/dashboard/developer/projects", label: "Projects", icon: Briefcase },
-    { href: "/dashboard/developer/earnings", label: "Earnings", icon: DollarSign },
+    { href: "/d/developer", label: "Dashboard", icon: LayoutGrid },
+    { href: "/d/developer/profile", label: "Profile", icon: User },
+    { href: "/d/developer/projects", label: "Projects", icon: Briefcase },
+    { href: "/d/developer/earnings", label: "Earnings", icon: DollarSign },
   ],
   Support: [
-    { href: "/dashboard/support", label: "Dashboard", icon: LayoutGrid },
-    { href: "/dashboard/support/profile", label: "Profile", icon: User },
-    { href: "/dashboard/support/tasks", label: "Support Tasks", icon: CheckSquare },
-    { href: "/dashboard/support/projects", label: "Active Projects", icon: Briefcase },
-    { href: "/dashboard/support/earnings", label: "Earnings", icon: DollarSign },
-    { href: "/dashboard/support/logs", label: "Logs & Reports", icon: FileClock },
-    { href: "/dashboard/support/notifications", label: "Notifications", icon: Bell },
+    { href: "/d/support", label: "Dashboard", icon: LayoutGrid },
+    { href: "/d/support/profile", label: "Profile", icon: User },
+    { href: "/d/support/tasks", label: "Support Tasks", icon: CheckSquare },
+    { href: "/d/support/projects", label: "Active Projects", icon: Briefcase },
+    { href: "/d/support/earnings", label: "Earnings", icon: DollarSign },
+    { href: "/d/support/logs", label: "Logs & Reports", icon: FileClock },
+    { href: "/d/support/notifications", label: "Notifications", icon: Bell },
   ],
   'Super Admin': [
-    { href: "/dashboard/admin", label: "Global Dashboard", icon: LayoutGrid },
-    { href: "/dashboard/admin/users", label: "User Management", icon: Users },
-    { href: "/dashboard/admin/projects", label: "Project Oversight", icon: Briefcase },
-    { href: "/dashboard/admin/approvals", label: "Approvals Queue", icon: CheckCheck },
-    { href: "/dashboard/admin/payments", label: "Payments", icon: DollarSign },
-    { href: "/dashboard/admin/analytics", label: "Platform Analytics", icon: BarChartBig },
-    { href: "/dashboard/admin/rules", label: "System Rules", icon: Cog },
-    { href: "/dashboard/admin/logs", label: "Audit Logs", icon: FileClock },
+    { href: "/d/admin", label: "Global Dashboard", icon: LayoutGrid },
+    { href: "/d/admin/users", label: "User Management", icon: Users },
+    { href: "/d/admin/projects", label: "Project Oversight", icon: Briefcase },
+    { href: "/d/admin/approvals", label: "Approvals Queue", icon: CheckCheck },
+    { href: "/d/admin/payments", label: "Payments", icon: DollarSign },
+    { href: "/d/admin/analytics", label: "Platform Analytics", icon: BarChartBig },
+    { href: "/d/admin/rules", label: "System Rules", icon: Cog },
+    { href: "/d/admin/logs", label: "Audit Logs", icon: FileClock },
   ],
 };
 
@@ -70,16 +70,12 @@ export default function DashboardSidebar({ role }: { role: string }) {
 
   const links = navLinks[roleKey] || [];
   
-  // A bit of a hack to ensure the settings link is correct for 'Super Admin'
-  const settingsLinkPath = roleKey === 'Super Admin' 
-    ? `/dashboard/admin/settings`
-    : roleKey === 'Support'
-    ? `/dashboard/support/settings`
-    : roleKey === 'Developer'
-    ? `/dashboard/developer/settings`
-    : `/dashboard/marketer/settings`;
+  let rolePath = role.toLowerCase().replace(' ', '');
+  if (role === 'Super Admin') {
+    rolePath = 'admin';
+  }
   
-  const settingsLink = { href: settingsLinkPath, label: "Settings", icon: Settings };
+  const settingsLink = { href: `/d/${rolePath}/settings`, label: "Settings", icon: Settings };
 
   return (
     <aside className="w-64 flex-col border-r bg-background">

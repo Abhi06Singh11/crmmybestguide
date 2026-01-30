@@ -17,16 +17,16 @@ export async function login(role: Role) {
   let redirectTo = '/';
   switch (role) {
     case 'Marketer':
-      redirectTo = '/dashboard/marketer';
+      redirectTo = '/d/marketer';
       break;
     case 'Developer':
-      redirectTo = '/dashboard/developer';
+      redirectTo = '/d/developer';
       break;
     case 'Support':
-      redirectTo = '/dashboard/support';
+      redirectTo = '/d/support';
       break;
     case 'Super Admin':
-      redirectTo = '/dashboard/admin';
+      redirectTo = '/d/admin';
       break;
   }
   redirect(redirectTo);
