@@ -14,7 +14,7 @@ export default function LoginPage() {
   ] as const;
 
   return (
-    <div className="flex min-h-[80vh] items-center justify-center bg-secondary">
+    <div className="flex-1 flex items-center justify-center bg-secondary">
       <Card className="w-full max-w-md mx-4">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">Development Login</CardTitle>
