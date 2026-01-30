@@ -37,7 +37,7 @@ export default function RootLayout({
           }}
         />
         {!isDashboard && <Header />}
-        <main className="flex-1 flex">
+        <main className="flex-1 flex flex-col">
           {children}
         </main>
         {!isDashboard && <Footer />}
