@@ -1,12 +1,12 @@
 
 import {
-    Briefcase, Hourglass, CheckSquare, Eye, DollarSign, Banknote, Calendar, Star, AlertCircle, ShieldCheck, Clock, CheckCircle2, FileClock
+    AlertCircle, ShieldCheck, Clock, CheckCircle2, FileClock, DollarSign, Banknote, Calendar, Star, Briefcase
 } from 'lucide-react';
 
-export const supportKpiData = [
+export const networkKpiData = [
   { title: 'Active Tickets', value: '8', label: 'Assigned to you', icon: AlertCircle, color: 'text-yellow-500' },
   { title: 'Resolved Today', value: '4', label: 'SLA met: 100%', icon: ShieldCheck, color: 'text-green-500' },
-  { title: 'Pending Review', value: '2', label: 'Waiting for client approval', icon: Hourglass, color: 'text-blue-500' },
+  { title: 'Pending Review', value: '2', label: 'Waiting for client approval', icon: Clock, color: 'text-blue-500' },
   { title: 'Avg. Resolution Time', value: '3.2h', label: 'Last 7 days', icon: Clock, color: 'text-muted-foreground' },
 ];
 
@@ -21,13 +21,13 @@ export const upcomingMaintenanceData = [
     { id: 2, project: 'Quantum E-commerce', client: 'Quantum Solutions', task: 'Security Patch Update', date: '2024-08-12' },
 ];
 
-export const supportProfileData = {
+export const networkProfileData = {
   name: 'Casey Becker',
   initials: 'CB',
-  role: 'Technical Support Engineer',
+  role: 'Network Engineer',
   status: 'Approved',
   availability: 'Available',
-  bio: 'Dedicated Technical Support Engineer with 5 years of experience in troubleshooting, maintenance, and incident resolution for web applications. Certified in AWS and ITIL.',
+  bio: 'Dedicated Network Engineer with 5 years of experience in troubleshooting, maintenance, and incident resolution for web applications. Certified in AWS and ITIL.',
   skills: ['Linux', 'AWS', 'Docker', 'SQL', 'Nginx', 'Firewalls', 'Jenkins'],
   tools: ['Zendesk', 'Jira', 'DataDog', 'Postman', 'VS Code'],
   experience: '5 Years',
@@ -40,7 +40,7 @@ export const supportProfileData = {
 };
 
 
-export const supportProjectsData = {
+export const networkProjectsData = {
     total: 8,
     stable: 6,
     monitoring: 2,
@@ -52,7 +52,7 @@ export const supportProjectsData = {
     ]
 };
 
-export const supportTasksData = {
+export const networkTasksData = {
     total: 25,
     open: 8,
     inProgress: 3,
@@ -67,7 +67,7 @@ export const supportTasksData = {
     ]
 };
 
-export const supportEarningsData = {
+export const networkEarningsData = {
     kpis: [
         { title: 'Lifetime Earnings', value: '$42,500', icon: DollarSign },
         { title: 'Last Payout', value: '$3,500', icon: Banknote },
@@ -86,7 +86,7 @@ export const supportEarningsData = {
     ],
 };
 
-export const supportLogsData = [
+export const networkLogsData = [
     { timestamp: '2024-08-05 10:30:15', type: 'Security', event: 'Firewall rule updated for IP 192.168.1.1' },
     { timestamp: '2024-08-05 09:15:00', type: 'Maintenance', event: 'Database backup completed for Project Quantum' },
     { timestamp: '2024-08-04 18:05:22', type: 'Incident', event: 'TKT-003 Resolved: Payment gateway API key renewed.' },

@@ -2,7 +2,7 @@
 import { login, logout } from '@/app/actions/auth';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { BarChart, Code, LifeBuoy, ShieldCheck, Home } from 'lucide-react';
+import { BarChart, Code, LifeBuoy, ShieldCheck, Home, Globe } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
 export default function LoginPage() {
@@ -10,7 +10,7 @@ export default function LoginPage() {
   const roles = [
     { name: 'Marketer', icon: BarChart },
     { name: 'Developer', icon: Code },
-    { name: 'Support', icon: LifeBuoy },
+    { name: 'Network', icon: Globe },
     { name: 'Super Admin', icon: ShieldCheck },
   ] as const;
 

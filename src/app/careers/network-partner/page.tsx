@@ -99,7 +99,7 @@ const mouItems = [
     }
 ]
 
-export default function TechnicalSupportPartnerPage() {
+export default function NetworkPartnerPage() {
     const router = useRouter();
   return (
     <div className="bg-background text-foreground">
@@ -117,7 +117,7 @@ export default function TechnicalSupportPartnerPage() {
             </Button>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold">
-            Technical Support Partner
+            Network Partner
           </h1>
           <p className="text-xl mt-4 text-primary-foreground/80">
             Ensure client success by providing expert maintenance and support for web and mobile applications.
@@ -128,7 +128,7 @@ export default function TechnicalSupportPartnerPage() {
       {/* Benefits */}
       <section className="py-16">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Join as a Support Partner?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Join as a Network Partner?</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
               <Card key={index} className="text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
@@ -171,7 +171,7 @@ export default function TechnicalSupportPartnerPage() {
       <section className="py-16">
         <div className="container max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Support Partner Agreement (MOU)
+            Network Partner Agreement (MOU)
           </h2>
           <Accordion type="single" collapsible defaultValue="item-0">
             {mouItems.map((item, index) => (
@@ -194,7 +194,7 @@ export default function TechnicalSupportPartnerPage() {
             Join our network of technical experts and help our clients thrive.
           </p>
           <div className="mt-8">
-            <Link href="/careers/technical-support-partner/support-apply">
+            <Link href="/careers/network-partner/apply">
               <Button size="lg">
                 Apply Now
               </Button>

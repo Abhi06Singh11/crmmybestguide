@@ -22,7 +22,7 @@ import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 
-export default function SupportSettingsPage() {
+export default function NetworkSettingsPage() {
   return (
     <Tabs defaultValue="profile" className="w-full">
       <TabsList className="grid w-full grid-cols-3">
@@ -45,11 +45,11 @@ export default function SupportSettingsPage() {
             </div>
             <div className="space-y-2">
               <Label htmlFor="role">Role / Title</Label>
-              <Input id="role" defaultValue="Technical Support Engineer" />
+              <Input id="role" defaultValue="Network Engineer" />
             </div>
              <div className="space-y-2">
               <Label htmlFor="bio">Short Bio</Label>
-              <Textarea id="bio" defaultValue="Dedicated Technical Support Engineer with 5 years of experience in troubleshooting, maintenance, and incident resolution for web applications." />
+              <Textarea id="bio" defaultValue="Dedicated Network Engineer with 5 years of experience in troubleshooting, maintenance, and incident resolution for web applications." />
             </div>
              <div className="space-y-2">
               <Label htmlFor="skills">Skills (comma-separated)</Label>

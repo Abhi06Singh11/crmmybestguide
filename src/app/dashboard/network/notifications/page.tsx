@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Bell } from "lucide-react";
 
-export default function SupportNotificationsPage() {
+export default function NetworkNotificationsPage() {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center gap-4">

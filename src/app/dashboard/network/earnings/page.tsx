@@ -32,17 +32,17 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import {
-  supportEarningsData,
-} from '@/lib/support-dashboard-data';
+  networkEarningsData,
+} from '@/lib/network-dashboard-data';
 import { format, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { Download } from 'lucide-react';
 
-export default function SupportEarningsPage() {
+export default function NetworkEarningsPage() {
     return (
         <div className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {supportEarningsData.kpis.map((kpi) => (
+                {networkEarningsData.kpis.map((kpi) => (
                     <Card key={kpi.title}>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-medium">{kpi.title}</CardTitle>
@@ -62,7 +62,7 @@ export default function SupportEarningsPage() {
                 <CardContent>
                     <ChartContainer config={{}} className="h-64 w-full">
                     <ResponsiveContainer>
-                        <LineChart data={supportEarningsData.chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                        <LineChart data={networkEarningsData.chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
                         <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `$${value / 1000}k`} />
@@ -94,7 +94,7 @@ export default function SupportEarningsPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {supportEarningsData.tableData.map(earning => (
+                            {networkEarningsData.tableData.map(earning => (
                                 <TableRow key={earning.id}>
                                     <TableCell>
                                         <div className="font-medium">{earning.project}</div>

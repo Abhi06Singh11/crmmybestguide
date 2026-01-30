@@ -52,15 +52,15 @@ const opportunities = [
     href: '/careers/freelancers',
   },
   {
-    title: 'Technical Support Partner',
-    description: 'Join us as a Technical Support Partner to help maintain and support our client\'s applications. Provide excellent service and ensure system stability and performance.',
+    title: 'Network Partner',
+    description: 'Join us as a Network Partner to help maintain and support our client\'s applications. Provide excellent service and ensure system stability and performance.',
     points: [
         'Flexible, project-based work',
         'Gain experience with diverse applications',
         'Directly impact client satisfaction',
     ],
     cta: 'Proceed >',
-    href: '/careers/technical-support-partner',
+    href: '/careers/network-partner',
   },
 ];
 

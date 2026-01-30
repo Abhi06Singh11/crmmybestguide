@@ -24,11 +24,11 @@ import {
   Activity,
   FileText,
 } from 'lucide-react';
-import { supportProjectsData } from '@/lib/support-dashboard-data';
+import { networkProjectsData } from '@/lib/network-dashboard-data';
 import { cn } from '@/lib/utils';
 
-export default function SupportProjectsPage() {
-    const { total, stable, monitoring, projects } = supportProjectsData;
+export default function NetworkProjectsPage() {
+    const { total, stable, monitoring, projects } = networkProjectsData;
 
     return (
         <div className="space-y-6">

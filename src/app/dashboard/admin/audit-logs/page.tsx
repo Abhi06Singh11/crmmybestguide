@@ -2,7 +2,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileClock } from "lucide-react";
 
-export default function AdminLogsPage() {
+export default function AdminAuditLogsPage() {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center gap-4">

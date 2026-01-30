@@ -6,8 +6,8 @@ import { PanelLeft, Search } from 'lucide-react';
 import DashboardSidebar from '@/components/dashboard/sidebar';
 import { Input } from '@/components/ui/input';
 
-export default function SupportDashboardLayout({ children }: { children: React.ReactNode }) {
-  const role = "Support";
+export default function NetworkDashboardLayout({ children }: { children: React.ReactNode }) {
+  const role = "Network";
   return (
     <div className="flex flex-1 flex-col">
        <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b bg-background/95 px-4 backdrop-blur-sm sm:px-6">

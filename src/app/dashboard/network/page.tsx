@@ -19,15 +19,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-    supportKpiData,
+    networkKpiData,
     highPriorityTasksData,
     upcomingMaintenanceData
-} from "@/lib/support-dashboard-data";
+} from "@/lib/network-dashboard-data";
 import {
   FileText,
-  AlertTriangle,
   PlayCircle,
-  Eye,
   Siren,
   Clock,
   ShieldCheck,
@@ -35,11 +33,11 @@ import {
 import { cn } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress";
 
-export default function SupportDashboardPage() {
+export default function NetworkDashboardPage() {
   return (
     <div className="grid grid-cols-1 gap-6">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {supportKpiData.map((kpi) => (
+            {networkKpiData.map((kpi) => (
                 <Card key={kpi.title}>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">{kpi.title}</CardTitle>

@@ -19,7 +19,7 @@ import { useRouter } from 'next/navigation';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectGroup, SelectLabel } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 
-export default function SupportApplyPage() {
+export default function NetworkApplyPage() {
   const [formVisible, setFormVisible] = useState(false);
   const [areTermsAccepted, setAreTermsAccepted] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -95,7 +95,7 @@ export default function SupportApplyPage() {
         {!formVisible && (
             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 p-8 md:p-12 text-center rounded-lg mb-8">
                 <h1 className="text-4xl font-bold text-foreground mb-4">
-                    Welcome to the MyBestGuide Technical Support Community
+                    Welcome to the MyBestGuide Network Partner Community
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                     Join our network of technical experts dedicated to ensuring client success through reliable application maintenance and support. Your skills are crucial to keeping digital solutions running smoothly.
@@ -120,7 +120,7 @@ export default function SupportApplyPage() {
             <>
             <div className="mb-12 text-center">
                 <h2 className="text-3xl font-bold text-foreground mb-4">
-                    Become a Support Partner
+                    Become a Network Partner
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                     You're one step away from joining a community of skilled support professionals. Tell us about your expertise.
@@ -129,7 +129,7 @@ export default function SupportApplyPage() {
 
             <div className="mb-12">
               <h2 className="text-3xl font-bold text-center text-foreground mb-6">
-                Why Join as a Technical Support Partner?
+                Why Join as a Network Partner?
               </h2>
               <ul className="grid md:grid-cols-2 gap-x-8 gap-y-4 max-w-4xl mx-auto text-muted-foreground">
                 {whyJoinBenefits.map((benefit, index) => (
@@ -261,7 +261,7 @@ export default function SupportApplyPage() {
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-center text-2xl mb-4">MyBestGuide – Terms and Conditions for Technical Support Partners</DialogTitle>
+            <DialogTitle className="text-center text-2xl mb-4">MyBestGuide – Terms and Conditions for Network Partners</DialogTitle>
              <DialogClose className="absolute right-4 top-4" />
           </DialogHeader>
           <div className="prose dark:prose-invert max-w-none">

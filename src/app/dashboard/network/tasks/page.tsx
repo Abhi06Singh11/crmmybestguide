@@ -26,7 +26,7 @@ import {
   MoreHorizontal,
   PlusCircle,
 } from 'lucide-react';
-import { supportTasksData } from '@/lib/support-dashboard-data';
+import { networkTasksData } from '@/lib/network-dashboard-data';
 import { cn } from '@/lib/utils';
 import {
   DropdownMenu,
@@ -35,8 +35,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-export default function SupportTasksPage() {
-    const { total, open, inProgress, resolved, tasks } = supportTasksData;
+export default function NetworkTasksPage() {
+    const { total, open, inProgress, resolved, tasks } = networkTasksData;
 
     return (
         <div className="space-y-6">
@@ -61,7 +61,7 @@ export default function SupportTasksPage() {
             <Card>
                 <CardHeader className="flex flex-row items-center justify-between">
                     <div>
-                        <CardTitle>All Support Tasks</CardTitle>
+                        <CardTitle>All Network Tasks</CardTitle>
                         <CardDescription>A complete log of all support tickets assigned to you.</CardDescription>
                     </div>
                     <Button>

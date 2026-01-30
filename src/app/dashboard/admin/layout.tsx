@@ -20,7 +20,7 @@ export default function AdminDashboardLayout({ children }: { children: React.Rea
     { href: '/d/admin', label: 'Global Dashboard' },
     { href: '/d/admin/marketer', label: 'Marketer' },
     { href: '/d/admin/developer', label: 'Developer' },
-    { href: '/d/admin/support', label: 'Support' },
+    { href: '/d/admin/network', label: 'Network' },
   ];
 
   const NavTabs = () => {

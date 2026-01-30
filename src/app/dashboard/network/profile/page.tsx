@@ -20,10 +20,10 @@ import {
   ShieldCheck,
   Zap,
 } from 'lucide-react';
-import { supportProfileData } from '@/lib/support-dashboard-data';
+import { networkProfileData } from '@/lib/network-dashboard-data';
 import Image from 'next/image';
 
-export default function SupportProfilePage() {
+export default function NetworkProfilePage() {
   const { 
     name, 
     initials, 
@@ -36,7 +36,7 @@ export default function SupportProfilePage() {
     bio,
     certifications,
     performance,
-  } = supportProfileData;
+  } = networkProfileData;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

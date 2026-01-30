@@ -4,7 +4,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-type Role = 'Marketer' | 'Developer' | 'Support' | 'Super Admin';
+type Role = 'Marketer' | 'Developer' | 'Network' | 'Super Admin';
 
 export async function login(role: Role) {
   cookies().set('dev-auth-role', role, {
@@ -22,8 +22,8 @@ export async function login(role: Role) {
     case 'Developer':
       redirectTo = '/d/developer';
       break;
-    case 'Support':
-      redirectTo = '/d/support';
+    case 'Network':
+      redirectTo = '/d/network';
       break;
     case 'Super Admin':
       redirectTo = '/d/admin';

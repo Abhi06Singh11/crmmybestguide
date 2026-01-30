@@ -19,7 +19,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { FileDown } from 'lucide-react';
-import { supportLogsData } from '@/lib/support-dashboard-data';
+import { networkLogsData } from '@/lib/network-dashboard-data';
 import { cn } from '@/lib/utils';
 
 export default function LogsPage() {
@@ -45,7 +45,7 @@ export default function LogsPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {supportLogsData.map((log, index) => (
+                        {networkLogsData.map((log, index) => (
                             <TableRow key={index}>
                                 <TableCell className="font-mono text-xs">{log.timestamp}</TableCell>
                                 <TableCell>

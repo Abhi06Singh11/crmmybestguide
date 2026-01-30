@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -12,9 +13,7 @@ import {
   FileText,
   BarChartBig,
   Settings,
-  Code,
-  LifeBuoy,
-  ShieldCheck,
+  Globe,
   User,
   FileClock,
   Bell,
@@ -41,14 +40,14 @@ const navLinks = {
     { href: "/d/developer/projects", label: "Projects", icon: Briefcase },
     { href: "/d/developer/earnings", label: "Earnings", icon: DollarSign },
   ],
-  Support: [
-    { href: "/d/support", label: "Dashboard", icon: LayoutGrid },
-    { href: "/d/support/profile", label: "Profile", icon: User },
-    { href: "/d/support/tasks", label: "Support Tasks", icon: CheckSquare },
-    { href: "/d/support/projects", label: "Active Projects", icon: Briefcase },
-    { href: "/d/support/earnings", label: "Earnings", icon: DollarSign },
-    { href: "/d/support/logs", label: "Logs & Reports", icon: FileClock },
-    { href: "/d/support/notifications", label: "Notifications", icon: Bell },
+  Network: [
+    { href: "/d/network", label: "Dashboard", icon: LayoutGrid },
+    { href: "/d/network/profile", label: "Profile", icon: User },
+    { href: "/d/network/tasks", label: "Network Tasks", icon: CheckSquare },
+    { href: "/d/network/projects", label: "Active Projects", icon: Briefcase },
+    { href: "/d/network/earnings", label: "Earnings", icon: DollarSign },
+    { href: "/d/network/logs", label: "Logs & Reports", icon: FileClock },
+    { href: "/d/network/notifications", label: "Notifications", icon: Bell },
   ],
   'Super Admin': [
     { href: "/d/admin", label: "Global Dashboard", icon: LayoutGrid },
@@ -58,7 +57,7 @@ const navLinks = {
     { href: "/d/admin/payments", label: "Payments", icon: DollarSign },
     { href: "/d/admin/analytics", label: "Platform Analytics", icon: BarChartBig },
     { href: "/d/admin/rules", label: "System Rules", icon: Cog },
-    { href: "/d/admin/logs", label: "Audit Logs", icon: FileClock },
+    { href: "/d/admin/audit-logs", label: "Audit Logs", icon: FileClock },
   ],
 };
 
