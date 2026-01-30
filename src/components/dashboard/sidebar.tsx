@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -93,8 +92,8 @@ export default function DashboardSidebar({ role }: { role: string }) {
               key={link.href}
               href={link.href}
               className={cn(
-                "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                isActive && "bg-secondary text-primary"
+                "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:bg-accent hover:text-accent-foreground",
+                isActive && "bg-primary text-primary-foreground"
               )}
             >
               <link.icon className="h-4 w-4" />
@@ -107,8 +106,8 @@ export default function DashboardSidebar({ role }: { role: string }) {
         <Link
           href={settingsLink.href}
           className={cn(
-            "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-            pathname === settingsLink.href && "bg-secondary text-primary"
+            "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:bg-accent hover:text-accent-foreground",
+            pathname === settingsLink.href && "bg-primary text-primary-foreground"
           )}
         >
           <settingsLink.icon className="h-4 w-4" />
