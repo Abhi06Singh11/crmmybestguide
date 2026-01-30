@@ -1,8 +1,9 @@
 
-import { login } from '@/app/actions/auth';
+import { login, logout } from '@/app/actions/auth';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart, Code, LifeBuoy, ShieldCheck } from 'lucide-react';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { BarChart, Code, LifeBuoy, ShieldCheck, Home } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 export default function LoginPage() {
   
@@ -35,6 +36,15 @@ export default function LoginPage() {
             ))}
           </div>
         </CardContent>
+        <CardFooter className="flex-col items-center gap-4 pb-6">
+            <Separator className="w-full" />
+            <form action={logout} className="w-full">
+                <Button variant="outline" type="submit" className="w-full">
+                    <Home className="mr-2 h-4 w-4" />
+                    Return to Website
+                </Button>
+            </form>
+        </CardFooter>
       </Card>
     </div>
   );
