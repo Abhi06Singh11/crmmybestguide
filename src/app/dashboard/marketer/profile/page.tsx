@@ -16,6 +16,7 @@ import {
   Star,
 } from 'lucide-react';
 import { marketerProfileData } from '@/lib/dashboard-data';
+import Link from 'next/link';
 
 
 export default function ProfilePage() {
@@ -49,8 +50,12 @@ export default function ProfilePage() {
               </div>
             </div>
             <div className="flex gap-2 mt-6">
-                <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Public Profile</Button>
-                <Button variant="outline" className="w-full">Edit Profile</Button>
+                <Link href="/p/alex-ray" passHref className='w-full'>
+                    <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Public Profile</Button>
+                </Link>
+                <Link href="/d/marketer/settings" passHref className='w-full'>
+                    <Button variant="outline" className="w-full">Edit Profile</Button>
+                </Link>
             </div>
           </CardContent>
         </Card>
@@ -61,25 +66,23 @@ export default function ProfilePage() {
             <CardTitle>Portfolio Highlights</CardTitle>
             <CardDescription>A snapshot of past project successes and performance.</CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {portfolio.map(item => (
-                <div key={item.project} className="flex items-center p-4 rounded-lg border">
-                  <Avatar className="h-12 w-12 mr-4">
-                    <AvatarFallback>{item.clientLogo}</AvatarFallback>
-                  </Avatar>
-                  <div className="flex-1">
-                    <p className="font-semibold">{item.project}</p>
-                    <p className="text-sm text-muted-foreground">{item.client}</p>
-                  </div>
-                  <div className="text-right">
+          <CardContent className="space-y-4">
+            {portfolio.map(item => (
+              <div key={item.project} className="flex items-center p-4 rounded-lg border">
+                <Avatar className="h-12 w-12 mr-4">
+                  <AvatarFallback>{item.clientLogo}</AvatarFallback>
+                </Avatar>
+                <div className="flex-1">
+                  <p className="font-semibold">{item.project}</p>
+                  <p className="text-sm text-muted-foreground">{item.client}</p>
+                </div>
+                <div className="text-right">
                      <p className="font-semibold text-green-600">{item.highlight}</p>
                      <p className="text-sm text-muted-foreground">Performance Highlight</p>
                   </div>
                 </div>
               ))}
-            </div>
-          </CardContent>
+            </CardContent>
         </Card>
       </div>
     </div>

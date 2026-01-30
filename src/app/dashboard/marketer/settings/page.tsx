@@ -1,5 +1,9 @@
+
 'use client';
 
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -9,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
@@ -20,9 +25,61 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { marketerProfileData } from '@/lib/dashboard-data';
+import { useToast } from '@/hooks/use-toast';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import Image from 'next/image';
+import { useState } from 'react';
+
+const profileSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters."),
+  email: z.string().email("Please enter a valid email address."),
+  role: z.string().min(2, "Role must be at least 2 characters."),
+  bio: z.string().max(300, "Bio cannot exceed 300 characters.").optional(),
+  skills: z.string().optional(),
+  availability: z.string(),
+  linkedin: z.string().url().optional().or(z.literal('')),
+  twitter: z.string().url().optional().or(z.literal('')),
+});
 
 
 export default function SettingsPage() {
+    const { toast } = useToast();
+    const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+
+    const form = useForm<z.infer<typeof profileSchema>>({
+        resolver: zodResolver(profileSchema),
+        defaultValues: {
+            name: marketerProfileData.name,
+            email: "alex.ray@example.com", // hardcoded as it is not in the data file
+            role: marketerProfileData.role,
+            bio: "Experienced marketer specializing in SEO, content strategy, and lead generation for tech startups.", // hardcoded
+            skills: marketerProfileData.skills.join(', '),
+            availability: marketerProfileData.availability,
+            linkedin: "https://linkedin.com/in/alexray", // hardcoded
+            twitter: "https://twitter.com/alexray", // hardcoded
+        },
+    });
+
+    const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setAvatarPreview(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    function onSubmit(values: z.infer<typeof profileSchema>) {
+        console.log("Profile updated:", values);
+        toast({
+            title: "Profile Updated",
+            description: "Your profile information has been saved successfully.",
+        });
+    }
+
   return (
     <Tabs defaultValue="profile" className="w-full">
       <TabsList className="grid w-full grid-cols-4">
@@ -32,35 +89,73 @@ export default function SettingsPage() {
         <TabsTrigger value="security">Security</TabsTrigger>
       </TabsList>
       <TabsContent value="profile">
-        <Card>
-          <CardHeader>
-            <CardTitle>Profile Settings</CardTitle>
-            <CardDescription>
-              Manage your public and internal profile information.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input id="name" defaultValue="Alex Ray" />
-            </div>
-             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" defaultValue="alex.ray@example.com" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="role">Role / Title</Label>
-              <Input id="role" defaultValue="Growth & Marketing Manager" />
-            </div>
-             <div className="space-y-2">
-              <Label htmlFor="bio">Bio</Label>
-              <Textarea id="bio" defaultValue="Experienced marketer specializing in SEO, content strategy, and lead generation for tech startups." />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save Profile</Button>
-          </CardFooter>
-        </Card>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <Card>
+              <CardHeader>
+                <CardTitle>Profile Settings</CardTitle>
+                <CardDescription>
+                  Manage your public and internal profile information.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className='flex items-center gap-6'>
+                    <div className="relative">
+                        <Avatar className="h-24 w-24">
+                           {avatarPreview ? 
+                                <Image src={avatarPreview} alt="Avatar preview" fill className="object-cover" />
+                                : <AvatarFallback className="text-3xl">{marketerProfileData.initials}</AvatarFallback>
+                            }
+                        </Avatar>
+                    </div>
+                     <div className="space-y-2">
+                        <Label htmlFor="picture">Profile Picture</Label>
+                        <Input id="picture" type="file" accept="image/*" onChange={handleAvatarChange} />
+                        <p className='text-sm text-muted-foreground'>Upload a new photo. We recommend a 200x200px image.</p>
+                    </div>
+                </div>
+                 <FormField control={form.control} name="name" render={({ field }) => (
+                    <FormItem><FormLabel>Full Name</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                )}/>
+                 <FormField control={form.control} name="email" render={({ field }) => (
+                    <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
+                )}/>
+                <FormField control={form.control} name="role" render={({ field }) => (
+                    <FormItem><FormLabel>Role / Title</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
+                )}/>
+                <FormField control={form.control} name="bio" render={({ field }) => (
+                    <FormItem><FormLabel>Bio</FormLabel><FormControl><Textarea {...field} /></FormControl><FormMessage /></FormItem>
+                )}/>
+                <FormField control={form.control} name="skills" render={({ field }) => (
+                    <FormItem><FormLabel>Skills</FormLabel><FormControl><Input placeholder='e.g. SEO, Google Ads, Content Strategy' {...field} /></FormControl><FormDescription>Comma-separated list of your top skills.</FormDescription><FormMessage /></FormItem>
+                )}/>
+                 <FormField control={form.control} name="availability" render={({ field }) => (
+                    <FormItem><FormLabel>Availability</FormLabel>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                            <SelectContent>
+                                <SelectItem value="Available for new projects">Available for new projects</SelectItem>
+                                <SelectItem value="At capacity">At capacity</SelectItem>
+                                <SelectItem value="Unavailable">Unavailable</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    <FormMessage /></FormItem>
+                )}/>
+                 <div className='grid md:grid-cols-2 gap-6'>
+                    <FormField control={form.control} name="linkedin" render={({ field }) => (
+                        <FormItem><FormLabel>LinkedIn URL</FormLabel><FormControl><Input placeholder="https://linkedin.com/in/..." {...field} /></FormControl><FormMessage /></FormItem>
+                    )}/>
+                    <FormField control={form.control} name="twitter" render={({ field }) => (
+                        <FormItem><FormLabel>Twitter URL</FormLabel><FormControl><Input placeholder="https://twitter.com/..." {...field} /></FormControl><FormMessage /></FormItem>
+                    )}/>
+                 </div>
+              </CardContent>
+              <CardFooter>
+                <Button type="submit">Save Profile</Button>
+              </CardFooter>
+            </Card>
+          </form>
+        </Form>
       </TabsContent>
       <TabsContent value="notifications">
         <Card>
