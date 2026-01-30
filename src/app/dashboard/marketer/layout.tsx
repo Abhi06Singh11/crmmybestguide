@@ -2,14 +2,15 @@
 import DashboardHeader from '@/components/dashboard/header';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
-import { PanelLeft } from 'lucide-react';
+import { PanelLeft, Search } from 'lucide-react';
 import DashboardSidebar from '@/components/dashboard/sidebar';
+import { Input } from '@/components/ui/input';
 
 export default function MarketerDashboardLayout({ children }: { children: React.ReactNode }) {
   const role = "Marketer";
   return (
     <div className="flex flex-1 flex-col">
-       <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
+       <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b bg-background/95 px-4 backdrop-blur-sm sm:px-6">
             <Sheet>
                 <SheetTrigger asChild>
                     <Button size="icon" variant="outline" className="sm:hidden">
@@ -21,6 +22,16 @@ export default function MarketerDashboardLayout({ children }: { children: React.
                     <DashboardSidebar role={role} />
                 </SheetContent>
             </Sheet>
+
+            <div className="relative flex-1 max-w-md hidden md:block">
+               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+               <Input
+                   type="search"
+                   placeholder="Search clients, projects, payments..."
+                   className="w-full rounded-lg bg-secondary pl-8"
+               />
+            </div>
+
             <DashboardHeader role={role} />
         </header>
         <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
