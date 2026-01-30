@@ -7,10 +7,10 @@ export default function AdminPaymentsPage() {
     <Card>
       <CardHeader className="flex flex-row items-center gap-4">
         <DollarSign className="h-8 w-8 text-primary" />
-        <CardTitle className="text-3xl">Earnings & Payments</CardTitle>
+        <CardTitle className="text-3xl">Payments</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">Oversee platform revenue, commissions, and all user payouts.</p>
+        <p className="text-muted-foreground">Financial oversight to track client payments, freelancer payouts, and platform commissions.</p>
       </CardContent>
     </Card>
   );

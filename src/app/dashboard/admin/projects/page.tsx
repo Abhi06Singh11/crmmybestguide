@@ -10,7 +10,7 @@ export default function AdminProjectsPage() {
         <CardTitle className="text-3xl">Project Oversight</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">View and manage all projects across the platform.</p>
+        <p className="text-muted-foreground">Centralized control to view, manage, and assign all projects on the platform.</p>
       </CardContent>
     </Card>
   );

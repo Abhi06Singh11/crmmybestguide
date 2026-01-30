@@ -10,7 +10,7 @@ export default function AdminApprovalsPage() {
         <CardTitle className="text-3xl">Approvals Queue</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">Manage all pending approvals for users, projects, and payments.</p>
+        <p className="text-muted-foreground">A central hub to approve or reject new projects, user onboarding, payments, and profile updates.</p>
       </CardContent>
     </Card>
   );

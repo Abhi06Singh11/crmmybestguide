@@ -10,7 +10,7 @@ export default function AdminLogsPage() {
         <CardTitle className="text-3xl">Audit Logs</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">Review system-wide audit trails and activity logs.</p>
+        <p className="text-muted-foreground">A secure log of all critical system actions for security, transparency, and compliance tracking.</p>
       </CardContent>
     </Card>
   );

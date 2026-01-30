@@ -10,7 +10,7 @@ export default function AdminAnalyticsPage() {
         <CardTitle className="text-3xl">Platform Analytics</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground">View detailed analytics, reports, and trends for the entire platform.</p>
+        <p className="text-muted-foreground">High-level insights into platform performance, user growth, revenue, and engagement metrics.</p>
       </CardContent>
     </Card>
   );
