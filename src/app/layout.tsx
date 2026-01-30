@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
-  const isDashboard = pathname.startsWith('/d');
+  const isCrmPage = pathname.startsWith('/d') || pathname === '/login';
 
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
@@ -36,13 +36,13 @@ export default function RootLayout({
             `,
           }}
         />
-        {!isDashboard && <Header />}
-        <main className={cn('flex-1 flex', !isDashboard && 'flex-col')}>
+        {!isCrmPage && <Header />}
+        <main className={cn('flex-1 flex', !isCrmPage && 'flex-col')}>
           {children}
         </main>
-        {!isDashboard && <Footer />}
+        {!isCrmPage && <Footer />}
         <Toaster />
-        {!isDashboard && <GoToTop />}
+        {!isCrmPage && <GoToTop />}
       </body>
     </html>
   );
