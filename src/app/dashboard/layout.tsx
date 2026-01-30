@@ -12,7 +12,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   return (
-    <div className="flex h-screen w-full bg-secondary/50">
+    <div className="flex min-h-screen w-full bg-secondary/50">
       <div className="hidden md:flex">
         <DashboardSidebar role={role} />
       </div>
