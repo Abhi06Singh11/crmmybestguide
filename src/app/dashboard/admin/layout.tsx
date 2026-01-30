@@ -1,3 +1,4 @@
+'use client';
 
 import AdminDashboardHeader from '@/components/dashboard/admin-header';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -12,20 +13,16 @@ import { usePathname } from 'next/navigation';
 
 export default function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   const role = "Super Admin";
-  // The usePathname hook can only be used in client components, but we can wrap the part that needs it.
-  // For the purpose of this layout, we'll simulate its value or adjust logic.
-  // A better approach would be to have a client component read the pathname.
-  // For now, we'll manage active state differently or assume it's passed.
-  // Let's create a simple client component for the nav.
+  const pathname = usePathname();
+
+  const tabs = [
+    { href: '/d/admin', label: 'Global Dashboard' },
+    { href: '/d/admin/marketer', label: 'Marketer' },
+    { href: '/d/admin/developer', label: 'Developer' },
+    { href: '/d/admin/support', label: 'Support' },
+  ];
 
   const NavTabs = () => {
-    const pathname = usePathname();
-     const tabs = [
-      { href: '/d/admin', label: 'Global Dashboard' },
-      { href: '/d/admin/marketer', label: 'Marketer' },
-      { href: '/d/admin/developer', label: 'Developer' },
-      { href: '/d/admin/support', label: 'Support' },
-    ];
     return (
        <nav className="border-t -mx-6 px-6">
         <div className="flex items-center space-x-2 pt-2">
