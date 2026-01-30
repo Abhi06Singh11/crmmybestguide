@@ -34,5 +34,5 @@ export async function login(role: Role) {
 
 export async function logout() {
   cookies().delete('dev-auth-role');
-  redirect('/login');
+  redirect('/');
 }
