@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import { clientsData } from '@/lib/dashboard-data';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export default function ClientsPage() {
     return (
@@ -42,7 +43,7 @@ export default function ClientsPage() {
             </TableHeader>
             <TableBody>
                 {clientsData.map(client => (
-                <TableRow key={client.name}>
+                <TableRow key={client.id}>
                     <TableCell>
                     <div className="flex items-center gap-3">
                         <Avatar className="h-9 w-9">
@@ -74,15 +75,23 @@ export default function ClientsPage() {
                     </Badge>
                     </TableCell>
                     <TableCell className="text-right">
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                        <DropdownMenuItem>View Client</DropdownMenuItem>
-                        <DropdownMenuItem>Send Message</DropdownMenuItem>
-                        </DropdownMenuContent>
-                    </DropdownMenu>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                                <Link href={`/d/marketer/clients/${client.slug}`}>
+                                    <DropdownMenuItem>
+                                        View Client
+                                    </DropdownMenuItem>
+                                </Link>
+                                <Link href="/d/marketer/clients/chat">
+                                    <DropdownMenuItem>
+                                        Send Message
+                                    </DropdownMenuItem>
+                                </Link>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                     </TableCell>
                 </TableRow>
                 ))}
