@@ -61,6 +61,8 @@ const navLinks = {
   ],
 };
 
+const rootDashboardLinks = ["/d/marketer", "/d/developer", "/d/network", "/d/admin"];
+
 
 export default function DashboardSidebar({ role }: { role: string }) {
   const pathname = usePathname();
@@ -76,16 +78,17 @@ export default function DashboardSidebar({ role }: { role: string }) {
   const settingsLink = { href: `/d/${rolePath}/settings`, label: "Settings", icon: Settings };
 
   return (
-    <aside className="w-64 flex flex-col border-r bg-background">
+    <aside className="flex flex-col h-full">
       <div className="flex h-16 items-center border-b px-6">
         <Link href="/" className="font-headline text-xl font-bold text-foreground">
           MyBestGuide
         </Link>
       </div>
-      <nav className="flex-1 space-y-1 p-4">
+      <nav className="flex-1 space-y-1 p-4 overflow-y-auto">
         <SidebarMenu>
             {links.map((link) => {
-            const isActive = pathname.startsWith(link.href) && (link.href !== '/d/marketer' || pathname === '/d/marketer');
+            const isRootDashboardLink = rootDashboardLinks.includes(link.href);
+            const isActive = isRootDashboardLink ? pathname === link.href : pathname.startsWith(link.href);
             return (
                 <SidebarMenuItem key={link.href}>
                     <SidebarMenuButton asChild isActive={isActive} tooltip={link.label}>
@@ -102,7 +105,7 @@ export default function DashboardSidebar({ role }: { role: string }) {
       <div className="mt-auto p-4 border-t">
         <SidebarMenu>
             <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === settingsLink.href} tooltip={settingsLink.label}>
+                <SidebarMenuButton asChild isActive={pathname.startsWith(settingsLink.href)} tooltip={settingsLink.label}>
                     <Link href={settingsLink.href}>
                         <settingsLink.icon />
                         <span>{settingsLink.label}</span>
