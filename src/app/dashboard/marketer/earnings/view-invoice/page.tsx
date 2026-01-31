@@ -7,12 +7,14 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Separator } from '@/components/ui/separator';
 import { ArrowLeft, Download, Printer } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 const invoiceData = {
   invoiceNumber: 'INV-2024-0012',
-  invoiceDate: new Date(),
-  dueDate: new Date(new Date().setDate(new Date().getDate() + 30)),
+  invoiceDate: new Date('2024-07-28'),
+  dueDate: new Date('2024-08-27'),
+  status: 'Paid',
   marketer: {
     name: 'Alex Ray',
     company: 'MyBestGuide',
@@ -31,21 +33,12 @@ const invoiceData = {
   taxRate: 0.18, // 18%
 };
 
-export default function GenerateInvoicePage() {
+export default function ViewInvoicePage() {
   const router = useRouter();
-  const { toast } = useToast();
 
   const subtotal = invoiceData.items.reduce((acc, item) => acc + item.amount, 0);
   const taxAmount = subtotal * invoiceData.taxRate;
   const total = subtotal + taxAmount;
-
-  const handleSaveInvoice = () => {
-    toast({
-      title: "Invoice Saved!",
-      description: `Invoice ${invoiceData.invoiceNumber} has been saved successfully.`,
-    });
-    router.push('/d/marketer/earnings');
-  };
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6">
@@ -68,7 +61,14 @@ export default function GenerateInvoicePage() {
           </div>
           <div className="text-right">
             <h2 className="text-3xl font-bold text-primary">INVOICE</h2>
-            <p className="text-muted-foreground"># {invoiceData.invoiceNumber}</p>
+            <div className="flex items-center justify-end gap-2 mt-1">
+              <p className="text-muted-foreground"># {invoiceData.invoiceNumber}</p>
+               <Badge variant={invoiceData.status === 'Paid' ? 'default' : 'destructive'} className={cn(
+                    invoiceData.status === 'Paid' && 'bg-green-500/80 text-white',
+               )}>
+                {invoiceData.status}
+              </Badge>
+            </div>
           </div>
         </CardHeader>
         <Separator className="my-4" />
@@ -144,7 +144,6 @@ export default function GenerateInvoicePage() {
                 <Download className="mr-2 h-4 w-4" />
                 Download PDF
             </Button>
-            <Button onClick={handleSaveInvoice}>Save and Send Invoice</Button>
         </CardFooter>
       </Card>
     </div>

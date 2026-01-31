@@ -47,8 +47,8 @@ export default function EarningsPage() {
             <Card>
                 <CardHeader className="flex-row items-center justify-between">
                     <div>
-                        <CardTitle>Earnings History</CardTitle>
-                        <CardDescription>A detailed log of all payments and their statuses.</CardDescription>
+                        <CardTitle>Invoice & Earnings History</CardTitle>
+                        <CardDescription>A detailed log of all payments, invoices, and their statuses.</CardDescription>
                     </div>
                     <Link href="/d/marketer/earnings/generate-invoice">
                         <Button>
@@ -62,38 +62,44 @@ export default function EarningsPage() {
                         <Table>
                             <TableHeader>
                                 <TableRow>
-                                    <TableHead>Project</TableHead>
+                                    <TableHead>Invoice ID</TableHead>
+                                    <TableHead>Client</TableHead>
                                     <TableHead>Amount</TableHead>
-                                    <TableHead>Status</TableHead>
                                     <TableHead>Date</TableHead>
-                                    <TableHead className="text-right">Invoice</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead className="text-right">Actions</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                {earningsData.tableData.map(earning => (
-                                    <TableRow key={earning.id}>
+                                {earningsData.tableData.map(invoice => (
+                                    <TableRow key={invoice.id}>
+                                        <TableCell className="font-medium">{invoice.invoiceId}</TableCell>
                                         <TableCell>
-                                            <div className="font-medium">{earning.project}</div>
-                                            <div className="text-sm text-muted-foreground">{earning.client}</div>
+                                            <div className="font-medium">{invoice.client}</div>
+                                            <div className="text-sm text-muted-foreground">{invoice.project}</div>
                                         </TableCell>
-                                        <TableCell>${earning.amount.toLocaleString()}</TableCell>
+                                        <TableCell>${invoice.amount.toLocaleString()}</TableCell>
+                                        <TableCell>{format(parseISO(invoice.date), 'MMM d, yyyy')}</TableCell>
                                         <TableCell>
                                             <Badge variant={
-                                                earning.status === 'Paid' ? 'default' :
-                                                earning.status === 'Approved' ? 'secondary' :
+                                                invoice.status === 'Paid' ? 'default' :
+                                                invoice.status === 'Approved' ? 'secondary' :
                                                 'destructive'
                                             } className={cn(
                                                 'w-24 justify-center',
-                                                earning.status === 'Paid' && 'bg-green-500/80 text-white',
-                                                earning.status === 'Approved' && 'bg-blue-500/80 text-white',
-                                                earning.status === 'Pending' && 'bg-yellow-500/80 text-white'
+                                                invoice.status === 'Paid' && 'bg-green-500/80 text-white',
+                                                invoice.status === 'Approved' && 'bg-blue-500/80 text-white',
+                                                invoice.status === 'Pending' && 'bg-yellow-500/80 text-white'
                                             )}>
-                                                {earning.status}
+                                                {invoice.status}
                                             </Badge>
                                         </TableCell>
-                                        <TableCell>{format(parseISO(earning.date), 'MMM d, yyyy')}</TableCell>
                                         <TableCell className="text-right">
-                                            <Button variant="link" size="sm">{earning.invoiceId}</Button>
+                                            <Link href="/d/marketer/earnings/view-invoice" passHref>
+                                                <Button variant="outline" size="sm">
+                                                    View Invoice
+                                                </Button>
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                 ))}

@@ -32,7 +32,6 @@ const navLinks = {
     { href: "/d/marketer/tasks", label: "Tasks", icon: CheckSquare },
     { href: "/d/marketer/team", label: "Team / Developers", icon: UsersRound },
     { href: "/d/marketer/earnings", label: "Earnings", icon: DollarSign },
-    { href: "/d/marketer/invoices", label: "Invoices", icon: FileText },
     { href: "/d/marketer/analytics", label: "Analytics", icon: BarChartBig },
   ],
   Developer: [
@@ -86,7 +85,7 @@ export default function DashboardSidebar({ role }: { role: string }) {
       <nav className="flex-1 space-y-1 p-4">
         <SidebarMenu>
             {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname.startsWith(link.href) && (link.href !== '/d/marketer' || pathname === '/d/marketer');
             return (
                 <SidebarMenuItem key={link.href}>
                     <SidebarMenuButton asChild isActive={isActive} tooltip={link.label}>
