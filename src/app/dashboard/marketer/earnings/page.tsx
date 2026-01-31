@@ -24,6 +24,8 @@ import {
 } from '@/lib/dashboard-data';
 import { format, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { PlusCircle } from 'lucide-react';
 
 export default function EarningsPage() {
     return (
@@ -48,7 +50,12 @@ export default function EarningsPage() {
                         <CardTitle>Earnings History</CardTitle>
                         <CardDescription>A detailed log of all payments and their statuses.</CardDescription>
                     </div>
-                    <Button>Generate Invoice</Button>
+                    <Link href="/d/marketer/earnings/generate-invoice">
+                        <Button>
+                          <PlusCircle className="mr-2 h-4 w-4" />
+                          Generate Invoice
+                        </Button>
+                    </Link>
                 </CardHeader>
                 <CardContent>
                     <div className="overflow-x-auto">
