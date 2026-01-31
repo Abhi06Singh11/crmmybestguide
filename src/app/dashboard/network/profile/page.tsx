@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -7,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
+  CardFooter,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -43,7 +43,7 @@ export default function NetworkProfilePage() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-1 space-y-6">
-        <Card>
+        <Card className="flex flex-col">
           <CardHeader className="items-center text-center">
             <Avatar className="h-24 w-24 mb-4">
               <AvatarFallback className="text-3xl">{initials}</AvatarFallback>
@@ -60,7 +60,7 @@ export default function NetworkProfilePage() {
                 </Badge>
             </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex-grow">
              <div className="text-sm text-muted-foreground text-center mb-6">{bio}</div>
             <div className="mb-4">
               <h4 className="font-semibold mb-2">Skills & Expertise</h4>
@@ -74,21 +74,21 @@ export default function NetworkProfilePage() {
                 {tools.map(tool => <Badge key={tool} variant="outline">{tool}</Badge>)}
               </div>
             </div>
-             <div className="mb-6">
+             <div>
               <h4 className="font-semibold mb-2">Certifications</h4>
               <div className="flex flex-wrap gap-2">
                 {certifications.map(cert => <Badge key={cert} variant="outline" className='border-green-500/50'>{cert}</Badge>)}
               </div>
             </div>
-            <div className="flex gap-2">
-                <Link href="/d/network/profile/view" passHref className="w-full">
-                  <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Profile</Button>
-                </Link>
-                <Link href="/d/network/profile/edit" passHref className="w-full">
-                  <Button variant="outline" className="w-full"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
-                </Link>
-            </div>
           </CardContent>
+          <CardFooter className="pt-6 gap-2 flex-col sm:flex-row">
+            <Link href="/d/network/profile/view" passHref className="w-full">
+              <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Profile</Button>
+            </Link>
+            <Link href="/d/network/profile/edit" passHref className="w-full">
+              <Button variant="outline" className="w-full"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
+            </Link>
+          </CardFooter>
         </Card>
       </div>
       <div className="lg:col-span-2">
