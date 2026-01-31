@@ -22,6 +22,7 @@ import { Download } from 'lucide-react';
 import { earningsData } from '@/lib/dashboard-data';
 import { format, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export default function InvoicesPage() {
     return (
@@ -74,9 +75,11 @@ export default function InvoicesPage() {
                                         </Badge>
                                     </TableCell>
                                     <TableCell className="text-right">
-                                        <Button variant="outline" size="sm">
-                                            View Invoice
-                                        </Button>
+                                        <Link href="/d/marketer/invoices/view" passHref>
+                                            <Button variant="outline" size="sm">
+                                                View Invoice
+                                            </Button>
+                                        </Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
