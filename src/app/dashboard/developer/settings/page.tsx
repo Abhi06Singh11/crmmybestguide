@@ -10,7 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Tabs,
@@ -18,50 +17,17 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { Textarea } from "@/components/ui/textarea"
 import { Switch } from "@/components/ui/switch"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 
 export default function DeveloperSettingsPage() {
   return (
-    <Tabs defaultValue="profile" className="w-full">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="profile">Profile & Skills</TabsTrigger>
+    <Tabs defaultValue="availability" className="w-full">
+      <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="availability">Availability</TabsTrigger>
         <TabsTrigger value="notifications">Notifications</TabsTrigger>
       </TabsList>
-      <TabsContent value="profile">
-        <Card>
-          <CardHeader>
-            <CardTitle>Profile & Skills</CardTitle>
-            <CardDescription>
-              Manage your public profile information and technical skills.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
-              <Input id="name" defaultValue="Bob Williams" />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="role">Role / Title</Label>
-              <Input id="role" defaultValue="Senior Backend Developer" />
-            </div>
-             <div className="space-y-2">
-              <Label htmlFor="bio">Short Bio</Label>
-              <Textarea id="bio" defaultValue="Senior backend developer with 7 years of experience in building scalable and reliable systems. Proficient in Node.js, Python, and cloud-native architectures." />
-            </div>
-             <div className="space-y-2">
-              <Label htmlFor="skills">Skills (comma-separated)</Label>
-              <Input id="skills" defaultValue="Node.js, Python, Databases, AWS, Docker, Kubernetes" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save Profile</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
       <TabsContent value="availability">
         <Card>
           <CardHeader>

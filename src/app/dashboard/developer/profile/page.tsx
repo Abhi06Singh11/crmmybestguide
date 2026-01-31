@@ -15,10 +15,12 @@ import {
   Eye,
   Star,
   CheckCircle,
-  Briefcase
+  Briefcase,
+  Edit
 } from 'lucide-react';
 import { developerProfileData } from '@/lib/developer-dashboard-data';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function DeveloperProfilePage() {
   const { 
@@ -69,8 +71,12 @@ export default function DeveloperProfilePage() {
               </div>
             </div>
             <div className="flex gap-2">
-                <Button className="w-full"><Eye className="mr-2 h-4 w-4" />Preview</Button>
-                <Button variant="outline" className="w-full">Edit Profile</Button>
+                <Link href="/d/developer/profile/preview" passHref className="w-full">
+                  <Button className="w-full"><Eye className="mr-2 h-4 w-4" />Preview</Button>
+                </Link>
+                <Link href="/d/developer/profile/edit" passHref className="w-full">
+                  <Button variant="outline" className="w-full"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
+                </Link>
             </div>
           </CardContent>
         </Card>
