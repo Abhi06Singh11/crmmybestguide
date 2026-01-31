@@ -19,9 +19,11 @@ import {
   Cpu,
   ShieldCheck,
   Zap,
+  Edit,
 } from 'lucide-react';
 import { networkProfileData } from '@/lib/network-dashboard-data';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function NetworkProfilePage() {
   const { 
@@ -79,7 +81,12 @@ export default function NetworkProfilePage() {
               </div>
             </div>
             <div className="flex gap-2">
-                <Button variant="outline" className="w-full">Edit Profile</Button>
+                <Link href="/d/network/profile/view" passHref className="w-full">
+                  <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Profile</Button>
+                </Link>
+                <Link href="/d/network/profile/edit" passHref className="w-full">
+                  <Button variant="outline" className="w-full"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
+                </Link>
             </div>
           </CardContent>
         </Card>

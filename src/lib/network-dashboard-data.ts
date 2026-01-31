@@ -1,4 +1,5 @@
 
+
 import {
     AlertCircle, ShieldCheck, Clock, CheckCircle2, FileClock, DollarSign, Banknote, Calendar, Star, Briefcase
 } from 'lucide-react';
@@ -25,6 +26,7 @@ export const networkProfileData = {
   name: 'Casey Becker',
   initials: 'CB',
   role: 'Network Engineer',
+  email: 'casey.becker@example.com',
   status: 'Approved',
   availability: 'Available',
   bio: 'Dedicated Network Engineer with 5 years of experience in troubleshooting, maintenance, and incident resolution for web applications. Certified in AWS and ITIL.',
