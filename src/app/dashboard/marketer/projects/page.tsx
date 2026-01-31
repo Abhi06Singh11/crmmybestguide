@@ -34,6 +34,7 @@ import {
 import { marketerProjectsData } from '@/lib/dashboard-data';
 import { format, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const ProjectsTable = () => (
     <div className="overflow-x-auto">
@@ -83,9 +84,15 @@ const ProjectsTable = () => (
                         <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        <DropdownMenuItem>View Project</DropdownMenuItem>
-                        <DropdownMenuItem>Edit</DropdownMenuItem>
-                        <DropdownMenuItem>Assign Team</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href="/d/marketer/projects/view">View Project</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href="/d/marketer/projects/edit">Edit Project</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                             <Link href="/d/marketer/projects/assign">Assign Team</Link>
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                     </DropdownMenu>
                 </TableCell>
