@@ -7,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
+  CardFooter,
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
@@ -14,11 +15,13 @@ import { Button } from '@/components/ui/button';
 import {
   Star,
   CheckCircle,
-  ArrowLeft
+  ArrowLeft,
+  Briefcase
 } from 'lucide-react';
 import { developerProfileData } from '@/lib/developer-dashboard-data';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function ViewDeveloperProfilePage() {
     const router = useRouter();
@@ -48,7 +51,7 @@ export default function ViewDeveloperProfilePage() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-1 space-y-6">
-                    <Card>
+                    <Card className="flex flex-col h-full">
                     <CardHeader className="items-center text-center">
                         <Avatar className="h-24 w-24 mb-4">
                         <AvatarFallback className="text-3xl">{initials}</AvatarFallback>
@@ -65,21 +68,29 @@ export default function ViewDeveloperProfilePage() {
                             </Badge>
                         </div>
                     </CardHeader>
-                    <CardContent>
+                    <CardContent className="flex-grow">
                         <div className="text-sm text-muted-foreground text-center mb-6">{bio}</div>
                         <div className="mb-4">
-                        <h4 className="font-semibold mb-2">Skills & Tech Stack</h4>
+                        <h4 className="font-semibold mb-2">Skills & Expertise</h4>
                         <div className="flex flex-wrap gap-2">
                             {skills.map(skill => <Badge key={skill} variant="secondary">{skill}</Badge>)}
                         </div>
                         </div>
                         <div className="mb-6">
-                        <h4 className="font-semibold mb-2">Tools & Frameworks</h4>
+                        <h4 className="font-semibold mb-2">Tools & Platforms</h4>
                         <div className="flex flex-wrap gap-2">
                             {tools.map(tool => <Badge key={tool} variant="outline">{tool}</Badge>)}
                         </div>
                         </div>
                     </CardContent>
+                    <CardFooter>
+                        <Link href="/d/marketer/team/assign" passHref className="w-full">
+                            <Button className="w-full">
+                                <Briefcase className="mr-2 h-4 w-4" />
+                                Assign Project
+                            </Button>
+                        </Link>
+                    </CardFooter>
                     </Card>
                 </div>
                 <div className="lg:col-span-2">
