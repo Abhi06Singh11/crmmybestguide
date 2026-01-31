@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -87,18 +88,29 @@ export default function DashboardSidebar({ role }: { role: string }) {
       <nav className="flex-1 space-y-1 p-4 overflow-y-auto">
         <SidebarMenu>
             {links.map((link) => {
-            const isRootDashboardLink = rootDashboardLinks.includes(link.href);
-            const isActive = isRootDashboardLink ? pathname === link.href : pathname.startsWith(link.href);
-            return (
-                <SidebarMenuItem key={link.href}>
-                    <SidebarMenuButton asChild isActive={isActive} tooltip={link.label}>
-                        <Link href={link.href}>
-                            <link.icon />
-                            <span>{link.label}</span>
-                        </Link>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
-            );
+              const otherLinks = links.filter(l => l.href !== link.href);
+              const isRootDashboardLink = rootDashboardLinks.includes(link.href);
+
+              let isActive = false;
+              if (isRootDashboardLink) {
+                  // A root dashboard link is active if it's an exact match, OR if the path is a sub-path
+                  // that doesn't belong to another main sidebar link. This handles tabbed dashboards.
+                  const onNonDashboardSubroute = pathname.startsWith(link.href) && !otherLinks.some(other => pathname.startsWith(other.href));
+                  isActive = pathname === link.href || onNonDashboardSubroute;
+              } else {
+                  isActive = pathname.startsWith(link.href);
+              }
+              
+              return (
+                  <SidebarMenuItem key={link.href}>
+                      <SidebarMenuButton asChild isActive={isActive} tooltip={link.label}>
+                          <Link href={link.href}>
+                              <link.icon />
+                              <span>{link.label}</span>
+                          </Link>
+                      </SidebarMenuButton>
+                  </SidebarMenuItem>
+              );
             })}
         </SidebarMenu>
       </nav>
