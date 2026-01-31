@@ -22,8 +22,8 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container py-12">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4">
-          <div className="col-span-2 space-y-4 md:col-span-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
+          <div className="space-y-4 sm:col-span-2 md:col-span-1">
             <h3 className="font-headline text-xl font-bold text-white">MyBestGuide</h3>
             <p className="text-sm text-gray-400">
               MyBestGuide is a leading web and app development company in India, delivering custom software solutions, responsive websites, and mobile apps to drive business growth.
@@ -60,7 +60,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-span-2 md:col-span-1">
+          <div className="sm:col-span-2 md:col-span-1">
             <h4 className="font-headline font-semibold text-white">Follow Us</h4>
             <div className="mt-4 flex space-x-4">
               {socialLinks.map((social) => (

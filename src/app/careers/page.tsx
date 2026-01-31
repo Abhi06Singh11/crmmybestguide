@@ -102,7 +102,7 @@ export default function CareersPage() {
       {/* Why Join MyBestGuide? Section */}
       <section className="py-20 md:py-28 bg-gray-900">
         <div className="container px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyJoinUs.map((item) => (
               <Card key={item.title} className="bg-gray-800 border-gray-700 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:shadow-blue-500/10">
                 <CardContent className="p-8">
@@ -126,7 +126,7 @@ export default function CareersPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
             Current Opportunities
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {opportunities.map((opportunity) => (
               <Card key={opportunity.title} className="bg-gray-800 border-gray-700 flex flex-col">
                 <CardHeader>

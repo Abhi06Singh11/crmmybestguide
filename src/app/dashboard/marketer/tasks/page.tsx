@@ -77,10 +77,10 @@ export default function TasksPage() {
           <TableHeader>
             <TableRow>
               <TableHead>Task</TableHead>
-              <TableHead>Assigned To</TableHead>
+              <TableHead className="hidden md:table-cell">Assigned To</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Priority</TableHead>
-              <TableHead>Due Date</TableHead>
+              <TableHead className="hidden md:table-cell">Due Date</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -93,7 +93,7 @@ export default function TasksPage() {
                     {task.description}
                   </div>
                 </TableCell>
-                <TableCell>{task.assigned_to}</TableCell>
+                <TableCell className="hidden md:table-cell">{task.assigned_to}</TableCell>
                 <TableCell>
                   <Badge variant="secondary" className={cn(getStatusBadgeClass(task.status))}>
                     {task.status}
@@ -104,7 +104,7 @@ export default function TasksPage() {
                     {task.priority}
                   </Badge>
                 </TableCell>
-                <TableCell>{format(parseISO(task.due_date), 'MMM d, yyyy')}</TableCell>
+                <TableCell className="hidden md:table-cell">{format(parseISO(task.due_date), 'MMM d, yyyy')}</TableCell>
                 <TableCell className="text-right">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>

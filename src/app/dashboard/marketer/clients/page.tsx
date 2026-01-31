@@ -35,9 +35,9 @@ export default function ClientsPage() {
             <TableHeader>
                 <TableRow>
                 <TableHead>Client Name</TableHead>
-                <TableHead>Active Projects</TableHead>
+                <TableHead className="hidden sm:table-cell">Active Projects</TableHead>
                 <TableHead>Payment Status</TableHead>
-                <TableHead>Priority</TableHead>
+                <TableHead className="hidden md:table-cell">Priority</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
@@ -52,20 +52,21 @@ export default function ClientsPage() {
                         <span className="font-medium">{client.name}</span>
                     </div>
                     </TableCell>
-                    <TableCell className="text-center">{client.activeProjects}</TableCell>
+                    <TableCell className="text-center hidden sm:table-cell">{client.activeProjects}</TableCell>
                     <TableCell>
                     <Badge variant={
                         client.paymentStatus === 'On Time' ? 'secondary' :
                         client.paymentStatus === 'Paid' ? 'default' :
                         'destructive'
                     } className={cn(
+                        'w-20 justify-center',
                         client.paymentStatus === 'Paid' && 'bg-green-500/80 text-white',
                         client.paymentStatus === 'Overdue' && 'bg-yellow-500/80 text-white'
                     )}>
                         {client.paymentStatus}
                     </Badge>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="hidden md:table-cell">
                     <Badge variant={
                         client.priority === 'High' ? 'destructive' :
                         client.priority === 'Medium' ? 'secondary' :

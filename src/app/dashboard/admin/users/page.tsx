@@ -48,9 +48,9 @@ export default function AdminUsersPage() {
           <TableHeader>
             <TableRow>
               <TableHead>User</TableHead>
-              <TableHead>Role</TableHead>
+              <TableHead className="hidden sm:table-cell">Role</TableHead>
               <TableHead>Status</TableHead>
-              <TableHead>Join Date</TableHead>
+              <TableHead className="hidden md:table-cell">Join Date</TableHead>
               <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
@@ -63,7 +63,7 @@ export default function AdminUsersPage() {
                     {user.email}
                   </div>
                 </TableCell>
-                <TableCell>
+                <TableCell className="hidden sm:table-cell">
                   <Badge variant="outline">{user.role}</Badge>
                 </TableCell>
                 <TableCell>
@@ -76,6 +76,7 @@ export default function AdminUsersPage() {
                         : 'default'
                     }
                     className={cn(
+                      'w-24 justify-center',
                       user.status === 'Approved' &&
                         'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
                       user.status === 'Pending' &&
@@ -85,7 +86,7 @@ export default function AdminUsersPage() {
                     {user.status}
                   </Badge>
                 </TableCell>
-                <TableCell>
+                <TableCell className="hidden md:table-cell">
                   {format(parseISO(user.joinDate), 'MMM d, yyyy')}
                 </TableCell>
                 <TableCell className="text-right">

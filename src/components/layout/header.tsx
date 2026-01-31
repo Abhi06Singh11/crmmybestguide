@@ -1,8 +1,9 @@
+
 'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from '@/components/ui/sheet';
 import {
   Menu,
   Briefcase,
@@ -16,6 +17,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { Separator } from '../ui/separator';
 
 export default function Header() {
   const pathname = usePathname();
@@ -63,7 +65,7 @@ export default function Header() {
         </div>
         <div className="flex items-center gap-2">
           <ThemeToggle />
-           <Link href="/login">
+           <Link href="/login" className="hidden sm:inline-flex">
             <Button variant="outline" size="sm">
               <LogIn className="mr-2 h-4 w-4" />
               Login
@@ -76,17 +78,18 @@ export default function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right">
+            <SheetContent side="right" className="flex flex-col">
               <SheetHeader>
-                <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                <SheetTitle>
+                  <Link href="/" className="mb-4" onClick={() => setIsMobileMenuOpen(false)}>
+                    <span className="font-headline text-xl font-bold text-foreground">
+                      MyBestGuide
+                    </span>
+                  </Link>
+                </SheetTitle>
               </SheetHeader>
-              <div className="flex flex-col gap-4 p-4">
-                <Link href="/" className="mb-4" onClick={() => setIsMobileMenuOpen(false)}>
-                  <span className="font-headline text-xl font-bold text-foreground">
-                    MyBestGuide
-                  </span>
-                </Link>
-                <nav className="flex flex-col items-start gap-4">
+              <div className="flex-1">
+                <nav className="flex flex-col items-start gap-4 pt-4">
                   {navLinks.map((link) => (
                      <Link
                       key={link.href}
@@ -102,15 +105,18 @@ export default function Header() {
                     </Link>
                   ))}
                 </nav>
-                 <div className="mt-4 border-t pt-4">
-                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>
+              </div>
+              <SheetFooter>
+                <div className="w-full">
+                  <Separator className="my-4" />
+                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="w-full">
                      <Button variant="outline" className="w-full">
                        <LogIn className="mr-2 h-4 w-4" />
                         Login
                       </Button>
                   </Link>
                 </div>
-              </div>
+              </SheetFooter>
             </SheetContent>
           </Sheet>
         </div>

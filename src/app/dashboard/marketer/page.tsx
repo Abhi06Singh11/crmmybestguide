@@ -52,10 +52,10 @@ const ProjectsTable = () => (
     <TableHeader>
       <TableRow>
         <TableHead>Project</TableHead>
-        <TableHead>Developer</TableHead>
+        <TableHead className="hidden lg:table-cell">Developer</TableHead>
         <TableHead>Status</TableHead>
-        <TableHead>Progress</TableHead>
-        <TableHead>Deadline</TableHead>
+        <TableHead className="hidden sm:table-cell">Progress</TableHead>
+        <TableHead className="hidden lg:table-cell">Deadline</TableHead>
         <TableHead className="text-right">Actions</TableHead>
       </TableRow>
     </TableHeader>
@@ -66,13 +66,14 @@ const ProjectsTable = () => (
             <div className="font-medium">{project.projectName}</div>
             <div className="text-sm text-muted-foreground">{project.client}</div>
           </TableCell>
-          <TableCell>{project.developer}</TableCell>
+          <TableCell className="hidden lg:table-cell">{project.developer}</TableCell>
           <TableCell>
             <Badge variant={
               project.status === 'Completed' ? 'default' :
               project.status === 'Active' ? 'secondary' :
               'destructive'
             } className={cn(
+              'w-28 justify-center',
               project.status === 'Completed' && 'bg-green-500/80 text-white',
               project.status === 'Pending Approval' && 'bg-blue-500/80 text-white',
               project.status === 'Risk' && 'bg-yellow-500/80 text-white',
@@ -80,13 +81,13 @@ const ProjectsTable = () => (
               {project.status}
             </Badge>
           </TableCell>
-          <TableCell>
+          <TableCell className="hidden sm:table-cell">
             <div className="flex items-center gap-2">
               <Progress value={project.progress} className="h-2 w-24" />
               <span className="text-xs text-muted-foreground">{project.progress}%</span>
             </div>
           </TableCell>
-          <TableCell>{format(parseISO(project.deadline), 'MMM d, yyyy')}</TableCell>
+          <TableCell className="hidden lg:table-cell">{format(parseISO(project.deadline), 'MMM d, yyyy')}</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -182,7 +183,9 @@ export default function MarketerDashboardPage() {
         <CardTitle>Projects Overview</CardTitle>
       </CardHeader>
       <CardContent>
-        <ProjectsTable />
+        <div className="overflow-x-auto">
+          <ProjectsTable />
+        </div>
       </CardContent>
     </Card>
   </div>

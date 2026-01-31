@@ -73,21 +73,21 @@ export default function NetworkTasksPage() {
                      <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Ticket ID</TableHead>
+                                <TableHead className="hidden sm:table-cell">Ticket ID</TableHead>
                                 <TableHead>Subject</TableHead>
-                                <TableHead>Project</TableHead>
+                                <TableHead className="hidden lg:table-cell">Project</TableHead>
                                 <TableHead>Priority</TableHead>
                                 <TableHead>Status</TableHead>
-                                <TableHead>Last Update</TableHead>
+                                <TableHead className="hidden md:table-cell">Last Update</TableHead>
                                 <TableHead className="text-right">Actions</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
                         {tasks.map((task) => (
                             <TableRow key={task.id}>
-                                <TableCell className="font-mono text-xs">{task.id}</TableCell>
+                                <TableCell className="font-mono text-xs hidden sm:table-cell">{task.id}</TableCell>
                                 <TableCell className="font-medium">{task.title}</TableCell>
-                                <TableCell className="text-muted-foreground">{task.project}</TableCell>
+                                <TableCell className="text-muted-foreground hidden lg:table-cell">{task.project}</TableCell>
                                 <TableCell>
                                     <Badge variant={
                                         task.priority === 'Critical' ? 'destructive' :
@@ -95,6 +95,7 @@ export default function NetworkTasksPage() {
                                         task.priority === 'Medium' ? 'secondary' :
                                         'outline'
                                     } className={cn(
+                                        'w-20 justify-center',
                                         task.priority === 'High' && 'bg-orange-500 text-white'
                                     )}>
                                     {task.priority}
@@ -106,13 +107,14 @@ export default function NetworkTasksPage() {
                                         task.status === 'In Progress' ? 'secondary' :
                                         'outline'
                                     } className={cn(
+                                        'w-24 justify-center',
                                         task.status === 'Resolved' && 'bg-green-500/80 text-white',
                                         task.status === 'In Progress' && 'bg-blue-500/80 text-white',
                                     )}>
                                     {task.status}
                                     </Badge>
                                 </TableCell>
-                                <TableCell>{task.updated}</TableCell>
+                                <TableCell className="hidden md:table-cell">{task.updated}</TableCell>
                                 <TableCell className="text-right">
                                     <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
