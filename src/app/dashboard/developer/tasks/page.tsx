@@ -12,9 +12,12 @@ import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Textarea } from '@/components/ui/textarea';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Task {
   id: number;
+  group: string;
   description: string;
   notes?: string;
   completed: boolean;
@@ -24,19 +27,24 @@ interface Task {
 export default function DeveloperTasksPage() {
   const [tasks, setTasks] = useState<Task[]>(initialTasks.map((t, i) => ({...t, id: i+1})));
   const [newTaskDescription, setNewTaskDescription] = useState('');
+  const [newTaskGroup, setNewTaskGroup] = useState('');
+  const [newTaskPriority, setNewTaskPriority] = useState<'High' | 'Medium' | 'Low'>('Medium');
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
   const handleAddTask = () => {
     if (newTaskDescription.trim()) {
       const newTask: Task = {
         id: tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1,
+        group: newTaskGroup.trim() || 'Uncategorized',
         description: newTaskDescription,
         completed: false,
-        priority: 'Medium',
+        priority: newTaskPriority,
         notes: '',
       };
       setTasks([...tasks, newTask]);
       setNewTaskDescription('');
+      setNewTaskGroup('');
+      setNewTaskPriority('Medium');
     }
   };
 
@@ -85,101 +93,164 @@ export default function DeveloperTasksPage() {
     }
   };
 
+  const groupedTasks = tasks.reduce((acc, task) => {
+    const groupName = task.group || 'Uncategorized';
+    if (!acc[groupName]) {
+        acc[groupName] = [];
+    }
+    acc[groupName].push(task);
+    return acc;
+  }, {} as Record<string, Task[]>);
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>My Personal Tasks</CardTitle>
-        <CardDescription>A simple to-do list to manage your personal tasks and notes.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex gap-2 mb-6">
-          <Input
-            value={newTaskDescription}
-            onChange={(e) => setNewTaskDescription(e.target.value)}
-            placeholder="Add a new task..."
-            onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}
-          />
-          <Button onClick={handleAddTask}><Plus className="mr-2 h-4 w-4" /> Add Task</Button>
-        </div>
-
-        <div className="space-y-4">
-          {tasks.map(task => (
-            <div key={task.id} className="p-4 border rounded-lg flex flex-col gap-4 bg-muted/50">
-              {editingTask?.id === task.id ? (
-                // Editing view
-                <div className="space-y-4">
-                  <Input 
-                    value={editingTask.description} 
-                    onChange={(e) => handleUpdateEditingTask('description', e.target.value)}
-                    className="text-base font-medium"
-                  />
-                  <Textarea 
-                    value={editingTask.notes || ''}
-                    onChange={(e) => handleUpdateEditingTask('notes', e.target.value)}
-                    placeholder="Add notes..."
-                    rows={3}
-                  />
-                  <div className="flex justify-between items-center">
-                    <div className="flex gap-2">
-                       <Button size="sm" onClick={handleSaveEditing}><Save className="mr-2 h-4 w-4" /> Save</Button>
-                       <Button size="sm" variant="ghost" onClick={handleCancelEditing}><X className="mr-2 h-4 w-4" /> Cancel</Button>
-                    </div>
-                  </div>
+    <div className="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>My Personal Tasks</CardTitle>
+          <CardDescription>A simple to-do list to manage your personal tasks and notes.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 p-4 border rounded-lg">
+            <Input
+              value={newTaskDescription}
+              onChange={(e) => setNewTaskDescription(e.target.value)}
+              placeholder="Add a new task..."
+              className="md:col-span-2"
+            />
+            <Input
+              value={newTaskGroup}
+              onChange={(e) => setNewTaskGroup(e.target.value)}
+              placeholder="Group name (e.g., Project X)"
+            />
+             <div className="flex gap-2">
+                <Select value={newTaskPriority} onValueChange={(value) => setNewTaskPriority(value as any)}>
+                    <SelectTrigger>
+                        <SelectValue placeholder="Priority" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectItem value="High">High</SelectItem>
+                        <SelectItem value="Medium">Medium</SelectItem>
+                        <SelectItem value="Low">Low</SelectItem>
+                    </SelectContent>
+                </Select>
+                <Button onClick={handleAddTask}><Plus className="h-4 w-4" /></Button>
+             </div>
+          </div>
+          
+           <Accordion type="multiple" defaultValue={Object.keys(groupedTasks)} className="w-full space-y-4">
+                {Object.entries(groupedTasks).map(([groupName, groupTasks]) => (
+                    <Card key={groupName}>
+                        <AccordionItem value={groupName} className="border-b-0">
+                            <AccordionTrigger className="p-4 hover:no-underline">
+                                <h3 className="text-lg font-semibold">{groupName} <Badge variant="secondary" className="ml-2">{groupTasks.length}</Badge></h3>
+                            </AccordionTrigger>
+                            <AccordionContent className="p-4 pt-0">
+                                <div className="space-y-4">
+                                {groupTasks.map(task => (
+                                    <div key={task.id} className="p-4 border rounded-lg flex flex-col gap-4 bg-muted/50">
+                                    {editingTask?.id === task.id ? (
+                                        // Editing view
+                                        <div className="space-y-4">
+                                            <div className="grid md:grid-cols-2 gap-4">
+                                                <Input 
+                                                    value={editingTask.description} 
+                                                    onChange={(e) => handleUpdateEditingTask('description', e.target.value)}
+                                                    className="text-base font-medium"
+                                                />
+                                                <Input 
+                                                    value={editingTask.group} 
+                                                    onChange={(e) => handleUpdateEditingTask('group', e.target.value)}
+                                                    placeholder="Group name"
+                                                />
+                                            </div>
+                                            <Textarea 
+                                                value={editingTask.notes || ''}
+                                                onChange={(e) => handleUpdateEditingTask('notes', e.target.value)}
+                                                placeholder="Add notes..."
+                                                rows={3}
+                                            />
+                                            <div className="flex justify-between items-center">
+                                                <div className="w-48">
+                                                    <Select
+                                                        value={editingTask.priority}
+                                                        onValueChange={(value) => handleUpdateEditingTask('priority', value)}
+                                                    >
+                                                        <SelectTrigger>
+                                                            <SelectValue placeholder="Set priority" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            <SelectItem value="High">High</SelectItem>
+                                                            <SelectItem value="Medium">Medium</SelectItem>
+                                                            <SelectItem value="Low">Low</SelectItem>
+                                                        </SelectContent>
+                                                    </Select>
+                                                </div>
+                                                <div className="flex gap-2">
+                                                <Button size="sm" onClick={handleSaveEditing}><Save className="mr-2 h-4 w-4" /> Save</Button>
+                                                <Button size="sm" variant="ghost" onClick={handleCancelEditing}><X className="mr-2 h-4 w-4" /> Cancel</Button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        // Default view
+                                        <div>
+                                            <div className="flex items-start gap-4">
+                                                <Checkbox
+                                                    id={`task-${task.id}`}
+                                                    checked={task.completed}
+                                                    onCheckedChange={() => handleToggleComplete(task.id)}
+                                                    className="mt-1"
+                                                />
+                                                <div className="flex-1">
+                                                    <label
+                                                        htmlFor={`task-${task.id}`}
+                                                        className={cn("font-medium cursor-pointer", task.completed && "line-through text-muted-foreground")}
+                                                    >
+                                                        {task.description}
+                                                    </label>
+                                                    {task.notes && (
+                                                        <p className={cn("text-sm text-muted-foreground mt-1 whitespace-pre-wrap", task.completed && "line-through")}>
+                                                        {task.notes}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <Badge variant="secondary" className={cn(getPriorityBadgeClass(task.priority))}>
+                                                        {task.priority}
+                                                    </Badge>
+                                                    <DropdownMenu>
+                                                        <DropdownMenuTrigger asChild>
+                                                            <Button variant="ghost" size="icon"><MoreVertical className="h-4 w-4" /></Button>
+                                                        </DropdownMenuTrigger>
+                                                        <DropdownMenuContent align="end">
+                                                            <DropdownMenuItem onClick={() => handleStartEditing(task)}>
+                                                                <Edit className="mr-2 h-4 w-4" /> Edit
+                                                            </DropdownMenuItem>
+                                                            <DropdownMenuItem onClick={() => handleDeleteTask(task.id)} className="text-red-500">
+                                                                <Trash2 className="mr-2 h-4 w-4" /> Delete
+                                                            </DropdownMenuItem>
+                                                        </DropdownMenuContent>
+                                                    </DropdownMenu>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                    </div>
+                                ))}
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Card>
+                ))}
+            </Accordion>
+          
+            {tasks.length === 0 && (
+                <div className="text-center text-muted-foreground py-8">
+                <p>No tasks yet. Add one above to get started!</p>
                 </div>
-              ) : (
-                // Default view
-                <div>
-                    <div className="flex items-start gap-4">
-                        <Checkbox
-                            id={`task-${task.id}`}
-                            checked={task.completed}
-                            onCheckedChange={() => handleToggleComplete(task.id)}
-                            className="mt-1"
-                        />
-                        <div className="flex-1">
-                            <label
-                                htmlFor={`task-${task.id}`}
-                                className={cn("font-medium cursor-pointer", task.completed && "line-through text-muted-foreground")}
-                            >
-                                {task.description}
-                            </label>
-                            {task.notes && (
-                                <p className={cn("text-sm text-muted-foreground mt-1 whitespace-pre-wrap", task.completed && "line-through")}>
-                                {task.notes}
-                                </p>
-                            )}
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <Badge variant="secondary" className={cn(getPriorityBadgeClass(task.priority))}>
-                                {task.priority} Priority
-                            </Badge>
-                             <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="icon"><MoreVertical className="h-4 w-4" /></Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end">
-                                    <DropdownMenuItem onClick={() => handleStartEditing(task)}>
-                                        <Edit className="mr-2 h-4 w-4" /> Edit
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => handleDeleteTask(task.id)} className="text-red-500">
-                                        <Trash2 className="mr-2 h-4 w-4" /> Delete
-                                    </DropdownMenuItem>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </div>
-                    </div>
-                </div>
-              )}
-            </div>
-          ))}
-          {tasks.length === 0 && (
-            <div className="text-center text-muted-foreground py-8">
-              <p>No tasks yet. Add one above to get started!</p>
-            </div>
-          )}
-        </div>
-      </CardContent>
-    </Card>
+            )}
+        </CardContent>
+      </Card>
+    </div>
   );
 }
