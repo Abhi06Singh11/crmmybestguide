@@ -37,6 +37,7 @@ const navLinks = {
   Developer: [
     { href: "/d/developer", label: "Dashboard", icon: LayoutGrid },
     { href: "/d/developer/profile", label: "Profile", icon: User },
+    { href: "/d/developer/tasks", label: "My Tasks", icon: CheckSquare },
     { href: "/d/developer/projects", label: "My Projects", icon: Briefcase },
     { href: "/d/developer/available-projects", label: "Active Projects", icon: Globe },
     { href: "/d/developer/earnings", label: "Earnings", icon: DollarSign },
@@ -93,8 +94,6 @@ export default function DashboardSidebar({ role }: { role: string }) {
 
               let isActive = false;
               if (isRootDashboardLink) {
-                  // A root dashboard link is active if it's an exact match, OR if the path is a sub-path
-                  // that doesn't belong to another main sidebar link. This handles tabbed dashboards.
                   const onNonDashboardSubroute = pathname.startsWith(link.href) && !otherLinks.some(other => pathname.startsWith(other.href));
                   isActive = pathname === link.href || onNonDashboardSubroute;
               } else {

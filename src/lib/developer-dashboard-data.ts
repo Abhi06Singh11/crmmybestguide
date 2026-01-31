@@ -22,11 +22,11 @@ export const activeProjectData = {
 };
 
 export const developerTasksData = [
-    { id: 1, description: 'Setup database schema for user profiles', completed: true, priority: 'High' },
-    { id: 2, description: 'Implement JWT authentication endpoint', completed: true, priority: 'High' },
-    { id: 3, description: 'Develop the main dashboard UI components', completed: false, priority: 'Medium' },
-    { id: 4, description: 'Integrate Stripe API for payments', completed: false, priority: 'High' },
-    { id: 5, description: 'Write unit tests for the API services', completed: false, priority: 'Low' },
+    { id: 1, description: 'Setup database schema for user profiles', completed: true, priority: 'High', notes: 'Using PostgreSQL with Prisma ORM.' },
+    { id: 2, description: 'Implement JWT authentication endpoint', completed: true, priority: 'High', notes: 'Includes token refresh logic.' },
+    { id: 3, description: 'Develop the main dashboard UI components', completed: false, priority: 'Medium', notes: 'Based on Figma design file v2.1' },
+    { id: 4, description: 'Integrate Stripe API for payments', completed: false, priority: 'High', notes: 'Need to handle subscription and one-time payments.' },
+    { id: 5, description: 'Write unit tests for the API services', completed: false, priority: 'Low', notes: 'Focus on auth and payment services first.' },
 ];
 
 export const developerProfileData = {
