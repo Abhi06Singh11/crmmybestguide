@@ -51,45 +51,48 @@ export default function EarningsPage() {
                     <Button>Generate Invoice</Button>
                 </CardHeader>
                 <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Project</TableHead>
-                                <TableHead>Amount</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Date</TableHead>
-                                <TableHead className="text-right">Invoice</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {earningsData.tableData.map(earning => (
-                                <TableRow key={earning.id}>
-                                    <TableCell>
-                                        <div className="font-medium">{earning.project}</div>
-                                        <div className="text-sm text-muted-foreground">{earning.client}</div>
-                                    </TableCell>
-                                    <TableCell>${earning.amount.toLocaleString()}</TableCell>
-                                    <TableCell>
-                                        <Badge variant={
-                                            earning.status === 'Paid' ? 'default' :
-                                            earning.status === 'Approved' ? 'secondary' :
-                                            'destructive'
-                                        } className={cn(
-                                            earning.status === 'Paid' && 'bg-green-500/80 text-white',
-                                            earning.status === 'Approved' && 'bg-blue-500/80 text-white',
-                                            earning.status === 'Pending' && 'bg-yellow-500/80 text-white'
-                                        )}>
-                                            {earning.status}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell>{format(parseISO(earning.date), 'MMM d, yyyy')}</TableCell>
-                                    <TableCell className="text-right">
-                                        <Button variant="link" size="sm">{earning.invoiceId}</Button>
-                                    </TableCell>
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Project</TableHead>
+                                    <TableHead>Amount</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead>Date</TableHead>
+                                    <TableHead className="text-right">Invoice</TableHead>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {earningsData.tableData.map(earning => (
+                                    <TableRow key={earning.id}>
+                                        <TableCell>
+                                            <div className="font-medium">{earning.project}</div>
+                                            <div className="text-sm text-muted-foreground">{earning.client}</div>
+                                        </TableCell>
+                                        <TableCell>${earning.amount.toLocaleString()}</TableCell>
+                                        <TableCell>
+                                            <Badge variant={
+                                                earning.status === 'Paid' ? 'default' :
+                                                earning.status === 'Approved' ? 'secondary' :
+                                                'destructive'
+                                            } className={cn(
+                                                'w-24 justify-center',
+                                                earning.status === 'Paid' && 'bg-green-500/80 text-white',
+                                                earning.status === 'Approved' && 'bg-blue-500/80 text-white',
+                                                earning.status === 'Pending' && 'bg-yellow-500/80 text-white'
+                                            )}>
+                                                {earning.status}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell>{format(parseISO(earning.date), 'MMM d, yyyy')}</TableCell>
+                                        <TableCell className="text-right">
+                                            <Button variant="link" size="sm">{earning.invoiceId}</Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
         </div>

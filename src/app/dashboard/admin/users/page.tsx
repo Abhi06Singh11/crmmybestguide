@@ -44,75 +44,77 @@ export default function AdminUsersPage() {
         </Button>
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>User</TableHead>
-              <TableHead className="hidden sm:table-cell">Role</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="hidden md:table-cell">Join Date</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {usersData.map((user) => (
-              <TableRow key={user.id}>
-                <TableCell>
-                  <div className="font-medium">{user.name}</div>
-                  <div className="text-sm text-muted-foreground">
-                    {user.email}
-                  </div>
-                </TableCell>
-                <TableCell className="hidden sm:table-cell">
-                  <Badge variant="outline">{user.role}</Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge
-                    variant={
-                      user.status === 'Approved'
-                        ? 'secondary'
-                        : user.status === 'Suspended'
-                        ? 'destructive'
-                        : 'default'
-                    }
-                    className={cn(
-                      'w-24 justify-center',
-                      user.status === 'Approved' &&
-                        'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
-                      user.status === 'Pending' &&
-                        'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300'
-                    )}
-                  >
-                    {user.status}
-                  </Badge>
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  {format(parseISO(user.joinDate), 'MMM d, yyyy')}
-                </TableCell>
-                <TableCell className="text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <MoreHorizontal />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>View Profile</DropdownMenuItem>
-                      <DropdownMenuItem>Edit Permissions</DropdownMenuItem>
-                       {user.status === 'Pending' && (
-                        <DropdownMenuItem>Approve User</DropdownMenuItem>
-                      )}
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem className="text-red-500">
-                        Suspend User
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>User</TableHead>
+                <TableHead className="hidden sm:table-cell">Role</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="hidden md:table-cell">Join Date</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {usersData.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell>
+                    <div className="font-medium">{user.name}</div>
+                    <div className="text-sm text-muted-foreground">
+                      {user.email}
+                    </div>
+                  </TableCell>
+                  <TableCell className="hidden sm:table-cell">
+                    <Badge variant="outline">{user.role}</Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      variant={
+                        user.status === 'Approved'
+                          ? 'secondary'
+                          : user.status === 'Suspended'
+                          ? 'destructive'
+                          : 'default'
+                      }
+                      className={cn(
+                        'w-24 justify-center',
+                        user.status === 'Approved' &&
+                          'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
+                        user.status === 'Pending' &&
+                          'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300'
+                      )}
+                    >
+                      {user.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell">
+                    {format(parseISO(user.joinDate), 'MMM d, yyyy')}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <MoreHorizontal />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem>View Profile</DropdownMenuItem>
+                        <DropdownMenuItem>Edit Permissions</DropdownMenuItem>
+                         {user.status === 'Pending' && (
+                          <DropdownMenuItem>Approve User</DropdownMenuItem>
+                        )}
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem className="text-red-500">
+                          Suspend User
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </CardContent>
     </Card>
   );

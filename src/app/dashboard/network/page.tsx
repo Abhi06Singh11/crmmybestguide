@@ -62,39 +62,41 @@ export default function NetworkDashboardPage() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Ticket</TableHead>
-                                <TableHead>Project</TableHead>
-                                <TableHead>SLA</TableHead>
-                                <TableHead className="text-right">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {highPriorityTasksData.map(task => (
-                                <TableRow key={task.id}>
-                                    <TableCell>
-                                        <div className="font-medium">{task.title}</div>
-                                        <div className="text-sm text-muted-foreground">ID: {task.id}</div>
-                                    </TableCell>
-                                    <TableCell>{task.project}</TableCell>
-                                    <TableCell>
-                                        <Badge variant={task.sla.includes('Breached') ? 'destructive' : 'outline'}>
-                                            <Clock className="mr-1 h-3 w-3" />
-                                            {task.sla}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="text-right">
-                                        <Button size="sm">
-                                            <PlayCircle className="mr-2 h-4 w-4" />
-                                            Take Action
-                                        </Button>
-                                    </TableCell>
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Ticket</TableHead>
+                                    <TableHead>Project</TableHead>
+                                    <TableHead>SLA</TableHead>
+                                    <TableHead className="text-right">Actions</TableHead>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {highPriorityTasksData.map(task => (
+                                    <TableRow key={task.id}>
+                                        <TableCell>
+                                            <div className="font-medium">{task.title}</div>
+                                            <div className="text-sm text-muted-foreground">ID: {task.id}</div>
+                                        </TableCell>
+                                        <TableCell>{task.project}</TableCell>
+                                        <TableCell>
+                                            <Badge variant={task.sla.includes('Breached') ? 'destructive' : 'outline'}>
+                                                <Clock className="mr-1 h-3 w-3" />
+                                                {task.sla}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell className="text-right">
+                                            <Button size="sm">
+                                                <PlayCircle className="mr-2 h-4 w-4" />
+                                                Take Action
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
 
@@ -131,38 +133,40 @@ export default function NetworkDashboardPage() {
                 <CardDescription>Scheduled maintenance tasks for managed projects.</CardDescription>
             </CardHeader>
             <CardContent>
-                 <Table>
-                    <TableHeader>
-                        <TableRow>
-                        <TableHead>Project</TableHead>
-                        <TableHead>Client</TableHead>
-                        <TableHead>Task</TableHead>
-                        <TableHead>Scheduled For</TableHead>
-                        <TableHead className="text-right">Actions</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {upcomingMaintenanceData.map(task => (
-                            <TableRow key={task.id}>
-                                <TableCell className="font-medium">{task.project}</TableCell>
-                                <TableCell>{task.client}</TableCell>
-                                <TableCell>
-                                    <Badge variant="secondary" className="flex items-center gap-1 w-fit">
-                                        <ShieldCheck className="h-3 w-3" />
-                                        {task.task}
-                                    </Badge>
-                                </TableCell>
-                                <TableCell>{task.date}</TableCell>
-                                <TableCell className="text-right">
-                                    <Button variant="outline" size="sm">
-                                        <FileText className="mr-2 h-4 w-4" />
-                                        View SOP
-                                    </Button>
-                                </TableCell>
+                <div className="overflow-x-auto">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                            <TableHead>Project</TableHead>
+                            <TableHead>Client</TableHead>
+                            <TableHead>Task</TableHead>
+                            <TableHead>Scheduled For</TableHead>
+                            <TableHead className="text-right">Actions</TableHead>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {upcomingMaintenanceData.map(task => (
+                                <TableRow key={task.id}>
+                                    <TableCell className="font-medium">{task.project}</TableCell>
+                                    <TableCell>{task.client}</TableCell>
+                                    <TableCell>
+                                        <Badge variant="secondary" className="flex items-center gap-1 w-fit">
+                                            <ShieldCheck className="h-3 w-3" />
+                                            {task.task}
+                                        </Badge>
+                                    </TableCell>
+                                    <TableCell>{task.date}</TableCell>
+                                    <TableCell className="text-right">
+                                        <Button variant="outline" size="sm">
+                                            <FileText className="mr-2 h-4 w-4" />
+                                            View SOP
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </CardContent>
         </Card>
     </div>

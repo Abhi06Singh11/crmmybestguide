@@ -82,51 +82,54 @@ export default function NetworkEarningsPage() {
                     </div>
                 </CardHeader>
                 <CardContent>
-                    <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Description</TableHead>
-                                <TableHead>Type</TableHead>
-                                <TableHead>Amount</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead>Payment Date</TableHead>
-                                <TableHead className="text-right">Receipt</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                            {networkEarningsData.tableData.map(earning => (
-                                <TableRow key={earning.id}>
-                                    <TableCell>
-                                        <div className="font-medium">{earning.project}</div>
-                                    </TableCell>
-                                     <TableCell>
-                                        <Badge variant="outline">{earning.type}</Badge>
-                                    </TableCell>
-                                    <TableCell>${earning.amount.toLocaleString()}</TableCell>
-                                    <TableCell>
-                                        <Badge variant={
-                                            earning.status === 'Paid' ? 'default' :
-                                            earning.status === 'Approved' ? 'secondary' :
-                                            'destructive'
-                                        } className={cn(
-                                            earning.status === 'Paid' && 'bg-green-500/80 text-white',
-                                            earning.status === 'Approved' && 'bg-blue-500/80 text-white',
-                                            earning.status === 'Pending' && 'bg-yellow-500/80 text-white'
-                                        )}>
-                                            {earning.status}
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell>{format(parseISO(earning.date), 'MMM d, yyyy')}</TableCell>
-                                    <TableCell className="text-right">
-                                        <Button variant="link" size="sm">
-                                            <Download className="mr-2 h-4 w-4" />
-                                            {earning.receiptId}
-                                        </Button>
-                                    </TableCell>
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Description</TableHead>
+                                    <TableHead>Type</TableHead>
+                                    <TableHead>Amount</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead>Payment Date</TableHead>
+                                    <TableHead className="text-right">Receipt</TableHead>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                            </TableHeader>
+                            <TableBody>
+                                {networkEarningsData.tableData.map(earning => (
+                                    <TableRow key={earning.id}>
+                                        <TableCell>
+                                            <div className="font-medium">{earning.project}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <Badge variant="outline">{earning.type}</Badge>
+                                        </TableCell>
+                                        <TableCell>${earning.amount.toLocaleString()}</TableCell>
+                                        <TableCell>
+                                            <Badge variant={
+                                                earning.status === 'Paid' ? 'default' :
+                                                earning.status === 'Approved' ? 'secondary' :
+                                                'destructive'
+                                            } className={cn(
+                                                'w-24 justify-center',
+                                                earning.status === 'Paid' && 'bg-green-500/80 text-white',
+                                                earning.status === 'Approved' && 'bg-blue-500/80 text-white',
+                                                earning.status === 'Pending' && 'bg-yellow-500/80 text-white'
+                                            )}>
+                                                {earning.status}
+                                            </Badge>
+                                        </TableCell>
+                                        <TableCell>{format(parseISO(earning.date), 'MMM d, yyyy')}</TableCell>
+                                        <TableCell className="text-right">
+                                            <Button variant="link" size="sm">
+                                                <Download className="mr-2 h-4 w-4" />
+                                                {earning.receiptId}
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
         </div>

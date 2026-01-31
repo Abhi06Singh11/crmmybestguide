@@ -52,45 +52,47 @@ export default function NetworkProjectsPage() {
                     <CardDescription>A list of all projects under your maintenance and support contract.</CardDescription>
                 </CardHeader>
                 <CardContent>
-                     <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Project</TableHead>
-                                <TableHead className="hidden sm:table-cell">Client</TableHead>
-                                <TableHead>Health Status</TableHead>
-                                <TableHead className="hidden lg:table-cell">Last Maintenance</TableHead>
-                                <TableHead className="hidden lg:table-cell">Next Check</TableHead>
-                                <TableHead className="text-right">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                        {projects.map((project) => (
-                            <TableRow key={project.id}>
-                            <TableCell>
-                                <div className="font-medium">{project.projectName}</div>
-                            </TableCell>
-                            <TableCell className="text-muted-foreground hidden sm:table-cell">{project.client}</TableCell>
-                            <TableCell>
-                                <Badge variant={project.status === 'Stable' ? 'secondary' : 'default'} className={cn(
-                                    'w-24 justify-center',
-                                    project.status === 'Stable' && 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
-                                    project.status === 'Monitoring' && 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300'
-                                )}>
-                                    {project.status}
-                                </Badge>
-                            </TableCell>
-                            <TableCell className="hidden lg:table-cell">{project.lastMaintenance}</TableCell>
-                            <TableCell className="hidden lg:table-cell">{project.nextCheck}</TableCell>
-                            <TableCell className="text-right">
-                                <Button variant="outline" size="sm">
-                                    <FileText className="mr-2 h-4 w-4" />
-                                    View
-                                </Button>
-                            </TableCell>
-                            </TableRow>
-                        ))}
-                        </TableBody>
-                    </Table>
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Project</TableHead>
+                                    <TableHead className="hidden sm:table-cell">Client</TableHead>
+                                    <TableHead>Health Status</TableHead>
+                                    <TableHead className="hidden lg:table-cell">Last Maintenance</TableHead>
+                                    <TableHead className="hidden lg:table-cell">Next Check</TableHead>
+                                    <TableHead className="text-right">Actions</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                            {projects.map((project) => (
+                                <TableRow key={project.id}>
+                                <TableCell>
+                                    <div className="font-medium">{project.projectName}</div>
+                                </TableCell>
+                                <TableCell className="text-muted-foreground hidden sm:table-cell">{project.client}</TableCell>
+                                <TableCell>
+                                    <Badge variant={project.status === 'Stable' ? 'secondary' : 'default'} className={cn(
+                                        'w-24 justify-center',
+                                        project.status === 'Stable' && 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
+                                        project.status === 'Monitoring' && 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300'
+                                    )}>
+                                        {project.status}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell className="hidden lg:table-cell">{project.lastMaintenance}</TableCell>
+                                <TableCell className="hidden lg:table-cell">{project.nextCheck}</TableCell>
+                                <TableCell className="text-right">
+                                    <Button variant="outline" size="sm">
+                                        <FileText className="mr-2 h-4 w-4" />
+                                        View
+                                    </Button>
+                                </TableCell>
+                                </TableRow>
+                            ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
         </div>

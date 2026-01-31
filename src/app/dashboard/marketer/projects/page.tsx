@@ -36,62 +36,64 @@ import { format, parseISO } from 'date-fns';
 import { cn } from '@/lib/utils';
 
 const ProjectsTable = () => (
-  <Table>
-    <TableHeader>
-      <TableRow>
-        <TableHead>Project</TableHead>
-        <TableHead className="hidden lg:table-cell">Developer</TableHead>
-        <TableHead>Status</TableHead>
-        <TableHead className="hidden sm:table-cell">Progress</TableHead>
-        <TableHead className="hidden lg:table-cell">Deadline</TableHead>
-        <TableHead className="text-right">Actions</TableHead>
-      </TableRow>
-    </TableHeader>
-    <TableBody>
-      {marketerProjectsData.tableData.map((project) => (
-        <TableRow key={project.id}>
-          <TableCell>
-            <div className="font-medium">{project.projectName}</div>
-            <div className="text-sm text-muted-foreground">{project.client}</div>
-          </TableCell>
-          <TableCell className="hidden lg:table-cell">{project.developer}</TableCell>
-          <TableCell>
-            <Badge variant={
-              project.status === 'Completed' ? 'default' :
-              project.status === 'Active' ? 'secondary' :
-              'destructive'
-            } className={cn(
-              'w-28 justify-center',
-              project.status === 'Completed' && 'bg-green-500/80 text-white',
-              project.status === 'Pending Approval' && 'bg-blue-500/80 text-white',
-              project.status === 'Risk' && 'bg-yellow-500/80 text-white',
-            )}>
-              {project.status}
-            </Badge>
-          </TableCell>
-          <TableCell className="hidden sm:table-cell">
-            <div className="flex items-center gap-2">
-              <Progress value={project.progress} className="h-2 w-24" />
-              <span className="text-xs text-muted-foreground">{project.progress}%</span>
-            </div>
-          </TableCell>
-          <TableCell className="hidden lg:table-cell">{format(parseISO(project.deadline), 'MMM d, yyyy')}</TableCell>
-          <TableCell className="text-right">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>View Project</DropdownMenuItem>
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Assign Team</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </TableCell>
-        </TableRow>
-      ))}
-    </TableBody>
-  </Table>
+    <div className="overflow-x-auto">
+        <Table>
+            <TableHeader>
+            <TableRow>
+                <TableHead>Project</TableHead>
+                <TableHead className="hidden lg:table-cell">Developer</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="hidden sm:table-cell">Progress</TableHead>
+                <TableHead className="hidden lg:table-cell">Deadline</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
+            </TableRow>
+            </TableHeader>
+            <TableBody>
+            {marketerProjectsData.tableData.map((project) => (
+                <TableRow key={project.id}>
+                <TableCell>
+                    <div className="font-medium">{project.projectName}</div>
+                    <div className="text-sm text-muted-foreground">{project.client}</div>
+                </TableCell>
+                <TableCell className="hidden lg:table-cell">{project.developer}</TableCell>
+                <TableCell>
+                    <Badge variant={
+                    project.status === 'Completed' ? 'default' :
+                    project.status === 'Active' ? 'secondary' :
+                    'destructive'
+                    } className={cn(
+                    'w-28 justify-center',
+                    project.status === 'Completed' && 'bg-green-500/80 text-white',
+                    project.status === 'Pending Approval' && 'bg-blue-500/80 text-white',
+                    project.status === 'Risk' && 'bg-yellow-500/80 text-white',
+                    )}>
+                    {project.status}
+                    </Badge>
+                </TableCell>
+                <TableCell className="hidden sm:table-cell">
+                    <div className="flex items-center gap-2">
+                    <Progress value={project.progress} className="h-2 w-24" />
+                    <span className="text-xs text-muted-foreground">{project.progress}%</span>
+                    </div>
+                </TableCell>
+                <TableCell className="hidden lg:table-cell">{format(parseISO(project.deadline), 'MMM d, yyyy')}</TableCell>
+                <TableCell className="text-right">
+                    <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuItem>View Project</DropdownMenuItem>
+                        <DropdownMenuItem>Edit</DropdownMenuItem>
+                        <DropdownMenuItem>Assign Team</DropdownMenuItem>
+                    </DropdownMenuContent>
+                    </DropdownMenu>
+                </TableCell>
+                </TableRow>
+            ))}
+            </TableBody>
+        </Table>
+    </div>
 );
 
 export default function ProjectsPage() {
@@ -118,9 +120,7 @@ export default function ProjectsPage() {
             <Card>
                 <CardHeader><CardTitle>All Projects</CardTitle></CardHeader>
                 <CardContent>
-                  <div className="overflow-x-auto">
-                    <ProjectsTable />
-                  </div>
+                  <ProjectsTable />
                 </CardContent>
             </Card>
         </div>

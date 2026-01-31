@@ -73,60 +73,62 @@ export default function TasksPage() {
         </Button>
       </CardHeader>
       <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Task</TableHead>
-              <TableHead className="hidden md:table-cell">Assigned To</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead>Priority</TableHead>
-              <TableHead className="hidden md:table-cell">Due Date</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {marketerTasksData.map((task) => (
-              <TableRow key={task.id}>
-                <TableCell>
-                  <div className="font-medium">{task.title}</div>
-                  <div className="text-sm text-muted-foreground hidden md:inline">
-                    {task.description}
-                  </div>
-                </TableCell>
-                <TableCell className="hidden md:table-cell">{task.assigned_to}</TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className={cn(getStatusBadgeClass(task.status))}>
-                    {task.status}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className={cn(getPriorityBadgeClass(task.priority))}>
-                    {task.priority}
-                  </Badge>
-                </TableCell>
-                <TableCell className="hidden md:table-cell">{format(parseISO(task.due_date), 'MMM d, yyyy')}</TableCell>
-                <TableCell className="text-right">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon">
-                        <MoreHorizontal />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>View Details</DropdownMenuItem>
-                      <DropdownMenuItem>Update Status</DropdownMenuItem>
-                      <DropdownMenuItem>Reassign</DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem className="text-red-500">
-                        Delete Task
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </TableCell>
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Task</TableHead>
+                <TableHead className="hidden md:table-cell">Assigned To</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Priority</TableHead>
+                <TableHead className="hidden md:table-cell">Due Date</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {marketerTasksData.map((task) => (
+                <TableRow key={task.id}>
+                  <TableCell>
+                    <div className="font-medium">{task.title}</div>
+                    <div className="text-sm text-muted-foreground hidden md:inline">
+                      {task.description}
+                    </div>
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell">{task.assigned_to}</TableCell>
+                  <TableCell>
+                    <Badge variant="secondary" className={cn('w-28 justify-center', getStatusBadgeClass(task.status))}>
+                      {task.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="secondary" className={cn('w-20 justify-center', getPriorityBadgeClass(task.priority))}>
+                      {task.priority}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="hidden md:table-cell">{format(parseISO(task.due_date), 'MMM d, yyyy')}</TableCell>
+                  <TableCell className="text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <MoreHorizontal />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem>View Details</DropdownMenuItem>
+                        <DropdownMenuItem>Update Status</DropdownMenuItem>
+                        <DropdownMenuItem>Reassign</DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem className="text-red-500">
+                          Delete Task
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </CardContent>
     </Card>
   );

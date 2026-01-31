@@ -57,54 +57,56 @@ export default function DeveloperProjectsPage() {
                     <CardTitle>All My Projects</CardTitle>
                 </CardHeader>
                 <CardContent>
-                     <Table>
-                        <TableHeader>
-                            <TableRow>
-                                <TableHead>Project</TableHead>
-                                <TableHead>Status</TableHead>
-                                <TableHead className="hidden sm:table-cell">Progress</TableHead>
-                                <TableHead className="hidden md:table-cell">Deadline</TableHead>
-                                <TableHead className="text-right">Actions</TableHead>
-                            </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                        {projects.map((project) => (
-                            <TableRow key={project.id}>
-                            <TableCell>
-                                <div className="font-medium">{project.projectName}</div>
-                                <div className="text-sm text-muted-foreground">{project.client}</div>
-                            </TableCell>
-                            <TableCell>
-                                <Badge variant={
-                                project.status === 'Completed' ? 'default' :
-                                project.status === 'Active' ? 'secondary' :
-                                'destructive'
-                                } className={cn(
-                                'w-24 justify-center',
-                                project.status === 'Completed' && 'bg-green-500/80 text-white',
-                                project.status === 'Pending' && 'bg-blue-500/80 text-white',
-                                project.status === 'Blocked' && 'bg-yellow-500/80 text-white',
-                                )}>
-                                {project.status}
-                                </Badge>
-                            </TableCell>
-                            <TableCell className="hidden sm:table-cell">
-                                <div className="flex items-center gap-2">
-                                <Progress value={project.progress} className="h-2 w-24" />
-                                <span className="text-xs text-muted-foreground">{project.progress}%</span>
-                                </div>
-                            </TableCell>
-                            <TableCell className="hidden md:table-cell">{format(parseISO(project.deadline), 'MMM d, yyyy')}</TableCell>
-                            <TableCell className="text-right">
-                                <Button variant="outline" size="sm">
-                                    <FileText className="mr-2 h-4 w-4" />
-                                    View
-                                </Button>
-                            </TableCell>
-                            </TableRow>
-                        ))}
-                        </TableBody>
-                    </Table>
+                    <div className="overflow-x-auto">
+                        <Table>
+                            <TableHeader>
+                                <TableRow>
+                                    <TableHead>Project</TableHead>
+                                    <TableHead>Status</TableHead>
+                                    <TableHead className="hidden sm:table-cell">Progress</TableHead>
+                                    <TableHead className="hidden md:table-cell">Deadline</TableHead>
+                                    <TableHead className="text-right">Actions</TableHead>
+                                </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                            {projects.map((project) => (
+                                <TableRow key={project.id}>
+                                <TableCell>
+                                    <div className="font-medium">{project.projectName}</div>
+                                    <div className="text-sm text-muted-foreground">{project.client}</div>
+                                </TableCell>
+                                <TableCell>
+                                    <Badge variant={
+                                    project.status === 'Completed' ? 'default' :
+                                    project.status === 'Active' ? 'secondary' :
+                                    'destructive'
+                                    } className={cn(
+                                    'w-24 justify-center',
+                                    project.status === 'Completed' && 'bg-green-500/80 text-white',
+                                    project.status === 'Pending' && 'bg-blue-500/80 text-white',
+                                    project.status === 'Blocked' && 'bg-yellow-500/80 text-white',
+                                    )}>
+                                    {project.status}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell className="hidden sm:table-cell">
+                                    <div className="flex items-center gap-2">
+                                    <Progress value={project.progress} className="h-2 w-24" />
+                                    <span className="text-xs text-muted-foreground">{project.progress}%</span>
+                                    </div>
+                                </TableCell>
+                                <TableCell className="hidden md:table-cell">{format(parseISO(project.deadline), 'MMM d, yyyy')}</TableCell>
+                                <TableCell className="text-right">
+                                    <Button variant="outline" size="sm">
+                                        <FileText className="mr-2 h-4 w-4" />
+                                        View
+                                    </Button>
+                                </TableCell>
+                                </TableRow>
+                            ))}
+                            </TableBody>
+                        </Table>
+                    </div>
                 </CardContent>
             </Card>
         </div>

@@ -36,32 +36,34 @@ export default function LogsPage() {
                 </Button>
             </CardHeader>
             <CardContent>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Timestamp</TableHead>
-                            <TableHead>Type</TableHead>
-                            <TableHead>Event Description</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {networkLogsData.map((log, index) => (
-                            <TableRow key={index}>
-                                <TableCell className="font-mono text-xs">{log.timestamp}</TableCell>
-                                <TableCell>
-                                    <Badge variant="outline" className={cn(
-                                        log.type === 'Security' && 'border-red-500/50',
-                                        log.type === 'Maintenance' && 'border-blue-500/50',
-                                        log.type === 'Incident' && 'border-yellow-500/50',
-                                    )}>
-                                        {log.type}
-                                    </Badge>
-                                </TableCell>
-                                <TableCell>{log.event}</TableCell>
+                <div className="overflow-x-auto">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Timestamp</TableHead>
+                                <TableHead>Type</TableHead>
+                                <TableHead>Event Description</TableHead>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {networkLogsData.map((log, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="font-mono text-xs">{log.timestamp}</TableCell>
+                                    <TableCell>
+                                        <Badge variant="outline" className={cn(
+                                            log.type === 'Security' && 'border-red-500/50',
+                                            log.type === 'Maintenance' && 'border-blue-500/50',
+                                            log.type === 'Incident' && 'border-yellow-500/50',
+                                        )}>
+                                            {log.type}
+                                        </Badge>
+                                    </TableCell>
+                                    <TableCell>{log.event}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </CardContent>
         </Card>
     );

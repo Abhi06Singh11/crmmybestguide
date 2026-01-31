@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -36,49 +37,52 @@ export default function InvoicesPage() {
                 </Button>
             </CardHeader>
             <CardContent>
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Invoice ID</TableHead>
-                            <TableHead>Client</TableHead>
-                            <TableHead>Amount</TableHead>
-                            <TableHead>Date</TableHead>
-                            <TableHead>Status</TableHead>
-                            <TableHead className="text-right">Actions</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {earningsData.tableData.map(invoice => (
-                            <TableRow key={invoice.id}>
-                                <TableCell className="font-medium">{invoice.invoiceId}</TableCell>
-                                <TableCell>
-                                     <div className="font-medium">{invoice.client}</div>
-                                     <div className="text-sm text-muted-foreground">{invoice.project}</div>
-                                </TableCell>
-                                <TableCell>${invoice.amount.toLocaleString()}</TableCell>
-                                <TableCell>{format(parseISO(invoice.date), 'MMM d, yyyy')}</TableCell>
-                                <TableCell>
-                                    <Badge variant={
-                                        invoice.status === 'Paid' ? 'default' :
-                                        invoice.status === 'Approved' ? 'secondary' :
-                                        'destructive'
-                                    } className={cn(
-                                        invoice.status === 'Paid' && 'bg-green-500/80 text-white',
-                                        invoice.status === 'Approved' && 'bg-blue-500/80 text-white',
-                                        invoice.status === 'Pending' && 'bg-yellow-500/80 text-white'
-                                    )}>
-                                        {invoice.status}
-                                    </Badge>
-                                </TableCell>
-                                <TableCell className="text-right">
-                                    <Button variant="outline" size="sm">
-                                        View Invoice
-                                    </Button>
-                                </TableCell>
+                <div className="overflow-x-auto">
+                    <Table>
+                        <TableHeader>
+                            <TableRow>
+                                <TableHead>Invoice ID</TableHead>
+                                <TableHead>Client</TableHead>
+                                <TableHead>Amount</TableHead>
+                                <TableHead>Date</TableHead>
+                                <TableHead>Status</TableHead>
+                                <TableHead className="text-right">Actions</TableHead>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHeader>
+                        <TableBody>
+                            {earningsData.tableData.map(invoice => (
+                                <TableRow key={invoice.id}>
+                                    <TableCell className="font-medium">{invoice.invoiceId}</TableCell>
+                                    <TableCell>
+                                        <div className="font-medium">{invoice.client}</div>
+                                        <div className="text-sm text-muted-foreground">{invoice.project}</div>
+                                    </TableCell>
+                                    <TableCell>${invoice.amount.toLocaleString()}</TableCell>
+                                    <TableCell>{format(parseISO(invoice.date), 'MMM d, yyyy')}</TableCell>
+                                    <TableCell>
+                                        <Badge variant={
+                                            invoice.status === 'Paid' ? 'default' :
+                                            invoice.status === 'Approved' ? 'secondary' :
+                                            'destructive'
+                                        } className={cn(
+                                            'w-24 justify-center',
+                                            invoice.status === 'Paid' && 'bg-green-500/80 text-white',
+                                            invoice.status === 'Approved' && 'bg-blue-500/80 text-white',
+                                            invoice.status === 'Pending' && 'bg-yellow-500/80 text-white'
+                                        )}>
+                                            {invoice.status}
+                                        </Badge>
+                                    </TableCell>
+                                    <TableCell className="text-right">
+                                        <Button variant="outline" size="sm">
+                                            View Invoice
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </div>
             </CardContent>
         </Card>
     );
