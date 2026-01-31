@@ -96,12 +96,12 @@ export default function TasksPage() {
                   </TableCell>
                   <TableCell className="hidden md:table-cell">{task.assigned_to}</TableCell>
                   <TableCell>
-                    <Badge variant="secondary" className={cn('w-28 justify-center', getStatusBadgeClass(task.status))}>
+                    <Badge variant="secondary" className={cn('justify-center', getStatusBadgeClass(task.status))}>
                       {task.status}
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant="secondary" className={cn('w-20 justify-center', getPriorityBadgeClass(task.priority))}>
+                    <Badge variant="secondary" className={cn('justify-center', getPriorityBadgeClass(task.priority))}>
                       {task.priority}
                     </Badge>
                   </TableCell>

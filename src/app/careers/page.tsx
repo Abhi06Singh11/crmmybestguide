@@ -66,26 +66,26 @@ const opportunities = [
 
 export default function CareersPage() {
   return (
-    <div className="bg-gray-900 text-gray-200 font-sans">
+    <div className="bg-background text-foreground font-sans">
       {/* Hero Section */}
-      <section className="py-24 md:py-32 text-center bg-gray-900">
+      <section className="py-24 md:py-32 text-center bg-background">
         <div className="container px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-            Join MyBestGuide – <span className="text-blue-400">Flexible Opportunities</span> for Modern Professionals
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight">
+            Join MyBestGuide – <span className="text-primary">Flexible Opportunities</span> for Modern Professionals
           </h1>
-          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400">
+          <p className="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-muted-foreground">
             100% Remote • Flexible Schedule • Transparent Payments • Freedom to Work Your Way
           </p>
         </div>
       </section>
 
       {/* Work That Fits Your Life Section */}
-      <section className="py-20 md:py-28 bg-gray-800/50">
+      <section className="py-20 md:py-28 bg-secondary">
         <div className="container px-4 text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
             Work That Fits Your Life
           </h2>
-          <div className="space-y-6 text-lg text-gray-300">
+          <div className="space-y-6 text-lg text-muted-foreground">
             <p>
               MyBestGuide offers 100% remote opportunities, empowering you to work from anywhere, anytime. Our flexible model is built to support your unique schedule. We believe in outcomes, not micromanagement.
             </p>
@@ -100,19 +100,19 @@ export default function CareersPage() {
       </section>
 
       {/* Why Join MyBestGuide? Section */}
-      <section className="py-20 md:py-28 bg-gray-900">
+      <section className="py-20 md:py-28 bg-background">
         <div className="container px-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {whyJoinUs.map((item) => (
-              <Card key={item.title} className="bg-gray-800 border-gray-700 text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:shadow-blue-500/10">
+              <Card key={item.title} className="bg-card border-border text-center transition-all duration-200 hover:shadow-lg hover:-translate-y-1 hover:shadow-primary/10">
                 <CardContent className="p-8">
                   <div className="flex justify-center mb-4">
-                    <div className="bg-gray-700 p-4 rounded-full text-blue-400">
+                    <div className="bg-muted p-4 rounded-full text-primary">
                       <item.icon className="h-8 w-8" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-gray-400">{item.description}</p>
+                  <h3 className="text-xl font-bold text-card-foreground">{item.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -121,30 +121,30 @@ export default function CareersPage() {
       </section>
 
       {/* Current Opportunities Section */}
-      <section className="py-20 md:py-28 bg-gray-800/50">
+      <section className="py-20 md:py-28 bg-secondary">
         <div className="container px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
             Current Opportunities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {opportunities.map((opportunity) => (
-              <Card key={opportunity.title} className="bg-gray-800 border-gray-700 flex flex-col">
+              <Card key={opportunity.title} className="bg-card border-border flex flex-col">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-blue-400">{opportunity.title}</CardTitle>
+                  <CardTitle className="text-2xl font-bold text-primary">{opportunity.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex flex-col flex-grow">
-                  <p className="text-gray-300 mb-6 flex-grow">{opportunity.description}</p>
-                  <ul className="space-y-3 mb-8 text-gray-300">
+                  <p className="text-muted-foreground mb-6 flex-grow">{opportunity.description}</p>
+                  <ul className="space-y-3 mb-8 text-card-foreground">
                     {opportunity.points.map((point) => (
                       <li key={point} className="flex items-start">
-                        <ShieldCheck className="h-5 w-5 text-blue-400 mr-3 mt-1 flex-shrink-0" />
+                        <ShieldCheck className="h-5 w-5 text-primary mr-3 mt-1 flex-shrink-0" />
                         <span>{point}</span>
                       </li>
                     ))}
                   </ul>
                   <div className="mt-auto">
                     <Link href={opportunity.href}>
-                      <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 transition-colors duration-200">
+                      <Button className="w-full">
                         {opportunity.cta}
                       </Button>
                     </Link>

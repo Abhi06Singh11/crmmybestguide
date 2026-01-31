@@ -86,7 +86,7 @@ export default function EarningsPage() {
                                                 invoice.status === 'Approved' ? 'secondary' :
                                                 'destructive'
                                             } className={cn(
-                                                'w-24 justify-center',
+                                                'justify-center',
                                                 invoice.status === 'Paid' && 'bg-green-500/80 text-white',
                                                 invoice.status === 'Approved' && 'bg-blue-500/80 text-white',
                                                 invoice.status === 'Pending' && 'bg-yellow-500/80 text-white'

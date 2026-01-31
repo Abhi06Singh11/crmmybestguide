@@ -96,7 +96,7 @@ export default function NetworkTasksPage() {
                                             task.priority === 'Medium' ? 'secondary' :
                                             'outline'
                                         } className={cn(
-                                            'w-20 justify-center',
+                                            'justify-center',
                                             task.priority === 'High' && 'bg-orange-500 text-white'
                                         )}>
                                         {task.priority}
@@ -108,7 +108,7 @@ export default function NetworkTasksPage() {
                                             task.status === 'In Progress' ? 'secondary' :
                                             'outline'
                                         } className={cn(
-                                            'w-24 justify-center',
+                                            'justify-center',
                                             task.status === 'Resolved' && 'bg-green-500/80 text-white',
                                             task.status === 'In Progress' && 'bg-blue-500/80 text-white',
                                         )}>

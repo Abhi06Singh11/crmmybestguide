@@ -173,11 +173,11 @@ export default function DevApplyPage() {
                     <form>
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <Label htmlFor="name">Full Name*</Label>
+                            <Label htmlFor="name">Full Name</Label>
                             <Input id="name" type="text" required />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="email">Email Address*</Label>
+                            <Label htmlFor="email">Email Address</Label>
                             <Input id="email" type="email" required />
                         </div>
                         <div className="space-y-2">
@@ -189,7 +189,7 @@ export default function DevApplyPage() {
                             <Input id="location" type="text" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="profile">Select Your Profile*</Label>
+                            <Label htmlFor="profile">Select Your Profile</Label>
                             <Select onValueChange={setSelectedProfile}>
                                 <SelectTrigger id="profile">
                                     <SelectValue placeholder="Select a profile" />
@@ -211,16 +211,16 @@ export default function DevApplyPage() {
                         </div>
                         {selectedProfile === 'Other' && (
                             <div className="space-y-2">
-                                <Label htmlFor="otherProfile">Preferred Profile Name*</Label>
+                                <Label htmlFor="otherProfile">Preferred Profile Name</Label>
                                 <Input id="otherProfile" type="text" placeholder="Please specify your profile" required />
                             </div>
                         )}
                         <div className="space-y-2">
-                            <Label htmlFor="skills">Skills*</Label>
+                            <Label htmlFor="skills">Skills</Label>
                             <Input id="skills" type="text" required />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="github">GitHub Profile* (Required)</Label>
+                            <Label htmlFor="github">GitHub Profile</Label>
                             <Input id="github" type="url" required />
                         </div>
                         <div className="space-y-2">
@@ -228,7 +228,7 @@ export default function DevApplyPage() {
                             <Input id="portfolio" type="url" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="resume">Resume / CV Upload*</Label>
+                            <Label htmlFor="resume">Resume / CV Upload</Label>
                             <Input id="resume" type="file" required />
                         </div>
                         <div className="space-y-2">

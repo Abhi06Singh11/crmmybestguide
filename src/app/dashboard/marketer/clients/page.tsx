@@ -60,7 +60,7 @@ export default function ClientsPage() {
                             client.paymentStatus === 'Paid' ? 'default' :
                             'destructive'
                         } className={cn(
-                            'w-20 justify-center',
+                            'justify-center',
                             client.paymentStatus === 'Paid' && 'bg-green-500/80 text-white',
                             client.paymentStatus === 'Overdue' && 'bg-yellow-500/80 text-white'
                         )}>

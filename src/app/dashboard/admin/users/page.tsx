@@ -77,7 +77,7 @@ export default function AdminUsersPage() {
                           : 'default'
                       }
                       className={cn(
-                        'w-24 justify-center',
+                        'justify-center',
                         user.status === 'Approved' &&
                           'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
                         user.status === 'Pending' &&

@@ -73,7 +73,7 @@ export default function NetworkProjectsPage() {
                                 <TableCell className="text-muted-foreground hidden sm:table-cell">{project.client}</TableCell>
                                 <TableCell>
                                     <Badge variant={project.status === 'Stable' ? 'secondary' : 'default'} className={cn(
-                                        'w-24 justify-center',
+                                        'justify-center',
                                         project.status === 'Stable' && 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300',
                                         project.status === 'Monitoring' && 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300'
                                     )}>

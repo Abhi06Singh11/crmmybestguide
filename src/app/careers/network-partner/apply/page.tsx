@@ -146,11 +146,11 @@ export default function NetworkApplyPage() {
                     <form>
                     <div className="grid md:grid-cols-2 gap-6">
                         <div className="space-y-2">
-                            <Label htmlFor="name">Full Name*</Label>
+                            <Label htmlFor="name">Full Name</Label>
                             <Input id="name" type="text" required />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="email">Email Address*</Label>
+                            <Label htmlFor="email">Email Address</Label>
                             <Input id="email" type="email" required />
                         </div>
                         <div className="space-y-2">
@@ -158,11 +158,11 @@ export default function NetworkApplyPage() {
                             <Input id="phone" type="tel" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="location">Location / Timezone*</Label>
+                            <Label htmlFor="location">Location / Timezone</Label>
                             <Input id="location" type="text" required />
                         </div>
                         <div className="md:col-span-2 space-y-2">
-                            <Label htmlFor="profile">Select Your Profile*</Label>
+                            <Label htmlFor="profile">Select Your Profile</Label>
                             <Select onValueChange={setSelectedProfile} required>
                                 <SelectTrigger id="profile">
                                     <SelectValue placeholder="Select a profile" />
@@ -184,12 +184,12 @@ export default function NetworkApplyPage() {
                         </div>
                         {selectedProfile === 'Other' && (
                             <div className="md:col-span-2 space-y-2">
-                                <Label htmlFor="otherProfile">Preferred Profile Name*</Label>
+                                <Label htmlFor="otherProfile">Preferred Profile Name</Label>
                                 <Input id="otherProfile" type="text" placeholder="Please specify your profile" required />
                             </div>
                         )}
                         <div className="md:col-span-2 space-y-2">
-                            <Label htmlFor="skills">Your Technical Support Skills & Expertise*</Label>
+                            <Label htmlFor="skills">Your Technical Support Skills & Expertise</Label>
                             <Textarea id="skills" required placeholder="e.g., AWS, Docker, Jenkins, Zendesk, Jira, SQL, Proactive Monitoring, Incident Resolution" />
                         </div>
                         <div className="space-y-2">
@@ -201,11 +201,11 @@ export default function NetworkApplyPage() {
                             <Input id="certifications" type="text" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="resume">Resume / CV Upload*</Label>
+                            <Label htmlFor="resume">Resume / CV Upload</Label>
                             <Input id="resume" type="file" required />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="experience">Years of Experience*</Label>
+                            <Label htmlFor="experience">Years of Experience</Label>
                             <Input id="experience" type="number" required />
                         </div>
                         <div className="space-y-2">
@@ -213,7 +213,7 @@ export default function NetworkApplyPage() {
                             <Input id="rate" type="text" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="availability">Availability (e.g., hours/week, preferred timing)*</Label>
+                            <Label htmlFor="availability">Availability (e.g., hours/week, preferred timing)</Label>
                             <Input id="availability" type="text" required />
                         </div>
                         <div className="md:col-span-2 space-y-2">
@@ -225,7 +225,7 @@ export default function NetworkApplyPage() {
                             <Input id="languages" type="text" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="nda">Willing to Sign NDA?*</Label>
+                            <Label htmlFor="nda">Willing to Sign NDA?</Label>
                             <Select required>
                                 <SelectTrigger id="nda">
                                     <SelectValue placeholder="Select an option" />

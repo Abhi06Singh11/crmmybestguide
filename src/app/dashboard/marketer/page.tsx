@@ -73,7 +73,7 @@ const ProjectsTable = () => (
               project.status === 'Active' ? 'secondary' :
               'destructive'
             } className={cn(
-              'w-28 justify-center',
+              'justify-center',
               project.status === 'Completed' && 'bg-green-500/80 text-white',
               project.status === 'Pending Approval' && 'bg-blue-500/80 text-white',
               project.status === 'Risk' && 'bg-yellow-500/80 text-white',

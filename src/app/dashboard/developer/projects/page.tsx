@@ -81,7 +81,7 @@ export default function DeveloperProjectsPage() {
                                     project.status === 'Active' ? 'secondary' :
                                     'destructive'
                                     } className={cn(
-                                    'w-24 justify-center',
+                                    'justify-center',
                                     project.status === 'Completed' && 'bg-green-500/80 text-white',
                                     project.status === 'Pending' && 'bg-blue-500/80 text-white',
                                     project.status === 'Blocked' && 'bg-yellow-500/80 text-white',

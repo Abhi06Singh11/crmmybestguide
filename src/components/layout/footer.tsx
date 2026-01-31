@@ -20,21 +20,21 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-background border-t">
       <div className="container py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
           <div className="space-y-4 sm:col-span-2 md:col-span-1">
-            <h3 className="font-headline text-xl font-bold text-white">MyBestGuide</h3>
-            <p className="text-sm text-gray-400">
+            <h3 className="font-headline text-xl font-bold text-foreground">MyBestGuide</h3>
+            <p className="text-sm text-muted-foreground">
               MyBestGuide is a leading web and app development company in India, delivering custom software solutions, responsive websites, and mobile apps to drive business growth.
             </p>
           </div>
           <div>
-            <h4 className="font-headline font-semibold text-white">Quick Links</h4>
+            <h4 className="font-headline font-semibold text-foreground">Quick Links</h4>
             <ul className="mt-4 space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-gray-400 hover:text-blue-400 hover:underline">
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-primary hover:underline">
                     {link.label}
                   </Link>
                 </li>
@@ -42,29 +42,29 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-headline font-semibold text-white">Get in Touch</h4>
+            <h4 className="font-headline font-semibold text-foreground">Get in Touch</h4>
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3">
-                <Mail className="h-5 w-5 text-blue-400" />
-                <a href="mailto:contact@mybestguide.com" className="text-sm text-gray-400 hover:text-blue-400 hover:underline">
+                <Mail className="h-5 w-5 text-primary" />
+                <a href="mailto:contact@mybestguide.com" className="text-sm text-muted-foreground hover:text-primary hover:underline">
                   Email Us
                 </a>
               </li>
               <li className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-blue-400" />
-                <span className="text-sm text-gray-400">Bangalore</span>
+                <MapPin className="h-5 w-5 text-primary" />
+                <span className="text-sm text-muted-foreground">Bangalore</span>
               </li>
                <li className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-blue-400" />
-                <span className="text-sm text-gray-400">Lucknow</span>
+                <MapPin className="h-5 w-5 text-primary" />
+                <span className="text-sm text-muted-foreground">Lucknow</span>
               </li>
             </ul>
           </div>
           <div className="sm:col-span-2 md:col-span-1">
-            <h4 className="font-headline font-semibold text-white">Follow Us</h4>
+            <h4 className="font-headline font-semibold text-foreground">Follow Us</h4>
             <div className="mt-4 flex space-x-4">
               {socialLinks.map((social) => (
-                <Link key={social.label} href={social.href} className="text-gray-400 hover:text-blue-400">
+                <Link key={social.label} href={social.href} className="text-muted-foreground hover:text-primary">
                   <social.icon className="h-6 w-6" />
                   <span className="sr-only">{social.label}</span>
                 </Link>
@@ -73,12 +73,12 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="border-t border-gray-800 py-4">
-        <div className="container flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500">
+      <div className="border-t border-border py-4">
+        <div className="container flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
           <p>&copy; {currentYear} MyBestGuide. All rights reserved.</p>
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
-            <Link href="#" className="hover:text-blue-400 hover:underline">Privacy Policy</Link>
-            <Link href="#" className="hover:text-blue-400 hover:underline">Terms of Service</Link>
+            <Link href="#" className="hover:text-primary hover:underline">Privacy Policy</Link>
+            <Link href="#" className="hover:text-primary hover:underline">Terms of Service</Link>
           </div>
         </div>
       </div>

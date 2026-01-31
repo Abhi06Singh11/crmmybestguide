@@ -45,7 +45,7 @@ export default function ChatPage() {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full flex flex-col">
       <Button
           variant="outline"
           className="mb-4"
@@ -54,7 +54,7 @@ export default function ChatPage() {
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to Clients
       </Button>
-      <Card className="flex flex-col h-[calc(100vh-12rem)]">
+      <Card className="flex flex-col flex-1">
         <CardHeader className="flex-row items-center border-b">
             <Avatar className="h-9 w-9">
                 <AvatarFallback>QS</AvatarFallback>
