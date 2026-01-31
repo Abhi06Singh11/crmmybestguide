@@ -22,6 +22,7 @@ import {
 import { cn } from '@/lib/utils';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 
 export default function TeamPage() {
@@ -102,8 +103,12 @@ export default function TeamPage() {
                             </Badge>
                         </div>
                         <div className="mt-auto flex gap-2">
-                           <Button variant="outline" className="w-full">View Profile</Button>
-                           <Button className="w-full">Assign</Button>
+                           <Link href="/d/marketer/team/view-profile" passHref className="w-full">
+                               <Button variant="outline" className="w-full">View Profile</Button>
+                           </Link>
+                           <Link href="/d/marketer/team/assign" passHref className="w-full">
+                              <Button className="w-full">Assign</Button>
+                           </Link>
                         </div>
                     </CardContent>
                 </Card>
