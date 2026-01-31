@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -37,7 +36,8 @@ const navLinks = {
   Developer: [
     { href: "/d/developer", label: "Dashboard", icon: LayoutGrid },
     { href: "/d/developer/profile", label: "Profile", icon: User },
-    { href: "/d/developer/projects", label: "Projects", icon: Briefcase },
+    { href: "/d/developer/projects", label: "My Projects", icon: Briefcase },
+    { href: "/d/developer/available-projects", label: "Active Projects", icon: Globe },
     { href: "/d/developer/earnings", label: "Earnings", icon: DollarSign },
   ],
   Network: [
