@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -42,8 +43,8 @@ export default function NetworkProfilePage() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="lg:col-span-1 space-y-6">
-        <Card className="flex flex-col">
+      <div className="lg:col-span-1">
+        <Card className="flex flex-col h-full">
           <CardHeader className="items-center text-center">
             <Avatar className="h-24 w-24 mb-4">
               <AvatarFallback className="text-3xl">{initials}</AvatarFallback>
@@ -81,11 +82,11 @@ export default function NetworkProfilePage() {
               </div>
             </div>
           </CardContent>
-          <CardFooter className="pt-6 gap-2 flex-col sm:flex-row">
-            <Link href="/d/network/profile/view" passHref className="w-full">
+          <CardFooter className="pt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Link href="/d/network/profile/view" passHref>
               <Button className="w-full"><Eye className="mr-2 h-4 w-4" />View Profile</Button>
             </Link>
-            <Link href="/d/network/profile/edit" passHref className="w-full">
+            <Link href="/d/network/profile/edit" passHref>
               <Button variant="outline" className="w-full"><Edit className="mr-2 h-4 w-4" />Edit Profile</Button>
             </Link>
           </CardFooter>
