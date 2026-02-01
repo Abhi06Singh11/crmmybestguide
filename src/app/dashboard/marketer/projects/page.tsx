@@ -30,6 +30,7 @@ import {
   Hourglass,
   CheckCircle,
   Eye,
+  PlusCircle,
 } from 'lucide-react';
 import { marketerProjectsData } from '@/lib/dashboard-data';
 import { format, parseISO } from 'date-fns';
@@ -125,7 +126,15 @@ export default function ProjectsPage() {
                 </Card>
             </div>
             <Card>
-                <CardHeader><CardTitle>All Projects</CardTitle></CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
+                    <CardTitle>All Projects</CardTitle>
+                    <Link href="/d/marketer/projects/new">
+                        <Button>
+                            <PlusCircle className="mr-2 h-4 w-4" />
+                            New Project
+                        </Button>
+                    </Link>
+                </CardHeader>
                 <CardContent>
                   <ProjectsTable />
                 </CardContent>
