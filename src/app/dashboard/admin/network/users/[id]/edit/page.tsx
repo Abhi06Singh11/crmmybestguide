@@ -14,7 +14,7 @@ import {
   CardFooter,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft } from 'lucide-react';
@@ -24,8 +24,9 @@ import { usersData } from '@/lib/admin-dashboard-data';
 const editUserSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
-  role: z.string().min(1, { message: "Please select a role." }),
   status: z.string().min(1, { message: "Please select a status." }),
+  skills: z.string().optional(),
+  certifications: z.string().optional(),
 });
 
 export default function EditNetworkUserPage() {
@@ -34,15 +35,16 @@ export default function EditNetworkUserPage() {
   const { toast } = useToast();
   const { id } = params;
 
-  const user = usersData.find(u => u.id === id);
+  const user = usersData.find(u => u.id === id) as (typeof usersData[0] & { skills?: string[], certifications?: string[] }) | undefined;
   
   const form = useForm<z.infer<typeof editUserSchema>>({
     resolver: zodResolver(editUserSchema),
     defaultValues: {
       name: user?.name || '',
       email: user?.email || '',
-      role: user?.role || '',
       status: user?.status || '',
+      skills: user?.skills?.join(', ') || '',
+      certifications: user?.certifications?.join(', ') || '',
     },
   });
   
@@ -80,7 +82,7 @@ export default function EditNetworkUserPage() {
           <Card className="max-w-2xl mx-auto">
             <CardHeader>
               <CardTitle>Edit User: {user.name}</CardTitle>
-              <CardDescription>Update the user's details and status.</CardDescription>
+              <CardDescription>Update the user's details, status, and expertise.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <FormField control={form.control} name="name" render={({ field }) => (
@@ -89,37 +91,44 @@ export default function EditNetworkUserPage() {
               <FormField control={form.control} name="email" render={({ field }) => (
                 <FormItem><FormLabel>Email Address</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
-              <div className="grid grid-cols-2 gap-4">
-                <FormField control={form.control} name="role" render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Role</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                        <SelectContent>
-                        <SelectItem value="Network">Network</SelectItem>
-                        <SelectItem value="Developer">Developer</SelectItem>
-                        <SelectItem value="Marketer">Marketer</SelectItem>
-                        <SelectItem value="Super Admin">Super Admin</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <FormMessage />
-                    </FormItem>
-                )} />
-                 <FormField control={form.control} name="status" render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Status</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                        <SelectContent>
-                        <SelectItem value="Approved">Approved</SelectItem>
-                        <SelectItem value="Pending">Pending</SelectItem>
-                        <SelectItem value="Suspended">Suspended</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <FormMessage />
-                    </FormItem>
-                )} />
-              </div>
+              <FormField control={form.control} name="status" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Status</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                    <SelectContent>
+                      <SelectItem value="Approved">Approved</SelectItem>
+                      <SelectItem value="Pending">Pending</SelectItem>
+                      <SelectItem value="Suspended">Suspended</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="skills" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Skills</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., Linux, AWS, Docker" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Comma-separated list of technical skills.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )} />
+              <FormField control={form.control} name="certifications" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Certifications</FormLabel>
+                  <FormControl>
+                    <Input placeholder="e.g., AWS Certified, CCNA" {...field} />
+                  </FormControl>
+                   <FormDescription>
+                    Comma-separated list of professional certifications.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )} />
             </CardContent>
             <CardFooter>
               <Button type="submit">Save Changes</Button>

@@ -20,13 +20,13 @@ export const platformRevenueData = [
 export const usersData = [
   { id: 'usr_001', name: 'Alex Ray', email: 'alex.ray@example.com', role: 'Marketer', status: 'Approved', joinDate: '2023-01-15' },
   { id: 'usr_002', name: 'Bob Williams', email: 'bob.williams@example.com', role: 'Developer', status: 'Approved', joinDate: '2023-02-20' },
-  { id: 'usr_003', name: 'Casey Becker', email: 'casey.becker@example.com', role: 'Network', status: 'Approved', joinDate: '2023-03-10' },
+  { id: 'usr_003', name: 'Casey Becker', email: 'casey.becker@example.com', role: 'Network', status: 'Approved', joinDate: '2023-03-10', skills: ['Linux', 'AWS', 'Docker'], certifications: ['AWS Certified', 'ITIL'] },
   { id: 'usr_004', name: 'Dana Scully', email: 'dana.scully@example.com', role: 'Developer', status: 'Pending', joinDate: '2024-08-01' },
   { id: 'usr_005', name: 'Fox Mulder', email: 'fox.mulder@example.com', role: 'Marketer', status: 'Suspended', joinDate: '2023-05-25' },
   { id: 'usr_006', name: 'Grace Slick', email: 'grace.slick@example.com', role: 'Developer', status: 'Approved', joinDate: '2023-06-18' },
-  { id: 'usr_007', name: 'Nina Patel', email: 'nina.patel@example.com', role: 'Network', status: 'Approved', joinDate: '2023-04-12' },
-  { id: 'usr_008', name: 'Omar Khan', email: 'omar.khan@example.com', role: 'Network', status: 'Pending', joinDate: '2024-08-05' },
-  { id: 'usr_009', name: 'Priya Singh', email: 'priya.singh@example.com', role: 'Network', status: 'Approved', joinDate: '2023-07-22' },
+  { id: 'usr_007', name: 'Nina Patel', email: 'nina.patel@example.com', role: 'Network', status: 'Approved', joinDate: '2023-04-12', skills: ['Firewalls', 'Cisco', 'VPN'], certifications: ['CCNA', 'CISSP'] },
+  { id: 'usr_008', name: 'Omar Khan', email: 'omar.khan@example.com', role: 'Network', status: 'Pending', joinDate: '2024-08-05', skills: ['Azure', 'Windows Server'], certifications: [] },
+  { id: 'usr_009', name: 'Priya Singh', email: 'priya.singh@example.com', role: 'Network', status: 'Approved', joinDate: '2023-07-22', skills: ['GCP', 'Kubernetes'], certifications: ['Google Cloud Professional'] },
 ];
 
 
