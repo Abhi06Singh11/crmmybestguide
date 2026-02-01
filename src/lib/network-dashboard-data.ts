@@ -39,6 +39,15 @@ export const networkProfileData = {
     { metric: 'Avg. Resolution Time', value: '2.8 hours' },
     { metric: 'Client Satisfaction', value: '98%' },
   ],
+  ticketResolutionData: [
+      { day: 'Mon', tickets: 4 },
+      { day: 'Tue', tickets: 6 },
+      { day: 'Wed', tickets: 5 },
+      { day: 'Thu', tickets: 7 },
+      { day: 'Fri', tickets: 3 },
+      { day: 'Sat', tickets: 1 },
+      { day: 'Sun', tickets: 0 },
+  ]
 };
 
 

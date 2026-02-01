@@ -14,16 +14,24 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   Eye,
-  Star,
   CheckCircle,
-  Briefcase,
-  Cpu,
-  ShieldCheck,
-  Zap,
   Edit,
+  Zap,
+  ShieldCheck,
 } from 'lucide-react';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Tooltip,
+} from 'recharts';
+import {
+  ChartContainer,
+  ChartTooltipContent,
+} from '@/components/ui/chart';
 import { networkProfileData } from '@/lib/network-dashboard-data';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function NetworkProfilePage() {
@@ -35,10 +43,10 @@ export default function NetworkProfilePage() {
     availability, 
     skills, 
     tools, 
-    experience, 
     bio,
     certifications,
     performance,
+    ticketResolutionData
   } = networkProfileData;
 
   return (
@@ -92,14 +100,14 @@ export default function NetworkProfilePage() {
           </CardFooter>
         </Card>
       </div>
-      <div className="lg:col-span-2">
+      <div className="lg:col-span-2 space-y-6">
         <Card>
           <CardHeader>
             <CardTitle>Performance & Reliability</CardTitle>
             <CardDescription>Key metrics based on your support history.</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {performance.map(item => (
                     <Card key={item.metric} className="text-center">
                         <CardHeader className="pb-2">
@@ -111,22 +119,46 @@ export default function NetworkProfilePage() {
                     </Card>
                 ))}
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Recent High-Impact Resolutions</h4>
-               <div className="space-y-4">
-                <div className="flex items-start p-4 rounded-lg border gap-4">
-                  <div className="bg-red-500/10 text-red-500 p-2 rounded-full"><Zap className="h-5 w-5" /></div>
-                  <div>
-                    <p className="font-semibold">Critical Server Outage</p>
-                    <p className="text-sm text-muted-foreground">Restored service for 'Innovate Inc.' in under 30 minutes, preventing data loss.</p>
-                  </div>
+          </CardContent>
+        </Card>
+
+         <Card>
+            <CardHeader>
+                <CardTitle>Ticket Resolution Trend</CardTitle>
+                <CardDescription>Tickets resolved over the last 7 days.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <ChartContainer config={{}} className="h-64 w-full">
+                    <ResponsiveContainer>
+                        <BarChart data={ticketResolutionData}>
+                            <XAxis dataKey="day" tickLine={false} axisLine={false} tickMargin={8} fontSize={12} />
+                            <YAxis tickLine={false} axisLine={false} tickMargin={8} fontSize={12} />
+                            <Tooltip cursor={false} content={<ChartTooltipContent indicator="dot" />} />
+                            <Bar dataKey="tickets" fill="hsl(var(--primary))" radius={8} />
+                        </BarChart>
+                    </ResponsiveContainer>
+                </ChartContainer>
+            </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Recent High-Impact Resolutions</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div className="flex items-start p-4 rounded-lg border gap-4">
+                <div className="bg-red-500/10 text-red-500 p-2 rounded-full"><Zap className="h-5 w-5" /></div>
+                <div>
+                  <p className="font-semibold">Critical Server Outage</p>
+                  <p className="text-sm text-muted-foreground">Restored service for 'Innovate Inc.' in under 30 minutes, preventing data loss.</p>
                 </div>
-                <div className="flex items-start p-4 rounded-lg border gap-4">
-                  <div className="bg-green-500/10 text-green-500 p-2 rounded-full"><ShieldCheck className="h-5 w-5" /></div>
-                  <div>
-                    <p className="font-semibold">Security Patch Implementation</p>
-                    <p className="text-sm text-muted-foreground">Proactively patched a zero-day vulnerability across 5 client projects.</p>
-                  </div>
+              </div>
+              <div className="flex items-start p-4 rounded-lg border gap-4">
+                <div className="bg-green-500/10 text-green-500 p-2 rounded-full"><ShieldCheck className="h-5 w-5" /></div>
+                <div>
+                  <p className="font-semibold">Security Patch Implementation</p>
+                  <p className="text-sm text-muted-foreground">Proactively patched a zero-day vulnerability across 5 client projects.</p>
                 </div>
               </div>
             </div>

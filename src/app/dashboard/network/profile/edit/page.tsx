@@ -27,8 +27,6 @@ import { useRouter } from 'next/navigation';
 
 const profileSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email(),
-  role: z.string().min(2, "Role must be at least 2 characters."),
   bio: z.string().max(300, "Bio cannot exceed 300 characters.").optional(),
   skills: z.string().optional(),
   tools: z.string().optional(),
@@ -45,8 +43,6 @@ export default function EditNetworkProfilePage() {
         resolver: zodResolver(profileSchema),
         defaultValues: {
             name: networkProfileData.name,
-            email: networkProfileData.email,
-            role: networkProfileData.role,
             bio: networkProfileData.bio,
             skills: networkProfileData.skills.join(', '),
             tools: networkProfileData.tools.join(', '),
@@ -71,7 +67,7 @@ export default function EditNetworkProfilePage() {
             title: "Profile Updated",
             description: "Your profile information has been saved successfully.",
         });
-        router.push('/d/network/profile/view');
+        router.push('/d/network/profile');
     }
 
   return (
@@ -109,14 +105,20 @@ export default function EditNetworkProfilePage() {
                         <p className='text-sm text-muted-foreground'>Upload a new photo. We recommend a 200x200px image.</p>
                     </div>
                 </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                        <Label htmlFor="email">Email</Label>
+                        <p id="email" className="text-sm text-muted-foreground">{networkProfileData.email}</p>
+                    </div>
+                    <div className="space-y-1">
+                        <Label htmlFor="role">Role</Label>
+                        <p id="role" className="text-sm text-muted-foreground">{networkProfileData.role}</p>
+                    </div>
+                </div>
+
                  <FormField control={form.control} name="name" render={({ field }) => (
                     <FormItem><FormLabel>Full Name</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
-                )}/>
-                <FormField control={form.control} name="email" render={({ field }) => (
-                    <FormItem><FormLabel>Email</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
-                )}/>
-                <FormField control={form.control} name="role" render={({ field }) => (
-                    <FormItem><FormLabel>Role / Title</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                 )}/>
                 <FormField control={form.control} name="bio" render={({ field }) => (
                     <FormItem><FormLabel>Bio</FormLabel><FormControl><Textarea {...field} /></FormControl><FormMessage /></FormItem>
