@@ -96,7 +96,7 @@ export default function AdminMarketerProjectsPage() {
             <Link href="/d/admin/marketer/projects/new">
               <Button>
                   <PlusCircle className="mr-2 h-4 w-4" />
-                  Create Campaign
+                  New Project
               </Button>
             </Link>
         </CardHeader>
