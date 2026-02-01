@@ -113,3 +113,13 @@ export const adminAuditLogs = [
     { id: 'log_003', user: 'System', action: 'Suspended User', details: 'Suspended Fox Mulder for policy violation.', timestamp: '2024-08-04 18:00:00' },
     { id: 'log_004', user: 'Bob Williams', action: 'Requested Payout', details: 'Amount: $2,500', timestamp: '2024-08-03 11:00:00' },
 ];
+
+export const adminDeveloperProjectsData = [
+    { id: 'dev_proj_001', name: 'API Upgrade', status: 'Approved', budget: 3500, spend: 2100, successRate: 98 },
+    { id: 'dev_proj_002', name: 'Mobile App Fixes', status: 'Pending', budget: 4000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_003', name: 'Database Migration', status: 'Active', budget: 8000, spend: 5500, successRate: 99 },
+    { id: 'dev_proj_004', name: 'New Feature Release', status: 'Draft', budget: 12000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_005', name: 'Performance Tunning', status: 'Rejected', budget: 5000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_006', name: 'Security Patch', status: 'Active', budget: 2000, spend: 1000, successRate: 100 },
+    { id: 'dev_proj_007', name: 'UI Refresh', status: 'Pending', budget: 6000, spend: 0, successRate: 0 },
+];
