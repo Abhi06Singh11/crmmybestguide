@@ -19,6 +19,7 @@ import {
   Bell,
   CheckCheck,
   Cog,
+  Code,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "../ui/sidebar";
