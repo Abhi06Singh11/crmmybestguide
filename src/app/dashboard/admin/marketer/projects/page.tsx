@@ -27,6 +27,7 @@ import {
   YAxis,
   ResponsiveContainer,
 } from 'recharts';
+import Link from 'next/link';
 
 const marketerCampaigns = [
     { id: 'camp_001', name: 'Spring Sale', status: 'Running', budget: 5000, spend: 3200, roi: 3.2 },
@@ -92,10 +93,12 @@ export default function AdminMarketerProjectsPage() {
                 <CardTitle>Campaigns</CardTitle>
                 <CardDescription>A view of all campaigns marketers are managing, including performance and budget tracking.</CardDescription>
             </div>
-            <Button>
-                <PlusCircle className="mr-2 h-4 w-4" />
-                Create Campaign
-            </Button>
+            <Link href="/d/admin/marketer/projects/new">
+              <Button>
+                  <PlusCircle className="mr-2 h-4 w-4" />
+                  Create Campaign
+              </Button>
+            </Link>
         </CardHeader>
         <CardContent>
             <div className="overflow-x-auto">
