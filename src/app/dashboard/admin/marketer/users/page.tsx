@@ -23,15 +23,24 @@ import { Input } from '@/components/ui/input';
 import { Search } from 'lucide-react';
 import { usersData } from '@/lib/admin-dashboard-data';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export default function AdminMarketerUsersPage() {
   const marketerUsers = usersData.filter(u => u.role === 'Marketer');
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Marketer User Management</CardTitle>
-        <CardDescription>A view of all marketer users, their campaign assignments, and performance metrics.</CardDescription>
+      <CardHeader className="flex flex-row items-center justify-between">
+        <div>
+          <CardTitle>Marketer User Management</CardTitle>
+          <CardDescription>A view of all marketer users, their campaign assignments, and performance metrics.</CardDescription>
+        </div>
+        <Link href="/d/admin/marketer/users/new">
+            <Button>
+                <UserPlus className="mr-2 h-4 w-4" />
+                Add User
+            </Button>
+        </Link>
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center mb-4 gap-4">
@@ -43,10 +52,6 @@ export default function AdminMarketerUsersPage() {
                 className="w-full rounded-lg bg-secondary pl-8"
                 />
             </div>
-             <Button>
-                <UserPlus className="mr-2 h-4 w-4" />
-                Add User
-            </Button>
         </div>
         <div className="overflow-x-auto">
           <Table>
@@ -54,7 +59,7 @@ export default function AdminMarketerUsersPage() {
               <TableRow>
                 <TableHead>User</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Actions</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -86,9 +91,13 @@ export default function AdminMarketerUsersPage() {
                       {user.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="space-x-2">
-                    <Button variant="outline" size="sm">Edit</Button>
-                    <Button variant="destructive" size="sm">Disable</Button>
+                  <TableCell className="text-right space-x-2">
+                    <Link href={`/d/admin/marketer/users/${user.id}/edit`}>
+                        <Button variant="outline" size="sm">Edit</Button>
+                    </Link>
+                     <Link href={`/d/admin/marketer/users/${user.id}/disable`}>
+                        <Button variant="destructive" size="sm">Disable</Button>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
