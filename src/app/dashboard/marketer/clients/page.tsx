@@ -2,7 +2,11 @@
 'use client';
 
 import {
-  Card
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
 } from '@/components/ui/card';
 import {
   Table,
@@ -23,6 +27,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import {
   MoreHorizontal,
+  UserPlus
 } from 'lucide-react';
 import { clientsData } from '@/lib/dashboard-data';
 import { cn } from '@/lib/utils';
@@ -31,75 +36,89 @@ import Link from 'next/link';
 export default function ClientsPage() {
     return (
         <Card>
-            <div className="overflow-x-auto">
-                <Table>
-                <TableHeader>
-                    <TableRow>
-                    <TableHead>Client Name</TableHead>
-                    <TableHead className="hidden sm:table-cell">Active Projects</TableHead>
-                    <TableHead>Payment Status</TableHead>
-                    <TableHead className="hidden md:table-cell">Priority</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {clientsData.map(client => (
-                    <TableRow key={client.id}>
-                        <TableCell>
-                        <div className="flex items-center gap-3">
-                            <Avatar className="h-9 w-9">
-                            <AvatarFallback>{client.logo}</AvatarFallback>
-                            </Avatar>
-                            <span className="font-medium">{client.name}</span>
-                        </div>
-                        </TableCell>
-                        <TableCell className="text-center hidden sm:table-cell">{client.activeProjects}</TableCell>
-                        <TableCell>
-                        <Badge variant={
-                            client.paymentStatus === 'On Time' ? 'secondary' :
-                            client.paymentStatus === 'Paid' ? 'default' :
-                            'destructive'
-                        } className={cn(
-                            'justify-center',
-                            client.paymentStatus === 'Paid' && 'bg-green-500/80 text-white',
-                            client.paymentStatus === 'Overdue' && 'bg-yellow-500/80 text-white'
-                        )}>
-                            {client.paymentStatus}
-                        </Badge>
-                        </TableCell>
-                        <TableCell className="hidden md:table-cell">
-                        <Badge variant={
-                            client.priority === 'High' ? 'destructive' :
-                            client.priority === 'Medium' ? 'secondary' :
-                            'outline'
-                        }>
-                            {client.priority}
-                        </Badge>
-                        </TableCell>
-                        <TableCell className="text-right">
-                            <DropdownMenu>
-                                <DropdownMenuTrigger asChild>
-                                    <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
-                                </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end">
-                                    <Link href={`/d/marketer/clients/${client.slug}`}>
-                                        <DropdownMenuItem>
-                                            View Client
-                                        </DropdownMenuItem>
-                                    </Link>
-                                    <Link href="/d/marketer/clients/chat">
-                                        <DropdownMenuItem>
-                                            Send Message
-                                        </DropdownMenuItem>
-                                    </Link>
-                                </DropdownMenuContent>
-                            </DropdownMenu>
-                        </TableCell>
-                    </TableRow>
-                    ))}
-                </TableBody>
-                </Table>
-            </div>
+            <CardHeader className="flex flex-row items-center justify-between">
+                <div>
+                    <CardTitle>Client Management</CardTitle>
+                    <CardDescription>View, manage, and communicate with all your clients.</CardDescription>
+                </div>
+                 <Link href="/d/marketer/clients/new">
+                    <Button>
+                        <UserPlus className="mr-2 h-4 w-4" />
+                        Add Client
+                    </Button>
+                </Link>
+            </CardHeader>
+            <CardContent>
+                <div className="overflow-x-auto">
+                    <Table>
+                    <TableHeader>
+                        <TableRow>
+                        <TableHead>Client Name</TableHead>
+                        <TableHead className="hidden sm:table-cell">Active Projects</TableHead>
+                        <TableHead>Payment Status</TableHead>
+                        <TableHead className="hidden md:table-cell">Priority</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {clientsData.map(client => (
+                        <TableRow key={client.id}>
+                            <TableCell>
+                            <div className="flex items-center gap-3">
+                                <Avatar className="h-9 w-9">
+                                <AvatarFallback>{client.logo}</AvatarFallback>
+                                </Avatar>
+                                <span className="font-medium">{client.name}</span>
+                            </div>
+                            </TableCell>
+                            <TableCell className="text-center hidden sm:table-cell">{client.activeProjects}</TableCell>
+                            <TableCell>
+                            <Badge variant={
+                                client.paymentStatus === 'On Time' ? 'secondary' :
+                                client.paymentStatus === 'Paid' ? 'default' :
+                                'destructive'
+                            } className={cn(
+                                'justify-center',
+                                client.paymentStatus === 'Paid' && 'bg-green-500/80 text-white',
+                                client.paymentStatus === 'Overdue' && 'bg-yellow-500/80 text-white'
+                            )}>
+                                {client.paymentStatus}
+                            </Badge>
+                            </TableCell>
+                            <TableCell className="hidden md:table-cell">
+                            <Badge variant={
+                                client.priority === 'High' ? 'destructive' :
+                                client.priority === 'Medium' ? 'secondary' :
+                                'outline'
+                            }>
+                                {client.priority}
+                            </Badge>
+                            </TableCell>
+                            <TableCell className="text-right">
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger asChild>
+                                        <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent align="end">
+                                        <Link href={`/d/marketer/clients/${client.slug}`}>
+                                            <DropdownMenuItem>
+                                                View Client
+                                            </DropdownMenuItem>
+                                        </Link>
+                                        <Link href="/d/marketer/clients/chat">
+                                            <DropdownMenuItem>
+                                                Send Message
+                                            </DropdownMenuItem>
+                                        </Link>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            </TableCell>
+                        </TableRow>
+                        ))}
+                    </TableBody>
+                    </Table>
+                </div>
+            </CardContent>
         </Card>
     );
 }
