@@ -35,6 +35,7 @@ export default function EditNetworkUserPage() {
   const { toast } = useToast();
   const { id } = params;
 
+  // Type assertion to include optional skills/certifications from the dummy data
   const user = usersData.find(u => u.id === id) as (typeof usersData[0] & { skills?: string[], certifications?: string[] }) | undefined;
   
   const form = useForm<z.infer<typeof editUserSchema>>({
@@ -82,7 +83,7 @@ export default function EditNetworkUserPage() {
           <Card className="max-w-2xl mx-auto">
             <CardHeader>
               <CardTitle>Edit User: {user.name}</CardTitle>
-              <CardDescription>Update the user's details, status, and expertise.</CardDescription>
+              <CardDescription>Update the user's details, status, and expertise. The role is fixed as "Network".</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <FormField control={form.control} name="name" render={({ field }) => (
