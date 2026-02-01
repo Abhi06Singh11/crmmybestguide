@@ -27,10 +27,10 @@ import { useRouter } from 'next/navigation';
 
 const profileSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
-  role: z.string().min(2, "Role must be at least 2 characters."),
   bio: z.string().max(300, "Bio cannot exceed 300 characters.").optional(),
   skills: z.string().optional(),
   tools: z.string().optional(),
+  certifications: z.string().optional(),
 });
 
 
@@ -43,10 +43,10 @@ export default function EditDeveloperProfilePage() {
         resolver: zodResolver(profileSchema),
         defaultValues: {
             name: developerProfileData.name,
-            role: developerProfileData.role,
             bio: developerProfileData.bio,
             skills: developerProfileData.skills.join(', '),
             tools: developerProfileData.tools.join(', '),
+            certifications: 'AWS Certified Developer, Certified Kubernetes Application Developer',
         },
     });
 
@@ -107,9 +107,12 @@ export default function EditDeveloperProfilePage() {
                  <FormField control={form.control} name="name" render={({ field }) => (
                     <FormItem><FormLabel>Full Name</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
                 )}/>
-                <FormField control={form.control} name="role" render={({ field }) => (
-                    <FormItem><FormLabel>Role / Title</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
-                )}/>
+                
+                <div className="space-y-1">
+                    <Label>Role / Title</Label>
+                    <p className="text-sm text-muted-foreground">{developerProfileData.role}</p>
+                </div>
+
                 <FormField control={form.control} name="bio" render={({ field }) => (
                     <FormItem><FormLabel>Bio</FormLabel><FormControl><Textarea {...field} /></FormControl><FormMessage /></FormItem>
                 )}/>
@@ -118,6 +121,9 @@ export default function EditDeveloperProfilePage() {
                 )}/>
                  <FormField control={form.control} name="tools" render={({ field }) => (
                     <FormItem><FormLabel>Tools & Frameworks</FormLabel><FormControl><Input placeholder='e.g. VS Code, Docker, Jira' {...field} /></FormControl><FormDescription>Comma-separated list of tools you use.</FormDescription><FormMessage /></FormItem>
+                )}/>
+                 <FormField control={form.control} name="certifications" render={({ field }) => (
+                    <FormItem><FormLabel>Certifications</FormLabel><FormControl><Input placeholder='e.g. AWS Certified Developer' {...field} /></FormControl><FormDescription>Comma-separated list of your certifications.</FormDescription><FormMessage /></FormItem>
                 )}/>
               </CardContent>
               <CardFooter>

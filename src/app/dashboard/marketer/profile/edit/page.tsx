@@ -29,7 +29,6 @@ import { useRouter } from 'next/navigation';
 const profileSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
-  role: z.string().min(2, "Role must be at least 2 characters."),
   bio: z.string().max(300, "Bio cannot exceed 300 characters.").optional(),
   skills: z.string().optional(),
   availability: z.string(),
@@ -48,7 +47,6 @@ export default function EditProfilePage() {
         defaultValues: {
             name: marketerProfileData.name,
             email: "alex.ray@example.com",
-            role: marketerProfileData.role,
             bio: "Experienced marketer specializing in SEO, content strategy, and lead generation for tech startups.",
             skills: marketerProfileData.skills.join(', '),
             availability: marketerProfileData.availability,
@@ -117,9 +115,10 @@ export default function EditProfilePage() {
                  <FormField control={form.control} name="email" render={({ field }) => (
                     <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
                 )}/>
-                <FormField control={form.control} name="role" render={({ field }) => (
-                    <FormItem><FormLabel>Role / Title</FormLabel><FormControl><Input {...field} /></FormControl><FormMessage /></FormItem>
-                )}/>
+                <div className="space-y-1">
+                    <Label>Role / Title</Label>
+                    <p className="text-sm text-muted-foreground">{marketerProfileData.role}</p>
+                </div>
                 <FormField control={form.control} name="bio" render={({ field }) => (
                     <FormItem><FormLabel>Bio</FormLabel><FormControl><Textarea {...field} /></FormControl><FormMessage /></FormItem>
                 )}/>
