@@ -120,12 +120,11 @@ export default function DashboardSidebar({ role, adminProfile }: { role: string,
 
   if (role === 'Super Admin' && adminProfile) {
     const profileKey = adminProfile as keyof typeof adminNavLinks;
-    links = adminNavLinks[profileKey] || adminNavLinks.Global;
+    const allLinks = adminNavLinks[profileKey] || adminNavLinks.Global;
+    links = allLinks.filter(l => !l.href.endsWith('/settings'));
+    settingsLink = allLinks.find(l => l.href.endsWith('/settings'));
   } else {
     links = navLinks[roleKey] || [];
-  }
-  
-  if (role !== 'Super Admin') {
     let rolePath = role.toLowerCase().replace(' ', '');
     settingsLink = { href: `/d/${rolePath}/settings`, label: "Settings", icon: Settings };
   }
