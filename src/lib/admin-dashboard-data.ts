@@ -1,3 +1,4 @@
+
 import { Users, Briefcase, DollarSign, AlertTriangle } from 'lucide-react';
 
 export const adminKpiData = [
@@ -36,9 +37,12 @@ export const adminProjectsData = [
 ];
 
 export const adminApprovalsData = [
-    { id: 'appr_001', item: 'Dana Scully', type: 'New User', requester: 'System', date: '2024-08-01' },
-    { id: 'appr_002', item: 'Project "AI Chatbot"', type: 'New Project', requester: 'Alex Ray', date: '2024-08-02' },
-    { id: 'appr_003', item: 'Payout for Bob Williams ($2,500)', type: 'Payment', requester: 'Bob Williams', date: '2024-08-03' },
+    { id: 'appr_001', item: 'Dana Scully', type: 'New User', requester: 'System', date: '2024-08-01', status: 'Pending' },
+    { id: 'appr_002', item: 'Project "AI Chatbot"', type: 'New Project', requester: 'Alex Ray', date: '2024-08-02', status: 'Pending' },
+    { id: 'appr_003', item: 'Payout for Bob Williams ($2,500)', type: 'Payment', requester: 'Bob Williams', date: '2024-08-03', status: 'Pending' },
+    { id: 'appr_004', item: 'Campaign "Summer Sale"', type: 'Budget', requester: 'Alex Ray', date: '2024-07-28', status: 'Approved' },
+    { id: 'appr_005', item: 'User Deactivation: Fox Mulder', type: 'User Management', requester: 'Super Admin', date: '2024-07-25', status: 'Approved' },
+    { id: 'appr_006', item: 'Expense Report Q2', type: 'Expense', requester: 'Casey Becker', date: '2024-07-22', status: 'Rejected' },
 ];
 
 export const adminPaymentsData = {
