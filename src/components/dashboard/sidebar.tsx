@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from "next/link";
@@ -136,7 +137,7 @@ export default function DashboardSidebar({ role, adminProfile }: { role: string,
   return (
     <aside className="flex flex-col h-full">
       <div className="flex h-16 items-center border-b px-6">
-        <Link href="/" className="font-headline text-xl font-bold text-foreground" onClick={handleLinkClick}>
+        <Link href="/" className="font-headline text-xl font-bold" onClick={handleLinkClick}>
           MyBestGuide
         </Link>
       </div>
