@@ -46,10 +46,12 @@ export default function AdminUsersPage() {
                     Suspended Users
                 </Button>
             </Link>
-            <Button>
-                <UserPlus className="mr-2 h-4 w-4" />
-                Add User
-            </Button>
+            <Link href="/d/admin/users/new">
+                <Button>
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    Add User
+                </Button>
+            </Link>
         </div>
       </CardHeader>
       <CardContent>
