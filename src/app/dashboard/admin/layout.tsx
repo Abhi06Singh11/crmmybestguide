@@ -31,10 +31,10 @@ export default function AdminDashboardLayout({
   const router = useRouter();
 
   const profiles = [
-    { href: '/d/admin', label: 'Global Dashboard', icon: LayoutGrid },
-    { href: '/d/admin/marketer', label: 'Marketer', icon: BarChart },
-    { href: '/d/admin/developer', label: 'Developer', icon: Code },
-    { href: '/d/admin/network', label: 'Network', icon: Globe },
+    { key: 'Global', href: '/d/admin', label: 'Global Dashboard', icon: LayoutGrid },
+    { key: 'Marketer', href: '/d/admin/marketer', label: 'Marketer', icon: BarChart },
+    { key: 'Developer', href: '/d/admin/developer', label: 'Developer', icon: Code },
+    { key: 'Network', href: '/d/admin/network', label: 'Network', icon: Globe },
   ];
 
   const getCurrentProfile = () => {
@@ -99,7 +99,7 @@ export default function AdminDashboardLayout({
   return (
     <SidebarProvider>
       <Sidebar>
-        <DashboardSidebar role={role} />
+        <DashboardSidebar role={role} adminProfile={currentProfile.key} />
       </Sidebar>
       <SidebarInset>
         <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b bg-background/95 px-4 backdrop-blur-sm sm:px-6">
