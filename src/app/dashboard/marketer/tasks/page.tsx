@@ -32,6 +32,7 @@ import {
 import { marketerTasksData } from '@/lib/marketer-tasks-data';
 import { cn } from '@/lib/utils';
 import { format, parseISO } from 'date-fns';
+import Link from 'next/link';
 
 export default function TasksPage() {
   const getPriorityBadgeClass = (priority: string) => {
@@ -67,10 +68,12 @@ export default function TasksPage() {
             <CardTitle>Marketing Tasks</CardTitle>
             <CardDescription>Manage all your campaign and content tasks from here.</CardDescription>
         </div>
-        <Button>
-            <PlusCircle className="mr-2 h-4 w-4" />
-            Create Task
-        </Button>
+        <Link href="/d/marketer/tasks/new">
+          <Button>
+              <PlusCircle className="mr-2 h-4 w-4" />
+              Create Task
+          </Button>
+        </Link>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
@@ -114,12 +117,15 @@ export default function TasksPage() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>View Details</DropdownMenuItem>
-                        <DropdownMenuItem>Update Status</DropdownMenuItem>
-                        <DropdownMenuItem>Reassign</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link href={`/d/marketer/tasks/${task.id}`}>View Details</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                           <Link href={`/d/marketer/tasks/${task.id}/edit`}>Update Task</Link>
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="text-red-500">
-                          Delete Task
+                        <DropdownMenuItem asChild>
+                          <Link href={`/d/marketer/tasks/${task.id}/delete`} className="text-red-500">Delete Task</Link>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
