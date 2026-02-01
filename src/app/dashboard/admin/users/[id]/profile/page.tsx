@@ -10,7 +10,7 @@ import {
   CardDescription,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, User, Mail, Calendar, Briefcase, DollarSign } from 'lucide-react';
+import { ArrowLeft, User, Mail, Calendar, Briefcase, Shield } from 'lucide-react';
 import { usersData } from '@/lib/admin-dashboard-data';
 import { Badge } from '@/components/ui/badge';
 import { format, parseISO } from 'date-fns';
@@ -23,6 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import Link from 'next/link';
 
 export default function UserProfilePage() {
   const router = useRouter();
@@ -46,11 +47,17 @@ export default function UserProfilePage() {
 
   return (
     <div className="space-y-6">
-      <div>
+      <div className="flex justify-between items-center">
         <Button variant="outline" onClick={() => router.push('/d/admin/users')}>
           <ArrowLeft className="mr-2 h-4 w-4" />
           Back to User Management
         </Button>
+        <Link href={`/d/admin/users/${id}/permissions`}>
+            <Button>
+                <Shield className="mr-2 h-4 w-4" />
+                Edit Permissions
+            </Button>
+        </Link>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-1 space-y-6">
