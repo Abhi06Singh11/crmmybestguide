@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -27,13 +28,9 @@ import {
   YAxis,
   ResponsiveContainer,
 } from 'recharts';
-
-const networkProjects = [
-    { id: 'net_proj_001', name: 'Server Migration', status: 'Running', budget: 7000, spend: 4200, uptime: 99.98 },
-    { id: 'net_proj_002', name: 'Network Optimization', status: 'Paused', budget: 6500, spend: 2900, uptime: 99.95 },
-    { id: 'net_proj_003', name: 'Firewall Upgrade', status: 'Running', budget: 9000, spend: 6500, uptime: 99.99 },
-    { id: 'net_proj_004', name: 'Bandwidth Upgrade', status: 'Draft', budget: 18000, spend: 0, uptime: 0 },
-];
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Link from 'next/link';
+import { adminNetworkProjectsData } from '@/lib/admin-dashboard-data';
 
 const performanceData = [
   {name: 'W1', uptime: 99.9},
@@ -44,6 +41,28 @@ const performanceData = [
 
 
 export default function AdminNetworkProjectsPage() {
+  const [activeTab, setActiveTab] = useState('All');
+
+  const filteredProjects = adminNetworkProjectsData.filter(project => {
+    if (activeTab === 'All') return true;
+    return project.status === activeTab;
+  });
+
+  const getStatusBadgeClass = (status: string) => {
+    switch (status) {
+      case 'Approved':
+        return 'bg-green-500/80 text-white';
+      case 'Pending':
+        return 'bg-yellow-500/80 text-white';
+      case 'Rejected':
+        return 'bg-red-500/80 text-white';
+      case 'Draft':
+        return 'bg-gray-500/80 text-white';
+      default:
+        return '';
+    }
+  };
+  
   return (
     <div className="space-y-6">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -52,7 +71,7 @@ export default function AdminNetworkProjectsPage() {
                     <CardTitle className="text-sm font-medium">Running Projects</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">2</div>
+                    <div className="text-2xl font-bold">{adminNetworkProjectsData.filter(p => p.status === 'Approved').length}</div>
                 </CardContent>
             </Card>
              <Card>
@@ -92,13 +111,24 @@ export default function AdminNetworkProjectsPage() {
                 <CardTitle>Network Projects</CardTitle>
                 <CardDescription>A view of all infrastructure projects, including maintenance schedules and uptime reports.</CardDescription>
             </div>
-            <Button>
-                <PlusCircle className="mr-2 h-4 w-4" />
-                Create Project
-            </Button>
+            <Link href="/d/admin/network/projects/new">
+                <Button>
+                    <PlusCircle className="mr-2 h-4 w-4" />
+                    Create Project
+                </Button>
+            </Link>
         </CardHeader>
         <CardContent>
-            <div className="overflow-x-auto">
+             <Tabs value={activeTab} onValueChange={setActiveTab}>
+                <TabsList>
+                    <TabsTrigger value="All">All</TabsTrigger>
+                    <TabsTrigger value="Pending">Pending</TabsTrigger>
+                    <TabsTrigger value="Approved">Approved</TabsTrigger>
+                    <TabsTrigger value="Rejected">Rejected</TabsTrigger>
+                    <TabsTrigger value="Draft">Draft</TabsTrigger>
+                </TabsList>
+            </Tabs>
+            <div className="overflow-x-auto mt-4">
                 <Table>
                     <TableHeader>
                         <TableRow>
@@ -110,14 +140,11 @@ export default function AdminNetworkProjectsPage() {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        {networkProjects.map((project) => (
+                        {filteredProjects.map((project) => (
                             <TableRow key={project.id}>
                                 <TableCell className="font-medium">{project.name}</TableCell>
                                 <TableCell>
-                                    <Badge className={cn(
-                                        project.status === 'Running' && 'bg-green-500/80 text-white',
-                                        project.status === 'Paused' && 'bg-yellow-500/80 text-white',
-                                    )}>{project.status}</Badge>
+                                    <Badge className={cn(getStatusBadgeClass(project.status))}>{project.status}</Badge>
                                 </TableCell>
                                 <TableCell>${project.budget.toLocaleString()}</TableCell>
                                 <TableCell>${project.spend.toLocaleString()}</TableCell>

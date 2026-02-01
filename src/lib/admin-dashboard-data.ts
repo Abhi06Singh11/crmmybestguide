@@ -126,3 +126,13 @@ export const adminDeveloperProjectsData = [
     { id: 'dev_proj_006', name: 'Security Patch', status: 'Active', budget: 2000, spend: 1000, successRate: 100 },
     { id: 'dev_proj_007', name: 'UI Refresh', status: 'Pending', budget: 6000, spend: 0, successRate: 0 },
 ];
+
+export const adminNetworkProjectsData = [
+    { id: 'net_proj_001', name: 'Server Migration', status: 'Approved', budget: 7000, spend: 4200, uptime: 99.98 },
+    { id: 'net_proj_002', name: 'Network Optimization', status: 'Pending', budget: 6500, spend: 0, uptime: 0 },
+    { id: 'net_proj_003', name: 'Firewall Upgrade', status: 'Approved', budget: 9000, spend: 6500, uptime: 99.99 },
+    { id: 'net_proj_004', name: 'Bandwidth Upgrade', status: 'Draft', budget: 18000, spend: 0, uptime: 0 },
+    { id: 'net_proj_005', name: 'Data Center Decommission', status: 'Rejected', budget: 5000, spend: 0, uptime: 0 },
+    { id: 'net_proj_006', name: 'VPC Peering Setup', status: 'Approved', budget: 3000, spend: 3000, uptime: 100 },
+    { id: 'net_proj_007', name: 'Security Audit', status: 'Pending', budget: 4500, spend: 0, uptime: 0 },
+];
