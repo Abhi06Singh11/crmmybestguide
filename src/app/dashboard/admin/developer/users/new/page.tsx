@@ -68,10 +68,6 @@ export default function NewDeveloperUserPage() {
               <FormField control={form.control} name="email" render={({ field }) => (
                 <FormItem><FormLabel>Email Address</FormLabel><FormControl><Input type="email" placeholder="e.g., jane.smith@example.com" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
-               <div className="space-y-2">
-                <Label>Role</Label>
-                <Input value="Developer" readOnly disabled />
-              </div>
             </CardContent>
             <CardFooter>
               <Button type="submit">Create User</Button>
