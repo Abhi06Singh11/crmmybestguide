@@ -16,14 +16,12 @@ import {
 import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const newUserSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
-  role: z.string().min(1, { message: "Please select a role." }),
 });
 
 export default function NewMarketerUserPage() {
@@ -35,15 +33,14 @@ export default function NewMarketerUserPage() {
     defaultValues: {
       name: '',
       email: '',
-      role: 'Marketer',
     },
   });
 
   const onSubmit = (values: z.infer<typeof newUserSchema>) => {
-    console.log("New user created:", values);
+    console.log("New user created:", { ...values, role: 'Marketer' });
     toast({
       title: "User Created",
-      description: `${values.name} has been added as a ${values.role}.`,
+      description: `${values.name} has been added as a Marketer.`,
     });
     router.push('/d/admin/marketer/users');
   };
@@ -69,21 +66,6 @@ export default function NewMarketerUserPage() {
               )} />
               <FormField control={form.control} name="email" render={({ field }) => (
                 <FormItem><FormLabel>Email Address</FormLabel><FormControl><Input type="email" placeholder="e.g., john.doe@example.com" {...field} /></FormControl><FormMessage /></FormItem>
-              )} />
-              <FormField control={form.control} name="role" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Role</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                    <SelectContent>
-                      <SelectItem value="Marketer">Marketer</SelectItem>
-                      <SelectItem value="Developer">Developer</SelectItem>
-                      <SelectItem value="Network">Network</SelectItem>
-                      <SelectItem value="Super Admin">Super Admin</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
               )} />
             </CardContent>
             <CardFooter>

@@ -20,11 +20,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ArrowLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { usersData } from '@/lib/admin-dashboard-data';
+import { Label } from '@/components/ui/label';
 
 const editUserSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email." }),
-  role: z.string().min(1, { message: "Please select a role." }),
   status: z.string().min(1, { message: "Please select a status." }),
 });
 
@@ -41,7 +41,6 @@ export default function EditMarketerUserPage() {
     defaultValues: {
       name: user?.name || '',
       email: user?.email || '',
-      role: user?.role || '',
       status: user?.status || '',
     },
   });
@@ -59,7 +58,7 @@ export default function EditMarketerUserPage() {
   }
 
   const onSubmit = (values: z.infer<typeof editUserSchema>) => {
-    console.log("User updated:", values);
+    console.log("User updated:", { ...values, role: user.role });
     toast({
       title: "User Updated",
       description: `Details for ${values.name} have been saved.`,
@@ -89,37 +88,24 @@ export default function EditMarketerUserPage() {
               <FormField control={form.control} name="email" render={({ field }) => (
                 <FormItem><FormLabel>Email Address</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
-              <div className="grid grid-cols-2 gap-4">
-                <FormField control={form.control} name="role" render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Role</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                        <SelectContent>
-                        <SelectItem value="Marketer">Marketer</SelectItem>
-                        <SelectItem value="Developer">Developer</SelectItem>
-                        <SelectItem value="Network">Network</SelectItem>
-                        <SelectItem value="Super Admin">Super Admin</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <FormMessage />
-                    </FormItem>
-                )} />
-                 <FormField control={form.control} name="status" render={({ field }) => (
-                    <FormItem>
-                    <FormLabel>Status</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                        <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
-                        <SelectContent>
-                        <SelectItem value="Approved">Approved</SelectItem>
-                        <SelectItem value="Pending">Pending</SelectItem>
-                        <SelectItem value="Suspended">Suspended</SelectItem>
-                        </SelectContent>
-                    </Select>
-                    <FormMessage />
-                    </FormItem>
-                )} />
+              <div className="space-y-2">
+                <Label>Role</Label>
+                <Input value={user.role} readOnly disabled />
               </div>
+              <FormField control={form.control} name="status" render={({ field }) => (
+                <FormItem>
+                <FormLabel>Status</FormLabel>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl>
+                    <SelectContent>
+                    <SelectItem value="Approved">Approved</SelectItem>
+                    <SelectItem value="Pending">Pending</SelectItem>
+                    <SelectItem value="Suspended">Suspended</SelectItem>
+                    </SelectContent>
+                </Select>
+                <FormMessage />
+                </FormItem>
+            )} />
             </CardContent>
             <CardFooter>
               <Button type="submit">Save Changes</Button>
