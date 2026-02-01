@@ -180,7 +180,8 @@ export default function MarketerDashboardPage() {
 
     <Card>
       <CardHeader>
-        <CardTitle>Projects Overview</CardTitle>
+        <CardTitle>Campaigns Overview</CardTitle>
+        <CardDescription>An overview of all marketing campaigns.</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
