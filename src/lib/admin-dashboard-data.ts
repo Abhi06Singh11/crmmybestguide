@@ -37,13 +37,35 @@ export const adminProjectsData = [
 ];
 
 export const adminApprovalsData = [
-    { id: 'appr_001', item: 'Dana Scully', type: 'New User', requester: 'System', date: '2024-08-01', status: 'Pending' },
-    { id: 'appr_002', item: 'Project "AI Chatbot"', type: 'New Project', requester: 'Alex Ray', date: '2024-08-02', status: 'Pending' },
-    { id: 'appr_003', item: 'Payout for Bob Williams ($2,500)', type: 'Payment', requester: 'Bob Williams', date: '2024-08-03', status: 'Pending' },
-    { id: 'appr_004', item: 'Campaign "Summer Sale"', type: 'Budget', requester: 'Alex Ray', date: '2024-07-28', status: 'Approved' },
-    { id: 'appr_005', item: 'User Deactivation: Fox Mulder', type: 'User Management', requester: 'Super Admin', date: '2024-07-25', status: 'Approved' },
-    { id: 'appr_006', item: 'Expense Report Q2', type: 'Expense', requester: 'Casey Becker', date: '2024-07-22', status: 'Rejected' },
+    { id: 'appr_001', item: 'Dana Scully', type: 'New User', requester: 'System', date: '2024-08-01', status: 'Pending' as const },
+    { id: 'appr_002', item: 'Project "AI Chatbot"', type: 'New Project', requester: 'Alex Ray', date: '2024-08-02', status: 'Pending' as const },
+    { id: 'appr_003', item: 'Payout for Bob Williams ($2,500)', type: 'Payment', requester: 'Bob Williams', date: '2024-08-03', status: 'Pending' as const },
+    { id: 'appr_004', item: 'Campaign "Summer Sale"', type: 'Budget', requester: 'Alex Ray', date: '2024-07-28', status: 'Approved' as const },
+    { id: 'appr_005', item: 'User Deactivation: Fox Mulder', type: 'User Management', requester: 'Super Admin', date: '2024-07-25', status: 'Approved' as const },
+    { id: 'appr_006', item: 'Expense Report Q2', type: 'Expense', requester: 'Casey Becker', date: '2024-07-22', status: 'Rejected' as const },
 ];
+
+export const marketerApprovalsData = [
+    { id: 'appr_mkt_001', item: 'Campaign "Black Friday Promo"', type: 'New Campaign', requester: 'Alex Ray', date: '2024-08-05', status: 'Pending' as const },
+    { id: 'appr_mkt_002', item: 'Ad Spend Increase ($2k)', type: 'Budget', requester: 'Dana Scully', date: '2024-08-04', status: 'Pending' as const },
+    { id: 'appr_mkt_003', item: 'Invoice #1024 to Quantum Solutions', type: 'Payment', requester: 'System', date: '2024-08-03', status: 'Approved' as const },
+    { id: 'appr_mkt_004', item: 'New Ad Creative "SummerVibes"', type: 'Creative', requester: 'Alex Ray', date: '2024-08-02', status: 'Rejected' as const },
+];
+
+export const developerApprovalsData = [
+    { id: 'appr_dev_001', item: 'Dev Project "New Feature Release"', type: 'New Project', requester: 'Alex Ray', date: '2024-08-06', status: 'Pending' as const },
+    { id: 'appr_dev_002', item: 'Payment "Invoice #2048"', type: 'Payment', requester: 'Bob Williams', date: '2024-08-05', status: 'Pending' as const },
+    { id: 'appr_dev_003', item: 'System Rule "Auto-Scale"', type: 'Rule Change', requester: 'Casey Becker', date: '2024-08-04', status: 'Approved' as const },
+    { id: 'appr_dev_004', item: 'Repo Access for "Mobile App Fixes"', type: 'Access', requester: 'Eva Green', date: '2024-08-02', status: 'Rejected' as const },
+];
+
+export const networkApprovalsData = [
+    { id: 'appr_net_001', item: 'Network Project "Bandwidth Upgrade"', type: 'New Project', requester: 'Nina Patel', date: '2024-08-06', status: 'Pending' as const },
+    { id: 'appr_net_002', item: 'Payment "Invoice #3050"', type: 'Payment', requester: 'Omar Khan', date: '2024-08-05', status: 'Pending' as const },
+    { id: 'appr_net_003', item: 'Rule "Traffic Threshold Alert"', type: 'Rule Change', requester: 'Priya Singh', date: '2024-08-04', status: 'Approved' as const },
+    { id: 'appr_net_004', item: 'Firewall Port Opening for 8080', type: 'Security', requester: 'Nina Patel', date: '2024-08-01', status: 'Rejected' as const },
+];
+
 
 export const adminPaymentsData = {
     kpis: [
