@@ -58,7 +58,6 @@ export default function AdminNetworkUsersPage() {
             <TableHeader>
               <TableRow>
                 <TableHead>User</TableHead>
-                <TableHead>Role</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
@@ -71,9 +70,6 @@ export default function AdminNetworkUsersPage() {
                     <div className="text-sm text-muted-foreground">
                       {user.email}
                     </div>
-                  </TableCell>
-                  <TableCell>
-                      <Badge variant="outline">{user.role}</Badge>
                   </TableCell>
                   <TableCell>
                     <Badge
