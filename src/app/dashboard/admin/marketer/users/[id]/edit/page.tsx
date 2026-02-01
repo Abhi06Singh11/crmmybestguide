@@ -79,7 +79,7 @@ export default function EditMarketerUserPage() {
           <Card className="max-w-2xl mx-auto">
             <CardHeader>
               <CardTitle>Edit User: {user.name}</CardTitle>
-              <CardDescription>Update the user's details and status.</CardDescription>
+              <CardDescription>Update the user's details and status. The role is fixed as "{user.role}".</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <FormField control={form.control} name="name" render={({ field }) => (
@@ -88,10 +88,6 @@ export default function EditMarketerUserPage() {
               <FormField control={form.control} name="email" render={({ field }) => (
                 <FormItem><FormLabel>Email Address</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
               )} />
-              <div className="space-y-2">
-                <Label>Role</Label>
-                <Input value={user.role} readOnly disabled />
-              </div>
               <FormField control={form.control} name="status" render={({ field }) => (
                 <FormItem>
                 <FormLabel>Status</FormLabel>

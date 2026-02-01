@@ -65,7 +65,7 @@ export default function EditUserPermissionsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="text-2xl">Edit Permissions</CardTitle>
-          <CardDescription>Manage roles and permissions for {user.name}.</CardDescription>
+          <CardDescription>Manage fine-grained permissions for {user.name}. The user's role is {user.role}.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
             <div className="flex items-center gap-4 p-4 border rounded-lg bg-muted/50">
@@ -74,21 +74,6 @@ export default function EditUserPermissionsPage() {
                     <p className="font-semibold text-lg">{user.name}</p>
                     <p className="text-sm text-muted-foreground">{user.email}</p>
                 </div>
-            </div>
-
-            <div className="space-y-2">
-                <Label htmlFor="role">User Role</Label>
-                <Select defaultValue={user.role}>
-                    <SelectTrigger id="role" className="w-full md:w-1/3">
-                        <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectItem value="Marketer">Marketer</SelectItem>
-                        <SelectItem value="Developer">Developer</SelectItem>
-                        <SelectItem value="Network">Network</SelectItem>
-                        <SelectItem value="Super Admin">Super Admin</SelectItem>
-                    </SelectContent>
-                </Select>
             </div>
             
             <Separator />
