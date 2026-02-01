@@ -25,10 +25,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { MoreHorizontal, UserPlus } from 'lucide-react';
+import { MoreHorizontal, UserPlus, ShieldOff } from 'lucide-react';
 import { usersData } from '@/lib/admin-dashboard-data';
 import { cn } from '@/lib/utils';
 import { format, parseISO } from 'date-fns';
+import Link from 'next/link';
 
 export default function AdminUsersPage() {
   return (
@@ -38,10 +39,18 @@ export default function AdminUsersPage() {
             <CardTitle>User Management</CardTitle>
             <CardDescription>View, manage, and approve all users on the platform.</CardDescription>
         </div>
-        <Button>
-            <UserPlus className="mr-2 h-4 w-4" />
-            Add User
-        </Button>
+        <div className="flex gap-2">
+            <Link href="/d/admin/users/suspended">
+                <Button variant="outline">
+                    <ShieldOff className="mr-2 h-4 w-4" />
+                    Suspended Users
+                </Button>
+            </Link>
+            <Button>
+                <UserPlus className="mr-2 h-4 w-4" />
+                Add User
+            </Button>
+        </div>
       </CardHeader>
       <CardContent>
         <div className="overflow-x-auto">
@@ -56,7 +65,7 @@ export default function AdminUsersPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {usersData.map((user) => (
+              {usersData.filter(u => u.status !== 'Suspended').map((user) => (
                 <TableRow key={user.id}>
                   <TableCell>
                     <div className="font-medium">{user.name}</div>
@@ -98,14 +107,18 @@ export default function AdminUsersPage() {
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem>View Profile</DropdownMenuItem>
-                        <DropdownMenuItem>Edit Permissions</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                           <Link href={`/d/admin/users/${user.id}/profile`}>View Profile</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href={`/d/admin/users/${user.id}/permissions`}>Edit Permissions</Link>
+                        </DropdownMenuItem>
                          {user.status === 'Pending' && (
                           <DropdownMenuItem>Approve User</DropdownMenuItem>
                         )}
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="text-red-500">
-                          Suspend User
+                        <DropdownMenuItem asChild>
+                             <Link href={`/d/admin/users/${user.id}/suspend`} className="text-red-500">Suspend User</Link>
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
