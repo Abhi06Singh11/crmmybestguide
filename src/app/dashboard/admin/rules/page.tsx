@@ -92,12 +92,12 @@ export default function AdminRulesPage() {
   return (
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         <Card>
-        <CardHeader className="flex flex-row items-center justify-between">
+        <CardHeader className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div>
                 <CardTitle>System Rules</CardTitle>
                 <CardDescription>Configuration and governance of platform behavior, including commissions, permissions, and feature toggles.</CardDescription>
             </div>
-            <Button onClick={handleNewRuleClick}>
+            <Button onClick={handleNewRuleClick} className="w-full md:w-auto">
                 <PlusCircle className="mr-2 h-4 w-4" />
                 Create Rule
             </Button>
@@ -147,17 +147,17 @@ export default function AdminRulesPage() {
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">Name</Label>
-                        <Input id="name" name="name" defaultValue={editingRule?.name} className="col-span-3" required />
+                    <div className="space-y-2">
+                        <Label htmlFor="name">Rule Name</Label>
+                        <Input id="name" name="name" defaultValue={editingRule?.name} required />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="condition" className="text-right">Condition</Label>
-                        <Input id="condition" name="condition" defaultValue={editingRule?.condition} className="col-span-3" placeholder="e.g., payment.amount < 500" required />
+                    <div className="space-y-2">
+                        <Label htmlFor="condition">Condition</Label>
+                        <Input id="condition" name="condition" defaultValue={editingRule?.condition} placeholder="e.g., payment.amount < 500" required />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="action" className="text-right">Action</Label>
-                        <Input id="action" name="action" defaultValue={editingRule?.action} className="col-span-3" placeholder="e.g., auto_approve()" required />
+                    <div className="space-y-2">
+                        <Label htmlFor="action">Action</Label>
+                        <Input id="action" name="action" defaultValue={editingRule?.action} placeholder="e.g., auto_approve()" required />
                     </div>
                 </div>
                 <DialogFooter>

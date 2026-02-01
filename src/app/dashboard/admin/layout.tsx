@@ -76,7 +76,7 @@ export default function AdminDashboardLayout({
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="w-64 justify-between">
+          <Button variant="outline" className="w-full sm:w-64 justify-between">
             <div className="flex items-center gap-2">
                 <currentProfile.icon className="h-4 w-4 text-muted-foreground" />
                 <span>{currentProfile.label}</span>
@@ -84,7 +84,7 @@ export default function AdminDashboardLayout({
             <ChevronDown className="h-4 w-4 opacity-50" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-64">
+        <DropdownMenuContent className="w-full sm:w-64">
           {profiles.map((profile) => (
             <DropdownMenuItem key={profile.href} onClick={() => handleProfileSwitch(profile.href)}>
                 <profile.icon className="mr-2 h-4 w-4" />
@@ -103,7 +103,7 @@ export default function AdminDashboardLayout({
       </Sidebar>
       <SidebarInset>
         <header className="sticky top-0 z-30 flex h-16 w-full items-center justify-between border-b bg-background/95 px-4 backdrop-blur-sm sm:px-6">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             <SidebarTrigger />
             <ProfileSwitcher />
           </div>

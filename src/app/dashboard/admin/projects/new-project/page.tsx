@@ -133,7 +133,7 @@ export default function NewProjectPage() {
                 <Progress value={(currentStep / steps.length) * 100} className="w-full" />
                 <div className="flex justify-between mt-2">
                     {steps.map(step => (
-                        <div key={step.number} className="flex flex-col items-center text-center w-1/3">
+                        <div key={step.number} className="flex flex-1 flex-col items-center text-center px-1">
                             <div className={`w-6 h-6 rounded-full flex items-center justify-center ${currentStep >= step.number ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
                                 {currentStep > step.number ? <CheckCircle className="h-4 w-4" /> : step.number}
                             </div>
