@@ -17,10 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['sans-serif'],
-        body: ['sans-serif'],
-        headline: ['sans-serif'],
-        code: ['monospace'],
+        sans: ['"PT Sans"', 'sans-serif'],
+        headline: ['Poppins', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

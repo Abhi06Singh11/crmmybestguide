@@ -181,7 +181,7 @@ export default function BdePartnerProgramPage() {
             <h2 className="text-3xl font-bold text-center mb-12">
                 Our Commission Structure
             </h2>
-            <Card>
+            <Card className="overflow-x-auto">
                 <Table>
                     <TableHeader>
                         <TableRow>

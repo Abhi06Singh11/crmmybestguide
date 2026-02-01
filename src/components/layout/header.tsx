@@ -42,7 +42,7 @@ export default function Header() {
         <div
           className="hidden md:flex flex-1 justify-center items-center"
         >
-          <nav className="flex items-center space-x-2 text-sm font-medium">
+          <nav className="flex items-center space-x-1 text-sm font-medium">
             {navLinks.map((link) => {
               const isActive = pathname.startsWith(link.href);
               return (
@@ -50,7 +50,7 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   className={cn(
-                    'flex items-center gap-2 rounded-md px-4 py-2 transition-colors duration-200 border-2 border-transparent',
+                    'flex items-center gap-2 rounded-md px-3 py-2 transition-colors duration-200 border-2 border-transparent',
                     isActive
                       ? 'bg-primary text-primary-foreground border-primary'
                       : 'text-foreground/70 hover:bg-primary/90 hover:text-primary-foreground hover:border-primary'
