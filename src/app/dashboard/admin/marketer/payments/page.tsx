@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -30,6 +31,13 @@ const marketerPayments = [
 ];
 
 export default function AdminMarketerPaymentsPage() {
+  const [filterStatus, setFilterStatus] = useState('all');
+
+  const filteredPayments = marketerPayments.filter(payment => {
+    if (filterStatus === 'all') return true;
+    return payment.status.toLowerCase() === filterStatus;
+  });
+
   return (
     <Card>
       <CardHeader>
@@ -38,7 +46,7 @@ export default function AdminMarketerPaymentsPage() {
       </CardHeader>
       <CardContent>
         <div className="flex justify-between items-center mb-4 gap-4">
-            <Select>
+            <Select value={filterStatus} onValueChange={setFilterStatus}>
                 <SelectTrigger className="w-[180px]">
                     <SelectValue placeholder="Filter by status..." />
                 </SelectTrigger>
@@ -66,7 +74,7 @@ export default function AdminMarketerPaymentsPage() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {marketerPayments.map((payment) => (
+                    {filteredPayments.map((payment) => (
                         <TableRow key={payment.id}>
                             <TableCell className="font-medium">{payment.invoice}</TableCell>
                             <TableCell>{payment.client}</TableCell>
