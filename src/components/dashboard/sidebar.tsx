@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -22,7 +21,7 @@ import {
   Code,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "../ui/sidebar";
+import { SidebarMenu, SidebarMenuItem, SidebarMenuButton, useSidebar } from "../ui/sidebar";
 
 const navLinks = {
   Marketer: [
@@ -112,6 +111,7 @@ const rootDashboardLinks = [
 
 export default function DashboardSidebar({ role, adminProfile }: { role: string, adminProfile?: string }) {
   const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
   const roleKey = role as keyof typeof navLinks;
   
   let links = [];
@@ -129,11 +129,14 @@ export default function DashboardSidebar({ role, adminProfile }: { role: string,
     settingsLink = { href: `/d/${rolePath}/settings`, label: "Settings", icon: Settings };
   }
 
+  const handleLinkClick = () => {
+    setOpenMobile(false);
+  };
 
   return (
     <aside className="flex flex-col h-full">
       <div className="flex h-16 items-center border-b px-6">
-        <Link href="/" className="font-headline text-xl font-bold text-foreground">
+        <Link href="/" className="font-headline text-xl font-bold text-foreground" onClick={handleLinkClick}>
           MyBestGuide
         </Link>
       </div>
@@ -154,7 +157,7 @@ export default function DashboardSidebar({ role, adminProfile }: { role: string,
               return (
                   <SidebarMenuItem key={link.href}>
                       <SidebarMenuButton asChild isActive={isActive} tooltip={link.label}>
-                          <Link href={link.href}>
+                          <Link href={link.href} onClick={handleLinkClick}>
                               <link.icon />
                               <span>{link.label}</span>
                           </Link>
@@ -169,7 +172,7 @@ export default function DashboardSidebar({ role, adminProfile }: { role: string,
             <SidebarMenu>
                 <SidebarMenuItem>
                     <SidebarMenuButton asChild isActive={pathname.startsWith(settingsLink.href)} tooltip={settingsLink.label}>
-                        <Link href={settingsLink.href}>
+                        <Link href={settingsLink.href} onClick={handleLinkClick}>
                             <settingsLink.icon />
                             <span>{settingsLink.label}</span>
                         </Link>
