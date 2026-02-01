@@ -1,5 +1,7 @@
+
 'use client';
 
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -20,9 +22,17 @@ import { Badge } from '@/components/ui/badge';
 import { adminPaymentsData } from '@/lib/admin-dashboard-data';
 import { cn } from '@/lib/utils';
 import { Download } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 
 export default function AdminPaymentsPage() {
+  const [filterStatus, setFilterStatus] = useState('all');
+
+  const filteredTransactions = adminPaymentsData.transactions.filter(txn => {
+    if (filterStatus === 'all') return true;
+    return txn.status.toLowerCase() === filterStatus;
+  });
+
   return (
     <div className="space-y-6">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -39,17 +49,30 @@ export default function AdminPaymentsPage() {
             ))}
         </div>
         <Card>
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader>
                 <div>
                     <CardTitle>Transaction History</CardTitle>
                     <CardDescription>Financial oversight to track client payments, freelancer payouts, and platform commissions.</CardDescription>
                 </div>
-                 <Button>
-                    <Download className="mr-2 h-4 w-4" />
-                    Export Report
-                </Button>
             </CardHeader>
             <CardContent>
+                <div className="flex justify-between items-center mb-4 gap-4">
+                    <Select value={filterStatus} onValueChange={setFilterStatus}>
+                        <SelectTrigger className="w-full md:w-[180px]">
+                            <SelectValue placeholder="Filter by status..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">All Statuses</SelectItem>
+                            <SelectItem value="paid">Paid</SelectItem>
+                            <SelectItem value="pending">Pending</SelectItem>
+                            <SelectItem value="overdue">Overdue</SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <Button>
+                        <Download className="mr-2 h-4 w-4" />
+                        Export Report
+                    </Button>
+                </div>
                 <div className="overflow-x-auto">
                     <Table>
                         <TableHeader>
@@ -62,7 +85,7 @@ export default function AdminPaymentsPage() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {adminPaymentsData.transactions.map((txn) => (
+                            {filteredTransactions.map((txn) => (
                                 <TableRow key={txn.id}>
                                     <TableCell className="font-mono text-xs">{txn.id}</TableCell>
                                     <TableCell>{txn.client}</TableCell>
