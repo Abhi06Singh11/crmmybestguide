@@ -8,12 +8,14 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
+  CardFooter,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calendar, User, Briefcase, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Calendar, User, Briefcase, CheckCircle, Edit } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
 
 // Dummy data for a single project
 const project = {
@@ -91,6 +93,14 @@ export default function ViewProjectPage() {
                 </div>
 
             </CardContent>
+            <CardFooter className="justify-end">
+                <Link href="/d/marketer/projects/edit">
+                    <Button>
+                        <Edit className="mr-2 h-4 w-4" />
+                        Edit Project
+                    </Button>
+                </Link>
+            </CardFooter>
         </Card>
     </div>
   );
