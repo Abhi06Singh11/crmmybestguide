@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -115,8 +116,7 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
   ),
   '21': (props) => ( // Singapore Airport Transfers - Airplane
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m22 2-7 20-4-9-9-4Z"></path>
-        <path d="m22 2-11 13"></path>
+        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2 3 5 2 2l20 7-8.8 3.2Z"></path>
     </svg>
   ),
   '22': (props) => ( // ACGEM Africa - Government Building
@@ -215,8 +215,10 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className={`group aspect-square rounded-lg flex items-center justify-center bg-secondary shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
-                    <Icon className="h-1/3 w-1/3 text-primary transition-transform duration-300 group-hover:scale-110" />
+                  <div className={`group aspect-square rounded-lg bg-muted flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
+                    <div className="text-primary transition-colors duration-300 group-hover:text-primary-foreground">
+                        <Icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
+                    </div>
                   </div>
                 </div>
                 {index < filteredProjects.length - 1 && <Separator className="my-16 bg-border/40" />}
