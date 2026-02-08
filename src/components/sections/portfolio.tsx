@@ -118,8 +118,8 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
   ),
   '21': (props) => ( // Singapore Airport Transfers - Airplane
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-1-3 0-4.5 1.5L13 8 4.8 6.2"></path>
-        <path d="m2.2 2.2 7.8 7.8"></path><path d="M19 15c-3.3 0-6 2.7-6 6"></path>
+        <path d="m22 2-7 20-4-9-9-4Z"></path>
+        <path d="m22 2-11 13"></path>
     </svg>
   ),
   '22': (props) => ( // ACGEM Africa - Government Building
