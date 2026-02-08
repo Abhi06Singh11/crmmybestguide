@@ -7,6 +7,7 @@ import {
   ArrowRight,
   BookOpen,
   Car,
+  Dumbbell,
   HeartPulse,
   Home,
   Landmark,
@@ -31,15 +32,7 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
   '3': Store,
   '4': Store,
   '5': Smile,
-  '6': (props) => (
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M16.5 12.5C16.5 14.71 14.71 16.5 12.5 16.5C10.29 16.5 8.5 14.71 8.5 12.5C8.5 10.29 10.29 8.5 12.5 8.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M12.5 8.5C16.5 1.5 22.5 4 22.5 8C22.5 12 16.5 15.5 12.5 16.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M12.5 8.5C8.5 1.5 2.5 4 2.5 8C2.5 12 8.5 15.5 12.5 16.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M6.5 18.5C4.5 20.5 5.5 22.5 7.5 22.5C9.5 22.5 10.5 20.5 8.5 18.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M18.5 18.5C16.5 20.5 17.5 22.5 19.5 22.5C21.5 22.5 22.5 20.5 20.5 18.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  ),
+  '6': Dumbbell,
   '7': Wrench,
   '13': Home,
   '14': BookOpen,
