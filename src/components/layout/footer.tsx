@@ -76,7 +76,7 @@ export default function Footer() {
       </div>
       <div className="border-t border-border py-4">
         <div className="container flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; {currentYear} MyBestGuide. All rights reserved.</p>
+          <p>&copy; <span suppressHydrationWarning>{currentYear}</span> MyBestGuide. All rights reserved.</p>
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
             <Link href="#" className="hover:text-primary hover:underline">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary hover:underline">Terms of Service</Link>
