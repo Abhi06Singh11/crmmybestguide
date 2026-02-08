@@ -38,11 +38,11 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
         <path d="M12 22V12"></path>
     </svg>
   ),
-  '5': (props) => ( // Portchef - Chef hat
+  '5': (props) => ( // Portchef - cook
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 13.1c0 .4 0 .8.1 1.2 1.3 5.4 6.3 9.4 12 9.4s10.7-4 12-9.4c.1-.4.1-.8.1-1.2"></path>
-        <path d="M3.5 10.7c0-.5.1-.9.2-1.4 1-4.7 5.2-8.3 10.3-8.3s9.3 3.6 10.3 8.3c.1.5.2 1 .2 1.4"></path>
-        <path d="M12 2v6"></path><path d="M12 16v6"></path>
+        <path d="M19 19a7 7 0 1 1-14 0"/>
+        <path d="M5 19v2h14v-2"/>
+        <path d="M12 12a3 3 0 0 0 3-3V2H9v7a3 3 0 0 0 3 3Z"/>
     </svg>
   ),
   '6': (props) => ( // Carlos - Fitness
@@ -77,14 +77,11 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
         <path d="m14.5 9.5-5 5"></path>
     </svg>
   ),
-  '16': (props) => ( // Creative Phy - Lightbulb
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9.8 15.2c.4.4.9.6 1.4.6s1-.2 1.4-.6c.4-.4.6-.9.6-1.4s-.2-1-.6-1.4c-.4-.4-.9-.6-1.4-.6s-1 .2-1.4.6c-.4.4-.6.9-.6 1.4s.2 1 .6 1.4Z"></path>
-        <path d="M12.4 12.5a3.5 3.5 0 0 0 0 5"></path>
-        <path d="M16 8.9c-2.7 2.7-2.7 7.1 0 9.9"></path>
-        <path d="M8 8.9c2.7 2.7 2.7 7.1 0 9.9"></path>
-        <path d="M12 22v-2.5"></path><path d="M9.5 4a2.5 2.5 0 0 1 5 0"></path>
-        <path d="M12 10V2"></path>
+  '16': (props) => ( // Creative Phy - shop
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+        <path d="M12 22V12"></path>
     </svg>
   ),
   '17': (props) => ( // Ground of Law - Scale
