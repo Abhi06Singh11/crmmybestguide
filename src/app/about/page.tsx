@@ -1,6 +1,6 @@
 'use client';
 
-import { BookOpen, Lightbulb, Users, Award, ShieldCheck, User, UserRound, UserCircle } from 'lucide-react';
+import { BookOpen, Lightbulb, Users, Award, ShieldCheck, UserCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const teamMembers = [
@@ -8,19 +8,16 @@ const teamMembers = [
     name: 'Abhishek Singh',
     title: 'Customer Success Manager & Technical Lead',
     bio: 'Abhishek ensures our clients receive top-notch support while leading technical innovation across our projects.',
-    gender: 'male'
   },
   {
     name: 'Mohini Mishra',
     title: 'Project Manager',
     bio: 'Mohini drives project execution with precision, coordinating teams and delivering results on time, every time.',
-    gender: 'female'
   },
   {
     name: 'Mayank Kumar',
     title: 'Lead Developer',
     bio: 'Mayank builds the backbone of our platform, crafting robust and scalable solutions for our growing community.',
-    gender: 'male'
   }
 ];
 
@@ -92,16 +89,15 @@ export default function AboutUs() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     {teamMembers.map((member) => {
                         return(
-                        <Card key={member.name} className="text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <Card key={member.name} className="group text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                             <CardContent className="p-6">
                                 <div className="flex justify-center mb-4">
-                                    <div className="rounded-full bg-primary/10 p-4 text-primary">
-                                        <UserCircle className="h-20 w-20" />
+                                    <div className="rounded-full bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                                        <UserCircle className="h-20 w-20 transition-transform duration-300 group-hover:scale-110" />
                                     </div>
                                 </div>
-                                <h3 className="font-headline text-xl font-bold flex items-center justify-center gap-2">
-                                  <span>{member.name}</span>
-                                  {member.gender === 'male' ? <User className="h-5 w-5 text-muted-foreground" /> : <UserRound className="h-5 w-5 text-muted-foreground" />}
+                                <h3 className="font-headline text-xl font-bold">
+                                  {member.name}
                                 </h3>
                                 <p className="text-primary font-medium">{member.title}</p>
                                 <p className="text-muted-foreground mt-2 text-sm">{member.bio}</p>
@@ -119,10 +115,10 @@ export default function AboutUs() {
                 </div>
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     {coreValues.map((item) => (
-                        <Card key={item.title} className="h-full p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <Card key={item.title} className="group h-full p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                             <div className="flex justify-center mb-4">
-                                <div className="rounded-full bg-primary/10 p-4 text-primary">
-                                    <item.icon className="h-8 w-8" />
+                                <div className="rounded-full bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                                    <item.icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                                 </div>
                             </div>
                             <h3 className="font-headline text-xl font-semibold">{item.title}</h3>
