@@ -18,11 +18,9 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
   ),
   '2': (props) => ( // TipTop Ride - Car
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 16.5V14a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2.5"></path>
-      <path d="M14 16.5H4.5l-2.5-7L4.5 3h15l2.5 6.5-2.5 7H14Z"></path>
-      <path d="M12 3v2"></path>
-      <circle cx="7.5" cy="16.5" r="0.5"></circle>
-      <circle cx="16.5" cy="16.5" r="0.5"></circle>
+        <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-1.6-.2L8 11l-4.16.86a1 1 0 0 0-.84.99V16H6"/>
+        <path d="M7 16v-5"/><path d="M17 16v-5"/>
+        <circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/>
     </svg>
   ),
     '3': (props) => ( // Pillow Factory - E-commerce/Store
@@ -216,7 +214,7 @@ export default function Portfolio() {
                   </div>
 
                   <div className={`flex items-center justify-center ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
-                    <div className="group w-full max-w-sm aspect-square rounded-lg bg-muted flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary">
+                    <div className="flex items-center justify-center group w-full max-w-sm aspect-square rounded-lg bg-muted shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary">
                         <div className="text-primary transition-colors duration-300 group-hover:text-primary-foreground">
                             <Icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
                         </div>
