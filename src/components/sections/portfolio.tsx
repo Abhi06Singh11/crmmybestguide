@@ -48,7 +48,7 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
   '6': (props) => ( // Carlos - Fitness
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M16 7h-2c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2"></path>
-        <path d="M8 7h2c1.1 0 2 .9 2 2v6c0 1.1-.9 2-2 2H8"></path>
+        <path d="M8 7h2c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2H8"></path>
         <rect width="6" height="18" x="1" y="3" rx="2"></rect><rect width="6" height="18" x="17" y="3" rx="2"></rect>
     </svg>
   ),
@@ -137,11 +137,9 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
         <path d="M16 14h.01" />
     </svg>
   ),
-  '23': (props) => ( // Smseducations - Graduation Cap
+  '23': (props) => ( // Smseducations - Message icon
      <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m12 13 4-4 4 4"></path>
-        <path d="M4 21v-7a4 4 0 0 1 4-4h8"></path>
-        <path d="m12 3-8 5 8 5 8-5z"></path>
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
     </svg>
   ),
   '24': (props) => ( // MMT - Employee Panel - Chart
