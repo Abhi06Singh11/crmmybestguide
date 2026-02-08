@@ -1,148 +1,66 @@
-
 'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { projects } from '@/lib/data';
-import { ArrowRight } from 'lucide-react';
+import {
+  ArrowRight,
+  BookOpen,
+  Car,
+  HeartPulse,
+  Home,
+  Landmark,
+  LineChart,
+  MapPin,
+  MessageSquare,
+  Plane,
+  Scale,
+  Smile,
+  Store,
+  Truck,
+  Wrench,
+  BookUser,
+} from 'lucide-react';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Separator } from '@/components/ui/separator';
 
 const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {
-  '1': (props) => ( // NearMeR - Location
+  '1': MapPin,
+  '2': Car,
+  '3': Store,
+  '4': Store,
+  '5': Smile,
+  '6': (props) => (
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+      <path d="M16.5 12.5C16.5 14.71 14.71 16.5 12.5 16.5C10.29 16.5 8.5 14.71 8.5 12.5C8.5 10.29 10.29 8.5 12.5 8.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M12.5 8.5C16.5 1.5 22.5 4 22.5 8C22.5 12 16.5 15.5 12.5 16.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M12.5 8.5C8.5 1.5 2.5 4 2.5 8C2.5 12 8.5 15.5 12.5 16.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M6.5 18.5C4.5 20.5 5.5 22.5 7.5 22.5C9.5 22.5 10.5 20.5 8.5 18.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M18.5 18.5C16.5 20.5 17.5 22.5 19.5 22.5C21.5 22.5 22.5 20.5 20.5 18.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  '7': Wrench,
+  '13': Home,
+  '14': BookOpen,
+  '15': (props) => (
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-      <circle cx="12" cy="10" r="3"></circle>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+      <path d="m9.5 9.5 5 5"></path>
+      <path d="m14.5 9.5-5 5"></path>
     </svg>
   ),
-  '2': (props) => ( // TipTop Ride - Car
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-1.6-.2L8 11l-4.16.86a1 1 0 0 0-.84.99V16H6"/>
-        <path d="M7 16v-5"/><path d="M17 16v-5"/>
-        <circle cx="6" cy="20" r="2"/><circle cx="18" cy="20" r="2"/>
-    </svg>
-  ),
-    '3': (props) => ( // Pillow Factory - E-commerce/Store
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
-        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-        <path d="M12 22V12"></path>
-    </svg>
-  ),
-  '4': (props) => ( // Khasta - E-commerce/Store
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
-        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-        <path d="M12 22V12"></path>
-    </svg>
-  ),
-  '5': (props) => ( // Portchef - cook
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M19 19a7 7 0 1 1-14 0"/>
-        <path d="M5 19v2h14v-2"/>
-        <path d="M12 12a3 3 0 0 0 3-3V2H9v7a3 3 0 0 0 3 3Z"/>
-    </svg>
-  ),
-  '6': (props) => ( // Carlos - Fitness
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M16 7h-2c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h2"></path>
-        <path d="M8 7h2c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2H8"></path>
-        <rect width="6" height="18" x="1" y="3" rx="2"></rect><rect width="6" height="18" x="17" y="3" rx="2"></rect>
-    </svg>
-  ),
-  '7': (props) => ( // Wayne - Contractor/Tool
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-    </svg>
-  ),
-  '13': (props) => ( // OmaShram - Senior Care
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-        <path d="M9 22V12h6v10"></path>
-        <path d="M12 18.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"></path>
-    </svg>
-  ),
-  '14': (props) => ( // PostmortemShala - LMS/Book
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path>
-        <path d="m4 13 3.5-3-3.5-3"></path>
-    </svg>
-  ),
-  '15': (props) => ( // Technique Loss Adjusters - Shield/Broken
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        <path d="m9.5 9.5 5 5"></path>
-        <path d="m14.5 9.5-5 5"></path>
-    </svg>
-  ),
-  '16': (props) => ( // Creative Phy - shop
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
-        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-        <path d="M12 22V12"></path>
-    </svg>
-  ),
-  '17': (props) => ( // Ground of Law - Scale
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 3v18"></path>
-        <path d="M3 7h18"></path>
-        <path d="M6 7l-3 5h6l-3-5z"></path>
-        <path d="M18 7l-3 5h6l-3-5z"></path>
-    </svg>
-  ),
-  '18': (props) => ( // Ainab Home Health Care - House/Health
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-        <path d="M12 11h4"></path>
-        <path d="M12 11v4"></path>
-        <path d="M12 11h-4"></path>
-        <path d="M12 11V7"></path>
-    </svg>
-  ),
-  '19': (props) => ( // Fahad M Al Mazrou Co. - Truck
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10 17h4V5H2v12h3"></path><path d="M22 17h-3V5h-4v12h-3"></path>
-        <circle cx="7" cy="17" r="2"></circle><circle cx="17" cy="17" r="2"></circle>
-    </svg>
-  ),
-  '20': (props) => ( // Sweorn Advisors - Passport/Visa
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect width="18" height="12" x="3" y="6" rx="2"></rect><circle cx="9" cy="12" r="1"></circle>
-        <path d="M15 12h3"></path>
-    </svg>
-  ),
-  '21': (props) => ( // Singapore Airport Transfers - Airplane
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2 3 5 2 2l20 7-8.8 3.2Z"></path>
-    </svg>
-  ),
-  '22': (props) => ( // ACGEM Africa - Government Building
-    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
-        <path d="M9 22v-4h6v4" />
-        <path d="M8 6h.01" />
-        <path d="M16 6h.01" />
-        <path d="M12 6h.01" />
-        <path d="M12 10h.01" />
-        <path d="M12 14h.01" />
-        <path d="M16 10h.01" />
-        <path d="M8 10h.01" />
-        <path d="M8 14h.01" />
-        <path d="M16 14h.01" />
-    </svg>
-  ),
-  '23': (props) => ( // Smseducations - Message icon
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-    </svg>
-  ),
-  '24': (props) => ( // MMT - Employee Panel - Chart
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 3v18h18"></path><path d="m18 9-5 5-4-4-3 3"></path>
-    </svg>
-  )
+  '16': Store,
+  '17': Scale,
+  '18': HeartPulse,
+  '19': Truck,
+  '20': BookUser,
+  '21': Plane,
+  '22': Landmark,
+  '23': MessageSquare,
+  '24': LineChart,
 };
+
 
 const FallbackIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -214,7 +132,7 @@ export default function Portfolio() {
                   </div>
 
                   <div className={`flex items-center justify-center ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
-                    <div className="flex items-center justify-center group w-full max-w-sm aspect-square rounded-lg bg-muted shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary">
+                     <div className="flex items-center justify-center group w-full max-w-sm aspect-square rounded-lg bg-muted shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary">
                         <div className="text-primary transition-colors duration-300 group-hover:text-primary-foreground">
                             <Icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
                         </div>
