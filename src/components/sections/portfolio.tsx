@@ -215,9 +215,11 @@ export default function Portfolio() {
                     </div>
                   </div>
 
-                  <div className={`group aspect-square rounded-lg bg-muted flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
-                    <div className="text-primary transition-colors duration-300 group-hover:text-primary-foreground">
-                        <Icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
+                  <div className={`flex items-center justify-center ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
+                    <div className="group w-full max-w-sm aspect-square rounded-lg bg-muted flex items-center justify-center shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary">
+                        <div className="text-primary transition-colors duration-300 group-hover:text-primary-foreground">
+                            <Icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
+                        </div>
                     </div>
                   </div>
                 </div>
