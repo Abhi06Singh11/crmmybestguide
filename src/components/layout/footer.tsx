@@ -6,7 +6,7 @@ export default function Footer() {
   const quickLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/portfolio', label: 'Projects' },
+    { href: '/portfolio', label: 'Portfolio' },
     { href: '/about', label: 'About Us' },
     { href: '/careers', label: 'Careers' },
   ];
@@ -44,7 +44,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary" />
-                <a href="mailto:mybestguide.in@gmail.com" className="text-sm text-muted-foreground hover:text-primary hover:underline">
+                <a href="mailto:mybestguide.in@gmail.com" className="text-sm text-muted-foreground hover:text-primary hover:underline" suppressHydrationWarning>
                   Email Us
                 </a>
               </li>
