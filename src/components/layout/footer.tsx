@@ -1,4 +1,3 @@
-
 import Link from 'next/link';
 import { Mail, MapPin, Twitter, Linkedin, Instagram } from 'lucide-react';
 
@@ -7,7 +6,7 @@ export default function Footer() {
   const quickLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/portfolio', label: 'Portfolio' },
+    { href: '/portfolio', label: 'Projects' },
     { href: '/about', label: 'About Us' },
     { href: '/careers', label: 'Careers' },
   ];
