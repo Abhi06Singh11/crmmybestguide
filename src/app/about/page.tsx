@@ -1,8 +1,6 @@
 'use client';
 
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { BookOpen, Lightbulb, Users, Award, ShieldCheck, User, UserRound } from 'lucide-react';
+import { BookOpen, Lightbulb, Users, Award, ShieldCheck, User, UserRound, UserCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const teamMembers = [
@@ -10,21 +8,18 @@ const teamMembers = [
     name: 'Abhishek Singh',
     title: 'Customer Success Manager & Technical Lead',
     bio: 'Abhishek ensures our clients receive top-notch support while leading technical innovation across our projects.',
-    image: '26',
     gender: 'male'
   },
   {
     name: 'Mohini Mishra',
     title: 'Project Manager',
     bio: 'Mohini drives project execution with precision, coordinating teams and delivering results on time, every time.',
-    image: '25',
     gender: 'female'
   },
   {
     name: 'Mayank Kumar',
     title: 'Lead Developer',
     bio: 'Mayank builds the backbone of our platform, crafting robust and scalable solutions for our growing community.',
-    image: '27',
     gender: 'male'
   }
 ];
@@ -53,8 +48,6 @@ const coreValues = [
 ]
 
 export default function AboutUs() {
-  const teamImages = PlaceHolderImages.filter(img => teamMembers.some(t => t.image === img.id));
-
   return (
     <>
         <section className="bg-secondary py-16 md:py-24">
@@ -98,11 +91,14 @@ export default function AboutUs() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     {teamMembers.map((member) => {
-                        const image = teamImages.find(img => img.id === member.image);
                         return(
                         <Card key={member.name} className="text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                             <CardContent className="p-6">
-                                {image && <Image src={image.imageUrl} alt={member.name} width={120} height={120} className="rounded-full mx-auto mb-4 border-4 border-primary" data-ai-hint={image.imageHint} />}
+                                <div className="flex justify-center mb-4">
+                                    <div className="rounded-full bg-primary/10 p-4 text-primary">
+                                        <UserCircle className="h-20 w-20" />
+                                    </div>
+                                </div>
                                 <h3 className="font-headline text-xl font-bold flex items-center justify-center gap-2">
                                   <span>{member.name}</span>
                                   {member.gender === 'male' ? <User className="h-5 w-5 text-muted-foreground" /> : <UserRound className="h-5 w-5 text-muted-foreground" />}
