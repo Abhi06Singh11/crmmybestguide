@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { Mail, MapPin, Twitter, Linkedin, Instagram } from 'lucide-react';
 
@@ -44,7 +45,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-3">
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-primary" />
-                <a href="mailto:mybestguide.in@gmail.com" className="text-sm text-muted-foreground hover:text-primary hover:underline" suppressHydrationWarning>
+                <a href="mailto:mybestguide.in@gmail.com" className="text-sm text-muted-foreground hover:text-primary hover:underline">
                   Email Us
                 </a>
               </li>
