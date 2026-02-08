@@ -59,13 +59,13 @@ export default function FreeWebsiteAd() {
             </div>
 
             <div className="pt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/contact">
+                <Link href="https://abhi06singh11.github.io/website/" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" className='font-bold bg-primary-foreground text-primary border-primary-foreground hover:bg-transparent hover:text-primary-foreground'>
                        <Rocket className="mr-2 h-5 w-5" />
                        Claim Your Free Website
                     </Button>
                 </Link>
-                <Link href="#">
+                <Link href="https://abhi06singh11.github.io/website/#features" target="_blank" rel="noopener noreferrer">
                     <Button size="lg" variant="outline" className="bg-transparent text-primary-foreground border-primary-foreground/50 hover:bg-primary-foreground hover:text-primary">
                         <Download className="mr-2 h-5 w-5" />
                         See What's Included
