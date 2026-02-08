@@ -10,7 +10,6 @@ export default function Footer() {
     { href: '/portfolio', label: 'Projects' },
     { href: '/about', label: 'About Us' },
     { href: '/careers', label: 'Careers' },
-    { href: '/contact', label: 'Contact' },
   ];
 
   const socialLinks = [
@@ -50,13 +49,15 @@ export default function Footer() {
                   Email Us
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <MapPin className="h-5 w-5 text-primary" />
-                <span className="text-sm text-muted-foreground">Bangalore</span>
-              </li>
                <li className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-primary" />
                 <span className="text-sm text-muted-foreground">Lucknow</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-primary" />
+                <Link href="/contact" className="text-sm text-muted-foreground hover:text-primary hover:underline">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
