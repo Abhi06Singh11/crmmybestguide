@@ -51,7 +51,7 @@ export default function Services() {
                 <Card className="h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground">
                   <CardContent className="p-6 flex flex-col items-center justify-center text-center h-full">
                       <div className="rounded-full bg-primary/10 p-4 text-primary mb-4 transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary">
-                          <service.icon className="h-10 w-10" />
+                          <service.icon className="h-10 w-10 transition-transform duration-300 group-hover:scale-110" />
                       </div>
                       <CardTitle className="font-headline text-lg group-hover:text-primary-foreground">{service.title}</CardTitle>
                   </CardContent>
