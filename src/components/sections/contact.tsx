@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -14,9 +13,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Mail, MapPin, Phone, BotMessageSquare, Linkedin, Twitter, Instagram } from 'lucide-react';
-import { generateInquiryResponse } from '@/ai/flows/generate-inquiry-response';
-import { Loader2 } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Linkedin, Twitter, Instagram } from 'lucide-react';
 
 
 const contactSchema = z.object({
@@ -70,8 +67,6 @@ const socialLinks = [
 
 export default function Contact() {
   const { toast } = useToast();
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [inquiryResponse, setInquiryResponse] = useState('');
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -108,21 +103,11 @@ export default function Contact() {
   }
 
   async function onQuickInquirySubmit(values: z.infer<typeof quickInquirySchema>) {
-    setIsGenerating(true);
-    setInquiryResponse('');
-    try {
-      const result = await generateInquiryResponse({ inquiry: values.inquiry });
-      setInquiryResponse(result.response);
-    } catch (error) {
-      console.error('Error generating inquiry response:', error);
-      toast({
-        variant: 'destructive',
-        title: 'Error',
-        description: 'There was an issue generating a response. Please try again.',
-      });
-    } finally {
-      setIsGenerating(false);
-    }
+    const phoneNumber = '917379848171';
+    const message = encodeURIComponent(values.inquiry);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+    quickForm.reset();
   }
 
   return (
@@ -232,8 +217,10 @@ export default function Contact() {
             <div className="space-y-8 lg:col-span-2">
                  <Card>
                     <CardHeader>
-                        <CardTitle className="font-headline flex items-center gap-2"><BotMessageSquare className="h-6 w-6 text-primary" />Quick Inquiry</CardTitle>
-                        <CardDescription>Don't have time for the form? Just tell us what you need.</CardDescription>
+                        <CardTitle className="font-headline flex items-center gap-2">
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6 text-primary"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                            Quick Inquiry on WhatsApp</CardTitle>
+                        <CardDescription>No time for forms? Send us a message directly on WhatsApp.</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <Form {...quickForm}>
@@ -244,25 +231,19 @@ export default function Contact() {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormControl>
-                                                <Textarea placeholder="e.g., 'I need a website for my new coffee shop in Bangalore.'" {...field} />
+                                                <Textarea placeholder="e.g., 'Hi, I need a website for my new coffee shop in Lucknow.'" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                                 <div className="text-center">
-                                    <Button type="submit" disabled={isGenerating}>
-                                        {isGenerating ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Generating...</> : 'Get an Instant Response'}
+                                    <Button type="submit">
+                                      <Send className="mr-2 h-4 w-4" /> Send on WhatsApp
                                     </Button>
                                 </div>
                             </form>
                         </Form>
-                        {inquiryResponse && (
-                            <div className="mt-4 rounded-md border bg-background p-4 text-sm">
-                                <p className="font-semibold">Suggested Next Steps:</p>
-                                <p className="text-muted-foreground">{inquiryResponse}</p>
-                            </div>
-                        )}
                     </CardContent>
                 </Card>
                  <Card>
@@ -274,27 +255,43 @@ export default function Contact() {
                             <Mail className="h-6 w-6 text-primary" />
                             <div>
                                 <h4 className="font-semibold">Business Email</h4>
-                                <a href="mailto:contact@mybestguide.com" className="text-muted-foreground hover:text-primary transition-colors">contact@mybestguide.com</a>
+                                <a href="mailto:mybestguide.in@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">mybestguide.in@gmail.com</a>
                             </div>
                         </div>
                          <div className="flex items-center gap-4">
                             <Phone className="h-6 w-6 text-primary" />
                             <div>
                                 <h4 className="font-semibold">Phone Number</h4>
-                                <p className="text-muted-foreground">+91 123 456 7890</p>
+                                <p className="text-muted-foreground">+91-7379848171</p>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
                             <MapPin className="h-6 w-6 text-primary mt-1" />
                             <div>
-                                <h4 className="font-semibold">Our Locations</h4>
-                                <p className="text-muted-foreground">Bangalore, India</p>
+                                <h4 className="font-semibold">Our Location</h4>
                                 <p className="text-muted-foreground">Lucknow, India</p>
                             </div>
                         </div>
                     </CardContent>
                 </Card>
-
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="font-headline">Map Location</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="aspect-video w-full overflow-hidden rounded-lg">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113904.22591823722!2d80.86591738735391!3d26.84861917711424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399bfd991f32b16b%3A0x93ccba8909978be7!2sLucknow%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1669820542721!5m2!1sen!2sin"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen={false}
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
+                    </CardContent>
+                </Card>
                  <Card>
                     <CardHeader>
                         <CardTitle className="font-headline">Follow Us</CardTitle>
