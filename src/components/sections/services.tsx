@@ -94,9 +94,9 @@ export default function Services() {
                                           </Link>
                                       </div>
                                   </div>
-                                  <div className={`aspect-video rounded-lg bg-muted flex items-center justify-center ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
+                                  <div className={`group aspect-video rounded-lg bg-muted flex items-center justify-center transition-shadow duration-300 hover:shadow-lg ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
                                   <div className="text-primary">
-                                      <service.icon className="h-24 w-24" />
+                                      <service.icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
                                   </div>
                                   </div>
                               </div>
