@@ -216,7 +216,7 @@ export default function Portfolio() {
                   </div>
 
                   <div className={`group aspect-square rounded-lg flex items-center justify-center bg-secondary shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
-                    <Icon className="h-2/5 w-2/5 text-primary transition-transform duration-300 group-hover:scale-110" />
+                    <Icon className="h-1/3 w-1/3 text-primary transition-transform duration-300 group-hover:scale-110" />
                   </div>
                 </div>
                 {index < filteredProjects.length - 1 && <Separator className="my-16 bg-border/40" />}
