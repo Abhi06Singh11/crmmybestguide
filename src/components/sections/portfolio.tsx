@@ -31,12 +31,11 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
         <path d="M12 22V12"></path>
     </svg>
   ),
-  '4': (props) => ( // Khasta - Cookie
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2a10 10 0 1 0 10 10c0-4-1.8-7.2-4.5-8.9"></path>
-        <path d="M15.5 6.5a.5.5 0 0 0-1 0 .5.5 0 0 0 1 0Z"></path>
-        <path d="M13 11a.5.5 0 0 1 0-1 .5.5 0 0 1 0 1Z"></path>
-        <path d="M10 8a.5.5 0 0 0-1 0 .5.5 0 0 0 1 0Z"></path>
+  '4': (props) => ( // Khasta - E-commerce/Store
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"></path>
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+        <path d="M12 22V12"></path>
     </svg>
   ),
   '5': (props) => ( // Portchef - Chef hat
@@ -94,13 +93,12 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
         <path d="M12 10V2"></path>
     </svg>
   ),
-  '17': (props) => ( // Ground of Law - Gavel
+  '17': (props) => ( // Ground of Law - Scale
     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="m16 16.5-4-4-4 4"></path>
-        <path d="M16 20a2 2 0 0 0-2-2H10a2 2 0 0 0-2 2"></path>
-        <path d="m12.5 4.5-5 5"></path><path d="m17.5 9.5-5 5"></path>
-        <path d="m3.5 14.5 9-9"></path><path d="M2 2l5 5"></path>
-        <path d="M17 17l5 5"></path>
+        <path d="M12 3v18"></path>
+        <path d="M3 7h18"></path>
+        <path d="M6 7l-3 5h6l-3-5z"></path>
+        <path d="M18 7l-3 5h6l-3-5z"></path>
     </svg>
   ),
   '18': (props) => ( // Ainab Home Health Care - House/Health
@@ -130,9 +128,19 @@ const ProjectIcons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } =
         <path d="m2.2 2.2 7.8 7.8"></path><path d="M19 15c-3.3 0-6 2.7-6 6"></path>
     </svg>
   ),
-  '22': (props) => ( // ACGEM Africa - Graph Up
-     <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 18l7-7 4 4 6-6"></path><path d="M18 6h-6v6"></path>
+  '22': (props) => ( // ACGEM Africa - Government Building
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect width="16" height="20" x="4" y="2" rx="2" ry="2" />
+        <path d="M9 22v-4h6v4" />
+        <path d="M8 6h.01" />
+        <path d="M16 6h.01" />
+        <path d="M12 6h.01" />
+        <path d="M12 10h.01" />
+        <path d="M12 14h.01" />
+        <path d="M16 10h.01" />
+        <path d="M8 10h.01" />
+        <path d="M8 14h.01" />
+        <path d="M16 14h.01" />
     </svg>
   ),
   '23': (props) => ( // Smseducations - Graduation Cap
