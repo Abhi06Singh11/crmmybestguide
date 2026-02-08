@@ -262,7 +262,7 @@ export default function Contact() {
                             <Phone className="h-6 w-6 text-primary" />
                             <div>
                                 <h4 className="font-semibold">Phone Number</h4>
-                                <p className="text-muted-foreground">+91-7379848171</p>
+                                <a href="tel:+917379848171" className="text-muted-foreground hover:text-primary transition-colors">+91-7379848171</a>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
