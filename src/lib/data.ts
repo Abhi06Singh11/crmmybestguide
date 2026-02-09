@@ -1,5 +1,5 @@
 
-import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap, Apple, Devices, LayoutTemplate } from 'lucide-react';
+import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap, Apple, MonitorSmartphone, LayoutTemplate } from 'lucide-react';
 
 export const services = [
   {
@@ -360,7 +360,7 @@ export const mobileAppDevelopmentData = {
       image: "2"
     },
     {
-      icon: Devices,
+      icon: MonitorSmartphone,
       title: "Cross-Platform App Development",
       description: "Reach a wider audience faster with cross-platform development. Using modern frameworks like Flutter and React Native, we build beautiful, high-performance apps that run on both Android and iOS from a single codebase.",
       image: "13"
