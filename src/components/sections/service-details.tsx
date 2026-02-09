@@ -4,8 +4,6 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Separator } from '@/components/ui/separator';
 
 interface Service {
@@ -29,10 +27,6 @@ export default function ServiceDetails({
   services,
 }: ServiceDetailsProps) {
   const router = useRouter();
-  
-  const serviceImages = PlaceHolderImages.filter((img) =>
-    services.some((s) => s.image === img.id)
-  );
 
   return (
     <>
@@ -58,7 +52,6 @@ export default function ServiceDetails({
       <section className="py-16 md:py-24 bg-background">
           <div className="container space-y-16">
               {services.map((service, index) => {
-                const image = serviceImages.find(img => img.id === service.image);
                 return (
                 <div key={service.title}>
                   <div className={`grid gap-12 items-center md:grid-cols-2 ${index % 2 !== 0 ? 'md:grid-flow-col-dense' : ''}`}>
@@ -71,21 +64,10 @@ export default function ServiceDetails({
                           </div>
                           <p className="text-muted-foreground">{service.description}</p>
                       </div>
-                      <div className={`aspect-video rounded-lg flex items-center justify-center shadow-lg ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
-                        {image ? (
-                          <Image
-                              src={image.imageUrl}
-                              alt={service.title}
-                              width={600}
-                              height={400}
-                              className="rounded-lg object-cover w-full h-full"
-                              data-ai-hint={image.imageHint}
-                          />
-                        ) : (
-                          <div className="text-primary/50 bg-muted w-full h-full flex items-center justify-center rounded-lg">
-                            <service.icon className="h-24 w-24" />
+                      <div className={`group aspect-video rounded-lg flex items-center justify-center bg-muted shadow-lg transition-all duration-300 hover:shadow-xl hover:bg-primary ${index % 2 !== 0 ? 'md:col-start-1' : ''}`}>
+                          <div className="text-primary transition-colors duration-300 group-hover:text-primary-foreground">
+                              <service.icon className="h-24 w-24 transition-transform duration-300 group-hover:scale-110" />
                           </div>
-                        )}
                       </div>
                   </div>
                   {index < services.length - 1 && <Separator className="my-16 bg-border/40" />}

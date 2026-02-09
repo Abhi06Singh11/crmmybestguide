@@ -1,4 +1,4 @@
-import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, ToyBrick, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Laptop, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp } from 'lucide-react';
+import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Laptop, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap } from 'lucide-react';
 
 export const services = [
   {
@@ -316,7 +316,7 @@ export const ecommerceDevelopmentData = {
       image: "3"
     },
     {
-      icon: ToyBrick,
+      icon: ShoppingBag,
       title: "Shopify Storefront Implementations",
       description: "Leverage the power of Shopify with our expert implementation services. We customize Shopify themes and build bespoke features to create a robust, scalable, and easy-to-manage online store that aligns perfectly with your brand identity.",
       image: "4"
@@ -328,13 +328,13 @@ export const ecommerceDevelopmentData = {
        image: "5"
     },
     {
-      icon: ShoppingBag,
+      icon: ShoppingCart,
       title: "Cart, Checkout & Order Management",
       description: "We optimize the entire purchasing journey, from adding items to the cart to final order confirmation. Our intuitive cart and checkout designs reduce abandonment rates, while robust order management systems streamline your backend operations.",
        image: "6"
     },
     {
-      icon: LineChart,
+      icon: Zap,
       title: "Performance & Scalability Optimization",
       description: "A slow website costs you sales. We architect e-commerce platforms for speed and reliability, ensuring your site can handle high traffic volumes without compromising performance. Prepare your business for growth with a scalable and optimized solution.",
        image: "7"
