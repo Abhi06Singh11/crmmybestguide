@@ -1,9 +1,9 @@
 
-import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap, Apple, MonitorSmartphone, LayoutTemplate } from 'lucide-react';
+import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Component, Languages, Milestone, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap, Apple, MonitorSmartphone, LayoutTemplate, Share2 } from 'lucide-react';
 
 export const services = [
   {
-    title: 'E-Commerce Website Development',
+    title: 'E-commerce Website Development',
     link: '/e-commerce-development'
   },
   {
@@ -90,7 +90,7 @@ export const serviceDetails = [
         ]
     },
     {
-        icon: Shapes,
+        icon: CodeXml,
         title: 'Customized Development Solutions',
         link: '/customized-development',
         description: 'When standard solutions fall short, we create custom-built software designed specifically for your operational and strategic needs.',
@@ -417,7 +417,7 @@ export const customizedDevelopmentData = {
   ctaText: "Get a Custom Solution",
   services: [
     {
-      icon: Shapes,
+      icon: CodeXml,
       title: "Tailor-Made Software Solutions",
       description: "Your business is unique, and your software should be too. We work closely with you to understand your specific needs and build custom applications from scratch, delivering a solution that fits your workflow perfectly and drives efficiency.",
        image: "20"
@@ -429,13 +429,13 @@ export const customizedDevelopmentData = {
        image: "21"
     },
     {
-      icon: GitBranch,
+      icon: Share2,
       title: "Custom APIs & Integrations",
       description: "Connect your systems and unlock new capabilities. We build robust, secure, and well-documented custom APIs that allow your different software applications to communicate seamlessly, creating a unified and powerful digital ecosystem.",
        image: "22"
     },
     {
-      icon: Server,
+      icon: Zap,
       title: "Legacy System Modernization",
       description: "Breathe new life into your outdated software. We help you migrate from aging, inefficient legacy systems to modern, scalable, and maintainable technology stacks, reducing risk and positioning your business for future growth.",
        image: "23"
@@ -530,3 +530,6 @@ export const technicalSupportData = {
     },
   ]
 };
+
+
+    
