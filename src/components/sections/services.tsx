@@ -1,4 +1,3 @@
-
 'use client';
 
 import { serviceSegments, serviceDetails } from '@/lib/data';
@@ -67,7 +66,7 @@ export default function Services() {
       <section id="service-details" className="py-16 md:py-24 bg-secondary">
           <div className="container">
               {serviceSegments.map((segment) => (
-                  <div key={segment.title} className="space-y-16 first:pt-0 last:pb-0">
+                  <div key={segment.title} className="space-y-16 pt-24 first:pt-0 last:pb-0">
                       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
                           <h2 className="font-headline text-3xl font-bold md:text-4xl">{segment.title}</h2>
                       </div>
