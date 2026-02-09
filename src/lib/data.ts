@@ -442,7 +442,7 @@ export const odooDevelopmentData = {
   ctaText: "Optimize with Odoo",
   services: [
     {
-      icon: ToyBrick,
+      icon: Component,
       title: "Odoo Module Customization",
       description: "Extend Odoo’s functionality to meet your specific needs. Our developers create and customize Odoo modules for accounting, inventory, CRM, and more, ensuring the platform aligns perfectly with your unique business processes.",
        image: "24"
