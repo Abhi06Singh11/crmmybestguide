@@ -1,4 +1,5 @@
-import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Laptop, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap } from 'lucide-react';
+
+import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, Shapes, ShieldCheck, Users, Award, MessageCircle, BarChart, Store, Workflow, CreditCard, ShoppingBag, LineChart, Shield, GitBranch, Component, Languages, Milestone, Server, Users2, FileText, Activity, AlertCircle, TrendingUp, Zap, Apple, Devices, LayoutTemplate } from 'lucide-react';
 
 export const services = [
   {
@@ -347,28 +348,34 @@ export const mobileAppDevelopmentData = {
   heroDescription: "Engage your users with high-performance, intuitive, and scalable mobile apps. We build user-centric mobile solutions for both Android and iOS that drive business growth and customer loyalty.",
   services: [
     {
+      icon: Apple,
+      title: "iOS App Development",
+      description: "We build high-performance native iOS apps that are optimized for Apple's ecosystem. Our focus is on creating a smooth, responsive, and engaging user experience that feels at home on iPhone and iPad.",
+      image: "2"
+    },
+    {
       icon: Smartphone,
-      title: "Android & iOS App Development",
-      description: "We specialize in creating native applications for both Android and iOS platforms. By leveraging the full power of each operating system, we deliver apps with superior performance, seamless integration, and an intuitive user experience tailored to each device.",
-       image: "2"
+      title: "Android App Development",
+      description: "We specialize in creating native applications for the Android platform, delivering apps with superior performance, seamless integration, and an intuitive user experience tailored to a wide range of devices.",
+      image: "2"
     },
     {
-      icon: Component,
-      title: "Cross-Platform Apps (Flutter / React Native)",
-      description: "Reach a wider audience faster with cross-platform development. Using modern frameworks like Flutter and React Native, we build beautiful, high-performance apps that run on both Android and iOS from a single codebase, saving you time and resources.",
-       image: "13"
+      icon: Devices,
+      title: "Cross-Platform App Development",
+      description: "Reach a wider audience faster with cross-platform development. Using modern frameworks like Flutter and React Native, we build beautiful, high-performance apps that run on both Android and iOS from a single codebase.",
+      image: "13"
     },
     {
-      icon: GitBranch,
-      title: "API Integrations",
-      description: "A powerful app is a connected app. We seamlessly integrate your mobile application with third-party services, backend systems, and custom APIs to extend functionality, sync data, and deliver a rich, interactive user experience.",
-       image: "14"
+      icon: LayoutTemplate,
+      title: "UI/UX Design for Mobile Apps",
+      description: "We create intuitive and visually appealing user interfaces that make your app a joy to use. Our design process is user-centered, focusing on creating seamless navigation and engaging interactions.",
+      image: "14"
     },
     {
-      icon: Laptop,
-      title: "App Performance Optimization",
+      icon: Zap,
+      title: "App Performance & Optimization",
       description: "In the mobile world, speed and reliability are everything. We fine-tune every aspect of your application—from code efficiency to resource management—to ensure fast load times, smooth animations, and a flawless user experience, even under heavy load.",
-       image: "15"
+      image: "15"
     }
   ]
 };
