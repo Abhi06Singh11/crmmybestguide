@@ -4,27 +4,27 @@ import { CodeXml, ShoppingCart, Layers3, Smartphone, Database, Wrench, ShieldChe
 export const services = [
   {
     title: 'E-commerce Website Development',
-    link: '/e-commerce-development'
+    link: '/services/e-commerce-development'
   },
   {
     title: 'Mobile Application Development',
-    link: '/mobile-application-development'
+    link: '/services/mobile-application-development'
   },
   {
     title: 'ERP SaaS Development',
-    link: '/erp-saas-development'
+    link: '/services/erp-saas-development'
   },
   {
     title: 'Odoo Development & Customization',
-    link: '/odoo-development'
+    link: '/services/odoo-development'
   },
   {
     title: 'Technical Support & Maintenance',
-    link: '/technical-support'
+    link: '/services/technical-support'
   },
   {
     title: 'Customized Development Solutions',
-    link: '/customized-development'
+    link: '/services/customized-development'
   }
 ];
 
@@ -32,7 +32,7 @@ export const serviceDetails = [
     {
         icon: ShoppingCart,
         title: 'E-commerce Website Development',
-        link: '/e-commerce-development',
+        link: '/services/e-commerce-development',
         description: 'At MyBestGuide, we design and develop fully customized e-commerce platforms that reflect your brand identity and business goals. Our solutions focus on performance, usability, and secure transactions to help you convert visitors into loyal customers.',
         features: [
             'Secure payment gateway integration',
@@ -44,7 +44,7 @@ export const serviceDetails = [
     {
         icon: Smartphone,
         title: 'Mobile Application Development',
-        link: '/mobile-application-development',
+        link: '/services/mobile-application-development',
         description: 'We build native and cross-platform mobile applications that deliver seamless performance and engaging user experiences. Our apps are designed to scale as your business grows.',
         features: [
             'iOS and Android development expertise',
@@ -56,7 +56,7 @@ export const serviceDetails = [
     {
         icon: Layers3,
         title: 'ERP SaaS Development',
-        link: '/erp-saas-development',
+        link: '/services/erp-saas-development',
         description: 'Our ERP SaaS solutions centralize your business operations, improve efficiency, and provide real-time insights to support smarter decision-making.',
         features: [
             'Real-time analytics and reporting',
@@ -68,7 +68,7 @@ export const serviceDetails = [
     {
         icon: Database,
         title: 'Odoo Development & Customization',
-        link: '/odoo-development',
+        link: '/services/odoo-development',
         description: 'MyBestGuide specializes in adapting Odoo ERP to match your exact business requirements, ensuring seamless operations and system flexibility.',
         features: [
             'Custom Odoo modules',
@@ -80,7 +80,7 @@ export const serviceDetails = [
     {
         icon: ShieldCheck,
         title: 'Technical Support, Website and App Maintenance',
-        link: '/technical-support',
+        link: '/services/technical-support',
         description: 'We provide continuous technical support to ensure your applications and systems remain stable, secure, and up to date.',
         features: [
           'Proactive system monitoring and alerts',
@@ -92,7 +92,7 @@ export const serviceDetails = [
     {
         icon: CodeXml,
         title: 'Customized Development Solutions',
-        link: '/customized-development',
+        link: '/services/customized-development',
         description: 'When standard solutions fall short, we create custom-built software designed specifically for your operational and strategic needs.',
         features: [
             'Solutions tailored to your business model',
@@ -531,5 +531,7 @@ export const technicalSupportData = {
   ]
 };
 
+
+    
 
     

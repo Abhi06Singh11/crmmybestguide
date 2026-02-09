@@ -1,3 +1,4 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
@@ -38,6 +39,42 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async redirects() {
+    return [
+      {
+        source: '/e-commerce-development',
+        destination: '/services/e-commerce-development',
+        permanent: true,
+      },
+      {
+        source: '/mobile-application-development',
+        destination: '/services/mobile-application-development',
+        permanent: true,
+      },
+      {
+        source: '/erp-saas-development',
+        destination: '/services/erp-saas-development',
+        permanent: true,
+      },
+      {
+        source: '/customized-development',
+        destination: '/services/customized-development',
+        permanent: true,
+      },
+      {
+        source: '/technical-support',
+        destination: '/services/technical-support',
+        permanent: true,
+      },
+      {
+        source: '/odoo-development',
+        destination: '/services/odoo-development',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;
+
+    
