@@ -4,8 +4,8 @@ import FreeWebsiteAd from "@/components/sections/free-website-ad";
 export default function ServicesPage() {
   return (
     <>
-      <Services />
       <FreeWebsiteAd />
+      <Services />
     </>
   );
 }
