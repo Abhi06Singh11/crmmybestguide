@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -63,7 +64,7 @@ export default function FreeWebsiteAd() {
 
     return (
         <div className="container my-8">
-            <section className="relative overflow-hidden h-[80vh] flex items-center rounded-2xl" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
+            <section className="relative overflow-hidden rounded-2xl py-16 md:py-20" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
                 <div className="bubbles">
                     {[...Array(10)].map((_, i) => <div key={i} className="bubble"></div>)}
                 </div>
@@ -96,7 +97,7 @@ export default function FreeWebsiteAd() {
                         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
                             {['Real Website', 'Hosting-Ready Code', 'No Credit Card'].map(point => (
                                 <div key={point} className="flex items-center gap-2.5 text-white/90 font-medium bg-white/5 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
-                                    <CheckCircle className="text-green-400" />
+                                    <CheckCircle className="text-green-400 h-4 w-4" />
                                     <span>{point}</span>
                                 </div>
                             ))}
