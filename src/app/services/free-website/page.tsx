@@ -96,7 +96,7 @@ export default function FreeWebsitePage() {
     const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
     const totalSteps = 5;
 
-    const { control, watch, trigger, handleSubmit, reset, getValues, formState: { errors } } = useForm<z.infer<typeof applicationFormSchema>>({
+    const form = useForm<z.infer<typeof applicationFormSchema>>({
         resolver: zodResolver(applicationFormSchema),
         defaultValues: {
             fullName: '',
@@ -112,7 +112,7 @@ export default function FreeWebsitePage() {
         },
     });
 
-    const formData = watch();
+    const formData = form.watch();
     
     const [slots, setSlots] = useState({ total: 10, remaining: 7 });
 
@@ -129,7 +129,7 @@ export default function FreeWebsitePage() {
         if (currentStep === 2) stepFields.push('websiteType');
         if (currentStep === 4) stepFields.push('industry');
 
-        const isValid = await trigger(stepFields);
+        const isValid = await form.trigger(stepFields);
         
         if (isValid) {
             setCurrentStep(currentStep + 1);
@@ -165,7 +165,7 @@ ${data.goals || 'Not provided'}
         window.open(whatsappUrl, '_blank');
 
         setSuccessModalOpen(true);
-        reset();
+        form.reset();
         setCurrentStep(1);
     };
 
@@ -616,19 +616,19 @@ ${data.goals || 'Not provided'}
                         </div>
                         
                         <Form {...form}>
-                            <form onSubmit={handleSubmit(onFormSubmit)} className="relative">
+                            <form onSubmit={form.handleSubmit(onFormSubmit)} className="relative">
                                 {/* Step 1 */}
                                 <div className={cn("step-section", currentStep !== 1 && "hidden")}>
                                     <h3 className="text-xl font-bold text-theme-primary mb-6">Tell us about yourself</h3>
                                     <div className="grid md:grid-cols-2 gap-8 mb-6">
-                                        <FormField control={control} name="fullName" render={({ field }) => (
+                                        <FormField control={form.control} name="fullName" render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Your Full Name <span className="text-red-500">*</span></FormLabel>
                                                 <FormControl><Input {...field} placeholder="John Smith" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
                                                 <FormMessage />
                                             </FormItem>
                                         )} />
-                                        <FormField control={control} name="email" render={({ field }) => (
+                                        <FormField control={form.control} name="email" render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Email Address <span className="text-red-500">*</span></FormLabel>
                                                 <FormControl><Input {...field} type="email" placeholder="john@company.com" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
@@ -637,14 +637,14 @@ ${data.goals || 'Not provided'}
                                         )} />
                                     </div>
                                     <div className="grid md:grid-cols-2 gap-8">
-                                        <FormField control={control} name="phone" render={({ field }) => (
+                                        <FormField control={form.control} name="phone" render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Phone Number <span className="text-red-500">*</span></FormLabel>
                                                 <FormControl><Input {...field} type="tel" placeholder="+91 98765 43210" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
                                                 <FormMessage />
                                             </FormItem>
                                         )} />
-                                        <FormField control={control} name="businessName" render={({ field }) => (
+                                        <FormField control={form.control} name="businessName" render={({ field }) => (
                                             <FormItem>
                                                 <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Business Name <span className="text-red-500">*</span></FormLabel>
                                                 <FormControl><Input {...field} placeholder="Your Business Name" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
@@ -656,7 +656,7 @@ ${data.goals || 'Not provided'}
                                 {/* Step 2 */}
                                 <div className={cn("step-section", currentStep !== 2 && "hidden")}>
                                      <h3 className="text-xl font-bold text-theme-primary mb-6">What type of website do you need?</h3>
-                                     <FormField control={control} name="websiteType" render={({ field }) => (
+                                     <FormField control={form.control} name="websiteType" render={({ field }) => (
                                         <FormItem>
                                             <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Website Category <span className="text-red-500">*</span></FormLabel>
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -673,7 +673,7 @@ ${data.goals || 'Not provided'}
                                             <FormMessage />
                                         </FormItem>
                                     )} />
-                                    <FormField control={control} name="goals" render={({ field }) => (
+                                    <FormField control={form.control} name="goals" render={({ field }) => (
                                         <FormItem className="mt-8">
                                             <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">What are your primary goals for this website?</FormLabel>
                                             <FormControl>
@@ -694,7 +694,7 @@ ${data.goals || 'Not provided'}
                                     <p className="text-muted-foreground mb-6 text-sm">Select any upgrades, support plans, or bundles you are interested in.</p>
                                     <div className="space-y-8 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                                         <FormField
-                                            control={control}
+                                            control={form.control}
                                             name="addons"
                                             render={() => (
                                                 <div className="space-y-8">
@@ -709,7 +709,7 @@ ${data.goals || 'Not provided'}
                                                                 {addons.map((item) => (
                                                                 <FormField
                                                                     key={item.title}
-                                                                    control={control}
+                                                                    control={form.control}
                                                                     name="addons"
                                                                     render={({ field }) => {
                                                                     return (
@@ -757,7 +757,7 @@ ${data.goals || 'Not provided'}
                                 {/* Step 4 */}
                                 <div className={cn("step-section", currentStep !== 4 && "hidden")}>
                                      <h3 className="text-xl font-bold text-theme-primary mb-6">Select Industry</h3>
-                                     <FormField control={control} name="industry" render={({ field }) => (
+                                     <FormField control={form.control} name="industry" render={({ field }) => (
                                         <FormItem>
                                             <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Industry/Niche <span className="text-red-500">*</span></FormLabel>
                                             <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -783,7 +783,7 @@ ${data.goals || 'Not provided'}
                                         </FormItem>
                                     )} />
                                      {formData.industry === 'Custom' && (
-                                        <FormField control={control} name="customIndustry" render={({ field }) => (
+                                        <FormField control={form.control} name="customIndustry" render={({ field }) => (
                                             <FormItem className="mt-4 animate-in fade-in-0">
                                                 <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide mb-2">Please Specify <span className="text-red-500">*</span></FormLabel>
                                                 <FormControl><Input {...field} required placeholder="Enter your industry" className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
@@ -819,16 +819,16 @@ ${data.goals || 'Not provided'}
                                             )}
                                         </div>
                                     </div>
-                                    <FormField control={control} name="terms" render={({ field }) => (
+                                    <FormField control={form.control} name="terms" render={({ field }) => (
                                         <FormItem className="flex items-start gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl mb-6">
                                             <FormControl>
                                                 <Checkbox checked={field.value} onCheckedChange={field.onChange} id="terms" className="w-5 h-5 rounded mt-1" />
                                             </FormControl>
                                             <div className="grid gap-1.5 leading-none">
-                                                <label htmlFor="terms" className="text-theme-secondary text-sm leading-relaxed cursor-pointer select-none">
+                                                <Label htmlFor="terms" className="text-theme-secondary text-sm leading-relaxed cursor-pointer select-none">
                                                     I agree to the Terms of Service and understand I will be redirected to WhatsApp to complete my application.
-                                                </label>
-                                                {errors.terms && <FormMessage>{errors.terms.message}</FormMessage>}
+                                                </Label>
+                                                {form.formState.errors.terms && <FormMessage>{form.formState.errors.terms.message}</FormMessage>}
                                             </div>
                                         </FormItem>
                                     )} />
