@@ -17,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, Paintbrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, Smartphone, Edit
+  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, ShoppingBag, Smartphone, Edit
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
@@ -217,6 +217,16 @@ ${data.goals || 'Not provided'}
         }
     ];
 
+    const addonServices = [
+        { icon: FileText, title: "Extra Pages", desc: "Add pages based on tech stack & requirements.", price: "₹499+" },
+        { icon: Paintbrush, title: "Custom UI/UX Design", desc: "Tailored design per device & brand identity.", price: "₹999+" },
+        { icon: Gauge, title: "Speed Optimization", desc: "Performance tuning for lightning-fast load speeds.", price: "₹899" },
+        { icon: WhatsAppIcon, title: "WhatsApp Integration", desc: "Quick user engagement with direct WhatsApp chat.", price: "₹299" },
+        { icon: Bot, title: "Chatbot Integration", desc: "24/7 automated support based on AI model & tech stack.", price: "₹999+" },
+        { icon: CalendarCheck, title: "Booking System", desc: "Online appointment scheduling.", price: "₹1,499+" },
+    ];
+    
+
     return (
         <div className="w-full bg-background">
             {/* Hero Section */}
@@ -284,52 +294,52 @@ ${data.goals || 'Not provided'}
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-                        <Card className="p-8 md:p-10 relative overflow-hidden group">
+                        <Card className="p-8 md:p-10 relative overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
                            <CardHeader>
-                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg relative z-10">
-                                    <Globe className="text-primary text-3xl"/>
+                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg relative z-10 transition-colors group-hover:bg-primary-foreground">
+                                    <Globe className="text-primary text-3xl transition-colors group-hover:text-primary"/>
                                 </div>
-                                <CardTitle className="text-2xl font-bold text-foreground mb-3 relative z-10">FREE Basic Website</CardTitle>
-                                <CardDescription className="text-muted-foreground mb-8 leading-relaxed relative z-10">Perfect for service businesses, professionals, and local brands getting started online.</CardDescription>
+                                <CardTitle className="text-2xl font-bold text-foreground mb-3 relative z-10 group-hover:text-primary-foreground">FREE Basic Website</CardTitle>
+                                <CardDescription className="text-muted-foreground mb-8 leading-relaxed relative z-10 group-hover:text-primary-foreground/80">Perfect for service businesses, professionals, and local brands getting started online.</CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <ul className="space-y-4 relative z-10 mb-8">
                                     {["3–5 Page Professional Website", "Mobile Responsive Design", "Pre-Designed Modern Template", "Basic On-Page SEO Setup", "Contact Form with Email", "Client-Owned Content & Assets"].map(item => (
                                         <li key={item} className="flex items-start gap-3">
-                                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0 h-5 w-5"/>
-                                            <span className="text-muted-foreground"><strong className="text-foreground font-semibold">{item.split(' ')[0]}</strong> {item.substring(item.indexOf(' ')+1)}</span>
+                                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0 h-5 w-5 transition-colors group-hover:text-green-300"/>
+                                            <span className="text-muted-foreground group-hover:text-primary-foreground/80"><strong className="text-foreground font-semibold group-hover:text-primary-foreground">{item.split(' ')[0]}</strong> {item.substring(item.indexOf(' ')+1)}</span>
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="pt-6 border-t relative z-10">
+                                <div className="pt-6 border-t relative z-10 group-hover:border-primary-foreground/30">
                                     <div className="flex items-center justify-between">
-                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground">₹0</span><span className="text-muted-foreground line-through text-lg">₹14,999</span></div></div>
-                                        <Badge className="bg-green-100 text-green-700">100% FREE</Badge>
+                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1 group-hover:text-primary-foreground/80">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground group-hover:text-primary-foreground">₹0</span><span className="text-muted-foreground line-through text-lg group-hover:text-primary-foreground/60">₹14,999</span></div></div>
+                                        <Badge className="bg-green-100 text-green-700 transition-colors group-hover:bg-white group-hover:text-primary">100% FREE</Badge>
                                     </div>
                                 </div>
                             </CardContent>
                         </Card>
-                         <Card className="p-8 md:p-10 relative overflow-hidden group">
+                         <Card className="p-8 md:p-10 relative overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
                            <CardHeader>
-                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg relative z-10">
-                                    <ShoppingCart className="text-primary text-3xl"/>
+                                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg relative z-10 transition-colors group-hover:bg-primary-foreground">
+                                    <ShoppingCart className="text-primary text-3xl transition-colors group-hover:text-primary"/>
                                 </div>
-                                <CardTitle className="text-2xl font-bold text-foreground mb-3 relative z-10">FREE E-Commerce Starter</CardTitle>
-                                <CardDescription className="text-muted-foreground mb-8 leading-relaxed relative z-10">Ideal for early-stage e-commerce brands and product sellers ready to sell.</CardDescription>
+                                <CardTitle className="text-2xl font-bold text-foreground mb-3 relative z-10 group-hover:text-primary-foreground">FREE E-Commerce Starter</CardTitle>
+                                <CardDescription className="text-muted-foreground mb-8 leading-relaxed relative z-10 group-hover:text-primary-foreground/80">Ideal for early-stage e-commerce brands and product sellers ready to sell.</CardDescription>
                             </CardHeader>
                              <CardContent>
                                 <ul className="space-y-4 relative z-10 mb-8">
                                     {["Professional Storefront Design", "Up to 10 Products Listed", "Product & Cart Pages", "Manual Order (WhatsApp/Email)", "Mobile Responsive Shopping", "Product Gallery & Desc."].map(item => (
                                         <li key={item} className="flex items-start gap-3">
-                                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0 h-5 w-5"/>
-                                            <span className="text-muted-foreground"><strong className="text-foreground font-semibold">{item.split(' ')[0]}</strong> {item.substring(item.indexOf(' ')+1)}</span>
+                                            <CheckCircle className="text-green-500 mt-1 flex-shrink-0 h-5 w-5 transition-colors group-hover:text-green-300"/>
+                                            <span className="text-muted-foreground group-hover:text-primary-foreground/80"><strong className="text-foreground font-semibold group-hover:text-primary-foreground">{item.split(' ')[0]}</strong> {item.substring(item.indexOf(' ')+1)}</span>
                                         </li>
                                     ))}
                                 </ul>
-                                <div className="pt-6 border-t relative z-10">
+                                <div className="pt-6 border-t relative z-10 group-hover:border-primary-foreground/30">
                                     <div className="flex items-center justify-between">
-                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground">₹0</span><span className="text-muted-foreground line-through text-lg">₹24,999</span></div></div>
-                                        <Badge className="bg-purple-100 text-purple-700">100% FREE</Badge>
+                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1 group-hover:text-primary-foreground/80">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground group-hover:text-primary-foreground">₹0</span><span className="text-muted-foreground line-through text-lg group-hover:text-primary-foreground/60">₹24,999</span></div></div>
+                                        <Badge className="bg-purple-100 text-purple-700 transition-colors group-hover:bg-white group-hover:text-primary">100% FREE</Badge>
                                     </div>
                                 </div>
                             </CardContent>
@@ -348,7 +358,7 @@ ${data.goals || 'Not provided'}
                             </div>
                             <div>
                                 <CardTitle className="text-2xl md:text-3xl font-bold text-foreground mb-3">Let's Be Transparent</CardTitle>
-                                <CardDescription className="text-lg">We believe in honesty. Here's what the free version <span className="font-semibold text-amber-600 dark:text-amber-400">doesn't</span> include:</CardDescription>
+                                <CardDescription className="text-lg text-muted-foreground">We believe in honesty. Here's what the free version <span className="font-semibold text-amber-600 dark:text-amber-400">doesn't</span> include:</CardDescription>
                             </div>
                         </CardHeader>
                         <CardContent>
@@ -397,80 +407,75 @@ ${data.goals || 'Not provided'}
                                 </div>
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {[
-                                    { icon: FileText, title: "Extra Pages", desc: "Add pages based on tech stack & requirements.", price: "₹499+" },
-                                    { icon: Paintbrush, title: "Custom UI/UX Design", desc: "Tailored design per device & brand identity.", price: "₹999+" },
-                                    { icon: Gauge, title: "Speed Optimization", desc: "Performance tuning for lightning-fast load speeds.", price: "₹899" },
-                                    { icon: WhatsAppIcon, title: "WhatsApp Integration", desc: "Quick user engagement with direct WhatsApp chat.", price: "₹299" },
-                                    { icon: Bot, title: "Chatbot Integration", desc: "24/7 automated support based on AI model & tech stack.", price: "₹999+" },
-                                    { icon: CalendarCheck, title: "Booking System", desc: "Online appointment scheduling.", price: "₹1,499+" },
-                                ].map((item, i) => (
-                                    <Card key={i} className="p-7 group">
-                                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary transition-colors duration-300">
-                                            <item.icon className="text-primary text-xl group-hover:text-white transition-colors"/>
+                                {addonServices.map((item, i) => (
+                                    <Card key={i} className="p-7 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
+                                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary-foreground transition-colors duration-300">
+                                            <item.icon className="text-primary text-xl group-hover:text-primary transition-colors"/>
                                         </div>
-                                        <h4 className="text-lg font-bold text-foreground mb-2">{item.title}</h4>
-                                        <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{item.desc}</p>
-                                        <div className="flex items-center justify-between border-t pt-4"><span className="text-2xl font-bold text-primary">{item.price}</span></div>
+                                        <h4 className="text-lg font-bold mb-2">{item.title}</h4>
+                                        <p className="text-muted-foreground text-sm mb-5 leading-relaxed group-hover:text-primary-foreground/80">{item.desc}</p>
+                                        <div className="flex items-center justify-between border-t pt-4 group-hover:border-primary-foreground/30">
+                                            <span className="text-2xl font-bold text-primary group-hover:text-white">{item.price}</span>
+                                        </div>
                                     </Card>
                                 ))}
                             </div>
                          </TabsContent>
                          <TabsContent value="support">
                             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-start">
-                                <Card className="p-8">
-                                    <h4 className="text-xl font-bold text-theme-primary">Basic Support</h4>
-                                    <p className="text-theme-muted text-sm mb-6 min-h-[40px]">For small businesses needing peace of mind.</p>
-                                    <div className="mb-6 pb-6 border-b border-theme"><span className="text-4xl font-bold text-primary">₹499</span><span className="text-theme-muted">/mo</span></div>
+                                <Card className="p-8 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
+                                    <h4 className="text-xl font-bold">Basic Support</h4>
+                                    <p className="text-muted-foreground text-sm mb-6 min-h-[40px] group-hover:text-primary-foreground/80">For small businesses needing peace of mind.</p>
+                                    <div className="mb-6 pb-6 border-b group-hover:border-primary-foreground/30"><span className="text-4xl font-bold text-primary group-hover:text-white">₹499</span><span className="text-muted-foreground group-hover:text-primary-foreground/80">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
-                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>5 Support Tickets</li>
-                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>24-48h Response</li>
+                                        <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>5 Support Tickets</li>
+                                        <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>24-48h Response</li>
                                     </ul>
-                                    <Button variant="outline" className="w-full">Choose Plan</Button>
+                                    <Button variant="outline" className="w-full group-hover:bg-primary-foreground group-hover:text-primary group-hover:border-primary-foreground">Choose Plan</Button>
                                 </Card>
-                                <Card className="p-8 border-2 border-primary shadow-2xl shadow-primary/20 scale-105">
+                                <Card className="p-8 border-2 border-primary shadow-2xl shadow-primary/20 scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                                     <Badge className="mb-2">Most Popular</Badge>
-                                    <h4 className="text-xl font-bold text-theme-primary">Growth Support</h4>
-                                    <p className="text-theme-muted text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
-                                    <div className="mb-6 pb-6 border-b border-theme"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-theme-muted">/mo</span></div>
+                                    <h4 className="text-xl font-bold">Growth Support</h4>
+                                    <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
+                                    <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-muted-foreground">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
-                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>30 Tickets</li>
-                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>Priority Response</li>
+                                        <li className="flex items-center gap-3 text-secondary-foreground text-sm"><Check className="text-green-500"/>30 Tickets</li>
+                                        <li className="flex items-center gap-3 text-secondary-foreground text-sm"><Check className="text-green-500"/>Priority Response</li>
                                     </ul>
                                      <Button className="w-full">Choose Growth</Button>
                                 </Card>
-                                <Card className="p-8">
-                                    <h4 className="text-xl font-bold text-theme-primary">Premium Support</h4>
-                                    <p className="text-theme-muted text-sm mb-6 min-h-[40px]">For mission-critical applications.</p>
-                                    <div className="mb-6 pb-6 border-b border-theme"><span className="text-4xl font-bold text-primary">₹3,499</span><span className="text-theme-muted">/mo</span></div>
+                                <Card className="p-8 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
+                                    <h4 className="text-xl font-bold">Premium Support</h4>
+                                    <p className="text-muted-foreground text-sm mb-6 min-h-[40px] group-hover:text-primary-foreground/80">For mission-critical applications.</p>
+                                    <div className="mb-6 pb-6 border-b group-hover:border-primary-foreground/30"><span className="text-4xl font-bold text-primary group-hover:text-white">₹3,499</span><span className="text-muted-foreground group-hover:text-primary-foreground/80">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
-                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>Dedicated Engineer</li>
-                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>4-Hour SLA</li>
+                                        <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>Dedicated Engineer</li>
+                                        <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>4-Hour SLA</li>
                                     </ul>
-                                    <Button variant="outline" className="w-full">Choose Plan</Button>
+                                    <Button variant="outline" className="w-full group-hover:bg-primary-foreground group-hover:text-primary group-hover:border-primary-foreground">Choose Plan</Button>
                                 </Card>
                             </div>
                          </TabsContent>
                          <TabsContent value="marketing">
                              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                <Card className="p-6"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"><Search className="text-blue-600"/></div><h4 className="text-lg font-bold">SEO Services</h4><p className="text-sm text-muted-foreground">₹1,999+/mo</p></Card>
-                                <Card className="p-6"><div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4"><HandCoins className="text-red-600"/></div><h4 className="text-lg font-bold">Google Ads</h4><p className="text-sm text-muted-foreground">₹1,499+/mo</p></Card>
-                                <Card className="p-6"><div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4"><Hash className="text-pink-600"/></div><h4 className="text-lg font-bold">Social Media</h4><p className="text-sm text-muted-foreground">₹1,999+/mo</p></Card>
-                                <Card className="p-6"><div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"><Filter className="text-indigo-600"/></div><h4 className="text-lg font-bold">Funnels & Auto</h4><p className="text-sm text-muted-foreground">₹1,999+ one-time</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Search className="text-blue-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">SEO Services</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,999+/mo</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><HandCoins className="text-red-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Google Ads</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,499+/mo</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Hash className="text-pink-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Social Media</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,999+/mo</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Filter className="text-indigo-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Funnels & Auto</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,999+ one-time</p></Card>
                              </div>
                          </TabsContent>
                          <TabsContent value="ecommerce">
                              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <Card className="p-6"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"><CreditCard className="text-green-600"/></div><h4 className="text-lg font-bold">UPI Integration</h4><p className="text-sm">₹499</p></Card>
-                                <Card className="p-6"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"><CreditCard className="text-blue-600"/></div><h4 className="text-lg font-bold">International Payments</h4><p className="text-sm">₹999</p></Card>
-                                <Card className="p-6"><div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"><Box className="text-purple-600"/></div><h4 className="text-lg font-bold">Product Listing</h4><p className="text-sm">₹99+</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><CreditCard className="text-green-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">UPI Integration</h4><p className="text-sm group-hover:text-primary-foreground/80">₹499</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><CreditCard className="text-blue-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">International Payments</h4><p className="text-sm group-hover:text-primary-foreground/80">₹999</p></Card>
+                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Box className="text-purple-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Product Listing</h4><p className="text-sm group-hover:text-primary-foreground/80">₹99+</p></Card>
                              </div>
                          </TabsContent>
                           <TabsContent value="bundles">
                              <div className="grid md:grid-cols-3 gap-8">
-                                <Card className="p-8"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary">₹4,999</p></Card>
-                                <Card className="p-8 border-2 border-primary"><Badge>Best Value</Badge><h4 className="text-xl font-bold">Growth Pack</h4><p className="text-4xl font-bold text-primary">₹9,999</p></Card>
-                                <Card className="p-8"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary">₹19,999</p></Card>
+                                <Card className="p-8 bundle-card rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹4,999</p></Card>
+                                <Card className="p-8 border-2 border-primary bundle-popular rounded-2xl shadow-2xl scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"><Badge>Best Value</Badge><h4 className="text-xl font-bold text-white">Growth Pack</h4><p className="text-4xl font-bold text-white">₹9,999</p></Card>
+                                <Card className="p-8 bundle-card rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹19,999</p></Card>
                             </div>
                          </TabsContent>
                      </Tabs>
