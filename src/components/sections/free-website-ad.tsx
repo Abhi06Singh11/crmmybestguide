@@ -1,33 +1,40 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Rocket, CheckCircle, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function FreeWebsiteAd() {
     const [isVisible, setIsVisible] = useState(true);
 
-    if (!isVisible) {
-        return null;
-    }
-
     return (
-        <div className="my-8">
-            <section className="relative mx-auto flex h-[80vh] w-[80%] items-center justify-center overflow-hidden rounded-2xl" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
-                <div className="bubbles">
+        <div className={cn(
+            "my-8 container transition-all duration-500 ease-in-out",
+            !isVisible && "!my-0"
+        )}>
+            <section className={cn(
+                "relative mx-auto flex h-[80vh] items-center justify-center overflow-hidden rounded-2xl transition-all duration-500 ease-in-out",
+                !isVisible && "h-0 opacity-0 border-0"
+            )} style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
+
+                <div className={cn("bubbles transition-opacity duration-500", !isVisible && "opacity-0")}>
                     {[...Array(10)].map((_, i) => <div key={i} className="bubble"></div>)}
                 </div>
-                <div className="absolute inset-0 opacity-10 pointer-events-none">
+
+                <div className={cn("absolute inset-0 opacity-10 pointer-events-none transition-opacity duration-500", !isVisible && "opacity-0")}>
                     <div className="absolute top-20 left-10 w-96 h-96 bg-white rounded-full blur-[100px]"></div>
                     <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#002D6B] rounded-full blur-[120px]"></div>
                 </div>
-                
-                <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <Button variant="ghost" size="icon" className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/10" onClick={() => setIsVisible(false)}>
-                        <X className="h-6 w-6" />
-                    </Button>
+
+                <Button variant="ghost" size="icon" className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/10 z-20" onClick={() => setIsVisible(false)}>
+                    <X className="h-6 w-6" />
+                </Button>
+
+                <div className={cn("relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8 transition-opacity duration-300", !isVisible && "opacity-0")}>
+                    
                     <div className="mx-auto max-w-4xl text-center">
                         <Badge variant="secondary" className="bg-white/10 text-white px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/20 animate-fade-in-up">
                             <span className="relative flex h-3 w-3 mr-2">
@@ -46,12 +53,18 @@ export default function FreeWebsiteAd() {
                         </p>
                         
                         <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
-                            {['Real Website', 'Hosting-Ready Code', 'No Credit Card'].map(point => (
-                                <div key={point} className="flex items-center gap-2.5 text-white/90 font-medium bg-white/5 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
-                                    <CheckCircle className="text-green-400 h-4 w-4" />
-                                    <span>{point}</span>
-                                </div>
-                            ))}
+                            <div className="flex items-center gap-2.5 text-white/90 font-medium bg-white/5 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                                <CheckCircle className="text-green-400 h-4 w-4" />
+                                <span>Real Website</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 text-white/90 font-medium bg-white/5 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                                <CheckCircle className="text-green-400 h-4 w-4" />
+                                <span>Hosting-Ready Code</span>
+                            </div>
+                            <div className="flex items-center gap-2.5 text-white/90 font-medium bg-white/5 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10">
+                                <CheckCircle className="text-green-400 h-4 w-4" />
+                                <span>No Credit Card</span>
+                            </div>
                         </div>
 
                         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
@@ -62,7 +75,7 @@ export default function FreeWebsiteAd() {
                                 </Button>
                             </Link>
                             <Link href="/services/free-website#features">
-                                <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 hover:text-white backdrop-blur-sm w-full sm:w-auto">
+                                <Button size="lg" className="bg-white text-[#002D6B] hover:bg-gray-100 shadow-xl w-full sm:w-auto">
                                     See What's Included
                                 </Button>
                             </Link>
