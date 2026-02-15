@@ -25,7 +25,7 @@ import { Badge } from '@/components/ui/badge';
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, PaintBrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail
+  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins
 } from 'lucide-react';
 
 const applicationFormSchema = z.object({
@@ -109,6 +109,10 @@ const CountdownTimer = () => {
         </div>
     );
 };
+
+const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
+    <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+);
 
 
 export default function FreeWebsitePage() {
@@ -236,7 +240,10 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
             </Button>
             
             {/* Hero */}
-            <section className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden bg-primary text-primary-foreground">
+            <section className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden bg-gradient-to-br from-primary to-slate-900 text-primary-foreground">
+                <div className="bubbles">
+                    {Array.from({ length: 10 }).map((_, i) => <div key={i} className="bubble"></div>)}
+                </div>
                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-md text-white px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/20">
@@ -251,7 +258,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                             <div className="flex items-center gap-2.5 font-medium bg-white/5 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/10"><CheckCircle className="text-green-400" /><span>No Credit Card</span></div>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                            <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 w-full sm:w-auto" onClick={scrollToApply}><Rocket />Claim Free Website</Button>
+                            <Button size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 w-full sm:w-auto animate-pulse-ring" onClick={scrollToApply}><Rocket />Claim Free Website</Button>
                             <a href="#features" onClick={(e) => { e.preventDefault(); document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' }); }}>
                                 <Button size="lg" variant="outline" className="text-primary-foreground border-primary-foreground/50 hover:bg-primary-foreground hover:text-primary w-full sm:w-auto">See What's Included</Button>
                             </a>
@@ -269,12 +276,12 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                 <div className="container">
                     <div className="text-center mb-16"><Badge>No Strings Attached</Badge><h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">What You Get For FREE</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto">Everything you need to establish your online presence – completely free of charge.</p></div>
                     <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
-                        <Card className="group"><CardHeader><div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:bg-primary transition-colors"><Globe className="h-8 w-8 text-primary group-hover:text-primary-foreground transition-colors"/></div><CardTitle>FREE Basic Website</CardTitle><CardDescription>Perfect for service businesses, professionals, and local brands getting started online.</CardDescription></CardHeader>
+                        <Card className="group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><CardHeader><div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:bg-primary transition-colors"><Globe className="h-8 w-8 text-primary group-hover:text-primary-foreground transition-colors"/></div><CardTitle>FREE Basic Website</CardTitle><CardDescription>Perfect for service businesses, professionals, and local brands getting started online.</CardDescription></CardHeader>
                             <CardContent><ul className="space-y-4 mb-8">{['3–5 Page Professional Website', 'Mobile Responsive Design', 'Pre-Designed Modern Template', 'Basic On-Page SEO Setup', 'Contact Form with Email', 'Client-Owned Content & Assets'].map(item => <li key={item} className="flex items-start gap-3"><CheckCircle className="text-green-500 mt-1 shrink-0"/><span>{item}</span></li>)}</ul>
                                 <div className="pt-6 border-t flex items-center justify-between"><div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground">₹0</span><span className="text-muted-foreground line-through text-lg">₹14,999</span></div></div><Badge variant="secondary" className="bg-green-100 text-green-800">100% FREE</Badge></div>
                             </CardContent>
                         </Card>
-                        <Card className="group"><CardHeader><div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:bg-primary transition-colors"><ShoppingCart className="h-8 w-8 text-primary group-hover:text-primary-foreground transition-colors"/></div><CardTitle>FREE E-Commerce Starter</CardTitle><CardDescription>Ideal for early-stage e-commerce brands and product sellers ready to sell.</CardDescription></CardHeader>
+                        <Card className="group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"><CardHeader><div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:bg-primary transition-colors"><ShoppingCart className="h-8 w-8 text-primary group-hover:text-primary-foreground transition-colors"/></div><CardTitle>FREE E-Commerce Starter</CardTitle><CardDescription>Ideal for early-stage e-commerce brands and product sellers ready to sell.</CardDescription></CardHeader>
                             <CardContent><ul className="space-y-4 mb-8">{['Professional Storefront Design', 'Up to 10 Products Listed', 'Product & Cart Pages', 'Manual Order (WhatsApp/Email)', 'Mobile Responsive Shopping', 'Product Gallery & Desc.'].map(item => <li key={item} className="flex items-start gap-3"><CheckCircle className="text-green-500 mt-1 shrink-0"/><span>{item}</span></li>)}</ul>
                                 <div className="pt-6 border-t flex items-center justify-between"><div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground">₹0</span><span className="text-muted-foreground line-through text-lg">₹24,999</span></div></div><Badge variant="secondary" className="bg-green-100 text-green-800">100% FREE</Badge></div>
                             </CardContent>
@@ -294,7 +301,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                 </div>
             </section>
 
-            {/* Application Form */}
+             {/* Application Form */}
             <section id="apply" className="py-24 bg-background">
                 <div className="container max-w-4xl">
                      <div className="text-center mb-16"><Badge>Start Your Journey</Badge><h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">Apply for Your Free Website</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto">No credit card required. No obligations. Just fill out the form below.</p></div>
@@ -357,7 +364,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                     </CardContent><CardFooter className="flex justify-between pt-6 border-t">
                         <Button type="button" variant="outline" onClick={handlePrevStep} className={currentStep === 1 ? 'invisible' : ''}>Back</Button>
                         {currentStep < totalSteps && <Button type="button" onClick={handleNextStep}>Next Step</Button>}
-                        {currentStep === totalSteps && <Button type="submit" disabled={form.formState.isSubmitting}><svg className="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>Submit via WhatsApp</Button>}
+                        {currentStep === totalSteps && <Button type="submit" disabled={form.formState.isSubmitting}><WhatsappIcon className="h-6 w-6 mr-2"/>Submit via WhatsApp</Button>}
                     </CardFooter></form></Form></Card>
                 </div>
             </section>
