@@ -372,8 +372,8 @@ ${data.goals || 'Not provided'}
                     </div>
                 </div>
             </section>
-            
-            <section className="py-12 bg-background">
+
+             <section className="py-12 bg-background">
                 <div className="container max-w-5xl">
                     <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 text-center">
                         <p className="text-base text-blue-900 dark:text-blue-200 leading-relaxed">
@@ -676,55 +676,61 @@ ${data.goals || 'Not provided'}
                                             name="addons"
                                             render={() => (
                                                 <div className="space-y-8">
-                                                    {Object.entries(addonGroups).map(([groupName, addons]) => (
-                                                        <div key={groupName}>
-                                                            <h4 className="text-sm font-bold text-primary uppercase tracking-widest mb-3 flex items-center gap-2 sticky top-0 bg-secondary py-2 z-10">
-                                                                {addons[0]?.icon && <addons[0].icon className="h-4 w-4" />} {groupName}
-                                                            </h4>
-                                                            <div className="grid md:grid-cols-2 gap-4">
-                                                                {addons.map((item) => (
-                                                                    <FormField
-                                                                        key={item.title}
-                                                                        control={control}
-                                                                        name="addons"
-                                                                        render={({ field }) => (
-                                                                            <FormItem>
-                                                                                <Label
-                                                                                    htmlFor={item.title}
-                                                                                    className={cn(
-                                                                                        "flex flex-col h-full p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group",
-                                                                                        "hover:border-primary hover:shadow-lg",
-                                                                                        field.value?.includes(item.title) ? "border-primary bg-primary/5 shadow-lg" : "border-border bg-card"
-                                                                                    )}
-                                                                                >
-                                                                                    <div className="flex justify-between items-start">
-                                                                                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300">
-                                                                                            <item.icon className="text-primary h-5 w-5" />
-                                                                                        </div>
-                                                                                        <FormControl>
-                                                                                            <Checkbox
-                                                                                                id={item.title}
-                                                                                                checked={field.value?.includes(item.title)}
-                                                                                                onCheckedChange={(checked) => {
-                                                                                                    return checked
-                                                                                                        ? field.onChange([...(field.value || []), item.title])
-                                                                                                        : field.onChange(field.value?.filter((value) => value !== item.title));
-                                                                                                }}
-                                                                                                className="h-5 w-5"
-                                                                                            />
-                                                                                        </FormControl>
-                                                                                    </div>
-                                                                                    <h4 className="font-bold text-card-foreground">{item.title}</h4>
-                                                                                    <p className="text-sm text-muted-foreground mt-1 mb-3 flex-grow">{item.desc}</p>
-                                                                                    <span className="text-lg font-bold text-primary">{item.price}</span>
-                                                                                </Label>
-                                                                            </FormItem>
-                                                                        )}
-                                                                    />
-                                                                ))}
+                                                    {Object.entries(addonGroups).map(([groupName, addons]) => {
+                                                        const GroupIcon = addons[0]?.icon;
+                                                        return (
+                                                            <div key={groupName}>
+                                                                <h4 className="text-sm font-bold text-primary uppercase tracking-widest mb-3 flex items-center gap-2 sticky top-0 bg-secondary py-2 z-10">
+                                                                    {GroupIcon && <GroupIcon className="h-4 w-4" />} {groupName}
+                                                                </h4>
+                                                                <div className="grid md:grid-cols-2 gap-4">
+                                                                    {addons.map((item) => {
+                                                                        const AddonIcon = item.icon;
+                                                                        return (
+                                                                            <FormField
+                                                                                key={item.title}
+                                                                                control={control}
+                                                                                name="addons"
+                                                                                render={({ field }) => (
+                                                                                    <FormItem>
+                                                                                        <Label
+                                                                                            htmlFor={item.title}
+                                                                                            className={cn(
+                                                                                                "flex flex-col h-full p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group hover:shadow-xl hover:-translate-y-1",
+                                                                                                "hover:bg-primary hover:text-primary-foreground",
+                                                                                                field.value?.includes(item.title) ? "border-primary bg-primary text-primary-foreground" : "border-border bg-card"
+                                                                                            )}
+                                                                                        >
+                                                                                            <div className="flex justify-between items-start">
+                                                                                                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300 group-hover:bg-primary-foreground">
+                                                                                                    <AddonIcon className="text-primary h-5 w-5 group-hover:text-primary" />
+                                                                                                </div>
+                                                                                                <FormControl>
+                                                                                                    <Checkbox
+                                                                                                        id={item.title}
+                                                                                                        checked={field.value?.includes(item.title)}
+                                                                                                        onCheckedChange={(checked) => {
+                                                                                                            return checked
+                                                                                                                ? field.onChange([...(field.value || []), item.title])
+                                                                                                                : field.onChange(field.value?.filter((value) => value !== item.title));
+                                                                                                        }}
+                                                                                                        className="h-5 w-5 opacity-0 absolute"
+                                                                                                    />
+                                                                                                </FormControl>
+                                                                                            </div>
+                                                                                            <h4 className="font-bold text-card-foreground group-hover:text-primary-foreground">{item.title}</h4>
+                                                                                            <p className="text-sm text-muted-foreground mt-1 mb-3 flex-grow group-hover:text-primary-foreground/80">{item.desc}</p>
+                                                                                            <span className="text-lg font-bold text-primary group-hover:text-primary-foreground">{item.price}</span>
+                                                                                        </Label>
+                                                                                    </FormItem>
+                                                                                )}
+                                                                            />
+                                                                        );
+                                                                    })}
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    ))}
+                                                        );
+                                                    })}
                                                 </div>
                                             )}
                                         />
@@ -856,4 +862,3 @@ ${data.goals || 'Not provided'}
         </div>
     );
 }
-
