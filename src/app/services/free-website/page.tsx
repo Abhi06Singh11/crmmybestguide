@@ -270,9 +270,6 @@ ${data.goals || 'Not provided'}
                                 </Button>
                             </a>
                         </div>
-                         <div className="mt-16 bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 max-w-2xl mx-auto border border-white/10 shadow-2xl">
-                             <CountdownTimer />
-                         </div>
                     </div>
                 </div>
             </section>
@@ -729,5 +726,3 @@ ${data.goals || 'Not provided'}
         </div>
     );
 }
-=====
-restore this to /services/free-website page
