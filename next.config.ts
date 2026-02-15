@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
+        source: '/services/free_website',
+        destination: '/services/free-website',
+      },
+      {
         source: '/d/:path*',
         destination: '/dashboard/:path*',
       },
