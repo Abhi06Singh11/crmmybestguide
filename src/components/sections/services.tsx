@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import FreeWebsiteAd from './free-website-ad';
 
 export default function Services() {
 
@@ -29,8 +28,6 @@ export default function Services() {
             </div>
         </div>
       </section>
-
-      <FreeWebsiteAd />
 
       <section id="services-overview" className="py-16 md:py-24 bg-background">
         <div className="container">
