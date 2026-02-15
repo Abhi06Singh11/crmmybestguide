@@ -89,18 +89,18 @@ export default function AboutUs() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     {teamMembers.map((member) => {
                         return(
-                        <Card key={member.name} className="group text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <Card key={member.name} className="group text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground">
                             <CardContent className="p-6">
                                 <div className="flex justify-center mb-4">
-                                    <div className="rounded-full bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                                    <div className="rounded-full bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary">
                                         <UserCircle className="h-20 w-20 transition-transform duration-300 group-hover:scale-110" />
                                     </div>
                                 </div>
-                                <h3 className="font-headline text-xl font-bold">
+                                <h3 className="font-headline text-xl font-bold group-hover:text-primary-foreground">
                                   {member.name}
                                 </h3>
-                                <p className="text-primary font-medium">{member.title}</p>
-                                <p className="text-muted-foreground mt-2 text-sm">{member.bio}</p>
+                                <p className="text-primary font-medium group-hover:text-primary-foreground/80">{member.title}</p>
+                                <p className="text-muted-foreground mt-2 text-sm group-hover:text-primary-foreground/80">{member.bio}</p>
                             </CardContent>
                         </Card>
                     )})}
@@ -115,14 +115,14 @@ export default function AboutUs() {
                 </div>
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     {coreValues.map((item) => (
-                        <Card key={item.title} className="group h-full p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <Card key={item.title} className="group h-full p-6 text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground">
                             <div className="flex justify-center mb-4">
-                                <div className="rounded-full bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                                <div className="rounded-full bg-primary/10 p-4 text-primary transition-colors duration-300 group-hover:bg-primary-foreground group-hover:text-primary">
                                     <item.icon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                                 </div>
                             </div>
-                            <h3 className="font-headline text-xl font-semibold">{item.title}</h3>
-                            <p className="mt-2 text-muted-foreground">{item.description}</p>
+                            <h3 className="font-headline text-xl font-semibold group-hover:text-primary-foreground">{item.title}</h3>
+                            <p className="mt-2 text-muted-foreground group-hover:text-primary-foreground/80">{item.description}</p>
                         </Card>
                     ))}
                 </div>

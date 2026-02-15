@@ -83,17 +83,17 @@ export default function PublicProfilePage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 {profile.portfolio.map(item => (
-                  <div key={item.project} className="flex items-center p-4 rounded-lg border">
+                  <div key={item.project} className="group flex items-center p-4 rounded-lg border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:bg-primary hover:text-primary-foreground">
                     <Avatar className="h-12 w-12 mr-4">
                       <AvatarFallback>{item.clientLogo}</AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
-                      <p className="font-semibold">{item.project}</p>
-                      <p className="text-sm text-muted-foreground">{item.client}</p>
+                      <p className="font-semibold group-hover:text-primary-foreground">{item.project}</p>
+                      <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">{item.client}</p>
                     </div>
                     <div className="text-right">
-                       <p className="font-semibold text-green-600">{item.highlight}</p>
-                       <p className="text-sm text-muted-foreground">Performance Highlight</p>
+                       <p className="font-semibold text-green-600 group-hover:text-primary-foreground">{item.highlight}</p>
+                       <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">Performance Highlight</p>
                     </div>
                   </div>
                 ))}
