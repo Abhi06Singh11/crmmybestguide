@@ -17,8 +17,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
-  FileText, Paintbrush, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, Gauge, Smartphone, Edit
+  FileText, Paintbrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
+  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, Smartphone, Edit
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
@@ -31,6 +31,7 @@ const applicationFormSchema = z.object({
     phone: z.string().min(10, "Please enter a valid phone number."),
     businessName: z.string().min(2, "Business name is required."),
     websiteType: z.string().min(1, "Please select a website type."),
+    goals: z.string().optional(),
     industry: z.string().min(1, "Please select an industry."),
     customIndustry: z.string().optional(),
     addons: z.array(z.string()).optional(),
@@ -93,7 +94,7 @@ export default function FreeWebsitePage() {
     const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
     const totalSteps = 5;
 
-    const { control, watch, trigger, handleSubmit, reset, getValues } = useForm<z.infer<typeof applicationFormSchema>>({
+    const { control, watch, trigger, handleSubmit, reset, getValues, formState: { errors } } = useForm<z.infer<typeof applicationFormSchema>>({
         resolver: zodResolver(applicationFormSchema),
         defaultValues: {
             fullName: '',
@@ -101,6 +102,7 @@ export default function FreeWebsitePage() {
             phone: '',
             businessName: '',
             websiteType: '',
+            goals: '',
             industry: '',
             customIndustry: '',
             addons: [],
@@ -152,6 +154,8 @@ Selected Plan: ${data.websiteType}
 Add-Ons Selected:
 ${data.addons && data.addons.length > 0 ? data.addons.map(a => '- ' + a).join('\n') : 'None'}
 Website Industry: ${data.industry === 'Custom' ? data.customIndustry : data.industry}
+Additional Messages:
+${data.goals || 'Not provided'}
 =========================
         `;
         const encodedMessage = encodeURIComponent(message.trim());
@@ -229,7 +233,7 @@ Website Industry: ${data.industry === 'Custom' ? data.customIndustry : data.indu
                 </div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
-                        <Badge variant="secondary" className="bg-white/10 text-white px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/20 animate-fade-in-up">
+                        <Badge variant="secondary" className="bg-white/10 text-white px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/20 animate-in fade-in-0">
                             <span className="relative flex h-3 w-3 mr-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -525,13 +529,170 @@ Website Industry: ${data.industry === 'Custom' ? data.customIndustry : data.indu
             {/* Application Form Section */}
             <section id="apply" className="py-24 bg-background">
                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                     <Card className="p-8 md:p-12 border shadow-lg">
-                        <div className="text-center mb-8"><Badge variant="secondary" className="px-3 py-1 mb-4">Start Your Journey</Badge><h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">Apply for Your Free Website</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">No credit card required. No obligations. Just fill out the form below.</p></div>
+                    <Card className="p-8 md:p-12 border shadow-lg">
+                        <div className="text-center mb-8">
+                            <Badge variant="secondary" className="px-3 py-1 mb-4">Start Your Journey</Badge>
+                            <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">Apply for Your Free Website</h2>
+                            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">No credit card required. No obligations. Just fill out the form below.</p>
+                        </div>
                         <div className="mb-8">
-                            <div className="flex items-center justify-between mb-2"><span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Step {currentStep} of {totalSteps}</span><span className="text-xs font-bold text-primary">{['User Details', 'Project Details', 'Add-Ons', 'Select Industry', 'Review & Submit'][currentStep - 1]}</span></div>
+                            <div className="flex items-center justify-between mb-2">
+                                <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Step {currentStep} of {totalSteps}</span>
+                                <span className="text-xs font-bold text-primary">{['User Details', 'Project Details', 'Add-Ons', 'Select Industry', 'Review & Submit'][currentStep - 1]}</span>
+                            </div>
                             <Progress value={(currentStep / totalSteps) * 100} />
                         </div>
-                        <form onSubmit={handleSubmit(onFormSubmit)}>{/* Form steps here */}</form>
+                        
+                        <Form {...control}>
+                            <form onSubmit={handleSubmit(onFormSubmit)} className="relative">
+                                {/* Step 1 */}
+                                <div className={cn("step-section", currentStep !== 1 && "hidden")}>
+                                    <h3 className="text-xl font-bold text-theme-primary mb-6">Tell us about yourself</h3>
+                                    <div className="grid md:grid-cols-2 gap-8 mb-6">
+                                        <FormField control={control} name="fullName" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Your Full Name <span className="text-red-500">*</span></FormLabel>
+                                                <FormControl><Input {...field} placeholder="John Smith" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )} />
+                                        <FormField control={control} name="email" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Email Address <span className="text-red-500">*</span></FormLabel>
+                                                <FormControl><Input {...field} type="email" placeholder="john@company.com" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )} />
+                                    </div>
+                                    <div className="grid md:grid-cols-2 gap-8">
+                                        <FormField control={control} name="phone" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Phone Number <span className="text-red-500">*</span></FormLabel>
+                                                <FormControl><Input {...field} type="tel" placeholder="+91 98765 43210" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )} />
+                                        <FormField control={control} name="businessName" render={({ field }) => (
+                                            <FormItem>
+                                                <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Business Name <span className="text-red-500">*</span></FormLabel>
+                                                <FormControl><Input {...field} placeholder="Your Business Name" required className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )} />
+                                    </div>
+                                </div>
+                                {/* Step 2 */}
+                                <div className={cn("step-section", currentStep !== 2 && "hidden")}>
+                                     <h3 className="text-xl font-bold text-theme-primary mb-6">What type of website do you need?</h3>
+                                     <FormField control={control} name="websiteType" render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Website Category <span className="text-red-500">*</span></FormLabel>
+                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <FormControl>
+                                                    <SelectTrigger className="form-input w-full px-5 py-3.5 rounded-xl text-base">
+                                                        <SelectValue placeholder="Select a category..." />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="Basic Website">Basic Website</SelectItem>
+                                                    <SelectItem value="E-Commerce">E-Commerce</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                    <FormField control={control} name="goals" render={({ field }) => (
+                                        <FormItem className="mt-8">
+                                            <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">What are your primary goals for this website?</FormLabel>
+                                            <FormControl>
+                                                <Textarea
+                                                    placeholder="e.g., Generate more leads, showcase my portfolio, sell products online..."
+                                                    rows={4}
+                                                    className="form-input w-full px-5 py-3.5 rounded-xl text-base"
+                                                    {...field}
+                                                />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}/>
+                                </div>
+                                {/* Step 3 */}
+                                <div className={cn("step-section", currentStep !== 3 && "hidden")}>
+                                    <h3 className="text-xl font-bold text-theme-primary mb-2">Select Add-Ons & Enhancements</h3>
+                                    <p className="text-theme-secondary mb-6 text-sm">Select any upgrades, support plans, or bundles you are interested in.</p>
+                                    <div className="space-y-8 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                        {/* ... Addon Checkboxes Here ... */}
+                                    </div>
+                                </div>
+                                {/* Step 4 */}
+                                <div className={cn("step-section", currentStep !== 4 && "hidden")}>
+                                     <h3 className="text-xl font-bold text-theme-primary mb-6">Select Industry</h3>
+                                     <FormField control={control} name="industry" render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide">Industry/Niche <span className="text-red-500">*</span></FormLabel>
+                                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                <FormControl>
+                                                    <SelectTrigger className="form-input w-full px-5 py-3.5 rounded-xl text-base">
+                                                        <SelectValue placeholder="Select your industry..." />
+                                                    </SelectTrigger>
+                                                </FormControl>
+                                                <SelectContent>
+                                                    <SelectItem value="Professional Services">Professional Services</SelectItem>
+                                                    <SelectItem value="Healthcare & Wellness">Healthcare & Wellness</SelectItem>
+                                                    <SelectItem value="Retail & E-Commerce">Retail & E-Commerce</SelectItem>
+                                                    <SelectItem value="Food & Restaurant">Food & Restaurant</SelectItem>
+                                                    <SelectItem value="Real Estate">Real Estate</SelectItem>
+                                                    <SelectItem value="Education & Coaching">Education & Coaching</SelectItem>
+                                                    <SelectItem value="Technology & SaaS">Technology & SaaS</SelectItem>
+                                                    <SelectItem value="Creative & Design">Creative & Design</SelectItem>
+                                                    <SelectItem value="Construction & Home Services">Construction & Home Services</SelectItem>
+                                                    <SelectItem value="Custom">Other / Custom</SelectItem>
+                                                </SelectContent>
+                                            </Select>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )} />
+                                     {formData.industry === 'Custom' && (
+                                        <FormField control={control} name="customIndustry" render={({ field }) => (
+                                            <FormItem className="mt-4 animate-in fade-in-0">
+                                                <FormLabel className="block text-sm font-bold text-theme-primary uppercase tracking-wide mb-2">Please Specify <span className="text-red-500">*</span></FormLabel>
+                                                <FormControl><Input {...field} required placeholder="Enter your industry" className="form-input w-full px-5 py-3.5 rounded-xl text-base" /></FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )} />
+                                    )}
+                                </div>
+                                 {/* Step 5 */}
+                                <div className={cn("step-section", currentStep !== 5 && "hidden")}>
+                                    <h3 className="text-xl font-bold text-theme-primary mb-6">Review & Submit</h3>
+                                    <div className="bg-theme-tertiary rounded-xl p-6 mb-6 border border-theme space-y-4">
+                                        {/* Preview content here */}
+                                    </div>
+                                    <FormField control={control} name="terms" render={({ field }) => (
+                                        <FormItem className="flex items-start gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl mb-6">
+                                            <FormControl>
+                                                <Checkbox checked={field.value} onCheckedChange={field.onChange} id="terms" className="w-5 h-5 rounded mt-1" />
+                                            </FormControl>
+                                            <div className="grid gap-1.5 leading-none">
+                                                <label htmlFor="terms" className="text-theme-secondary text-sm leading-relaxed cursor-pointer select-none">
+                                                    I agree to the Terms of Service and understand I will be redirected to WhatsApp to complete my application.
+                                                </label>
+                                                {errors.terms && <FormMessage>{errors.terms.message}</FormMessage>}
+                                            </div>
+                                        </FormItem>
+                                    )} />
+                                </div>
+
+                                {/* Nav buttons */}
+                                <div className="flex items-center justify-between mt-8 pt-6 border-t border-theme">
+                                    <Button type="button" onClick={handlePrevStep} variant="outline" className={cn(currentStep === 1 && 'invisible')}>Back</Button>
+                                    <Button type="button" onClick={handleNextStep} className={cn('gradient-bg', currentStep === totalSteps && 'hidden')}>Next Step <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                                    <Button type="submit" className={cn('gradient-bg', currentStep !== totalSteps && 'hidden')}>
+                                        <WhatsAppIcon className="mr-2 h-5 w-5" /> Submit via WhatsApp
+                                    </Button>
+                                </div>
+                            </form>
+                        </Form>
                     </Card>
                 </div>
             </section>
@@ -550,6 +711,23 @@ Website Industry: ${data.industry === 'Custom' ? data.customIndustry : data.indu
                      </Accordion>
                  </div>
             </section>
+
+             <Dialog open={isSuccessModalOpen} onOpenChange={setSuccessModalOpen}>
+                <DialogContent>
+                    <DialogHeader className="text-center items-center">
+                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 checkmark-animate">
+                           <Check className="text-green-500 h-10 w-10" />
+                        </div>
+                        <DialogTitle className="text-2xl font-bold text-theme-primary mb-3">Application Submitted!</DialogTitle>
+                        <DialogDescription className="text-theme-secondary mb-8 leading-relaxed">Thank you for applying! We'll review your application and get back to you within 24 hours.</DialogDescription>
+                    </DialogHeader>
+                    <DialogFooter className="sm:justify-center">
+                        <Button onClick={() => setSuccessModalOpen(false)}>Got It!</Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
         </div>
     );
 }
+=====
+restore this to /services/free-website page
