@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
@@ -17,9 +18,24 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, Paintbrush, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, Gauge, Smartphone
+  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, Gauge, Smartphone, Edit
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+
+const applicationFormSchema = z.object({
+    fullName: z.string().min(2, "Full name is required."),
+    email: z.string().email("Please enter a valid email."),
+    phone: z.string().min(10, "Please enter a valid phone number."),
+    businessName: z.string().min(2, "Business name is required."),
+    websiteType: z.string().min(1, "Please select a website type."),
+    industry: z.string().min(1, "Please select an industry."),
+    customIndustry: z.string().optional(),
+    addons: z.array(z.string()).optional(),
+    terms: z.boolean().refine(val => val === true, { message: "You must accept the terms and conditions." }),
+});
 
 const CountdownTimer = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -77,17 +93,22 @@ export default function FreeWebsitePage() {
     const [isSuccessModalOpen, setSuccessModalOpen] = useState(false);
     const totalSteps = 5;
 
-    const [formData, setFormData] = useState({
-        fullName: '',
-        email: '',
-        phone: '',
-        businessName: '',
-        websiteType: '',
-        industry: '',
-        customIndustry: '',
-        addons: [] as string[],
-        terms: false,
+    const { control, watch, trigger, handleSubmit, reset, getValues } = useForm<z.infer<typeof applicationFormSchema>>({
+        resolver: zodResolver(applicationFormSchema),
+        defaultValues: {
+            fullName: '',
+            email: '',
+            phone: '',
+            businessName: '',
+            websiteType: '',
+            industry: '',
+            customIndustry: '',
+            addons: [],
+            terms: false,
+        },
     });
+
+    const formData = watch();
     
     const [slots, setSlots] = useState({ total: 10, remaining: 7 });
 
@@ -98,61 +119,39 @@ export default function FreeWebsitePage() {
         })
     }, [])
 
-    const handleNextStep = () => {
-        if (validateStep(currentStep)) {
+    const handleNextStep = async () => {
+        const stepFields: (keyof z.infer<typeof applicationFormSchema>)[] = [];
+        if (currentStep === 1) stepFields.push('fullName', 'email', 'phone', 'businessName');
+        if (currentStep === 2) stepFields.push('websiteType');
+        if (currentStep === 4) stepFields.push('industry');
+
+        const isValid = await trigger(stepFields);
+        
+        if (isValid) {
             setCurrentStep(currentStep + 1);
+        } else {
+             toast({
+                variant: 'destructive',
+                title: 'Missing Information',
+                description: `Please fill out all required fields.`,
+            });
         }
     };
 
     const handlePrevStep = () => setCurrentStep(currentStep - 1);
-
-    const validateStep = (step: number) => {
-        let isValid = true;
-        const requiredFields: (keyof typeof formData)[] = [];
-        if (step === 1) requiredFields.push('fullName', 'email', 'phone', 'businessName');
-        if (step === 2) requiredFields.push('websiteType');
-        if (step === 4) requiredFields.push('industry');
-        if (step === 5) requiredFields.push('terms');
-
-        for (const field of requiredFields) {
-            let value = formData[field];
-             if (typeof value === 'string') value = value.trim();
-            if (!value) {
-                isValid = false;
-                toast({
-                    variant: 'destructive',
-                    title: 'Missing Information',
-                    description: `Please fill out the ${field.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`,
-                });
-                break;
-            }
-        }
-        if (step === 5 && !formData.terms) {
-            isValid = false;
-            toast({
-                variant: 'destructive',
-                title: 'Terms Not Accepted',
-                description: 'You must agree to the terms to proceed.',
-            });
-        }
-        return isValid;
-    };
     
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault();
-        if (!validateStep(5)) return;
-
+    const onFormSubmit = (data: z.infer<typeof applicationFormSchema>) => {
         const message = `
 =========================
 Free website Contact Form Submission
-Name: ${formData.fullName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Business Name: ${formData.businessName}
-Selected Plan: ${formData.websiteType}
+Name: ${data.fullName}
+Email: ${data.email}
+Phone: ${data.phone}
+Business Name: ${data.businessName}
+Selected Plan: ${data.websiteType}
 Add-Ons Selected:
-${formData.addons.length > 0 ? formData.addons.map(a => '- ' + a).join('\n') : 'None'}
-Website Industry: ${formData.industry === 'Custom' ? formData.customIndustry : formData.industry}
+${data.addons && data.addons.length > 0 ? data.addons.map(a => '- ' + a).join('\n') : 'None'}
+Website Industry: ${data.industry === 'Custom' ? data.customIndustry : data.industry}
 =========================
         `;
         const encodedMessage = encodeURIComponent(message.trim());
@@ -160,6 +159,7 @@ Website Industry: ${formData.industry === 'Custom' ? formData.customIndustry : f
         window.open(whatsappUrl, '_blank');
 
         setSuccessModalOpen(true);
+        reset();
         setCurrentStep(1);
     };
 
@@ -234,7 +234,7 @@ Website Industry: ${formData.industry === 'Custom' ? formData.customIndustry : f
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            Limited-Time Offer – <span id="slotsRemaining" className="font-bold">{slots.remaining}</span> Slots Remaining This Month
+                            Limited-Time Offer – <span id="slotsRemaining" className="font-bold ml-1">{slots.remaining}</span> Slots Remaining This Month
                         </Badge>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-sm">
                             Get a 100% FREE<br />Professional Website
@@ -384,7 +384,6 @@ Website Industry: ${formData.industry === 'Custom' ? formData.customIndustry : f
                          <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 h-auto mb-12">
                              {upgradeTabs.map(tab => <TabsTrigger key={tab.id} value={tab.id} className="py-3 text-sm"><tab.icon className="mr-2 h-4 w-4"/>{tab.title}</TabsTrigger>)}
                          </TabsList>
-                         {/* All Tabs content here */}
                          <TabsContent value="addons">
                             <div className="max-w-3xl mx-auto mb-8 text-center">
                                 <p className="text-muted-foreground text-sm mb-4 bg-secondary inline-block px-4 py-2 rounded-lg">
@@ -416,7 +415,63 @@ Website Industry: ${formData.industry === 'Custom' ? formData.customIndustry : f
                                 ))}
                             </div>
                          </TabsContent>
-                         {/* Other tabs content */}
+                         <TabsContent value="support">
+                            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-start">
+                                <Card className="p-8">
+                                    <h4 className="text-xl font-bold text-theme-primary">Basic Support</h4>
+                                    <p className="text-theme-muted text-sm mb-6 min-h-[40px]">For small businesses needing peace of mind.</p>
+                                    <div className="mb-6 pb-6 border-b border-theme"><span className="text-4xl font-bold text-primary">₹499</span><span className="text-theme-muted">/mo</span></div>
+                                    <ul className="space-y-4 mb-8">
+                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>5 Support Tickets</li>
+                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>24-48h Response</li>
+                                    </ul>
+                                    <Button variant="outline" className="w-full">Choose Plan</Button>
+                                </Card>
+                                <Card className="p-8 border-2 border-primary shadow-2xl shadow-primary/20 scale-105">
+                                    <Badge className="mb-2">Most Popular</Badge>
+                                    <h4 className="text-xl font-bold text-theme-primary">Growth Support</h4>
+                                    <p className="text-theme-muted text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
+                                    <div className="mb-6 pb-6 border-b border-theme"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-theme-muted">/mo</span></div>
+                                    <ul className="space-y-4 mb-8">
+                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>30 Tickets</li>
+                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>Priority Response</li>
+                                    </ul>
+                                     <Button className="w-full">Choose Growth</Button>
+                                </Card>
+                                <Card className="p-8">
+                                    <h4 className="text-xl font-bold text-theme-primary">Premium Support</h4>
+                                    <p className="text-theme-muted text-sm mb-6 min-h-[40px]">For mission-critical applications.</p>
+                                    <div className="mb-6 pb-6 border-b border-theme"><span className="text-4xl font-bold text-primary">₹3,499</span><span className="text-theme-muted">/mo</span></div>
+                                    <ul className="space-y-4 mb-8">
+                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>Dedicated Engineer</li>
+                                        <li className="flex items-center gap-3 text-theme-secondary text-sm"><Check className="text-green-500"/>4-Hour SLA</li>
+                                    </ul>
+                                    <Button variant="outline" className="w-full">Choose Plan</Button>
+                                </Card>
+                            </div>
+                         </TabsContent>
+                         <TabsContent value="marketing">
+                             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <Card className="p-6"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"><Search className="text-blue-600"/></div><h4 className="text-lg font-bold">SEO Services</h4><p className="text-sm text-muted-foreground">₹1,999+/mo</p></Card>
+                                <Card className="p-6"><div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4"><HandCoins className="text-red-600"/></div><h4 className="text-lg font-bold">Google Ads</h4><p className="text-sm text-muted-foreground">₹1,499+/mo</p></Card>
+                                <Card className="p-6"><div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4"><Hash className="text-pink-600"/></div><h4 className="text-lg font-bold">Social Media</h4><p className="text-sm text-muted-foreground">₹1,999+/mo</p></Card>
+                                <Card className="p-6"><div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4"><Filter className="text-indigo-600"/></div><h4 className="text-lg font-bold">Funnels & Auto</h4><p className="text-sm text-muted-foreground">₹1,999+ one-time</p></Card>
+                             </div>
+                         </TabsContent>
+                         <TabsContent value="ecommerce">
+                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                <Card className="p-6"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4"><CreditCard className="text-green-600"/></div><h4 className="text-lg font-bold">UPI Integration</h4><p className="text-sm">₹499</p></Card>
+                                <Card className="p-6"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4"><CreditCard className="text-blue-600"/></div><h4 className="text-lg font-bold">International Payments</h4><p className="text-sm">₹999</p></Card>
+                                <Card className="p-6"><div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4"><Box className="text-purple-600"/></div><h4 className="text-lg font-bold">Product Listing</h4><p className="text-sm">₹99+</p></Card>
+                             </div>
+                         </TabsContent>
+                          <TabsContent value="bundles">
+                             <div className="grid md:grid-cols-3 gap-8">
+                                <Card className="p-8"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary">₹4,999</p></Card>
+                                <Card className="p-8 border-2 border-primary"><Badge>Best Value</Badge><h4 className="text-xl font-bold">Growth Pack</h4><p className="text-4xl font-bold text-primary">₹9,999</p></Card>
+                                <Card className="p-8"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary">₹19,999</p></Card>
+                            </div>
+                         </TabsContent>
                      </Tabs>
                 </div>
             </section>
@@ -476,7 +531,7 @@ Website Industry: ${formData.industry === 'Custom' ? formData.customIndustry : f
                             <div className="flex items-center justify-between mb-2"><span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Step {currentStep} of {totalSteps}</span><span className="text-xs font-bold text-primary">{['User Details', 'Project Details', 'Add-Ons', 'Select Industry', 'Review & Submit'][currentStep - 1]}</span></div>
                             <Progress value={(currentStep / totalSteps) * 100} />
                         </div>
-                        <form onSubmit={handleSubmit}>{/* ... form steps from previous implementation ... */}</form>
+                        <form onSubmit={handleSubmit(onFormSubmit)}>{/* Form steps here */}</form>
                     </Card>
                 </div>
             </section>
