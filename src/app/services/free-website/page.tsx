@@ -218,14 +218,38 @@ ${data.goals || 'Not provided'}
         }
     ];
 
-    const addonServices = [
-        { icon: FileText, title: "Extra Pages", desc: "Add pages based on tech stack & requirements.", price: "₹499+" },
-        { icon: Paintbrush, title: "Custom UI/UX Design", desc: "Tailored design per device & brand identity.", price: "₹999+" },
-        { icon: Gauge, title: "Speed Optimization", desc: "Performance tuning for lightning-fast load speeds.", price: "₹899" },
-        { icon: WhatsAppIcon, title: "WhatsApp Integration", desc: "Quick user engagement with direct WhatsApp chat.", price: "₹299" },
-        { icon: Bot, title: "Chatbot Integration", desc: "24/7 automated support based on AI model & tech stack.", price: "₹999+" },
-        { icon: CalendarCheck, title: "Booking System", desc: "Online appointment scheduling.", price: "₹1,499+" },
-    ];
+    const addonGroups = {
+        'Performance & Design': [
+            { icon: FileText, title: "Extra Pages", desc: "Add pages based on tech stack & requirements.", price: "₹499+" },
+            { icon: Paintbrush, title: "Custom UI/UX Design", desc: "Tailored design per device & brand identity.", price: "₹999+" },
+            { icon: Gauge, title: "Speed Optimization", desc: "Performance tuning for lightning-fast load speeds.", price: "₹899" },
+            { icon: WhatsAppIcon, title: "WhatsApp Integration", desc: "Quick user engagement with direct WhatsApp chat.", price: "₹299" },
+            { icon: Bot, title: "Chatbot Integration", desc: "24/7 automated support based on AI model & tech stack.", price: "₹999+" },
+            { icon: CalendarCheck, title: "Booking System", desc: "Online appointment scheduling.", price: "₹1,499+" },
+        ],
+        'Support Plans': [
+            { icon: Headset, title: 'Basic Support', desc: '5 tickets/mo, 48hr response.', price: '₹499/mo' },
+            { icon: Headset, title: 'Growth Support', desc: '30 tickets/mo, priority response.', price: '₹1,499/mo' },
+            { icon: Headset, title: 'Premium Support', desc: 'Dedicated engineer, 4hr SLA.', price: '₹3,499/mo' },
+        ],
+        'Marketing & Growth': [
+            { icon: Search, title: 'SEO Services', desc: 'Ranking, keyword & content optimization.', price: '₹1,999+/mo' },
+            { icon: HandCoins, title: 'Google Ads', desc: 'Campaign setup & ongoing optimization.', price: '₹1,499+/mo' },
+            { icon: Hash, title: 'Social Media', desc: 'Content, posting & community growth.', price: '₹1,999+/mo' },
+            { icon: Filter, title: 'Funnels & Automation', desc: 'Lead flows & conversion tracking.', price: '₹1,999+ one-time' },
+        ],
+        'E-Commerce & Payments': [
+            { icon: CreditCard, title: 'UPI Integration', desc: 'Accept payments via UPI for Indian customers.', price: '₹499' },
+            { icon: CreditCard, title: 'International Payments', desc: 'Stripe, PayPal & international gateway setup.', price: '₹999' },
+            { icon: Box, title: 'Product Listing', desc: 'Add products with images, descriptions & pricing.', price: '₹99+' },
+            { icon: Settings, title: 'Store Automation', desc: 'Inventory management and order automation.', price: 'Custom' },
+        ],
+        'Value Bundles': [
+            { icon: Gift, title: 'Startup Pack', desc: '5-page site, design & speed.', price: '₹4,999' },
+            { icon: Gift, title: 'Growth Pack', desc: '10-page, booking, SEO.', price: '₹9,999' },
+            { icon: Gift, title: 'Accelerator Bundle', desc: 'Full custom site & growth.', price: '₹19,999' },
+        ],
+    };
     
 
     return (
@@ -408,7 +432,7 @@ ${data.goals || 'Not provided'}
                          </TabsList>
                          <TabsContent value="addons">
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {addonServices.map((item, i) => (
+                                {addonGroups['Performance & Design'].map((item, i) => (
                                     <Card key={i} className="p-7 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
                                         <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary-foreground transition-colors duration-300">
                                             <item.icon className="text-primary text-xl group-hover:text-primary transition-colors"/>
@@ -459,17 +483,16 @@ ${data.goals || 'Not provided'}
                          </TabsContent>
                          <TabsContent value="marketing">
                              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Search className="text-blue-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">SEO Services</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,999+/mo</p></Card>
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><HandCoins className="text-red-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Google Ads</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,499+/mo</p></Card>
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Hash className="text-pink-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Social Media</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,999+/mo</p></Card>
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Filter className="text-indigo-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Funnels & Auto</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">₹1,999+ one-time</p></Card>
+                                {addonGroups['Marketing & Growth'].map((item, i) => (
+                                <Card key={i} className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><item.icon className="text-blue-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">{item.title}</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">{item.price}</p></Card>
+                                ))}
                              </div>
                          </TabsContent>
                          <TabsContent value="ecommerce">
                              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><CreditCard className="text-green-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">UPI Integration</h4><p className="text-sm group-hover:text-primary-foreground/80">₹499</p></Card>
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><CreditCard className="text-blue-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">International Payments</h4><p className="text-sm group-hover:text-primary-foreground/80">₹999</p></Card>
-                                <Card className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><Box className="text-purple-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">Product Listing</h4><p className="text-sm group-hover:text-primary-foreground/80">₹99+</p></Card>
+                                {addonGroups['E-Commerce & Payments'].map((item, i) => (
+                                <Card key={i} className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><item.icon className="text-green-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">{item.title}</h4><p className="text-sm group-hover:text-primary-foreground/80">{item.price}</p></Card>
+                                ))}
                              </div>
                          </TabsContent>
                           <TabsContent value="bundles">
@@ -505,7 +528,7 @@ ${data.goals || 'Not provided'}
                                     </div>
                                     <div className={cn(
                                         "pl-16 md:pl-0",
-                                        i % 2 === 0 ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
+                                        i % 2 === 0 ? "md:col-start-1 md:pr-8 md:text-right" : "md:col-start-2 md:pl-8"
                                     )}>
                                         <Card className="p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                                             <div className={cn(
@@ -646,9 +669,65 @@ ${data.goals || 'Not provided'}
                                 {/* Step 3 */}
                                 <div className={cn("step-section", currentStep !== 3 && "hidden")}>
                                     <h3 className="text-xl font-bold text-theme-primary mb-2">Select Add-Ons & Enhancements</h3>
-                                    <p className="text-theme-secondary mb-6 text-sm">Select any upgrades, support plans, or bundles you are interested in.</p>
+                                    <p className="text-muted-foreground mb-6 text-sm">Select any upgrades, support plans, or bundles you are interested in.</p>
                                     <div className="space-y-8 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
-                                        {/* ... Addon Checkboxes Here ... */}
+                                        <FormField
+                                            control={control}
+                                            name="addons"
+                                            render={() => (
+                                                <div className="space-y-8">
+                                                    {Object.entries(addonGroups).map(([groupName, addons]) => (
+                                                        <div key={groupName}>
+                                                            <h4 className="text-sm font-bold text-primary uppercase tracking-widest mb-3 flex items-center gap-2 sticky top-0 bg-secondary py-2 z-10">
+                                                                {addons[0]?.icon && <addons[0].icon className="h-4 w-4" />} {groupName}
+                                                            </h4>
+                                                            <div className="grid md:grid-cols-2 gap-4">
+                                                                {addons.map((item) => (
+                                                                    <FormField
+                                                                        key={item.title}
+                                                                        control={control}
+                                                                        name="addons"
+                                                                        render={({ field }) => (
+                                                                            <FormItem>
+                                                                                <Label
+                                                                                    htmlFor={item.title}
+                                                                                    className={cn(
+                                                                                        "flex flex-col h-full p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group",
+                                                                                        "hover:border-primary hover:shadow-lg",
+                                                                                        field.value?.includes(item.title) ? "border-primary bg-primary/5 shadow-lg" : "border-border bg-card"
+                                                                                    )}
+                                                                                >
+                                                                                    <div className="flex justify-between items-start">
+                                                                                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mb-4 transition-colors duration-300">
+                                                                                            <item.icon className="text-primary h-5 w-5" />
+                                                                                        </div>
+                                                                                        <FormControl>
+                                                                                            <Checkbox
+                                                                                                id={item.title}
+                                                                                                checked={field.value?.includes(item.title)}
+                                                                                                onCheckedChange={(checked) => {
+                                                                                                    return checked
+                                                                                                        ? field.onChange([...(field.value || []), item.title])
+                                                                                                        : field.onChange(field.value?.filter((value) => value !== item.title));
+                                                                                                }}
+                                                                                                className="h-5 w-5"
+                                                                                            />
+                                                                                        </FormControl>
+                                                                                    </div>
+                                                                                    <h4 className="font-bold text-card-foreground">{item.title}</h4>
+                                                                                    <p className="text-sm text-muted-foreground mt-1 mb-3 flex-grow">{item.desc}</p>
+                                                                                    <span className="text-lg font-bold text-primary">{item.price}</span>
+                                                                                </Label>
+                                                                            </FormItem>
+                                                                        )}
+                                                                    />
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        />
                                     </div>
                                 </div>
                                 {/* Step 4 */}
@@ -692,8 +771,29 @@ ${data.goals || 'Not provided'}
                                  {/* Step 5 */}
                                 <div className={cn("step-section", currentStep !== 5 && "hidden")}>
                                     <h3 className="text-xl font-bold text-theme-primary mb-6">Review & Submit</h3>
-                                    <div className="bg-theme-tertiary rounded-xl p-6 mb-6 border border-theme space-y-4">
-                                        {/* Preview content here */}
+                                    <div className="bg-muted/50 rounded-xl p-6 mb-6 border space-y-4">
+                                        <div className="grid grid-cols-2 gap-4 text-sm border-b pb-4">
+                                            <div><p className="block text-muted-foreground text-xs uppercase">Name</p><p className="font-semibold text-foreground">{formData.fullName || '-'}</p></div>
+                                            <div><p className="block text-muted-foreground text-xs uppercase">Email</p><p className="font-semibold text-foreground">{formData.email || '-'}</p></div>
+                                            <div><p className="block text-muted-foreground text-xs uppercase">Phone</p><p className="font-semibold text-foreground">{formData.phone || '-'}</p></div>
+                                            <div><p className="block text-muted-foreground text-xs uppercase">Business</p><p className="font-semibold text-foreground">{formData.businessName || '-'}</p></div>
+                                        </div>
+                                         <div className="grid grid-cols-2 gap-4 text-sm border-b pb-4">
+                                            <div><p className="block text-muted-foreground text-xs uppercase">Plan</p><p className="font-semibold text-foreground">{formData.websiteType || '-'}</p></div>
+                                            <div><p className="block text-muted-foreground text-xs uppercase">Industry</p><p className="font-semibold text-foreground">{formData.industry === 'Custom' ? formData.customIndustry : formData.industry || '-'}</p></div>
+                                        </div>
+                                        <div className="text-sm">
+                                            <p className="block text-muted-foreground text-xs uppercase mb-2">Selected Add-Ons</p>
+                                            {formData.addons && formData.addons.length > 0 ? (
+                                                <div className="flex flex-wrap gap-2">
+                                                    {formData.addons.map((addon) => (
+                                                        <Badge key={addon} variant="secondary">{addon}</Badge>
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <p className="text-muted-foreground text-sm">No Add-ons Selected</p>
+                                            )}
+                                        </div>
                                     </div>
                                     <FormField control={control} name="terms" render={({ field }) => (
                                         <FormItem className="flex items-start gap-4 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl mb-6">
@@ -756,3 +856,4 @@ ${data.goals || 'Not provided'}
         </div>
     );
 }
+
