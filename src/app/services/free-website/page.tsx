@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -396,4 +395,3 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
         </div>
     );
 }
-
