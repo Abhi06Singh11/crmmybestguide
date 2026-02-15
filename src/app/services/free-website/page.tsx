@@ -1,8 +1,9 @@
+
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -348,6 +349,17 @@ ${data.goals || 'Not provided'}
                 </div>
             </section>
             
+            {/* Domain and Hosting Info */}
+            <section className="py-12 bg-background">
+                <div className="container max-w-5xl">
+                    <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 text-center">
+                        <p className="text-base text-blue-900 dark:text-blue-200 leading-relaxed">
+                            Domain and Hosting prices are not included in this package. If you want to buy hosting and domain from us, we provide an additional 10–15% discount compared to the market price. We are powered by <strong className="font-bold">GoDaddy</strong>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* Transparency Section */}
             <section className="py-24 bg-secondary border-y">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -400,11 +412,6 @@ ${data.goals || 'Not provided'}
                                 <p className="text-muted-foreground text-sm mb-4 bg-secondary inline-block px-4 py-2 rounded-lg">
                                     <Info className="mr-2 h-4 w-4 inline"/>Prices are starting prices — final cost depends on business needs.
                                 </p>
-                                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
-                                    <p className="text-sm text-blue-950 dark:text-blue-500 font-bold leading-relaxed">
-                                        Domain and Hosting prices are not included. We offer a 10–15% discount on GoDaddy hosting and domains.
-                                    </p>
-                                </div>
                             </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {addonServices.map((item, i) => (
@@ -731,3 +738,5 @@ ${data.goals || 'Not provided'}
         </div>
     );
 }
+=====
+restore this to /services/free-website page
