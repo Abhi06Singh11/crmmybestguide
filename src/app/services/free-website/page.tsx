@@ -20,11 +20,12 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Progress } from '@/components/ui/progress';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
+import { Badge } from '@/components/ui/badge';
 
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, PaintBrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle
+  Check, Hand, LineChart, AlertTriangle, Mail
 } from 'lucide-react';
 
 const applicationFormSchema = z.object({
