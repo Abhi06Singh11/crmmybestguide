@@ -24,8 +24,8 @@ import { cn } from '@/lib/utils';
 
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
-  FileText, PaintBrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch
+  FileText, Paintbrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
+  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard
 } from 'lucide-react';
 
 const applicationFormSchema = z.object({
@@ -202,7 +202,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
         );
     }
     
-    const updatePreview = () => {
+    function updatePreview() {
         const data = form.getValues();
         return (
              <div className="bg-muted rounded-xl p-6 border space-y-4">
@@ -311,7 +311,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                         <TabsContent value="addons">
                             {/* Content for Add-ons */}
                             <div className="max-w-3xl mx-auto mb-8 text-center"><p className="text-muted-foreground text-sm mb-4 bg-muted inline-block px-4 py-2 rounded-lg"><Info className="inline-block mr-2 text-primary h-4 w-4"/>Prices are starting prices — final cost depends on business needs.</p><div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4"><p className="text-sm text-blue-950 dark:text-blue-500 font-bold leading-relaxed">Domain and Hosting prices are not included. We offer a 10–15% discount on market prices if you purchase through us (powered by GoDaddy).</p></div></div>
-                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{[{icon:FileText, title:"Extra Pages", price:"₹499+", per:"per page"},{icon:PaintBrush, title:"Custom UI/UX Design", price:"₹999+", per:"one-time"},{icon:Gauge, title:"Speed Optimization", price:"₹899", per:"one-time"},{icon:WhatsappIcon, title:"WhatsApp Integration", price:"₹299", per:"one-time"},{icon:Bot, title:"Chatbot Integration", price:"₹999+", per:"one-time"},{icon:CalendarCheck, title:"Booking System", price:"₹1,499+", per:"one-time"}].map(i => <Card key={i.title} className="p-7"><div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5"><i.icon className="text-primary text-xl"/></div><h4 className="text-lg font-bold mb-2">{i.title}</h4><div className="flex items-center justify-between border-t pt-4 mt-5"><span className="text-2xl font-bold text-primary">{i.price}</span><span className="text-muted-foreground text-xs font-medium uppercase tracking-wide">{i.per}</span></div></Card>)}</div>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{[{icon:FileText, title:"Extra Pages", price:"₹499+", per:"per page"},{icon:Paintbrush, title:"Custom UI/UX Design", price:"₹999+", per:"one-time"},{icon:Gauge, title:"Speed Optimization", price:"₹899", per:"one-time"},{icon:WhatsappIcon, title:"WhatsApp Integration", price:"₹299", per:"one-time"},{icon:Bot, title:"Chatbot Integration", price:"₹999+", per:"one-time"},{icon:CalendarCheck, title:"Booking System", price:"₹1,499+", per:"one-time"}].map(i => <Card key={i.title} className="p-7"><div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5"><i.icon className="text-primary text-xl"/></div><h4 className="text-lg font-bold mb-2">{i.title}</h4><div className="flex items-center justify-between border-t pt-4 mt-5"><span className="text-2xl font-bold text-primary">{i.price}</span><span className="text-muted-foreground text-xs font-medium uppercase tracking-wide">{i.per}</span></div></Card>)}</div>
                         </TabsContent>
                         <TabsContent value="support">
                              {/* Content for Support */}
@@ -486,3 +486,24 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
         </div>
     );
 }
+
+======================
+need to add the new internal route for "100% FREE Professional Website" to the website's navigation.
+
+Requirements:
+
+- Add a new link to both the main navigation bar and the footer.
+
+- The new link should be styled as a standout call-to-action (CTA) button to attract attention.
+
+- The link text must be "Free Website".
+
+- On desktop, the button should appear at the end of the existing navigation links.
+
+- On mobile, the button should be prominently displayed, separate from the standard mobile menu items.
+
+- The button must route to the newly created internal page: /services/free-website.
+
+- Ensure the new link does not disrupt the existing layout or cause any alignment issues.
+
+- The button's hover, active, and focus states must be consistent with the website's existing design system.
