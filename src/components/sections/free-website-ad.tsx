@@ -15,6 +15,7 @@ const CountdownTimer = () => {
     });
 
     useEffect(() => {
+        // Ensure this only runs on the client
         const randomDuration = Math.floor(Math.random() * (12 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000 + 1) + 3 * 60 * 60 * 1000);
         const endDate = new Date(Date.now() + randomDuration);
 
@@ -61,7 +62,7 @@ export default function FreeWebsiteAd() {
     }
 
     return (
-        <section className="relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
+        <section className="relative overflow-hidden h-[80vh] flex items-center" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
             <div className="bubbles">
                 {[...Array(10)].map((_, i) => <div key={i} className="bubble"></div>)}
             </div>
@@ -70,7 +71,7 @@ export default function FreeWebsiteAd() {
                 <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#002D6B] rounded-full blur-[120px]"></div>
             </div>
             
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-16 md:py-24">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <Button variant="ghost" size="icon" className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/10" onClick={() => setIsVisible(false)}>
                     <X className="h-6 w-6" />
                 </Button>

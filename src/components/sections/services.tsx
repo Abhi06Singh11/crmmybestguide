@@ -18,17 +18,6 @@ export default function Services() {
 
   return (
     <>
-      <section id="our-expertise" className="bg-secondary py-16 md:py-24">
-        <div className="container">
-            <div className="mx-auto max-w-3xl text-center">
-                <h1 className="font-headline text-4xl font-bold md:text-5xl text-foreground">Our Expertise in Modern Digital Solutions</h1>
-                <p className="mt-4 text-lg text-muted-foreground">
-                At MyBestGuide, we specialize in designing, developing, and maintaining digital solutions that empower businesses to operate smarter and grow faster. Our expertise spans web and mobile development, ERP systems, SaaS platforms, and long-term technical support. We focus on clean architecture, user-friendly design, and scalable technology to ensure your digital products perform at their best today and in the future.
-                </p>
-            </div>
-        </div>
-      </section>
-
       <section id="services-overview" className="py-16 md:py-24 bg-background">
         <div className="container">
           <div className="mx-auto mb-12 flex max-w-3xl flex-col items-center text-center">
@@ -62,8 +51,8 @@ export default function Services() {
 
       <section id="service-details" className="py-16 md:py-24 bg-secondary">
           <div className="container">
-              {serviceSegments.map((segment) => (
-                  <div key={segment.title} className="space-y-16 pt-24 first:pt-0 last:pb-0">
+              {serviceSegments.map((segment, index) => (
+                  <div key={segment.title} className={`pt-24 first:pt-0 last:pb-0`}>
                       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
                           <h2 className="font-headline text-3xl font-bold md:text-4xl">{segment.title}</h2>
                       </div>
