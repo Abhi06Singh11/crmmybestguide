@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,54 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { Rocket, CheckCircle, X } from 'lucide-react';
-
-const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState({
-        days: '00',
-        hours: '00',
-        minutes: '00',
-        seconds: '00',
-    });
-
-    useEffect(() => {
-        // Ensure this only runs on the client
-        const randomDuration = Math.floor(Math.random() * (12 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000 + 1) + 3 * 60 * 60 * 1000);
-        const endDate = new Date(Date.now() + randomDuration);
-
-        const timer = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = endDate.getTime() - now;
-
-            if (distance < 0) {
-                clearInterval(timer);
-                setTimeLeft({ days: '00', hours: '00', minutes: '00', seconds: '00' });
-                return;
-            }
-
-            const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-
-            setTimeLeft({ days, hours, minutes, seconds });
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, []);
-
-    return (
-        <div className="flex justify-center gap-3 md:gap-6">
-            {Object.entries(timeLeft).map(([unit, value]) => (
-                <div key={unit} className="text-center">
-                    <div className="bg-white/20 rounded-xl px-3 py-3 md:px-5 md:py-4 min-w-[60px] md:min-w-[80px] backdrop-blur-sm">
-                        <span className="text-2xl md:text-4xl font-bold text-white font-mono">{value}</span>
-                    </div>
-                    <span className="text-white/70 text-xs mt-2 block font-medium capitalize">{unit}</span>
-                </div>
-            ))}
-        </div>
-    );
-};
 
 export default function FreeWebsiteAd() {
     const [isVisible, setIsVisible] = useState(true);
@@ -63,8 +14,8 @@ export default function FreeWebsiteAd() {
     }
 
     return (
-        <div className="container my-8">
-            <section className="relative overflow-hidden rounded-2xl py-16 md:py-20" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
+        <div className="my-8">
+            <section className="relative mx-auto flex h-[80vh] w-[80%] items-center justify-center overflow-hidden rounded-2xl" style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
                 <div className="bubbles">
                     {[...Array(10)].map((_, i) => <div key={i} className="bubble"></div>)}
                 </div>
@@ -73,11 +24,11 @@ export default function FreeWebsiteAd() {
                     <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#002D6B] rounded-full blur-[120px]"></div>
                 </div>
                 
-                <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                     <Button variant="ghost" size="icon" className="absolute top-4 right-4 text-white/70 hover:text-white hover:bg-white/10" onClick={() => setIsVisible(false)}>
                         <X className="h-6 w-6" />
                     </Button>
-                    <div className="text-center max-w-4xl mx-auto">
+                    <div className="mx-auto max-w-4xl text-center">
                         <Badge variant="secondary" className="bg-white/10 text-white px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/20 animate-fade-in-up">
                             <span className="relative flex h-3 w-3 mr-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -115,11 +66,6 @@ export default function FreeWebsiteAd() {
                                     See What's Included
                                 </Button>
                             </Link>
-                        </div>
-
-                        <div className="mt-16 bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 max-w-2xl mx-auto border border-white/10 shadow-2xl">
-                            <div className="flex justify-between items-center mb-4"><p className="text-sm font-semibold uppercase tracking-wider text-white/90">Offer Expires In</p><Badge variant="destructive" className="animate-pulse">Few slots left</Badge></div>
-                            <CountdownTimer />
                         </div>
                     </div>
                 </div>
