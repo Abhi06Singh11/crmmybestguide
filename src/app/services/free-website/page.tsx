@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
@@ -20,11 +20,12 @@ import { Progress } from '@/components/ui/progress';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, PaintBrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins
+  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch
 } from 'lucide-react';
 
 const applicationFormSchema = z.object({
@@ -116,7 +117,6 @@ const WhatsappIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 export default function FreeWebsitePage() {
     const router = useRouter();
-    const { toast } = useToast();
     const [currentStep, setCurrentStep] = useState(1);
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const [slots, setSlots] = useState({ remaining: 7, total: 10 });
@@ -139,7 +139,7 @@ export default function FreeWebsitePage() {
 
     async function handleNextStep() {
         const stepFields = [
-            [], // step 0 (unused)
+            [],
             ['fullName', 'email', 'phone', 'businessName'],
             ['websiteType'],
             ['addons'],
@@ -195,7 +195,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
              <div className="mb-8">
                 <div className="flex items-center justify-between mb-2">
                     <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Step {currentStep} of {totalSteps}</span>
-                    <span className="text-xs font-bold text-primary" id="stepTitle">{stepTitles[currentStep-1]}</span>
+                    <span className="text-xs font-bold text-primary">{stepTitles[currentStep-1]}</span>
                 </div>
                 <Progress value={(currentStep / totalSteps) * 100} />
             </div>
@@ -238,7 +238,6 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                 Back
             </Button>
             
-            {/* Hero */}
             <section className="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden bg-gradient-to-br from-primary to-slate-900 text-primary-foreground">
                 <div className="bubbles">
                     {Array.from({ length: 10 }).map((_, i) => <div key={i} className="bubble"></div>)}
@@ -270,7 +269,6 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                 </div>
             </section>
             
-            {/* Features Section */}
             <section id="features" className="py-24 bg-background">
                 <div className="container">
                     <div className="text-center mb-16"><Badge>No Strings Attached</Badge><h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">What You Get For FREE</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto">Everything you need to establish your online presence – completely free of charge.</p></div>
@@ -289,7 +287,6 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                 </div>
             </section>
             
-            {/* Transparency Section */}
             <section className="py-24 bg-secondary">
                 <div className="container max-w-5xl">
                     <Card className="p-8 md:p-12">
@@ -300,13 +297,117 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                 </div>
             </section>
 
-             {/* Application Form */}
+             <section id="upgrades" className="py-24 bg-background">
+                <div className="container max-w-7xl">
+                    <div className="text-center mb-16"><Badge>Scale When Ready</Badge><h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">Value Enhancements</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto">Unlock powerful growth tools as your business scales. No pressure – upgrade only when you need it.</p></div>
+                    <Tabs defaultValue="addons" className="w-full">
+                        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 h-auto mb-12">
+                            <TabsTrigger value="addons"><Puzzle className="mr-2" />Performance</TabsTrigger>
+                            <TabsTrigger value="support"><Headset className="mr-2" />Support Plans</TabsTrigger>
+                            <TabsTrigger value="marketing"><Megaphone className="mr-2" />Marketing</TabsTrigger>
+                            <TabsTrigger value="ecommerce"><Store className="mr-2" />E-Commerce</TabsTrigger>
+                            <TabsTrigger value="bundles"><Gift className="mr-2" />Bundle Offers</TabsTrigger>
+                        </TabsList>
+                        <TabsContent value="addons">
+                            {/* Content for Add-ons */}
+                            <div className="max-w-3xl mx-auto mb-8 text-center"><p className="text-muted-foreground text-sm mb-4 bg-muted inline-block px-4 py-2 rounded-lg"><Info className="inline-block mr-2 text-primary h-4 w-4"/>Prices are starting prices — final cost depends on business needs.</p><div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4"><p className="text-sm text-blue-950 dark:text-blue-500 font-bold leading-relaxed">Domain and Hosting prices are not included. We offer a 10–15% discount on market prices if you purchase through us (powered by GoDaddy).</p></div></div>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">{[{icon:FileText, title:"Extra Pages", price:"₹499+", per:"per page"},{icon:PaintBrush, title:"Custom UI/UX Design", price:"₹999+", per:"one-time"},{icon:Gauge, title:"Speed Optimization", price:"₹899", per:"one-time"},{icon:WhatsappIcon, title:"WhatsApp Integration", price:"₹299", per:"one-time"},{icon:Bot, title:"Chatbot Integration", price:"₹999+", per:"one-time"},{icon:CalendarCheck, title:"Booking System", price:"₹1,499+", per:"one-time"}].map(i => <Card key={i.title} className="p-7"><div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5"><i.icon className="text-primary text-xl"/></div><h4 className="text-lg font-bold mb-2">{i.title}</h4><div className="flex items-center justify-between border-t pt-4 mt-5"><span className="text-2xl font-bold text-primary">{i.price}</span><span className="text-muted-foreground text-xs font-medium uppercase tracking-wide">{i.per}</span></div></Card>)}</div>
+                        </TabsContent>
+                        <TabsContent value="support">
+                             {/* Content for Support */}
+                            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto items-start">
+                                <Card className="p-8">
+                                    <h4 className="text-xl font-bold mb-4">Basic Support</h4>
+                                    <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For small businesses needing consistent support.</p>
+                                    <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹499</span><span className="text-muted-foreground">/month</span></div>
+                                    <ul className="space-y-4 mb-8">{["Up to 5 Tickets", "24-48 Hour Response", "Monthly Monitoring", "Email Support"].map(f => <li key={f} className="flex items-center gap-3 text-sm"><Check className="text-green-500 flex-shrink-0"/>{f}</li>)}</ul>
+                                    <Button variant="outline" className="w-full" onClick={scrollToApply}>Choose Plan</Button>
+                                </Card>
+                                <Card className="bg-primary text-primary-foreground p-8 shadow-2xl scale-105 relative z-10">
+                                     <Badge className="absolute -top-4 left-1/2 -translate-x-1/2">Most Popular</Badge>
+                                    <h4 className="text-xl font-bold mb-4">Growth Support</h4>
+                                    <p className="text-primary-foreground/80 text-sm mb-6 min-h-[40px]">For growing businesses ready to scale.</p>
+                                    <div className="mb-6 pb-6 border-b border-primary-foreground/30"><span className="text-4xl font-bold">₹1,499</span><span className="text-primary-foreground/80">/month</span></div>
+                                     <ul className="space-y-4 mb-8">{["30 Tickets/mo", "12-24 Hour Response", "WhatsApp & Email", "Priority Bug Fixes", "Monthly Backups"].map(f => <li key={f} className="flex items-center gap-3 text-sm"><CheckCircle className="text-green-400 flex-shrink-0"/>{f}</li>)}</ul>
+                                    <Button variant="secondary" className="w-full" onClick={scrollToApply}>Choose Growth</Button>
+                                </Card>
+                                 <Card className="p-8">
+                                    <h4 className="text-xl font-bold mb-4">Premium Support</h4>
+                                    <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For mission-critical websites & eCommerce.</p>
+                                    <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹3,499</span><span className="text-muted-foreground">/month</span></div>
+                                    <ul className="space-y-4 mb-8">{["Dedicated Engineer", "4-Hour Response SLA", "Phone Consultations", "Weekly Backups"].map(f => <li key={f} className="flex items-center gap-3 text-sm"><Check className="text-green-500 flex-shrink-0"/>{f}</li>)}</ul>
+                                    <Button variant="outline" className="w-full" onClick={scrollToApply}>Choose Plan</Button>
+                                </Card>
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="marketing">
+                             <p className="text-center text-muted-foreground text-sm mb-8 bg-muted inline-block px-4 py-2 rounded-lg mx-auto block w-fit"><Info className="inline-block mr-2 text-primary h-4 w-4"/>Prices vary based on niche, duration, and business size.</p>
+                            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {[{icon:Search, title:"SEO Services", price:"₹1,999+", per:"/month"}, {icon:Globe, title:"Google Ads", price:"₹1,499+", per:"/month"},{icon:Hash, title:"Social Media", price:"₹1,999+", per:"/month"},{icon:Filter, title:"Funnels & Automation", price:"₹1,999+", per:"one-time"}].map(item => (
+                                    <Card key={item.title} className="p-6 text-center"><div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 mx-auto"><item.icon className="text-primary text-xl"/></div><h4 className="text-lg font-bold mb-2">{item.title}</h4><div className="pt-4 border-t mt-4"><span className="text-2xl font-bold text-primary">{item.price}</span><span className="text-muted-foreground text-xs block">{item.per}</span></div></Card>
+                                ))}
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="ecommerce">
+                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {[{icon:Smartphone, title:"UPI Integration", price:"₹499"}, {icon:CreditCard, title:"International Payments", price:"₹999"}, {icon:Box, title:"Product Listing", price:"₹99+"}, {icon:Settings, title:"Store Automation", price:"Custom"}].map(item => (
+                                    <Card key={item.title} className="p-6"><div className="flex justify-between items-start mb-4"><div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center"><item.icon className="text-primary text-xl"/></div><span className="text-xl font-bold">{item.price}</span></div><h4 className="text-lg font-bold mb-2">{item.title}</h4></Card>
+                                ))}
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="bundles">
+                             <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+                                <Card className="p-8"><div className="mb-4"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-muted-foreground text-sm mt-1">For new businesses</p></div><div className="mb-6"><span className="text-4xl font-bold text-primary">₹4,999</span><span className="text-muted-foreground line-through ml-2 text-sm">₹7,499</span></div><ul className="space-y-3 mb-8">{["5-page Website", "Custom UI/UX Design", "Speed Optimization", "1 Month Basic Support"].map(f => <li key={f} className="flex items-center gap-2 text-sm"><Check className="text-green-500"/>{f}</li>)}</ul><Button variant="outline" className="w-full" onClick={scrollToApply}>Get Started</Button></Card>
+                                <Card className="bg-primary text-primary-foreground p-8 shadow-2xl scale-105 relative z-10"><Badge className="absolute -top-4 left-1/2 -translate-x-1/2">Best Value</Badge><div className="mb-4"><h4 className="text-2xl font-bold">Growth Pack</h4><p className="text-primary-foreground/80 text-sm mt-1">Scale with confidence</p></div><div className="mb-6"><span className="text-4xl font-bold">₹9,999</span><span className="text-primary-foreground/80 line-through ml-2 text-sm">₹15,999</span></div><ul className="space-y-3 mb-8">{["10-page Website", "Premium UI/UX Design", "Booking System", "SEO Starter Setup", "1 Month Growth Support"].map(f => <li key={f} className="flex items-center gap-2 text-sm"><CheckCircle className="text-green-400"/>{f}</li>)}</ul><Button variant="secondary" className="w-full" onClick={scrollToApply}>Get Started</Button></Card>
+                                <Card className="p-8"><div className="mb-4"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-muted-foreground text-sm mt-1">Complete growth solution</p></div><div className="mb-6"><span className="text-4xl font-bold text-primary">₹19,999</span><span className="text-muted-foreground line-through ml-2 text-sm">₹32,999</span></div><ul className="space-y-3 mb-8">{["Full Custom Website", "All Integrations", "SEO + Social + Ads", "3 Months Support"].map(f => <li key={f} className="flex items-center gap-2 text-sm"><Check className="text-green-500"/>{f}</li>)}</ul><Button variant="outline" className="w-full" onClick={scrollToApply}>Get Started</Button></Card>
+                            </div>
+                        </TabsContent>
+                    </Tabs>
+                </div>
+            </section>
+            
+            <section id="journey" className="py-24 bg-secondary">
+                 <div className="container max-w-4xl">
+                     <div className="text-center mb-16"><Badge>Simple Process</Badge><h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">Your Journey</h2><p className="text-xl text-muted-foreground">From application to launch in 5 simple steps.</p></div>
+                    <div className="relative">
+                        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-purple-500 opacity-30 transform md:-translate-x-1/2 hidden md:block rounded-full"></div>
+                        <div className="space-y-16 relative">
+                            {[{icon:Edit, title:"Apply for Free Website", text:"2 Min Application"}, {icon:Mail, title:"Approval Confirmation", text:"Email Confirmation"}, {icon:Code, title:"Website Build", text:"7–10 Business Days"}, {icon:Rocket, title:"Launch Your Website", text:"Go Live!"}, {icon:LineChart, title:"Grow & Upgrade", text:"Scale Your Success"}].map((step, i) => (
+                                <div key={i} className={`flex flex-col md:flex-row items-center gap-8 group ${i%2 !== 0 && 'md:flex-row-reverse'}`}>
+                                    <div className="md:w-1/2 text-center md:text-left">
+                                        <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed">{i === 0 ? "Fill out a simple form with your business details and goals." : i === 1 ? "Our team reviews your application within 24 hours." : i === 2 ? "Our designers and developers create your professional website." : i === 3 ? "Review, approve, and launch your new website." : "When you're ready to scale, unlock powerful features."}</p>
+                                    </div>
+                                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-2xl z-10 shrink-0 shadow-lg border-4 border-secondary group-hover:scale-110 transition-transform">{i+1}</div>
+                                    <div className="md:w-1/2 text-center md:text-left">
+                                        <div className="bg-background rounded-2xl p-4 shadow-sm inline-flex items-center gap-4 border"><step.icon className="text-primary text-2xl"/><span className="font-medium">{step.text}</span></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <section className="py-20 bg-gradient-to-r from-red-600 to-orange-500 text-white">
+                <div className="container text-center">
+                    <div className="flex items-center justify-center gap-4 mb-6"><AlertTriangle className="h-10 w-10 text-yellow-300" /> <h2 className="text-2xl md:text-4xl font-bold">Limited Availability</h2></div>
+                    <p className="text-xl mb-10 max-w-2xl mx-auto">We can only accept a limited number of free website projects each month to maintain quality.</p>
+                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-md mx-auto mb-10 border border-white/20">
+                        <p className="text-sm font-semibold uppercase tracking-wider mb-4 text-left">Monthly Slots Available</p>
+                        <div className="flex items-center gap-5"><div className="flex-1 bg-black/20 rounded-full h-4 overflow-hidden shadow-inner"><div className="bg-green-500 h-full rounded-full" style={{width: `${100 - (slots.remaining/slots.total)*100}%`}}></div></div><span className="font-bold text-2xl font-mono">{slots.remaining}/{slots.total}</span></div>
+                        <p className="text-sm mt-4 text-left flex items-center gap-2 text-white/70"><Info className="h-4 w-4"/>Applications require manual review & approval</p>
+                    </div>
+                    <Button size="lg" variant="secondary" className="text-lg" onClick={scrollToApply}><Hand className="mr-2"/>Apply Before Slots Fill Up</Button>
+                </div>
+            </section>
+
             <section id="apply" className="py-24 bg-background">
                 <div className="container max-w-4xl">
                      <div className="text-center mb-16"><Badge>Start Your Journey</Badge><h2 className="text-3xl md:text-5xl font-bold mt-6 mb-6">Apply for Your Free Website</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto">No credit card required. No obligations. Just fill out the form below.</p></div>
                     <Card><Form {...form}><form onSubmit={form.handleSubmit(onSubmit)}><CardContent className="p-8 md:p-12">
                         <StepIndicator />
-                        {currentStep === 1 && <div className="space-y-6">
+                        <div className={cn("space-y-6", currentStep !== 1 && "hidden")}>
                             <h3 className="text-xl font-bold">Tell us about yourself</h3>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <FormField control={form.control} name="fullName" render={({ field }) => (<FormItem><FormLabel>Full Name*</FormLabel><FormControl><Input placeholder="John Smith" {...field}/></FormControl><FormMessage/></FormItem>)}/>
@@ -316,16 +417,12 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                                 <FormField control={form.control} name="phone" render={({ field }) => (<FormItem><FormLabel>Phone Number*</FormLabel><FormControl><Input placeholder="+91 98765 43210" {...field}/></FormControl><FormMessage/></FormItem>)}/>
                                 <FormField control={form.control} name="businessName" render={({ field }) => (<FormItem><FormLabel>Business Name*</FormLabel><FormControl><Input placeholder="Your Business Name" {...field}/></FormControl><FormMessage/></FormItem>)}/>
                             </div>
-                        </div>}
-                        
-                        {currentStep === 2 && <div className="space-y-6">
+                        </div>
+                        <div className={cn("space-y-6", currentStep !== 2 && "hidden")}>
                              <h3 className="text-xl font-bold">What type of website do you need?</h3>
-                             <FormField control={form.control} name="websiteType" render={({ field }) => (
-                                <FormItem><FormLabel>Website Category*</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue placeholder="Select a category..."/></SelectTrigger></FormControl><SelectContent><SelectItem value="Basic Website">Basic Website</SelectItem><SelectItem value="E-Commerce">E-Commerce</SelectItem></SelectContent></Select><FormMessage/></FormItem>
-                             )}/>
-                        </div>}
-                        
-                        {currentStep === 3 && <div className="space-y-8">
+                             <FormField control={form.control} name="websiteType" render={({ field }) => (<FormItem><FormLabel>Website Category*</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue placeholder="Select a category..."/></SelectTrigger></FormControl><SelectContent><SelectItem value="Basic Website">Basic Website</SelectItem><SelectItem value="E-Commerce">E-Commerce</SelectItem></SelectContent></Select><FormMessage/></FormItem>)}/>
+                        </div>
+                        <div className={cn("space-y-8", currentStep !== 3 && "hidden")}>
                             <h3 className="text-xl font-bold">Select Add-Ons & Enhancements (Optional)</h3>
                             <p className="text-sm text-muted-foreground">Select any upgrades, support plans, or bundles you are interested in.</p>
                             <FormField control={form.control} name="addons" render={() => (
@@ -333,7 +430,7 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                                 <div className="grid md:grid-cols-2 gap-3">
                                 {['Custom UI/UX Design', 'Speed Optimization', 'Extra Pages', 'WhatsApp Integration', 'Chatbot Integration', 'Booking System', 'Basic Support Plan', 'Growth Support Plan', 'Premium Support Plan', 'SEO Services', 'Google Ads', 'Social Media Marketing', 'Funnels & Automation', 'UPI Integration', 'International Payments', 'Product Listing', 'Store Automation', 'Marketing Tools', 'Product Subscriptions', 'Startup Pack Bundle', 'Growth Pack Bundle', 'Accelerator Bundle'].map(item => (
                                     <FormField key={item} control={form.control} name="addons" render={({field}) => (
-                                        <FormItem className="flex items-center space-x-3 p-3 rounded-xl border bg-background hover:bg-secondary transition cursor-pointer">
+                                        <FormItem className="flex items-center space-x-3 p-3 rounded-xl border bg-background hover:bg-muted transition cursor-pointer">
                                             <FormControl><Checkbox checked={field.value?.includes(item)} onCheckedChange={checked => {
                                                 return checked ? field.onChange([...(field.value || []), item]) : field.onChange(field.value?.filter(v => v !== item))
                                             }}/></FormControl>
@@ -344,31 +441,25 @@ ${data.addons && data.addons.length > 0 ? data.addons.map(a => `- ${a}`).join('\
                                 </div><FormMessage/>
                                 </FormItem>
                             )}/>
-                        </div>}
-                        
-                        {currentStep === 4 && <div className="space-y-6">
+                        </div>
+                        <div className={cn("space-y-6", currentStep !== 4 && "hidden")}>
                              <h3 className="text-xl font-bold">Select Industry</h3>
-                             <FormField control={form.control} name="industry" render={({ field }) => (
-                                <FormItem><FormLabel>Industry/Niche*</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue placeholder="Select your industry..."/></SelectTrigger></FormControl><SelectContent>{["Professional Services", "Healthcare & Wellness", "Retail & E-Commerce", "Food & Restaurant", "Real Estate", "Education & Coaching", "Technology & SaaS", "Creative & Design", "Construction & Home Services", "Custom"].map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}</SelectContent></Select><FormMessage/></FormItem>
-                             )}/>
+                             <FormField control={form.control} name="industry" render={({ field }) => (<FormItem><FormLabel>Industry/Niche*</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue placeholder="Select your industry..."/></SelectTrigger></FormControl><SelectContent>{["Professional Services", "Healthcare & Wellness", "Retail & E-Commerce", "Food & Restaurant", "Real Estate", "Education & Coaching", "Technology & SaaS", "Creative & Design", "Construction & Home Services", "Custom"].map(i => <SelectItem key={i} value={i}>{i}</SelectItem>)}</SelectContent></Select><FormMessage/></FormItem>)}/>
                              {form.watch('industry') === 'Custom' && <FormField control={form.control} name="customIndustry" render={({ field }) => (<FormItem><FormLabel>Please Specify*</FormLabel><FormControl><Input placeholder="Enter your industry" {...field}/></FormControl><FormMessage/></FormItem>)}/>}
-                        </div>}
-
-                        {currentStep === 5 && <div className="space-y-6">
+                        </div>
+                        <div className={cn("space-y-6", currentStep !== 5 && "hidden")}>
                             <h3 className="text-xl font-bold">Review & Submit</h3>
                             {updatePreview()}
                             <FormField control={form.control} name="terms" render={({ field }) => (<FormItem className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange}/></FormControl><div><FormLabel>I agree to the Terms of Service and understand I will be redirected to WhatsApp to complete my application.</FormLabel><FormMessage/></div></FormItem>)}/>
-                        </div>}
-                        
+                        </div>
                     </CardContent><CardFooter className="flex justify-between pt-6 border-t">
-                        <Button type="button" variant="outline" onClick={handlePrevStep} className={currentStep === 1 ? 'invisible' : ''}>Back</Button>
-                        {currentStep < totalSteps && <Button type="button" onClick={handleNextStep}>Next Step</Button>}
-                        {currentStep === totalSteps && <Button type="submit" disabled={form.formState.isSubmitting}><WhatsappIcon className="h-6 w-6 mr-2"/>Submit via WhatsApp</Button>}
+                        <Button type="button" variant="outline" onClick={handlePrevStep} className={cn(currentStep === 1 && 'invisible')}>Back</Button>
+                        <Button type="button" onClick={handleNextStep} className={cn(currentStep === totalSteps && 'hidden')}>Next Step</Button>
+                        <Button type="submit" disabled={form.formState.isSubmitting} className={cn(currentStep !== totalSteps && 'hidden')}><WhatsappIcon className="h-6 w-6 mr-2"/>Submit via WhatsApp</Button>
                     </CardFooter></form></Form></Card>
                 </div>
             </section>
             
-            {/* FAQ */}
             <section className="py-24 bg-secondary">
                  <div className="container max-w-3xl">
                      <div className="text-center mb-16"><h2 className="text-3xl md:text-4xl font-bold mb-6">Frequently Asked Questions</h2></div>
