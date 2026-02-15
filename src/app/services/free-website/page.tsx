@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
@@ -348,7 +349,6 @@ ${data.goals || 'Not provided'}
                 </div>
             </section>
             
-             {/* Domain and Hosting Info */}
             <section className="py-12 bg-background">
                 <div className="container max-w-5xl">
                     <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 text-center">
@@ -436,7 +436,7 @@ ${data.goals || 'Not provided'}
                                 </Card>
                                 <Card className="p-8 border-2 border-primary shadow-2xl shadow-primary/20 scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                                     <Badge className="mb-2">Most Popular</Badge>
-                                    <h4 className="text-xl font-bold">Growth Support</h4>
+                                    <h4 className="text-xl font-bold text-white">Growth Support</h4>
                                     <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
                                     <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-muted-foreground">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
@@ -486,24 +486,48 @@ ${data.goals || 'Not provided'}
             {/* Journey Section */}
             <section id="journey" className="py-24 bg-secondary overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div className="text-center mb-16"><Badge variant="secondary" className="px-3 py-1 mb-4">Simple Process</Badge><h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">Your Journey</h2><p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">From application to launch in 5 simple steps.</p></div>
-                    <div className="relative max-w-4xl mx-auto">
-                        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-purple-500 transform md:-translate-x-1/2 hidden md:block rounded-full opacity-30"></div>
-                        <div className="space-y-16 relative">
+                    <div className="text-center mb-16">
+                        <Badge variant="secondary" className="px-3 py-1 mb-4">Simple Process</Badge>
+                        <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">Your Journey</h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">From application to launch in 5 simple steps.</p>
+                    </div>
+                    <div className="relative max-w-3xl mx-auto">
+                        <div className="absolute left-5 top-5 h-full w-px bg-border md:left-1/2 md:-translate-x-px"></div>
+                        <div className="relative flex flex-col gap-y-12">
                             {journeySteps.map((s, i) => (
-                                <div key={s.step} className={cn("flex flex-col md:flex-row items-center gap-8 group", i % 2 !== 0 && "md:flex-row-reverse")}>
-                                    <div className="md:w-1/2">
-                                        <h3 className="text-2xl font-bold text-foreground mb-3">{s.title}</h3>
-                                        <p className="text-muted-foreground leading-relaxed">{s.description}</p>
-                                    </div>
-                                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-2xl z-10 shadow-lg border-4 border-secondary transition-transform group-hover:scale-110">
-                                        {s.step}
-                                    </div>
-                                    <div className="md:w-1/2 flex">
-                                        <div className={cn("bg-background rounded-2xl p-4 shadow-sm inline-flex items-center gap-4 border", i%2 !== 0 && "md:ml-auto")}>
-                                            <s.icon className="text-primary h-6 w-6"/>
-                                            <span className="text-muted-foreground font-medium">{s.label}</span>
+                                <div key={s.step} className={cn(
+                                    "relative md:grid md:grid-cols-2 md:items-center md:gap-8",
+                                )}>
+                                    <div className="absolute left-5 top-5 -translate-x-1/2 md:left-1/2 md:top-1/2 md:-translate-y-1/2 z-10">
+                                        <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary bg-background font-bold text-primary">
+                                            {s.step}
                                         </div>
+                                    </div>
+                                    <div className={cn(
+                                        "pl-16 md:pl-0",
+                                        i % 2 === 0 ? "md:col-start-1 md:pr-8" : "md:col-start-2 md:pl-8"
+                                    )}>
+                                        <Card className="p-6 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                                            <div className={cn(
+                                                "flex items-start gap-4 mb-3",
+                                                i % 2 === 0 && "md:flex-row-reverse"
+                                            )}>
+                                                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                                    <s.icon className="h-6 w-6" />
+                                                </div>
+                                                <div className={cn(
+                                                    "flex-1",
+                                                    i % 2 === 0 ? "md:text-right" : "md:text-left"
+                                                )}>
+                                                    <h3 className="text-xl font-bold text-foreground mb-1">{s.title}</h3>
+                                                    <Badge variant="secondary">{s.label}</Badge>
+                                                </div>
+                                            </div>
+                                            <p className={cn(
+                                                "text-muted-foreground leading-relaxed",
+                                                 i % 2 === 0 && "md:text-right"
+                                            )}>{s.description}</p>
+                                        </Card>
                                     </div>
                                 </div>
                             ))}
