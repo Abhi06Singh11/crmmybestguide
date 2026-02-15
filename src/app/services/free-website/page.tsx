@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
@@ -24,6 +23,7 @@ import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 const applicationFormSchema = z.object({
     fullName: z.string().min(2, "Full name is required."),
@@ -329,7 +329,7 @@ ${data.goals || 'Not provided'}
                                 <div className="pt-6 border-t relative z-10">
                                     <div className="flex items-center justify-between">
                                         <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground">₹0</span><span className="text-muted-foreground line-through text-lg">₹24,999</span></div></div>
-                                        <Badge className="bg-green-100 text-green-700">100% FREE</Badge>
+                                        <Badge className="bg-purple-100 text-purple-700">100% FREE</Badge>
                                     </div>
                                 </div>
                             </CardContent>
