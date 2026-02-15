@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
@@ -349,7 +348,7 @@ ${data.goals || 'Not provided'}
                 </div>
             </section>
             
-            {/* Domain and Hosting Info */}
+             {/* Domain and Hosting Info */}
             <section className="py-12 bg-background">
                 <div className="container max-w-5xl">
                     <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 text-center">
@@ -359,7 +358,7 @@ ${data.goals || 'Not provided'}
                     </div>
                 </div>
             </section>
-
+            
             {/* Transparency Section */}
             <section className="py-24 bg-secondary border-y">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -408,11 +407,6 @@ ${data.goals || 'Not provided'}
                              {upgradeTabs.map(tab => <TabsTrigger key={tab.id} value={tab.id} className="py-3 text-sm"><tab.icon className="mr-2 h-4 w-4"/>{tab.title}</TabsTrigger>)}
                          </TabsList>
                          <TabsContent value="addons">
-                            <div className="max-w-3xl mx-auto mb-8 text-center">
-                                <p className="text-muted-foreground text-sm mb-4 bg-secondary inline-block px-4 py-2 rounded-lg">
-                                    <Info className="mr-2 h-4 w-4 inline"/>Prices are starting prices — final cost depends on business needs.
-                                </p>
-                            </div>
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {addonServices.map((item, i) => (
                                     <Card key={i} className="p-7 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
@@ -738,5 +732,3 @@ ${data.goals || 'Not provided'}
         </div>
     );
 }
-=====
-restore this to /services/free-website page
