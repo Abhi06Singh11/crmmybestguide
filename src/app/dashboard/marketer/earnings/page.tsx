@@ -78,7 +78,7 @@ export default function EarningsPage() {
                                             <div className="font-medium">{invoice.client}</div>
                                             <div className="text-sm text-muted-foreground">{invoice.project}</div>
                                         </TableCell>
-                                        <TableCell>${invoice.amount.toLocaleString()}</TableCell>
+                                        <TableCell>₹{invoice.amount.toLocaleString()}</TableCell>
                                         <TableCell>{format(parseISO(invoice.date), 'MMM d, yyyy')}</TableCell>
                                         <TableCell>
                                             <Badge variant={

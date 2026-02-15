@@ -78,19 +78,19 @@ export const developerProjectsData = {
 
 export const developerEarningsData = {
     kpis: [
-        { title: 'Lifetime Earnings', value: '$85,750', icon: DollarSign },
-        { title: 'Last Payout', value: '$4,500', icon: Banknote },
-        { title: 'Pending Clearance', value: '$5,000', icon: Calendar },
-        { title: 'Avg. Project Pay', value: '$7,145', icon: Star },
+        { title: 'Lifetime Earnings', value: '₹6,860,000', icon: DollarSign },
+        { title: 'Last Payout', value: '₹360,000', icon: Banknote },
+        { title: 'Pending Clearance', value: '₹400,000', icon: Calendar },
+        { title: 'Avg. Project Pay', value: '₹571,600', icon: Star },
     ],
     tableData: [
-        { id: 1, project: 'E-commerce Backend', client: 'Quantum Solutions', amount: 9000, status: 'Paid', date: '2024-07-10', receiptId: 'RCPT-0710' },
-        { id: 2, project: 'New Website Launch', client: 'Innovate Inc.', amount: 5000, status: 'Approved', date: '2024-08-20', receiptId: 'RCPT-0820' },
-        { id: 3, project: 'Analytics Dashboard', client: 'Starlight Co.', amount: 7500, status: 'Paid', date: '2024-06-25', receiptId: 'RCPT-0625' },
-        { id: 4, project: 'Mobile App API', client: 'Future Forward', amount: 6500, status: 'Paid', date: '2024-05-28', receiptId: 'RCPT-0528' },
+        { id: 1, project: 'E-commerce Backend', client: 'Quantum Solutions', amount: 720000, status: 'Paid', date: '2024-07-10', receiptId: 'RCPT-0710' },
+        { id: 2, project: 'New Website Launch', client: 'Innovate Inc.', amount: 400000, status: 'Approved', date: '2024-08-20', receiptId: 'RCPT-0820' },
+        { id: 3, project: 'Analytics Dashboard', client: 'Starlight Co.', amount: 600000, status: 'Paid', date: '2024-06-25', receiptId: 'RCPT-0625' },
+        { id: 4, project: 'Mobile App API', client: 'Future Forward', amount: 520000, status: 'Paid', date: '2024-05-28', receiptId: 'RCPT-0528' },
     ],
     chartData: [
-        { date: 'Jan 24', earnings: 4000 }, { date: 'Feb 24', earnings: 0 }, { date: 'Mar 24', earnings: 5500 },
-        { date: 'Apr 24', earnings: 3000 }, { date: 'May 24', earnings: 6500 }, { date: 'Jun 24', earnings: 7500 }, { date: 'Jul 24', earnings: 9000 },
+        { date: 'Jan 24', earnings: 320000 }, { date: 'Feb 24', earnings: 0 }, { date: 'Mar 24', earnings: 440000 },
+        { date: 'Apr 24', earnings: 240000 }, { date: 'May 24', earnings: 520000 }, { date: 'Jun 24', earnings: 600000 }, { date: 'Jul 24', earnings: 720000 },
     ],
 };

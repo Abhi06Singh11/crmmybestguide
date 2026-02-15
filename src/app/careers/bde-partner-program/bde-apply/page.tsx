@@ -201,9 +201,9 @@ export default function BdeApplyPage() {
             <h3>3. Commission Structure</h3>
             <ul>
               <li><strong>Standard Commission:</strong> 20% to 25% on the project signing amount for each successful referral.</li>
-              <li><strong>High-Value Projects:</strong> For client projects over $1,000 USD, commissions may be negotiated up to 30%.</li>
+              <li><strong>High-Value Projects:</strong> For client projects over ₹80,000, commissions may be negotiated up to 30%.</li>
               <li><strong>Repeat Orders:</strong> Additional 5% to 10% commission depending on the scope and profitability of follow-up projects.</li>
-              <li><strong>Minimum Referral Value:</strong> Projects should ideally be $150 USD or more.</li>
+              <li><strong>Minimum Referral Value:</strong> Projects should ideally be ₹12,000 or more.</li>
             </ul>
             <h3>4. Payment Terms</h3>
             <ul>

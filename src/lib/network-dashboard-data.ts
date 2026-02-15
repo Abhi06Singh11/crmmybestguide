@@ -80,20 +80,20 @@ export const networkTasksData = {
 
 export const networkEarningsData = {
     kpis: [
-        { title: 'Lifetime Earnings', value: '$42,500', icon: DollarSign },
-        { title: 'Last Payout', value: '$3,500', icon: Banknote },
-        { title: 'Pending Clearance', value: '$1,800', icon: Calendar },
-        { title: 'Avg. Task Pay', value: '$150', icon: Star },
+        { title: 'Lifetime Earnings', value: '₹3,400,000', icon: DollarSign },
+        { title: 'Last Payout', value: '₹280,000', icon: Banknote },
+        { title: 'Pending Clearance', value: '₹144,000', icon: Calendar },
+        { title: 'Avg. Task Pay', value: '₹12,000', icon: Star },
     ],
     tableData: [
-        { id: 1, type: 'Contract', project: 'Innovate Inc. Maintenance', amount: 1500, status: 'Paid', date: '2024-07-05', receiptId: 'RCPT-S-0705' },
-        { id: 2, type: 'Task', project: 'Quantum E-commerce (TKT-003)', amount: 300, status: 'Approved', date: '2024-08-02', receiptId: 'RCPT-S-0802' },
-        { id: 3, type: 'Contract', project: 'Starlight Co. Support', amount: 1200, status: 'Pending', date: '2024-08-01', receiptId: 'RCPT-S-0801' },
-        { id: 4, type: 'Task', project: 'Generic Task Resolution', amount: 150, status: 'Paid', date: '2024-07-22', receiptId: 'RCPT-S-0722' },
+        { id: 1, type: 'Contract', project: 'Innovate Inc. Maintenance', amount: 120000, status: 'Paid', date: '2024-07-05', receiptId: 'RCPT-S-0705' },
+        { id: 2, type: 'Task', project: 'Quantum E-commerce (TKT-003)', amount: 24000, status: 'Approved', date: '2024-08-02', receiptId: 'RCPT-S-0802' },
+        { id: 3, type: 'Contract', project: 'Starlight Co. Support', amount: 96000, status: 'Pending', date: '2024-08-01', receiptId: 'RCPT-S-0801' },
+        { id: 4, type: 'Task', project: 'Generic Task Resolution', amount: 12000, status: 'Paid', date: '2024-07-22', receiptId: 'RCPT-S-0722' },
     ],
     chartData: [
-        { date: 'Jan 24', earnings: 2000 }, { date: 'Feb 24', earnings: 2500 }, { date: 'Mar 24', earnings: 2200 },
-        { date: 'Apr 24', earnings: 3000 }, { date: 'May 24', earnings: 2800 }, { date: 'Jun 24', earnings: 3500 }, { date: 'Jul 24', earnings: 4000 },
+        { date: 'Jan 24', earnings: 160000 }, { date: 'Feb 24', earnings: 200000 }, { date: 'Mar 24', earnings: 176000 },
+        { date: 'Apr 24', earnings: 240000 }, { date: 'May 24', earnings: 224000 }, { date: 'Jun 24', earnings: 280000 }, { date: 'Jul 24', earnings: 320000 },
     ],
 };
 

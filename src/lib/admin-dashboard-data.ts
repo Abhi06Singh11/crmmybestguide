@@ -4,17 +4,17 @@ import { Users, Briefcase, DollarSign, AlertTriangle } from 'lucide-react';
 export const adminKpiData = [
   { title: 'Total Users', value: '48', change: '+5 this week', icon: Users },
   { title: 'Active Projects', value: '12', change: '80% capacity', icon: Briefcase },
-  { title: 'Platform Revenue (Month)', value: '$28,450', change: '+12% vs last month', icon: DollarSign },
+  { title: 'Platform Revenue (Month)', value: '₹2,276,000', change: '+12% vs last month', icon: DollarSign },
   { title: 'Pending Approvals', value: '3', change: '1 user, 2 projects', icon: AlertTriangle },
 ];
 
 export const platformRevenueData = [
-    { month: 'Jan', revenue: 15000 },
-    { month: 'Feb', revenue: 18000 },
-    { month: 'Mar', revenue: 22000 },
-    { month: 'Apr', revenue: 25000 },
-    { month: 'May', revenue: 23000 },
-    { month: 'Jun', revenue: 28000 },
+    { month: 'Jan', revenue: 1200000 },
+    { month: 'Feb', revenue: 1440000 },
+    { month: 'Mar', revenue: 1760000 },
+    { month: 'Apr', revenue: 2000000 },
+    { month: 'May', revenue: 1840000 },
+    { month: 'Jun', revenue: 2240000 },
 ];
 
 export const usersData = [
@@ -31,18 +31,18 @@ export const usersData = [
 
 
 export const adminProjectsData = [
-    { id: 'proj_001', name: 'New Website Launch', client: 'Innovate Inc.', manager: 'Alex Ray', status: 'Active', risk: 'Low', progress: 75, budget: 25000 },
-    { id: 'proj_002', name: 'Q3 Marketing Campaign', client: 'Quantum Solutions', manager: 'Alex Ray', status: 'Active', risk: 'Low', progress: 90, budget: 15000 },
-    { id: 'proj_003', name: 'SEO Optimization', client: 'Starlight Co.', manager: 'Alex Ray', status: 'Pending Approval', risk: 'N/A', progress: 100, budget: 12000 },
-    { id: 'proj_004', name: 'Cloud Migration', client: 'Innovate Inc.', manager: 'Casey Becker', status: 'On Hold', risk: 'Medium', progress: 20, budget: 35000 },
-    { id: 'proj_005', name: 'Mobile App Revamp', client: 'Sunrise Ltd.', manager: 'Alex Ray', status: 'Risk', risk: 'High', progress: 50, budget: 22000 },
-    { id: 'proj_006', name: 'E-commerce Backend', client: 'Quantum Solutions', manager: 'Alex Ray', status: 'Completed', risk: 'N/A', progress: 100, budget: 30000 },
+    { id: 'proj_001', name: 'New Website Launch', client: 'Innovate Inc.', manager: 'Alex Ray', status: 'Active', risk: 'Low', progress: 75, budget: 2000000 },
+    { id: 'proj_002', name: 'Q3 Marketing Campaign', client: 'Quantum Solutions', manager: 'Alex Ray', status: 'Active', risk: 'Low', progress: 90, budget: 1200000 },
+    { id: 'proj_003', name: 'SEO Optimization', client: 'Starlight Co.', manager: 'Alex Ray', status: 'Pending Approval', risk: 'N/A', progress: 100, budget: 960000 },
+    { id: 'proj_004', name: 'Cloud Migration', client: 'Innovate Inc.', manager: 'Casey Becker', status: 'On Hold', risk: 'Medium', progress: 20, budget: 2800000 },
+    { id: 'proj_005', name: 'Mobile App Revamp', client: 'Sunrise Ltd.', manager: 'Alex Ray', status: 'Risk', risk: 'High', progress: 50, budget: 1760000 },
+    { id: 'proj_006', name: 'E-commerce Backend', client: 'Quantum Solutions', manager: 'Alex Ray', status: 'Completed', risk: 'N/A', progress: 100, budget: 2400000 },
 ];
 
 export const adminApprovalsData = [
     { id: 'appr_001', item: 'Dana Scully', type: 'New User', requester: 'System', date: '2024-08-01', status: 'Pending' as const },
     { id: 'appr_002', item: 'Project "AI Chatbot"', type: 'New Project', requester: 'Alex Ray', date: '2024-08-02', status: 'Pending' as const },
-    { id: 'appr_003', item: 'Payout for Bob Williams ($2,500)', type: 'Payment', requester: 'Bob Williams', date: '2024-08-03', status: 'Pending' as const },
+    { id: 'appr_003', item: 'Payout for Bob Williams (₹200,000)', type: 'Payment', requester: 'Bob Williams', date: '2024-08-03', status: 'Pending' as const },
     { id: 'appr_004', item: 'Campaign "Summer Sale"', type: 'Budget', requester: 'Alex Ray', date: '2024-07-28', status: 'Approved' as const },
     { id: 'appr_005', item: 'User Deactivation: Fox Mulder', type: 'User Management', requester: 'Super Admin', date: '2024-07-25', status: 'Approved' as const },
     { id: 'appr_006', item: 'Expense Report Q2', type: 'Expense', requester: 'Casey Becker', date: '2024-07-22', status: 'Rejected' as const },
@@ -50,7 +50,7 @@ export const adminApprovalsData = [
 
 export const marketerApprovalsData = [
     { id: 'appr_mkt_001', item: 'Campaign "Black Friday Promo"', type: 'New Campaign', requester: 'Alex Ray', date: '2024-08-05', status: 'Pending' as const },
-    { id: 'appr_mkt_002', item: 'Ad Spend Increase ($2k)', type: 'Budget', requester: 'Dana Scully', date: '2024-08-04', status: 'Pending' as const },
+    { id: 'appr_mkt_002', item: 'Ad Spend Increase (₹160,000)', type: 'Budget', requester: 'Dana Scully', date: '2024-08-04', status: 'Pending' as const },
     { id: 'appr_mkt_003', item: 'Invoice #1024 to Quantum Solutions', type: 'Payment', requester: 'System', date: '2024-08-03', status: 'Approved' as const },
     { id: 'appr_mkt_004', item: 'New Ad Creative "SummerVibes"', type: 'Creative', requester: 'Alex Ray', date: '2024-08-02', status: 'Rejected' as const },
 ];
@@ -72,16 +72,16 @@ export const networkApprovalsData = [
 
 export const adminPaymentsData = {
     kpis: [
-        { title: 'Total Revenue (All Time)', value: '$258,900', icon: DollarSign },
-        { title: 'Payouts This Month', value: '$21,300', icon: DollarSign },
-        { title: 'Pending Payouts', value: '$8,500', icon: DollarSign },
+        { title: 'Total Revenue (All Time)', value: '₹20,712,000', icon: DollarSign },
+        { title: 'Payouts This Month', value: '₹1,704,000', icon: DollarSign },
+        { title: 'Pending Payouts', value: '₹680,000', icon: DollarSign },
         { title: 'Disputes', value: '1', icon: AlertTriangle },
     ],
     transactions: [
-        { id: 'txn_001', client: 'Innovate Inc.', amount: 5000, status: 'Paid', date: '2024-08-01' },
-        { id: 'txn_002', client: 'Quantum Solutions', amount: 2500, status: 'Paid', date: '2024-07-28' },
-        { id: 'txn_003', client: 'Starlight Co.', amount: 3250, status: 'Pending', date: '2024-08-05' },
-        { id: 'txn_004', client: 'Sunrise Ltd.', amount: 11000, status: 'Overdue', date: '2024-07-15' },
+        { id: 'txn_001', client: 'Innovate Inc.', amount: 400000, status: 'Paid', date: '2024-08-01' },
+        { id: 'txn_002', client: 'Quantum Solutions', amount: 200000, status: 'Paid', date: '2024-07-28' },
+        { id: 'txn_003', client: 'Starlight Co.', amount: 260000, status: 'Pending', date: '2024-08-05' },
+        { id: 'txn_004', client: 'Sunrise Ltd.', amount: 880000, status: 'Overdue', date: '2024-07-15' },
     ]
 };
 
@@ -104,7 +104,7 @@ export const adminAnalyticsData = {
 };
 
 export const adminSystemRules = [
-    { id: 'rule_001', name: 'Auto-approve Payouts < $500', condition: 'payment.amount < 500', action: 'auto_approve()', status: true },
+    { id: 'rule_001', name: 'Auto-approve Payouts < ₹40,000', condition: 'payment.amount < 40000', action: 'auto_approve()', status: true },
     { id: 'rule_002', name: 'Assign High-Priority Projects to Seniors', condition: 'project.priority == "High"', action: 'assign_senior()', status: true },
     { id: 'rule_003', name: 'Flag Overdue Invoices', condition: 'invoice.dueDate < now()', action: 'flag_overdue()', status: true },
     { id: 'rule_004', name: 'Welcome Email for New Users', condition: 'user.new == true', action: 'send_welcome_email()', status: false },
@@ -114,25 +114,25 @@ export const adminAuditLogs = [
     { id: 'log_001', user: 'Super Admin', action: 'Updated System Rule', details: 'Disabled rule "Welcome Email for New Users"', timestamp: '2024-08-05 10:15:00' },
     { id: 'log_002', user: 'Alex Ray', action: 'Created Project', details: 'Project "AI Chatbot" for client Innovate Inc.', timestamp: '2024-08-05 09:30:00' },
     { id: 'log_003', user: 'System', action: 'Suspended User', details: 'Suspended Fox Mulder for policy violation.', timestamp: '2024-08-04 18:00:00' },
-    { id: 'log_004', user: 'Bob Williams', action: 'Requested Payout', details: 'Amount: $2,500', timestamp: '2024-08-03 11:00:00' },
+    { id: 'log_004', user: 'Bob Williams', action: 'Requested Payout', details: 'Amount: ₹200,000', timestamp: '2024-08-03 11:00:00' },
 ];
 
 export const adminDeveloperProjectsData = [
-    { id: 'dev_proj_001', name: 'API Upgrade', status: 'Approved', budget: 3500, spend: 2100, successRate: 98 },
-    { id: 'dev_proj_002', name: 'Mobile App Fixes', status: 'Pending', budget: 4000, spend: 0, successRate: 0 },
-    { id: 'dev_proj_003', name: 'Database Migration', status: 'Active', budget: 8000, spend: 5500, successRate: 99 },
-    { id: 'dev_proj_004', name: 'New Feature Release', status: 'Draft', budget: 12000, spend: 0, successRate: 0 },
-    { id: 'dev_proj_005', name: 'Performance Tunning', status: 'Rejected', budget: 5000, spend: 0, successRate: 0 },
-    { id: 'dev_proj_006', name: 'Security Patch', status: 'Active', budget: 2000, spend: 1000, successRate: 100 },
-    { id: 'dev_proj_007', name: 'UI Refresh', status: 'Pending', budget: 6000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_001', name: 'API Upgrade', status: 'Approved', budget: 280000, spend: 168000, successRate: 98 },
+    { id: 'dev_proj_002', name: 'Mobile App Fixes', status: 'Pending', budget: 320000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_003', name: 'Database Migration', status: 'Active', budget: 640000, spend: 440000, successRate: 99 },
+    { id: 'dev_proj_004', name: 'New Feature Release', status: 'Draft', budget: 960000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_005', name: 'Performance Tunning', status: 'Rejected', budget: 400000, spend: 0, successRate: 0 },
+    { id: 'dev_proj_006', name: 'Security Patch', status: 'Active', budget: 160000, spend: 80000, successRate: 100 },
+    { id: 'dev_proj_007', name: 'UI Refresh', status: 'Pending', budget: 480000, spend: 0, successRate: 0 },
 ];
 
 export const adminNetworkProjectsData = [
-    { id: 'net_proj_001', name: 'Server Migration', status: 'Approved', budget: 7000, spend: 4200, uptime: 99.98 },
-    { id: 'net_proj_002', name: 'Network Optimization', status: 'Pending', budget: 6500, spend: 0, uptime: 0 },
-    { id: 'net_proj_003', name: 'Firewall Upgrade', status: 'Approved', budget: 9000, spend: 6500, uptime: 99.99 },
-    { id: 'net_proj_004', name: 'Bandwidth Upgrade', status: 'Draft', budget: 18000, spend: 0, uptime: 0 },
-    { id: 'net_proj_005', name: 'Data Center Decommission', status: 'Rejected', budget: 5000, spend: 0, uptime: 0 },
-    { id: 'net_proj_006', name: 'VPC Peering Setup', status: 'Approved', budget: 3000, spend: 3000, uptime: 100 },
-    { id: 'net_proj_007', name: 'Security Audit', status: 'Pending', budget: 4500, spend: 0, uptime: 0 },
+    { id: 'net_proj_001', name: 'Server Migration', status: 'Approved', budget: 560000, spend: 336000, uptime: 99.98 },
+    { id: 'net_proj_002', name: 'Network Optimization', status: 'Pending', budget: 520000, spend: 0, uptime: 0 },
+    { id: 'net_proj_003', name: 'Firewall Upgrade', status: 'Approved', budget: 720000, spend: 520000, uptime: 99.99 },
+    { id: 'net_proj_004', name: 'Bandwidth Upgrade', status: 'Draft', budget: 1440000, spend: 0, uptime: 0 },
+    { id: 'net_proj_005', name: 'Data Center Decommission', status: 'Rejected', budget: 400000, spend: 0, uptime: 0 },
+    { id: 'net_proj_006', name: 'VPC Peering Setup', status: 'Approved', budget: 240000, spend: 240000, uptime: 100 },
+    { id: 'net_proj_007', name: 'Security Audit', status: 'Pending', budget: 360000, spend: 0, uptime: 0 },
 ];

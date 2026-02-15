@@ -30,17 +30,17 @@ import {
 import Link from 'next/link';
 
 const marketerCampaigns = [
-    { id: 'camp_001', name: 'Spring Sale', status: 'Running', budget: 5000, spend: 3200, roi: 3.2 },
-    { id: 'camp_002', name: 'Summer Launch', status: 'Paused', budget: 7500, spend: 2100, roi: 2.6 },
-    { id: 'camp_003', name: 'Q3 Lead Gen', status: 'Running', budget: 10000, spend: 8500, roi: 4.1 },
-    { id: 'camp_004', name: 'Black Friday Promo', status: 'Draft', budget: 15000, spend: 0, roi: 0 },
+    { id: 'camp_001', name: 'Spring Sale', status: 'Running', budget: 400000, spend: 256000, roi: 3.2 },
+    { id: 'camp_002', name: 'Summer Launch', status: 'Paused', budget: 600000, spend: 168000, roi: 2.6 },
+    { id: 'camp_003', name: 'Q3 Lead Gen', status: 'Running', budget: 800000, spend: 680000, roi: 4.1 },
+    { id: 'camp_004', name: 'Black Friday Promo', status: 'Draft', budget: 1200000, spend: 0, roi: 0 },
 ];
 
 const performanceData = [
-  {name: 'W1', spend: 400},
-  {name: 'W2', spend: 300},
-  {name: 'W3', spend: 500},
-  {name: 'W4', spend: 700},
+  {name: 'W1', spend: 32000},
+  {name: 'W2', spend: 24000},
+  {name: 'W3', spend: 40000},
+  {name: 'W4', spend: 56000},
 ];
 
 
@@ -61,7 +61,7 @@ export default function AdminMarketerProjectsPage() {
                     <CardTitle className="text-sm font-medium">Total Budget (Month)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">$37,500</div>
+                    <div className="text-2xl font-bold">₹3,000,000</div>
                 </CardContent>
             </Card>
              <Card>
@@ -69,7 +69,7 @@ export default function AdminMarketerProjectsPage() {
                     <CardTitle className="text-sm font-medium">Total Spend (Month)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">$13,800</div>
+                    <div className="text-2xl font-bold">₹1,104,000</div>
                 </CardContent>
             </Card>
             <Card>
@@ -122,8 +122,8 @@ export default function AdminMarketerProjectsPage() {
                                         campaign.status === 'Paused' && 'bg-yellow-500/80 text-white',
                                     )}>{campaign.status}</Badge>
                                 </TableCell>
-                                <TableCell>${campaign.budget.toLocaleString()}</TableCell>
-                                <TableCell>${campaign.spend.toLocaleString()}</TableCell>
+                                <TableCell>₹{campaign.budget.toLocaleString()}</TableCell>
+                                <TableCell>₹{campaign.spend.toLocaleString()}</TableCell>
                                 <TableCell>{campaign.roi > 0 ? `${campaign.roi}x` : 'N/A'}</TableCell>
                             </TableRow>
                         ))}

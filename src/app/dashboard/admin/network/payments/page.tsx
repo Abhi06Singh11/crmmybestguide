@@ -24,10 +24,10 @@ import { cn } from '@/lib/utils';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const networkPayments = [
-    { id: 'inv_net_001', invoice: '#3001', client: 'Alpha Services', amount: 3000, status: 'Paid', date: '2026-01-25' },
-    { id: 'inv_net_002', invoice: '#3002', client: 'Beta Infrastructure', amount: 5200, status: 'Pending', date: '2026-02-15' },
-    { id: 'inv_net_003', invoice: '#3003', client: 'Gamma Tech', amount: 1500, status: 'Failed', date: '2026-01-28' },
-    { id: 'inv_net_004', invoice: '#3004', client: 'Delta Cloud', amount: 4800, status: 'Paid', date: '2026-01-10' },
+    { id: 'inv_net_001', invoice: '#3001', client: 'Alpha Services', amount: 240000, status: 'Paid', date: '2026-01-25' },
+    { id: 'inv_net_002', invoice: '#3002', client: 'Beta Infrastructure', amount: 416000, status: 'Pending', date: '2026-02-15' },
+    { id: 'inv_net_003', invoice: '#3003', client: 'Gamma Tech', amount: 120000, status: 'Failed', date: '2026-01-28' },
+    { id: 'inv_net_004', invoice: '#3004', client: 'Delta Cloud', amount: 384000, status: 'Paid', date: '2026-01-10' },
 ];
 
 export default function AdminNetworkPaymentsPage() {
@@ -78,7 +78,7 @@ export default function AdminNetworkPaymentsPage() {
                         <TableRow key={payment.id}>
                             <TableCell className="font-medium">{payment.invoice}</TableCell>
                             <TableCell>{payment.client}</TableCell>
-                            <TableCell>${payment.amount.toLocaleString()}</TableCell>
+                            <TableCell>₹{payment.amount.toLocaleString()}</TableCell>
                             <TableCell>
                                 <Badge className={cn(
                                     payment.status === 'Paid' && 'bg-green-500/80 text-white',

@@ -89,7 +89,7 @@ export default function AdminPaymentsPage() {
                                 <TableRow key={txn.id}>
                                     <TableCell className="font-mono text-xs">{txn.id}</TableCell>
                                     <TableCell>{txn.client}</TableCell>
-                                    <TableCell>${txn.amount.toLocaleString()}</TableCell>
+                                    <TableCell>₹{txn.amount.toLocaleString()}</TableCell>
                                     <TableCell>
                                         <Badge className={cn(
                                             txn.status === 'Paid' && 'bg-green-500/80 text-white',

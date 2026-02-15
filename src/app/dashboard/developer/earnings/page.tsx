@@ -65,7 +65,7 @@ export default function DeveloperEarningsPage() {
                         <LineChart data={developerEarningsData.chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" vertical={false} />
                         <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
-                        <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `$${value / 1000}k`} />
+                        <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `₹${value / 1000}k`} />
                         <Tooltip content={<ChartTooltipContent indicator="dot" />} />
                         <Line type="monotone" dataKey="earnings" stroke="hsl(var(--primary))" strokeWidth={2} />
                         </LineChart>
@@ -100,7 +100,7 @@ export default function DeveloperEarningsPage() {
                                             <div className="font-medium">{earning.project}</div>
                                             <div className="text-sm text-muted-foreground">{earning.client}</div>
                                         </TableCell>
-                                        <TableCell>${earning.amount.toLocaleString()}</TableCell>
+                                        <TableCell>₹{earning.amount.toLocaleString()}</TableCell>
                                         <TableCell>
                                             <Badge variant={
                                                 earning.status === 'Paid' ? 'default' :

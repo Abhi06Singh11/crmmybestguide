@@ -172,7 +172,7 @@ export default function NewNetworkProjectPage() {
                     )}/>
                      <div className="grid md:grid-cols-2 gap-4">
                         <FormField control={form.control} name="budget" render={({ field }) => (
-                            <FormItem><FormLabel>Budget ($)</FormLabel><FormControl><Input type="number" placeholder="e.g., 10000" {...field} /></FormControl><FormMessage /></FormItem>
+                            <FormItem><FormLabel>Budget (₹)</FormLabel><FormControl><Input type="number" placeholder="e.g., 800000" {...field} /></FormControl><FormMessage /></FormItem>
                         )}/>
                         <FormField control={form.control} name="deadline" render={({ field }) => (
                             <FormItem><FormLabel>Deadline</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>
@@ -188,7 +188,7 @@ export default function NewNetworkProjectPage() {
                             <div><p className="text-muted-foreground">Project Name</p><p className="font-medium">{form.getValues('projectName') || 'Not set'}</p></div>
                             <div><p className="text-muted-foreground">Client</p><p className="font-medium">{form.getValues('clientName') || 'Not set'}</p></div>
                              <div><p className="text-muted-foreground">Lead Engineer</p><p className="font-medium">{form.getValues('engineer') || 'Not set'}</p></div>
-                            <div><p className="text-muted-foreground">Budget</p><p className="font-medium">${form.getValues('budget')?.toLocaleString() || 'Not set'}</p></div>
+                            <div><p className="text-muted-foreground">Budget</p><p className="font-medium">₹{form.getValues('budget')?.toLocaleString() || 'Not set'}</p></div>
                              <div><p className="text-muted-foreground">Deadline</p><p className="font-medium">{form.getValues('deadline') ? new Date(form.getValues('deadline')).toLocaleDateString() : 'Not set'}</p></div>
                         </div>
                         <div><p className="text-muted-foreground">Description</p><p className="font-medium text-wrap break-words">{form.getValues('description') || 'N/A'}</p></div>

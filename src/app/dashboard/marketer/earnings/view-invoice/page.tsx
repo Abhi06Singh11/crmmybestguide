@@ -27,8 +27,8 @@ const invoiceData = {
     email: 'billing@quantum.dev'
   },
   items: [
-    { id: 1, project: 'Q3 Marketing Campaign', description: 'Strategy and execution for Q3 lead generation.', amount: 2500 },
-    { id: 2, project: 'App Backend API Support', description: 'Marketing support for the new API launch.', amount: 1200 },
+    { id: 1, project: 'Q3 Marketing Campaign', description: 'Strategy and execution for Q3 lead generation.', amount: 200000 },
+    { id: 2, project: 'App Backend API Support', description: 'Marketing support for the new API launch.', amount: 96000 },
   ],
   taxRate: 0.18, // 18%
 };
@@ -107,7 +107,7 @@ export default function ViewInvoicePage() {
                       <p className="font-medium">{item.project}</p>
                       <p className="text-sm text-muted-foreground">{item.description}</p>
                     </TableCell>
-                    <TableCell className="text-right">${item.amount.toFixed(2)}</TableCell>
+                    <TableCell className="text-right">₹{item.amount.toFixed(2)}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>
@@ -120,16 +120,16 @@ export default function ViewInvoicePage() {
             <div className="w-full max-w-xs space-y-2">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Tax ({invoiceData.taxRate * 100}%)</span>
-                <span>${taxAmount.toFixed(2)}</span>
+                <span>₹{taxAmount.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
                 <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>₹{total.toFixed(2)}</span>
               </div>
             </div>
           </div>

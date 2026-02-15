@@ -44,7 +44,7 @@ export default function AdminMarketerAnalyticsPage() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"><CardTitle className="text-sm font-medium">Total Ad Spend (Month)</CardTitle><DollarSign className="h-4 w-4 text-muted-foreground" /></CardHeader>
-            <CardContent><div className="text-2xl font-bold">$12,450</div><p className="text-xs text-muted-foreground">+5% from last month</p></CardContent>
+            <CardContent><div className="text-2xl font-bold">₹996,000</div><p className="text-xs text-muted-foreground">+5% from last month</p></CardContent>
         </Card>
         <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"><CardTitle className="text-sm font-medium">Active Campaigns</CardTitle><Briefcase className="h-4 w-4 text-muted-foreground" /></CardHeader>
@@ -56,7 +56,7 @@ export default function AdminMarketerAnalyticsPage() {
         </Card>
         <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2"><CardTitle className="text-sm font-medium">Avg. CPC</CardTitle><CheckCircle className="h-4 w-4 text-muted-foreground" /></CardHeader>
-            <CardContent><div className="text-2xl font-bold">$1.25</div><p className="text-xs text-muted-foreground">-3% from last week</p></CardContent>
+            <CardContent><div className="text-2xl font-bold">₹100</div><p className="text-xs text-muted-foreground">-3% from last week</p></CardContent>
         </Card>
       </div>
 
@@ -71,7 +71,7 @@ export default function AdminMarketerAnalyticsPage() {
                 <LineChart data={earningsData.earningsChartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
-                  <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `$${value / 1000}k`} />
+                  <YAxis tickLine={false} axisLine={false} tickMargin={8} tickFormatter={(value) => `₹${value / 1000}k`} />
                   <Tooltip content={<ChartTooltipContent indicator="dot" />} />
                   <Line type="monotone" dataKey="earnings" stroke="hsl(var(--primary))" strokeWidth={2} />
                 </LineChart>

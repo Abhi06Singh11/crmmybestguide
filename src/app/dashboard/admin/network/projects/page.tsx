@@ -79,7 +79,7 @@ export default function AdminNetworkProjectsPage() {
                     <CardTitle className="text-sm font-medium">Total Budget (Month)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">$40,500</div>
+                    <div className="text-2xl font-bold">₹3,240,000</div>
                 </CardContent>
             </Card>
              <Card>
@@ -87,7 +87,7 @@ export default function AdminNetworkProjectsPage() {
                     <CardTitle className="text-sm font-medium">Total Spend (Month)</CardTitle>
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">$13,600</div>
+                    <div className="text-2xl font-bold">₹1,088,000</div>
                 </CardContent>
             </Card>
             <Card>
@@ -146,8 +146,8 @@ export default function AdminNetworkProjectsPage() {
                                 <TableCell>
                                     <Badge className={cn(getStatusBadgeClass(project.status))}>{project.status}</Badge>
                                 </TableCell>
-                                <TableCell>${project.budget.toLocaleString()}</TableCell>
-                                <TableCell>${project.spend.toLocaleString()}</TableCell>
+                                <TableCell>₹{project.budget.toLocaleString()}</TableCell>
+                                <TableCell>₹{project.spend.toLocaleString()}</TableCell>
                                 <TableCell>{project.uptime > 0 ? `${project.uptime}%` : 'N/A'}</TableCell>
                             </TableRow>
                         ))}

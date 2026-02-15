@@ -120,10 +120,10 @@ export default function NewMarketerProjectPage() {
                         <Separator />
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                              <FormField control={form.control} name="totalBudget" render={({ field }) => (
-                                <FormItem><FormLabel>Total Budget</FormLabel><FormControl><Input type="number" placeholder="e.g. 10000" {...field} /></FormControl><FormMessage /></FormItem>
+                                <FormItem><FormLabel>Total Budget</FormLabel><FormControl><Input type="number" placeholder="e.g. 800000" {...field} /></FormControl><FormMessage /></FormItem>
                              )}/>
                             <FormItem><FormLabel>Budget Type</FormLabel><Select><FormControl><SelectTrigger><SelectValue placeholder="Select type..." /></SelectTrigger></FormControl><SelectContent><SelectItem value="Fixed">Fixed</SelectItem><SelectItem value="Hourly">Hourly</SelectItem><SelectItem value="Retainer">Retainer</SelectItem></SelectContent></Select></FormItem>
-                             <FormItem><FormLabel>Currency</FormLabel><Select defaultValue="USD"><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="USD">USD</SelectItem><SelectItem value="INR">INR</SelectItem><SelectItem value="EUR">EUR</SelectItem></SelectContent></Select></FormItem>
+                             <FormItem><FormLabel>Currency</FormLabel><Select defaultValue="INR"><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="USD">USD</SelectItem><SelectItem value="INR">INR</SelectItem><SelectItem value="EUR">EUR</SelectItem></SelectContent></Select></FormItem>
                         </div>
                     </div>
 

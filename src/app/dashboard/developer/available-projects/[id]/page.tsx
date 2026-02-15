@@ -157,9 +157,9 @@ export default function ProjectDetailsPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                     <FormField control={form.control} name="bidAmount" render={({ field }) => (
                         <FormItem>
-                        <FormLabel>Your Bid Amount ($)</FormLabel>
+                        <FormLabel>Your Bid Amount (₹)</FormLabel>
                         <FormControl>
-                            <Input type="number" placeholder="e.g., 18000" {...field} />
+                            <Input type="number" placeholder="e.g., 1400000" {...field} />
                         </FormControl>
                         <FormMessage />
                         </FormItem>
