@@ -50,7 +50,7 @@ export default function Testimonials() {
                                     </div>
                                     <div className="mt-6 flex items-center">
                                         <Avatar className="h-12 w-12">
-                                            {image && <AvatarImage src={image.imageUrl} alt={testimonial.name} data-ai-hint={image.imageHint} />}
+                                            {image && <AvatarImage src={image.imageUrl} alt={testimonial.name} />}
                                             <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                                         </Avatar>
                                         <div className="ml-4">

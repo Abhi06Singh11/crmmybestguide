@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -21,7 +21,7 @@ import {
   Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, ShoppingBag, Smartphone, Edit
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -41,9 +41,10 @@ const applicationFormSchema = z.object({
 });
 
 const CountdownTimer = () => {
-    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+    const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
     useEffect(() => {
+        // This logic now only runs on the client
         const randomDuration = Math.floor(Math.random() * (12 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000 + 1) + 3 * 60 * 60 * 1000);
         const endDate = new Date(Date.now() + randomDuration);
 
@@ -67,6 +68,21 @@ const CountdownTimer = () => {
 
         return () => clearInterval(interval);
     }, []);
+
+    if (!timeLeft) {
+        return (
+            <div className="flex justify-center gap-3 md:gap-6">
+                {['Days', 'Hours', 'Minutes', 'Seconds'].map((unit) => (
+                    <div key={unit} className="text-center">
+                        <div className="bg-white/20 rounded-xl px-3 py-3 md:px-5 md:py-4 min-w-[60px] md:min-w-[80px] backdrop-blur-sm">
+                            <span className="text-2xl md:text-4xl font-bold text-white font-mono">--</span>
+                        </div>
+                        <span className="text-white/70 text-xs mt-2 block font-medium capitalize">{unit.toLowerCase()}</span>
+                    </div>
+                ))}
+            </div>
+        );
+    }
 
     return (
         <div className="flex justify-center gap-3 md:gap-6">
@@ -114,7 +130,7 @@ export default function FreeWebsitePage() {
 
     const formData = form.watch();
     
-    const [slots, setSlots] = useState({ total: 10, remaining: 7 });
+    const [slots, setSlots] = useState<{ total: number; remaining: number } | null>(null);
 
     useEffect(() => {
         setSlots({
@@ -274,7 +290,7 @@ ${data.goals || 'Not provided'}
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            Limited-Time Offer – <span id="slotsRemaining" className="font-bold ml-1">{slots.remaining}</span> Slots Remaining This Month
+                            Limited-Time Offer – <span id="slotsRemaining" className="font-bold ml-1">{slots ? slots.remaining : '...'}</span> Slots Remaining This Month
                         </Badge>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-sm">
                             Get a 100% FREE<br />Professional Website
@@ -519,9 +535,9 @@ ${data.goals || 'Not provided'}
                          </TabsContent>
                           <TabsContent value="bundles">
                              <div className="grid md:grid-cols-3 gap-8">
-                                <Card className="p-8 bundle-card rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹4,999</p></Card>
-                                <Card className="p-8 border-2 border-primary bundle-popular rounded-2xl shadow-2xl scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"><Badge>Best Value</Badge><h4 className="text-xl font-bold text-white">Growth Pack</h4><p className="text-4xl font-bold text-white">₹9,999</p></Card>
-                                <Card className="p-8 bundle-card rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹19,999</p></Card>
+                                <Card className="p-8 rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹4,999</p></Card>
+                                <Card className="p-8 border-2 border-primary rounded-2xl shadow-2xl scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"><Badge>Best Value</Badge><h4 className="text-xl font-bold">Growth Pack</h4><p className="text-4xl font-bold">₹9,999</p></Card>
+                                <Card className="p-8 rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹19,999</p></Card>
                             </div>
                          </TabsContent>
                      </Tabs>
@@ -589,8 +605,8 @@ ${data.goals || 'Not provided'}
                     <Card className="bg-white/10 backdrop-blur-md p-8 max-w-md mx-auto mb-10 border-white/20 text-left">
                         <p className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4">Monthly Slots Available</p>
                         <div className="flex items-center gap-5">
-                            <Progress value={((slots.total - slots.remaining) / slots.total) * 100} className="h-4"/>
-                            <span className="text-white font-bold text-2xl font-mono">{slots.remaining}/{slots.total}</span>
+                            <Progress value={slots ? ((slots.total - slots.remaining) / slots.total) * 100 : 0} className="h-4"/>
+                            <span className="text-white font-bold text-2xl font-mono">{slots ? `${slots.remaining}/${slots.total}` : '-/-'}</span>
                         </div>
                         <p className="text-white/70 text-sm mt-4 flex items-center gap-2"><Info className="h-4 w-4"/>Applications require manual review & approval</p>
                     </Card>
@@ -692,7 +708,7 @@ ${data.goals || 'Not provided'}
                                 <div className={cn("step-section", currentStep !== 3 && "hidden")}>
                                     <h3 className="text-xl font-bold text-theme-primary mb-2">Select Add-Ons & Enhancements</h3>
                                     <p className="text-muted-foreground mb-6 text-sm">Select any upgrades, support plans, or bundles you are interested in.</p>
-                                    <div className="space-y-8 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                                    <div className="space-y-8 max-h-[400px] overflow-y-auto pr-2">
                                         <FormField
                                             control={form.control}
                                             name="addons"
@@ -732,9 +748,9 @@ ${data.goals || 'Not provided'}
                                                                             />
                                                                         </FormControl>
                                                                         <div className="space-y-1 leading-none">
-                                                                            <FormLabel className="font-normal">
+                                                                            <Label className="font-normal">
                                                                                 {item.title}
-                                                                            </FormLabel>
+                                                                            </Label>
                                                                             <p className="text-xs text-muted-foreground">
                                                                                 {item.desc}
                                                                             </p>
@@ -837,8 +853,8 @@ ${data.goals || 'Not provided'}
                                 {/* Nav buttons */}
                                 <div className="flex items-center justify-between mt-8 pt-6 border-t border-theme">
                                     <Button type="button" onClick={handlePrevStep} variant="outline" className={cn(currentStep === 1 && 'invisible')}>Back</Button>
-                                    <Button type="button" onClick={handleNextStep} className={cn('gradient-bg', currentStep === totalSteps && 'hidden')}>Next Step <ArrowRight className="ml-2 h-4 w-4" /></Button>
-                                    <Button type="submit" className={cn('gradient-bg', currentStep !== totalSteps && 'hidden')}>
+                                    <Button type="button" onClick={handleNextStep} className={cn('bg-primary', currentStep === totalSteps && 'hidden')}>Next Step <ArrowRight className="ml-2 h-4 w-4" /></Button>
+                                    <Button type="submit" className={cn('bg-primary', currentStep !== totalSteps && 'hidden')}>
                                         <WhatsAppIcon className="mr-2 h-5 w-5" /> Submit via WhatsApp
                                     </Button>
                                 </div>
@@ -866,7 +882,7 @@ ${data.goals || 'Not provided'}
              <Dialog open={isSuccessModalOpen} onOpenChange={setSuccessModalOpen}>
                 <DialogContent>
                     <DialogHeader className="text-center items-center">
-                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 checkmark-animate">
+                        <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
                            <Check className="text-green-500 h-10 w-10" />
                         </div>
                         <DialogTitle className="text-2xl font-bold text-theme-primary mb-3">Application Submitted!</DialogTitle>

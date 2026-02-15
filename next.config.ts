@@ -3,12 +3,6 @@ import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     remotePatterns: [
       {
@@ -69,6 +63,11 @@ const nextConfig: NextConfig = {
       {
         source: '/odoo-development',
         destination: '/services/odoo-development',
+        permanent: true,
+      },
+       {
+        source: '/d/developer/projects/bid',
+        destination: '/d/developer/available-projects',
         permanent: true,
       },
     ]

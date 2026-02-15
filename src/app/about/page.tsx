@@ -1,4 +1,3 @@
-'use client';
 
 import { BookOpen, Lightbulb, Users, Award, ShieldCheck, UserCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';

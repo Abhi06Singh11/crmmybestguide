@@ -12,7 +12,6 @@ export default function Hero() {
           fill
           className="object-cover -z-10 brightness-50"
           priority
-          data-ai-hint="team working"
         />
         <div className="container px-4 text-center md:px-6">
             <div className="mx-auto max-w-3xl space-y-6">
