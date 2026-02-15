@@ -25,6 +25,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
 
 const applicationFormSchema = z.object({
     fullName: z.string().min(2, "Full name is required."),
@@ -432,18 +433,21 @@ ${data.goals || 'Not provided'}
                          </TabsList>
                          <TabsContent value="addons">
                             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {addonGroups['Performance & Design'].map((item, i) => (
-                                    <Card key={i} className="p-7 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
-                                        <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary-foreground transition-colors duration-300">
-                                            <item.icon className="text-primary text-xl group-hover:text-primary transition-colors"/>
-                                        </div>
-                                        <h4 className="text-lg font-bold mb-2">{item.title}</h4>
-                                        <p className="text-muted-foreground text-sm mb-5 leading-relaxed group-hover:text-primary-foreground/80">{item.desc}</p>
-                                        <div className="flex items-center justify-between border-t pt-4 group-hover:border-primary-foreground/30">
-                                            <span className="text-2xl font-bold text-primary group-hover:text-white">{item.price}</span>
-                                        </div>
-                                    </Card>
-                                ))}
+                                {addonGroups['Performance & Design'].map((item, i) => {
+                                    const GroupIcon = item.icon;
+                                    return (
+                                        <Card key={i} className="p-7 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
+                                            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary-foreground transition-colors duration-300">
+                                                <GroupIcon className="text-primary text-xl group-hover:text-primary transition-colors"/>
+                                            </div>
+                                            <h4 className="text-lg font-bold mb-2">{item.title}</h4>
+                                            <p className="text-muted-foreground text-sm mb-5 leading-relaxed group-hover:text-primary-foreground/80">{item.desc}</p>
+                                            <div className="flex items-center justify-between border-t pt-4 group-hover:border-primary-foreground/30">
+                                                <span className="text-2xl font-bold text-primary group-hover:text-white">{item.price}</span>
+                                            </div>
+                                        </Card>
+                                    )
+                                })}
                             </div>
                          </TabsContent>
                          <TabsContent value="support">
@@ -483,16 +487,34 @@ ${data.goals || 'Not provided'}
                          </TabsContent>
                          <TabsContent value="marketing">
                              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                                {addonGroups['Marketing & Growth'].map((item, i) => (
-                                <Card key={i} className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><item.icon className="text-blue-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">{item.title}</h4><p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">{item.price}</p></Card>
-                                ))}
+                                {addonGroups['Marketing & Growth'].map((item, i) => {
+                                    const GroupIcon = item.icon;
+                                    return (
+                                        <Card key={i} className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
+                                            <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground">
+                                                <GroupIcon className="text-blue-600 group-hover:text-primary"/>
+                                            </div>
+                                            <h4 className="text-lg font-bold">{item.title}</h4>
+                                            <p className="text-sm text-muted-foreground group-hover:text-primary-foreground/80">{item.price}</p>
+                                        </Card>
+                                    );
+                                })}
                              </div>
                          </TabsContent>
                          <TabsContent value="ecommerce">
                              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                {addonGroups['E-Commerce & Payments'].map((item, i) => (
-                                <Card key={i} className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground"><item.icon className="text-green-600 group-hover:text-primary"/></div><h4 className="text-lg font-bold">{item.title}</h4><p className="text-sm group-hover:text-primary-foreground/80">{item.price}</p></Card>
-                                ))}
+                                {addonGroups['E-Commerce & Payments'].map((item, i) => {
+                                    const GroupIcon = item.icon;
+                                    return (
+                                        <Card key={i} className="p-6 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
+                                            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary-foreground">
+                                                <GroupIcon className="text-green-600 group-hover:text-primary"/>
+                                            </div>
+                                            <h4 className="text-lg font-bold">{item.title}</h4>
+                                            <p className="text-sm group-hover:text-primary-foreground/80">{item.price}</p>
+                                        </Card>
+                                    );
+                                })}
                              </div>
                          </TabsContent>
                           <TabsContent value="bundles">
@@ -862,3 +884,4 @@ ${data.goals || 'Not provided'}
         </div>
     );
 }
+
