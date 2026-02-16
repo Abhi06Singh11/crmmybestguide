@@ -18,7 +18,7 @@ export default function FreeWebsiteAd() {
 
     return (
         <div className="container">
-            <section className="relative mx-auto my-8 flex items-center justify-center overflow-hidden rounded-2xl pt-8 pb-16 md:pt-10 md:pb-20"
+            <section className="relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl my-8 pt-8 pb-16 md:pb-20"
                 style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
 
                 <div className="bubbles">
@@ -76,7 +76,7 @@ export default function FreeWebsiteAd() {
                                 </Button>
                             </Link>
                             <Link href="/services/free-website#features">
-                                <Button size="lg" variant="secondary" className="shadow-xl w-full sm:w-auto">
+                                <Button size="lg" variant="outline" className="text-white border-white/50 hover:bg-white/10 hover:text-white shadow-xl w-full sm:w-auto">
                                     See What's Included
                                 </Button>
                             </Link>
