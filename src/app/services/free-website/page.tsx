@@ -52,6 +52,7 @@ export default function FreeWebsitePage() {
     const { toast } = useToast();
     const [currentStep, setCurrentStep] = useState(1);
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const INR = String.fromCharCode(8377);
 
     const form = useForm<z.infer<typeof applicationSchema>>({
         resolver: zodResolver(applicationSchema),
@@ -129,7 +130,13 @@ export default function FreeWebsitePage() {
     }
     
     const industry = form.watch('industry');
-    const INR = String.fromCharCode(8377);
+
+    const journeySteps = [
+        { step: 1, title: "Apply for Free Website", description: "Fill out a simple form with your business details and goals. Takes less than 2 minutes.", icon: Edit, label: "2 Min Application" },
+        { step: 2, title: "Approval Confirmation", description: "Our team reviews your application within 24 hours. Approved? You'll get a welcome email!", icon: Mail, label: "Email Confirmation" },
+        { step: 3, title: "Website Build", description: "Our designers and developers create your professional website in 7–10 business days.", icon: Code, label: "7–10 Business Days" },
+        { step: 4, title: "Launch Your Website", description: "Review, approve, and launch your new website. You're officially online!", icon: Rocket, label: "Go Live!" },
+    ];
 
     return (
         <div className="bg-background text-foreground">
@@ -151,7 +158,7 @@ export default function FreeWebsitePage() {
                         <div className="flex items-center gap-2.5 rounded-lg border border-white/10 bg-white/5 px-4 py-2 font-medium text-white/90 backdrop-blur-sm"><CheckCircle className="text-green-400" /><span>No Credit Card</span></div>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
-                        <Button size="lg" className="w-full sm:w-auto pulse-btn" onClick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}><Rocket className="mr-2"/>Claim Free Website</Button>
+                        <Button size="lg" className="w-full sm:w-auto animation-pulse-strong" onClick={() => document.getElementById('apply')?.scrollIntoView({ behavior: 'smooth' })}><Rocket className="mr-2"/>Claim Free Website</Button>
                         <Button size="lg" variant="outline" className="w-full border-white/30 bg-transparent text-white hover:bg-white/10 sm:w-auto" onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}>See What's Included</Button>
                     </div>
                 </div>
@@ -329,7 +336,7 @@ export default function FreeWebsitePage() {
                              <div className="grid items-start gap-8 md:grid-cols-3">
                                 <Card><CardHeader><CardTitle>Startup Pack</CardTitle><CardDescription>For new businesses</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold text-primary">{INR}4,999</span><span className="ml-2 text-muted-foreground line-through">{INR}7,499</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>5-page Website</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Custom UI/UX Design</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Speed Optimization</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>1 Month Basic Support</li></ul><Button variant="outline" className="w-full">Get Started</Button></CardContent></Card>
                                 <Card className="relative z-10 scale-105 border-primary bg-primary text-primary-foreground"><div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">Best Value</div><CardHeader><CardTitle>Growth Pack</CardTitle><CardDescription className="text-indigo-200">Scale with confidence</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold">{INR}9,999</span><span className="ml-2 text-indigo-200 line-through">{INR}15,999</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>10-page Website</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>Premium UI/UX Design</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>Booking System</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>SEO Starter Setup</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>1 Month Growth Support</li></ul><Button variant="secondary" className="w-full bg-white text-primary hover:bg-slate-200">Get Started</Button></CardContent></Card>
-                                <Card><CardHeader><CardTitle>Accelerator</CardTitle><CardDescription>Complete growth solution</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold text-primary">{INR}19,999</span><span className="ml-2 text-muted-foreground line-through">{INR}32,999</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Full Custom Website</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>All Integrations</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>SEO + Social + Ads</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>3 Months Support</li></ul><Button variant="outline" className="w-full">Get Started</Button></CardContent></Card>
+                                <Card><CardHeader><CardTitle>Accelerator</CardTitle><CardDescription>Complete growth solution</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold text-primary">{INR}19,999</span><span className="ml-2 text-muted-foreground line-through">{INR}32,999</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Full Custom Website</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>All Integrations</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>SEO + Social + Ads</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>3 Months Support</li></ul><Button variant="outline" className="w-full">Get Started</CardContent></Card>
                              </div>
                         </TabsContent>
                     </Tabs>
@@ -347,12 +354,7 @@ export default function FreeWebsitePage() {
                     <div className="relative mx-auto max-w-4xl">
                         <div className="absolute top-0 bottom-0 left-1/2 -ml-0.5 hidden w-1 bg-gradient-to-b from-primary to-purple-500 opacity-30 md:block"></div>
                         <div className="space-y-16">
-                            {[
-                                { step: 1, title: "Apply for Free Website", description: "Fill out a simple form with your business details and goals. Takes less than 2 minutes.", icon: Edit, label: "2 Min Application" },
-                                { step: 2, title: "Approval Confirmation", description: "Our team reviews your application within 24 hours. Approved? You'll get a welcome email!", icon: Mail, label: "Email Confirmation" },
-                                { step: 3, title: "Website Build", description: "Our designers and developers create your professional website in 7–10 business days.", icon: Code, label: "7–10 Business Days" },
-                                { step: 4, title: "Launch Your Website", description: "Review, approve, and launch your new website. You're officially online!", icon: Rocket, label: "Go Live!" },
-                            ].map((item, index) => (
+                            {journeySteps.map((item, index) => (
                                 <div key={item.step} className="group relative flex flex-col items-center gap-8 md:flex-row">
                                     <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:order-3 md:text-left md:pl-12'}`}>
                                         <h3 className="mb-3 text-2xl font-bold">{item.title}</h3>
@@ -427,7 +429,6 @@ export default function FreeWebsitePage() {
                                     {currentStep === 3 && (
                                         <div className="space-y-6">
                                             <h3 className="text-xl font-bold">Select Add-Ons & Enhancements (Optional)</h3>
-                                            {/* Simplified Checkboxes for brevity */}
                                             <FormField control={form.control} name="addons" render={() => (
                                                 <FormItem>
                                                     <div className="grid gap-3 md:grid-cols-2">
@@ -510,4 +511,4 @@ export default function FreeWebsitePage() {
     );
 }
 
-```
+    
