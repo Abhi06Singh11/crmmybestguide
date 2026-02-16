@@ -16,7 +16,7 @@ export default function FreeWebsiteAd() {
             !isVisible && "!my-0"
         )}>
             <section className={cn(
-                "relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl transition-all duration-500 ease-in-out py-16 md:py-20",
+                "relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl transition-all duration-500 ease-in-out pt-10 pb-16 md:pt-12 md:pb-20",
                 !isVisible && "h-0 opacity-0 border-0"
             )} style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
 
@@ -75,7 +75,7 @@ export default function FreeWebsiteAd() {
                                 </Button>
                             </Link>
                             <Link href="/services/free-website#features">
-                                <Button size="lg" variant="secondary" className="shadow-xl w-full sm:w-auto">
+                                <Button size="lg" variant="outline" className="text-white border-white/30 hover:bg-white/10 hover:text-white backdrop-blur-sm shadow-xl w-full sm:w-auto">
                                     See What's Included
                                 </Button>
                             </Link>
