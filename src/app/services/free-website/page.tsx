@@ -219,44 +219,44 @@ ${data.goals || 'Not provided'}
         },
         {
             q: "Do I need to buy hosting?",
-            a: "You'll receive hosting-ready code that you can deploy anywhere. We can help you set up affordable hosting (usually ₹300-1,000/month) or you can handle it yourself. Domain registration is also separate but we can guide you."
+            a: "You'll receive hosting-ready code that you can deploy anywhere. We can help you set up affordable hosting (usually \u20B9300-1,000/month) or you can handle it yourself. Domain registration is also separate but we can guide you."
         },
         {
             q: "Can I remove the agency branding?",
-            a: "Yes! Footer branding removal is available as a one-time paid upgrade (₹999). This gives you a completely white-labeled website."
+            a: "Yes! Footer branding removal is available as a one-time paid upgrade (\u20B9999). This gives you a completely white-labeled website."
         }
     ];
 
     const addonGroups = {
         'Performance & Design': [
-            { icon: FileText, title: "Extra Pages", desc: "Add pages based on tech stack & requirements.", price: "₹499+" },
-            { icon: Paintbrush, title: "Custom UI/UX Design", desc: "Tailored design per device & brand identity.", price: "₹999+" },
-            { icon: Gauge, title: "Speed Optimization", desc: "Performance tuning for lightning-fast load speeds.", price: "₹899" },
-            { icon: WhatsAppIcon, title: "WhatsApp Integration", desc: "Quick user engagement with direct WhatsApp chat.", price: "₹299" },
-            { icon: Bot, title: "Chatbot Integration", desc: "24/7 automated support based on AI model & tech stack.", price: "₹999+" },
-            { icon: CalendarCheck, title: "Booking System", desc: "Online appointment scheduling.", price: "₹1,499+" },
+            { icon: FileText, title: "Extra Pages", desc: "Add pages based on tech stack & requirements.", price: "\u20B9499+" },
+            { icon: Paintbrush, title: "Custom UI/UX Design", desc: "Tailored design per device & brand identity.", price: "\u20B9999+" },
+            { icon: Gauge, title: "Speed Optimization", desc: "Performance tuning for lightning-fast load speeds.", price: "\u20B9899" },
+            { icon: WhatsAppIcon, title: "WhatsApp Integration", desc: "Quick user engagement with direct WhatsApp chat.", price: "\u20B9299" },
+            { icon: Bot, title: "Chatbot Integration", desc: "24/7 automated support based on AI model & tech stack.", price: "\u20B9999+" },
+            { icon: CalendarCheck, title: "Booking System", desc: "Online appointment scheduling.", price: "\u20B91,499+" },
         ],
         'Support Plans': [
-            { icon: Headset, title: 'Basic Support', desc: '5 tickets/mo, 48hr response.', price: '₹499/mo' },
-            { icon: Headset, title: 'Growth Support', desc: '30 tickets/mo, priority response.', price: '₹1,499/mo' },
-            { icon: Headset, title: 'Premium Support', desc: 'Dedicated engineer, 4hr SLA.', price: '₹3,499/mo' },
+            { icon: Headset, title: 'Basic Support', desc: '5 tickets/mo, 48hr response.', price: '\u20B9499/mo' },
+            { icon: Headset, title: 'Growth Support', desc: '30 tickets/mo, priority response.', price: '\u20B91,499/mo' },
+            { icon: Headset, title: 'Premium Support', desc: 'Dedicated engineer, 4hr SLA.', price: '\u20B93,499/mo' },
         ],
         'Marketing & Growth': [
-            { icon: Search, title: 'SEO Services', desc: 'Ranking, keyword & content optimization.', price: '₹1,999+/mo' },
-            { icon: LineChart, title: 'Google Ads', desc: 'Campaign setup & ongoing optimization.', price: '₹1,499+/mo' },
-            { icon: Hash, title: 'Social Media', desc: 'Content, posting & community growth.', price: '₹1,999+/mo' },
-            { icon: Filter, title: 'Funnels & Automation', desc: 'Lead flows & conversion tracking.', price: '₹1,999+ one-time' },
+            { icon: Search, title: 'SEO Services', desc: 'Ranking, keyword & content optimization.', price: '\u20B91,999+/mo' },
+            { icon: LineChart, title: 'Google Ads', desc: 'Campaign setup & ongoing optimization.', price: '\u20B91,499+/mo' },
+            { icon: Hash, title: 'Social Media', desc: 'Content, posting & community growth.', price: '\u20B91,999+/mo' },
+            { icon: Filter, title: 'Funnels & Automation', desc: 'Lead flows & conversion tracking.', price: '\u20B91,999+ one-time' },
         ],
         'E-Commerce & Payments': [
-            { icon: CreditCard, title: 'UPI Integration', desc: 'Accept payments via UPI for Indian customers.', price: '₹499' },
-            { icon: CreditCard, title: 'International Payments', desc: 'Stripe, PayPal & international gateway setup.', price: '₹999' },
-            { icon: Box, title: 'Product Listing', desc: 'Add products with images, descriptions & pricing.', price: '₹99+' },
+            { icon: CreditCard, title: 'UPI Integration', desc: 'Accept payments via UPI for Indian customers.', price: '\u20B9499' },
+            { icon: CreditCard, title: 'International Payments', desc: 'Stripe, PayPal & international gateway setup.', price: '\u20B9999' },
+            { icon: Box, title: 'Product Listing', desc: 'Add products with images, descriptions & pricing.', price: '\u20B999+' },
             { icon: Settings, title: 'Store Automation', desc: 'Inventory management and order automation.', price: 'Custom' },
         ],
         'Value Bundles': [
-            { icon: Gift, title: 'Startup Pack', desc: '5-page site, design & speed.', price: '₹4,999' },
-            { icon: Gift, title: 'Growth Pack', desc: '10-page, booking, SEO.', price: '₹9,999' },
-            { icon: Gift, title: 'Accelerator Bundle', desc: 'Full custom site & growth.', price: '₹19,999' },
+            { icon: Gift, title: 'Startup Pack', desc: '5-page site, design & speed.', price: '\u20B94,999' },
+            { icon: Gift, title: 'Growth Pack', desc: '10-page, booking, SEO.', price: '\u20B99,999' },
+            { icon: Gift, title: 'Accelerator Bundle', desc: 'Full custom site & growth.', price: '\u20B919,999' },
         ],
     };
     
@@ -347,7 +347,7 @@ ${data.goals || 'Not provided'}
                                 </ul>
                                 <div className="pt-6 border-t relative z-10 group-hover:border-primary-foreground/30">
                                     <div className="flex items-center justify-between">
-                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1 group-hover:text-primary-foreground/80">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground group-hover:text-primary-foreground">₹0</span><span className="text-muted-foreground line-through text-lg group-hover:text-primary-foreground/60">₹14,999</span></div></div>
+                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1 group-hover:text-primary-foreground/80">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground group-hover:text-primary-foreground">{'\u20B9'}0</span><span className="text-muted-foreground line-through text-lg group-hover:text-primary-foreground/60">{'\u20B9'}14,999</span></div></div>
                                         <Badge className="bg-green-100 text-green-700 transition-colors group-hover:bg-white group-hover:text-primary">100% FREE</Badge>
                                     </div>
                                 </div>
@@ -372,7 +372,7 @@ ${data.goals || 'Not provided'}
                                 </ul>
                                 <div className="pt-6 border-t relative z-10 group-hover:border-primary-foreground/30">
                                     <div className="flex items-center justify-between">
-                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1 group-hover:text-primary-foreground/80">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground group-hover:text-primary-foreground">₹0</span><span className="text-muted-foreground line-through text-lg group-hover:text-primary-foreground/60">₹24,999</span></div></div>
+                                        <div className="flex flex-col"><span className="text-sm text-muted-foreground mb-1 group-hover:text-primary-foreground/80">Estimated Value</span><div className="flex items-baseline gap-2"><span className="text-3xl font-bold text-foreground group-hover:text-primary-foreground">{'\u20B9'}0</span><span className="text-muted-foreground line-through text-lg group-hover:text-primary-foreground/60">{'\u20B9'}24,999</span></div></div>
                                         <Badge className="bg-purple-100 text-purple-700 transition-colors group-hover:bg-white group-hover:text-primary">100% FREE</Badge>
                                     </div>
                                 </div>
@@ -463,7 +463,7 @@ ${data.goals || 'Not provided'}
                                 <Card className="p-8 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
                                     <h4 className="text-xl font-bold">Basic Support</h4>
                                     <p className="text-muted-foreground text-sm mb-6 min-h-[40px] group-hover:text-primary-foreground/80">For small businesses needing peace of mind.</p>
-                                    <div className="mb-6 pb-6 border-b group-hover:border-primary-foreground/30"><span className="text-4xl font-bold text-primary group-hover:text-white">₹499</span><span className="text-muted-foreground group-hover:text-primary-foreground/80">/mo</span></div>
+                                    <div className="mb-6 pb-6 border-b group-hover:border-primary-foreground/30"><span className="text-4xl font-bold text-primary group-hover:text-white">{'\u20B9'}499</span><span className="text-muted-foreground group-hover:text-primary-foreground/80">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
                                         <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>5 Support Tickets</li>
                                         <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>24-48h Response</li>
@@ -474,7 +474,7 @@ ${data.goals || 'Not provided'}
                                     <Badge>Most Popular</Badge>
                                     <h4 className="text-xl font-bold">Growth Support</h4>
                                     <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
-                                    <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-muted-foreground">/mo</span></div>
+                                    <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">{'\u20B9'}1,499</span><span className="text-muted-foreground">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
                                         <li className="flex items-center gap-3 text-secondary-foreground text-sm"><Check className="text-green-500"/>30 Tickets</li>
                                         <li className="flex items-center gap-3 text-secondary-foreground text-sm"><Check className="text-green-500"/>Priority Response</li>
@@ -484,7 +484,7 @@ ${data.goals || 'Not provided'}
                                 <Card className="p-8 group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground">
                                     <h4 className="text-xl font-bold">Premium Support</h4>
                                     <p className="text-muted-foreground text-sm mb-6 min-h-[40px] group-hover:text-primary-foreground/80">For mission-critical applications.</p>
-                                    <div className="mb-6 pb-6 border-b group-hover:border-primary-foreground/30"><span className="text-4xl font-bold text-primary group-hover:text-white">₹3,499</span><span className="text-muted-foreground group-hover:text-primary-foreground/80">/mo</span></div>
+                                    <div className="mb-6 pb-6 border-b group-hover:border-primary-foreground/30"><span className="text-4xl font-bold text-primary group-hover:text-white">{'\u20B9'}3,499</span><span className="text-muted-foreground group-hover:text-primary-foreground/80">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
                                         <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>Dedicated Engineer</li>
                                         <li className="flex items-center gap-3 text-secondary-foreground text-sm group-hover:text-primary-foreground"><Check className="text-green-500 group-hover:text-green-300"/>4-Hour SLA</li>
@@ -527,9 +527,9 @@ ${data.goals || 'Not provided'}
                          </TabsContent>
                           <TabsContent value="bundles">
                              <div className="grid md:grid-cols-3 gap-8">
-                                <Card className="p-8 rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹4,999</p></Card>
-                                <Card className="p-8 border-2 border-primary rounded-2xl shadow-2xl scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"><Badge>Best Value</Badge><h4 className="text-xl font-bold">Growth Pack</h4><p className="text-4xl font-bold">₹9,999</p></Card>
-                                <Card className="p-8 rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary group-hover:text-white">₹19,999</p></Card>
+                                <Card className="p-8 rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Startup Pack</h4><p className="text-4xl font-bold text-primary group-hover:text-white">{'\u20B9'}4,999</p></Card>
+                                <Card className="p-8 border-2 border-primary rounded-2xl shadow-2xl scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1"><Badge>Best Value</Badge><h4 className="text-xl font-bold">Growth Pack</h4><p className="text-4xl font-bold">{'\u20B9'}9,999</p></Card>
+                                <Card className="p-8 rounded-2xl relative group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:bg-primary text-card-foreground hover:text-primary-foreground"><h4 className="text-xl font-bold">Accelerator</h4><p className="text-4xl font-bold text-primary group-hover:text-white">{'\u20B9'}19,999</p></Card>
                             </div>
                          </TabsContent>
                      </Tabs>
