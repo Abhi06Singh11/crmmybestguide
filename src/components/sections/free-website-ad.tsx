@@ -11,14 +11,12 @@ export default function FreeWebsiteAd() {
     const [isVisible, setIsVisible] = useState(true);
 
     if (!isVisible) {
-        return (
-            <div className="!my-0" />
-        );
+        return null;
     }
 
     return (
-        <div className="container">
-            <section className="relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl py-16 md:py-20"
+        <div className="container my-8">
+            <section className="relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl py-12 md:py-16"
                 style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
 
                 <div className="bubbles">
@@ -76,7 +74,7 @@ export default function FreeWebsiteAd() {
                                 </Button>
                             </Link>
                             <Link href="/services/free-website#features">
-                                <Button size="lg" variant="outline" className="text-white border-white/50 hover:bg-white/10 hover:text-white shadow-xl w-full sm:w-auto">
+                                <Button size="lg" variant="outline" className="text-white border-white/50 hover:bg-white/10 hover:text-white bg-transparent shadow-xl w-full sm:w-auto">
                                     See What's Included
                                 </Button>
                             </Link>
