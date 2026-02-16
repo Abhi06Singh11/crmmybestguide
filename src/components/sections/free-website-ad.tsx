@@ -10,21 +10,22 @@ import { cn } from '@/lib/utils';
 export default function FreeWebsiteAd() {
     const [isVisible, setIsVisible] = useState(true);
 
-    return (
-        <div className={cn(
-            "my-8 container transition-all duration-500 ease-in-out",
-            !isVisible && "!my-0"
-        )}>
-            <section className={cn(
-                "relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl transition-all duration-500 ease-in-out pt-10 pb-16 md:pt-12 md:pb-20",
-                !isVisible && "h-0 opacity-0 border-0"
-            )} style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
+    if (!isVisible) {
+        return (
+            <div className="!my-0" />
+        );
+    }
 
-                <div className={cn("bubbles transition-opacity duration-500", !isVisible && "opacity-0")}>
+    return (
+        <div className="my-8 container">
+            <section className="relative mx-auto flex items-center justify-center overflow-hidden rounded-2xl pt-8 pb-16 md:pt-10 md:pb-20"
+                style={{ background: 'linear-gradient(135deg, #002D6B 0%, #001F4D 100%)' }}>
+
+                <div className="bubbles">
                     {[...Array(10)].map((_, i) => <div key={i} className="bubble"></div>)}
                 </div>
 
-                <div className={cn("absolute inset-0 opacity-10 pointer-events-none transition-opacity duration-500", !isVisible && "opacity-0")}>
+                <div className="absolute inset-0 opacity-10 pointer-events-none">
                     <div className="absolute top-20 left-10 w-96 h-96 bg-white rounded-full blur-[100px]"></div>
                     <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-[#002D6B] rounded-full blur-[120px]"></div>
                 </div>
@@ -33,7 +34,7 @@ export default function FreeWebsiteAd() {
                     <X className="h-6 w-6" />
                 </Button>
 
-                <div className={cn("relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8 transition-opacity duration-300", !isVisible && "opacity-0")}>
+                <div className="relative z-10 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
                     
                     <div className="mx-auto max-w-4xl text-center">
                         <Badge variant="secondary" className="bg-white/10 text-white px-5 py-2 rounded-full text-sm font-medium mb-8 border border-white/20 animate-fade-in-up">
