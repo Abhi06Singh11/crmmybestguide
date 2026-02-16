@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -17,7 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, Paintbrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, ArrowRight, Code
+  Check, Hand, LineChart, AlertTriangle, Mail, ArrowRight, Code, CreditCard, Edit
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -471,7 +472,7 @@ ${data.goals || 'Not provided'}
                                 </Card>
                                 <Card className="p-8 border-2 border-primary shadow-2xl shadow-primary/20 scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
                                     <Badge>Most Popular</Badge>
-                                    <h4 className="text-xl font-bold text-white">Growth Support</h4>
+                                    <h4 className="text-xl font-bold">Growth Support</h4>
                                     <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
                                     <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-muted-foreground">/mo</span></div>
                                     <ul className="space-y-4 mb-8">
