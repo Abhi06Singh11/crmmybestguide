@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -44,8 +43,7 @@ const CountdownTimer = () => {
     const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number } | null>(null);
 
     useEffect(() => {
-        // This logic now only runs on the client
-        const randomDuration = Math.floor(Math.random() * (12 * 60 * 60 * 1000 - 3 * 60 * 60 * 1000 + 1) + 3 * 60 * 60 * 1000);
+        const randomDuration = 8 * 60 * 60 * 1000 + Math.random() * 4 * 60 * 60 * 1000;
         const endDate = new Date(Date.now() + randomDuration);
 
         const interval = setInterval(() => {
@@ -130,14 +128,7 @@ export default function FreeWebsitePage() {
 
     const formData = form.watch();
     
-    const [slots, setSlots] = useState<{ total: number; remaining: number } | null>(null);
-
-    useEffect(() => {
-        setSlots({
-            total: 10,
-            remaining: Math.floor(Math.random() * (10 - 5 + 1)) + 5,
-        })
-    }, [])
+    const [slots, setSlots] = useState<{ total: number; remaining: number }>({total: 10, remaining: 7});
 
     const handleNextStep = async () => {
         const stepFields: (keyof z.infer<typeof applicationFormSchema>)[] = [];
@@ -290,7 +281,7 @@ ${data.goals || 'Not provided'}
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                             </span>
-                            Limited-Time Offer – <span id="slotsRemaining" className="font-bold ml-1">{slots ? slots.remaining : '...'}</span> Slots Remaining This Month
+                            Limited-Time Offer – <span id="slotsRemaining" className="font-bold ml-1">{slots.remaining}</span> Slots Remaining This Month
                         </Badge>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-8 leading-[1.1] tracking-tight drop-shadow-sm">
                             Get a 100% FREE<br />Professional Website
@@ -313,7 +304,7 @@ ${data.goals || 'Not provided'}
                             </div>
                         </div>
                         <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                            <Button onClick={scrollToApply} size="lg" className="bg-white text-[#002D6B] animate-pulse-strong hover:bg-gray-50 shadow-xl w-full sm:w-auto">
+                            <Button onClick={scrollToApply} size="lg" className="bg-white text-primary animate-pulse-strong hover:bg-gray-50 shadow-xl w-full sm:w-auto">
                                 <Rocket className="mr-2" />Claim Free Website
                             </Button>
                             <a href="#features">
@@ -479,7 +470,7 @@ ${data.goals || 'Not provided'}
                                     <Button variant="outline" className="w-full group-hover:bg-primary-foreground group-hover:text-primary group-hover:border-primary-foreground">Choose Plan</Button>
                                 </Card>
                                 <Card className="p-8 border-2 border-primary shadow-2xl shadow-primary/20 scale-105 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                                    <Badge className="mb-2">Most Popular</Badge>
+                                    <Badge>Most Popular</Badge>
                                     <h4 className="text-xl font-bold text-white">Growth Support</h4>
                                     <p className="text-muted-foreground text-sm mb-6 min-h-[40px]">For businesses scaling up.</p>
                                     <div className="mb-6 pb-6 border-b"><span className="text-4xl font-bold text-primary">₹1,499</span><span className="text-muted-foreground">/mo</span></div>
@@ -605,8 +596,8 @@ ${data.goals || 'Not provided'}
                     <Card className="bg-white/10 backdrop-blur-md p-8 max-w-md mx-auto mb-10 border-white/20 text-left">
                         <p className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4">Monthly Slots Available</p>
                         <div className="flex items-center gap-5">
-                            <Progress value={slots ? ((slots.total - slots.remaining) / slots.total) * 100 : 0} className="h-4"/>
-                            <span className="text-white font-bold text-2xl font-mono">{slots ? `${slots.remaining}/${slots.total}` : '-/-'}</span>
+                            <Progress value={((slots.total - slots.remaining) / slots.total) * 100} className="h-4"/>
+                            <span className="text-white font-bold text-2xl font-mono">{slots.remaining}/{slots.total}</span>
                         </div>
                         <p className="text-white/70 text-sm mt-4 flex items-center gap-2"><Info className="h-4 w-4"/>Applications require manual review & approval</p>
                     </Card>
