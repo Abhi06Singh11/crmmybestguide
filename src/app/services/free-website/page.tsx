@@ -17,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   ArrowLeft, CheckCircle, Rocket, Globe, ShoppingCart, Lightbulb, XCircle, Info, Puzzle, Headset, Megaphone, Store, Gift,
   FileText, Paintbrush, Gauge, Bot, CalendarCheck, Search, Hash, Filter, Box, Settings,
-  Check, Hand, LineChart, AlertTriangle, Mail, HandCoins, ArrowRight, Code, CodeXml, Workflow, Share2, Component, Milestone, GitBranch, CreditCard, ShoppingBag, Smartphone, Edit
+  Check, Hand, LineChart, AlertTriangle, Mail, ArrowRight, Code
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
@@ -242,7 +242,7 @@ ${data.goals || 'Not provided'}
         ],
         'Marketing & Growth': [
             { icon: Search, title: 'SEO Services', desc: 'Ranking, keyword & content optimization.', price: '₹1,999+/mo' },
-            { icon: HandCoins, title: 'Google Ads', desc: 'Campaign setup & ongoing optimization.', price: '₹1,499+/mo' },
+            { icon: LineChart, title: 'Google Ads', desc: 'Campaign setup & ongoing optimization.', price: '₹1,499+/mo' },
             { icon: Hash, title: 'Social Media', desc: 'Content, posting & community growth.', price: '₹1,999+/mo' },
             { icon: Filter, title: 'Funnels & Automation', desc: 'Lead flows & conversion tracking.', price: '₹1,999+ one-time' },
         ],
@@ -385,7 +385,7 @@ ${data.goals || 'Not provided'}
                 <div className="container max-w-5xl">
                     <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6 text-center">
                         <p className="text-base text-blue-900 dark:text-blue-200 leading-relaxed">
-                            Domain and Hosting prices are not included in this package. If you want to buy hosting and domain from us, we provide an additional 10–15% discount compared to the market price. We are powered by <strong className="font-bold">GoDaddy</strong>.
+                            Domain and Hosting prices are not included in this package. If you want to buy hosting and domain from us, we provide an additional 10–15% discount compared to the market price. <strong className="font-bold"> We are powered by GoDaddy</strong>.
                         </p>
                     </div>
                 </div>

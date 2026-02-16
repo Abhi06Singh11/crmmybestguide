@@ -40,7 +40,7 @@ export default function Header() {
           </span>
         </Link>
         <div
-          className="hidden md:flex flex-1 justify-center items-center"
+          className="hidden lg:flex flex-1 justify-center items-center"
         >
           <nav className="flex items-center space-x-1 text-sm font-medium">
             {navLinks.map((link) => {
@@ -73,7 +73,7 @@ export default function Header() {
           </Link>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="lg:hidden">
                 <Menu />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
