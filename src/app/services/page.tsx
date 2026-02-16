@@ -1,6 +1,8 @@
+
 'use client';
 
 import Services from "@/components/sections/services";
+import FreeWebsiteAd from "@/components/sections/free-website-ad";
 
 export default function ServicesPage() {
   return (
@@ -15,6 +17,7 @@ export default function ServicesPage() {
             </div>
         </div>
       </section>
+      <FreeWebsiteAd />
       <Services />
     </>
   );
