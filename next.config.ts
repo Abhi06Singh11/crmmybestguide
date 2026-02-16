@@ -65,11 +65,6 @@ const nextConfig: NextConfig = {
         destination: '/services/odoo-development',
         permanent: true,
       },
-      {
-        source: '/free-website',
-        destination: '/services/free-website',
-        permanent: true,
-      },
        {
         source: '/d/developer/projects/bid',
         destination: '/d/developer/available-projects',
