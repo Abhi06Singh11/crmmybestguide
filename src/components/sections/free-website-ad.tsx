@@ -4,9 +4,18 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Sparkles, ArrowRight, X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export default function FreeWebsiteAd() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
+
+  const handleClose = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 500); // This duration should match the animation duration
+  };
 
   if (!isVisible) {
     return null;
@@ -15,9 +24,14 @@ export default function FreeWebsiteAd() {
   return (
     <section className="bg-background">
       <div className="container py-12">
-        <div className="relative rounded-2xl bg-gradient-to-tr from-blue-900 via-blue-800 to-purple-800 p-8 text-white md:p-12">
+        <div
+          className={cn(
+            'relative rounded-2xl bg-gradient-to-tr from-blue-900 via-blue-800 to-purple-800 p-8 text-white md:p-12 transition-all duration-500 ease-in-out',
+            isExiting && 'opacity-0 -translate-y-4'
+          )}
+        >
           <button
-            onClick={() => setIsVisible(false)}
+            onClick={handleClose}
             className="absolute top-4 right-4 text-white/70 hover:text-white transition-opacity z-10"
             aria-label="Close ad"
           >
