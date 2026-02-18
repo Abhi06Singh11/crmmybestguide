@@ -7,7 +7,10 @@ import { redirect } from 'next/navigation';
 type Role = 'Marketer' | 'Developer' | 'Network' | 'Super Admin';
 
 export async function login(role: Role) {
-  cookies().set('dev-auth-role', role, {
+
+  const cookieStore = await cookies();
+
+  cookieStore.set('dev-auth-role', role, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     maxAge: 60 * 60 * 24, // 1 day
@@ -33,6 +36,8 @@ export async function login(role: Role) {
 }
 
 export async function logout() {
-  cookies().delete('dev-auth-role');
+  const cookieStore = await cookies();
+
+  cookieStore.delete('dev-auth-role');
   redirect('/');
 }
