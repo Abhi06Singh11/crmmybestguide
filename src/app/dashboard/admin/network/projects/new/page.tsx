@@ -1,12 +1,11 @@
+"use client";
 
-'use client';
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
-import { Button } from '@/components/ui/button';
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -14,7 +13,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -22,47 +21,49 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Progress } from '@/components/ui/progress';
-import {
-  ArrowLeft,
-  CheckCircle,
-} from 'lucide-react';
+} from "@/components/ui/select";
+import { Progress } from "@/components/ui/progress";
+import { ArrowLeft, CheckCircle } from "lucide-react";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from '@/components/ui/dialog';
-import Link from 'next/link';
+} from "@/components/ui/dialog";
+import Link from "next/link";
+
+/* -------------------- SCHEMAS -------------------- */
 
 const stepOneSchema = z.object({
-  projectName: z.string().min(3, 'Project name must be at least 3 characters.'),
-  clientName: z.string().min(3, 'Client name must be at least 3 characters.'),
+  projectName: z.string().min(3, "Project name must be at least 3 characters."),
+  clientName: z.string().min(3, "Client name must be at least 3 characters."),
   description: z.string().optional(),
 });
 
 const stepTwoSchema = z.object({
-  engineer: z.string().min(1, 'Please assign an engineer.'),
-  budget: z.coerce.number().positive('Budget must be a positive number.'),
+  engineer: z.string().min(1, "Please assign an engineer."),
+  budget: z.coerce.number().positive("Budget must be a positive number."),
   deadline: z.string().refine((val) => val && !isNaN(Date.parse(val)), {
-    message: 'Please enter a valid date.',
+    message: "Please enter a valid date.",
   }),
 });
 
+/* ✅ MASTER SCHEMA */
 const projectSchema = stepOneSchema.merge(stepTwoSchema);
 
 type ProjectFormData = z.infer<typeof projectSchema>;
+
+/* -------------------- COMPONENT -------------------- */
 
 export default function NewNetworkProjectPage() {
   const router = useRouter();
@@ -70,162 +71,260 @@ export default function NewNetworkProjectPage() {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const steps = [
-    { number: 1, title: 'Project Details' },
-    { number: 2, title: 'Team & Timeline' },
-    { number: 3, title: 'Review & Submit' },
+    { number: 1, title: "Project Details" },
+    { number: 2, title: "Team & Timeline" },
+    { number: 3, title: "Review & Submit" },
   ];
 
+  /* ✅ ALWAYS use master schema */
   const form = useForm<ProjectFormData>({
-    resolver: zodResolver(
-      currentStep === 1 ? stepOneSchema : currentStep === 2 ? stepTwoSchema : projectSchema
-    ),
-    mode: 'onChange',
+    resolver: zodResolver(projectSchema),
+    mode: "onChange",
     defaultValues: {
-      projectName: '',
-      clientName: '',
-      description: '',
-      engineer: '',
+      projectName: "",
+      clientName: "",
+      description: "",
+      engineer: "",
       budget: undefined,
-      deadline: '',
+      deadline: "",
     },
   });
 
+  /* -------------------- STEP HANDLERS -------------------- */
+
   const handleNextStep = async () => {
-    const fieldsToValidate = currentStep === 1 
-      ? ['projectName', 'clientName', 'description'] as const
-      : ['engineer', 'budget', 'deadline'] as const;
+    const fieldsToValidate =
+      currentStep === 1
+        ? (["projectName", "clientName", "description"] as const)
+        : (["engineer", "budget", "deadline"] as const);
 
     const isValid = await form.trigger(fieldsToValidate);
+
     if (isValid) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep((prev) => prev + 1);
     }
   };
 
   const handlePrevStep = () => {
-    setCurrentStep(currentStep - 1);
+    setCurrentStep((prev) => prev - 1);
   };
 
   const onSubmit = (data: ProjectFormData) => {
-    console.log('Network project created:', data);
+    console.log("Network project created:", data);
     setIsSuccessModalOpen(true);
   };
+
+  /* -------------------- UI -------------------- */
 
   return (
     <>
       <div className="space-y-6">
-        <div>
-          <Button variant="outline" onClick={() => router.back()}>
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Projects
-          </Button>
-        </div>
+        <Button variant="outline" onClick={() => router.back()}>
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back to Projects
+        </Button>
+
         <Card>
           <CardHeader>
             <CardTitle>Create a New Network Project</CardTitle>
             <CardDescription>
-              Follow the steps to set up a new network infrastructure or support project.
+              Follow the steps to set up a new network infrastructure or support
+              project.
             </CardDescription>
           </CardHeader>
+
           <CardContent>
             <div className="mb-8">
-                <Progress value={(currentStep / steps.length) * 100} className="w-full" />
-                <div className="flex justify-between mt-2">
-                    {steps.map(step => (
-                        <div key={step.number} className="flex flex-col items-center text-center w-1/3">
-                            <div className={`w-6 h-6 rounded-full flex items-center justify-center ${currentStep >= step.number ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}>
-                                {currentStep > step.number ? <CheckCircle className="h-4 w-4" /> : step.number}
-                            </div>
-                            <p className={`text-sm mt-1 ${currentStep >= step.number ? 'font-semibold' : 'text-muted-foreground'}`}>{step.title}</p>
-                        </div>
-                    ))}
-                </div>
+              <Progress
+                value={(currentStep / steps.length) * 100}
+                className="w-full"
+              />
             </div>
-            
+
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="space-y-8"
+              >
+                {/* STEP 1 */}
                 {currentStep === 1 && (
-                  <div className="space-y-4 animate-in fade-in-0">
-                    <FormField control={form.control} name="projectName" render={({ field }) => (
-                        <FormItem><FormLabel>Project Name</FormLabel><FormControl><Input placeholder="e.g., AWS Migration" {...field} /></FormControl><FormMessage /></FormItem>
-                    )}/>
-                    <FormField control={form.control} name="clientName" render={({ field }) => (
-                        <FormItem><FormLabel>Client Name</FormLabel><FormControl><Input placeholder="e.g., Innovate Inc." {...field} /></FormControl><FormMessage /></FormItem>
-                    )}/>
-                    <FormField control={form.control} name="description" render={({ field }) => (
-                        <FormItem><FormLabel>Project Description (Optional)</FormLabel><FormControl><Textarea placeholder="Briefly describe the project goals and scope." rows={4} {...field} /></FormControl><FormMessage /></FormItem>
-                    )}/>
+                  <div className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="projectName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Project Name</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="clientName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Client Name</FormLabel>
+                          <FormControl>
+                            <Input {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="description"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Description</FormLabel>
+                          <FormControl>
+                            <Textarea rows={4} {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
                 )}
 
+                {/* STEP 2 */}
                 {currentStep === 2 && (
-                  <div className="space-y-4 animate-in fade-in-0">
-                    <FormField control={form.control} name="engineer" render={({ field }) => (
-                        <FormItem><FormLabel>Assign Lead Engineer</FormLabel>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                            <FormControl><SelectTrigger><SelectValue placeholder="Select an engineer" /></SelectTrigger></FormControl>
+                  <div className="space-y-4">
+                    <FormField
+                      control={form.control}
+                      name="engineer"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Assign Lead Engineer</FormLabel>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
+                            <FormControl>
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select an engineer" />
+                              </SelectTrigger>
+                            </FormControl>
                             <SelectContent>
-                                <SelectItem value="Casey Becker">Casey Becker</SelectItem>
-                                <SelectItem value="Nina Patel">Nina Patel</SelectItem>
-                                <SelectItem value="Omar Khan">Omar Khan</SelectItem>
+                              <SelectItem value="Casey Becker">
+                                Casey Becker
+                              </SelectItem>
+                              <SelectItem value="Nina Patel">
+                                Nina Patel
+                              </SelectItem>
+                              <SelectItem value="Omar Khan">
+                                Omar Khan
+                              </SelectItem>
                             </SelectContent>
-                        </Select><FormMessage /></FormItem>
-                    )}/>
-                     <div className="grid md:grid-cols-2 gap-4">
-                        <FormField control={form.control} name="budget" render={({ field }) => (
-                            <FormItem><FormLabel>Budget (₹)</FormLabel><FormControl><Input type="number" placeholder="e.g., 800000" {...field} /></FormControl><FormMessage /></FormItem>
-                        )}/>
-                        <FormField control={form.control} name="deadline" render={({ field }) => (
-                            <FormItem><FormLabel>Deadline</FormLabel><FormControl><Input type="date" {...field} /></FormControl><FormMessage /></FormItem>
-                        )}/>
-                    </div>
+                          </Select>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="budget"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Budget (₹)</FormLabel>
+                          <FormControl>
+                            <Input type="number" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <FormField
+                      control={form.control}
+                      name="deadline"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Deadline</FormLabel>
+                          <FormControl>
+                            <Input type="date" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
                 )}
-                
+
+                {/* STEP 3 */}
                 {currentStep === 3 && (
-                    <div className="space-y-4 p-4 border rounded-lg bg-muted/50 animate-in fade-in-0">
-                        <h3 className="text-lg font-semibold">Review Project Details</h3>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                            <div><p className="text-muted-foreground">Project Name</p><p className="font-medium">{form.getValues('projectName') || 'Not set'}</p></div>
-                            <div><p className="text-muted-foreground">Client</p><p className="font-medium">{form.getValues('clientName') || 'Not set'}</p></div>
-                             <div><p className="text-muted-foreground">Lead Engineer</p><p className="font-medium">{form.getValues('engineer') || 'Not set'}</p></div>
-                            <div><p className="text-muted-foreground">Budget</p><p className="font-medium">₹{form.getValues('budget')?.toLocaleString() || 'Not set'}</p></div>
-                             <div><p className="text-muted-foreground">Deadline</p><p className="font-medium">{form.getValues('deadline') ? new Date(form.getValues('deadline')).toLocaleDateString() : 'Not set'}</p></div>
-                        </div>
-                        <div><p className="text-muted-foreground">Description</p><p className="font-medium text-wrap break-words">{form.getValues('description') || 'N/A'}</p></div>
-                    </div>
+                  <div className="p-4 border rounded-lg bg-muted/50">
+                    <p>
+                      <strong>Project:</strong> {form.getValues("projectName")}
+                    </p>
+                    <p>
+                      <strong>Client:</strong> {form.getValues("clientName")}
+                    </p>
+                    <p>
+                      <strong>Engineer:</strong> {form.getValues("engineer")}
+                    </p>
+                    <p>
+                      <strong>Budget:</strong> ₹{form.getValues("budget")}
+                    </p>
+                    <p>
+                      <strong>Deadline:</strong> {form.getValues("deadline")}
+                    </p>
+                    <p>
+                      <strong>Description:</strong>{" "}
+                      {form.getValues("description")}
+                    </p>
+                  </div>
                 )}
               </form>
             </Form>
           </CardContent>
+
           <CardFooter className="flex justify-between">
-            <Button variant="outline" onClick={handlePrevStep} className={currentStep === 1 ? 'invisible' : ''}>Previous</Button>
-            {currentStep < steps.length && (
+            <Button
+              variant="outline"
+              onClick={handlePrevStep}
+              disabled={currentStep === 1}
+            >
+              Previous
+            </Button>
+
+            {currentStep < steps.length ? (
               <Button onClick={handleNextStep}>Next</Button>
-            )}
-            {currentStep === steps.length && (
-                <Button onClick={form.handleSubmit(onSubmit)}>Create Project</Button>
+            ) : (
+              <Button onClick={form.handleSubmit(onSubmit)}>
+                Create Project
+              </Button>
             )}
           </CardFooter>
         </Card>
       </div>
 
-       <Dialog open={isSuccessModalOpen} onOpenChange={setIsSuccessModalOpen}>
-        <DialogContent className="sm:max-w-md">
-            <DialogHeader className="items-center text-center">
-                <div className="p-3 bg-green-100 dark:bg-green-900/50 rounded-full w-fit">
-                    <CheckCircle className="h-10 w-10 text-green-500" />
-                </div>
-                <DialogTitle className="text-2xl">Project Created!</DialogTitle>
-                <DialogDescription>
-                    The project "{form.getValues('projectName')}" has been successfully created.
-                </DialogDescription>
-            </DialogHeader>
-            <div className="flex justify-center gap-2 pt-4">
-                <Button variant="outline" onClick={() => {setIsSuccessModalOpen(false); form.reset(); setCurrentStep(1)}}>Create Another Project</Button>
-                <Link href="/d/admin/network/projects">
-                    <Button>View All Projects</Button>
-                </Link>
-            </div>
+      <Dialog open={isSuccessModalOpen} onOpenChange={setIsSuccessModalOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Project Created!</DialogTitle>
+            <DialogDescription>
+              The project "{form.getValues("projectName")}" was successfully
+              created.
+            </DialogDescription>
+          </DialogHeader>
+
+          <Button
+            onClick={() => {
+              setIsSuccessModalOpen(false);
+              form.reset();
+              setCurrentStep(1);
+            }}
+          >
+            Create Another Project
+          </Button>
         </DialogContent>
       </Dialog>
     </>
