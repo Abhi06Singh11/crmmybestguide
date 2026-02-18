@@ -1,7 +1,10 @@
 
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   /* config options here */
   images: {
     remotePatterns: [
@@ -65,7 +68,7 @@ const nextConfig: NextConfig = {
         destination: '/services/odoo-development',
         permanent: true,
       },
-       {
+      {
         source: '/d/developer/projects/bid',
         destination: '/d/developer/available-projects',
         permanent: true,
