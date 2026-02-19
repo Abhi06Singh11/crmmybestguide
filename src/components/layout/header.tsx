@@ -1,9 +1,8 @@
-
 'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger, SheetFooter } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetTrigger } from '@/components/ui/sheet';
 import {
   Menu,
   Briefcase,
@@ -11,7 +10,8 @@ import {
   Users,
   Mail,
   LayoutGrid,
-  LogIn
+  LogIn,
+  Code2
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { cn } from '@/lib/utils';
@@ -35,9 +35,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <span className="font-headline text-xl font-bold text-foreground">
-            MyBestGuide
-          </span>
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                <Code2 className="text-white h-6 w-6" />
+            </div>
+            <span className="font-headline text-xl font-bold text-foreground">
+                MyBestGuide
+            </span>
         </Link>
         <div
           className="hidden lg:flex flex-1 justify-center items-center"
