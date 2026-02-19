@@ -568,13 +568,29 @@ export default function FreeWebsitePage() {
         </div>
     );
 }
-```
-
-I'm getting this error:
 
 ```
-./src/app/services/free-website/page.tsx
-161:89
-Type error: 'Rocket' is not a valid icon name. Please refer to the lucide-react documentation for the full list of available icons.
-https://lucide.dev/
-```
+I see this error with the app, reported by NextJS, please fix it. The error is reported as HTML but presented visually to the user).
+
+A > before the line number in the error source usually indicates the line of interest: 
+
+> Build Error: Parsing ecmascript source code failed. Error source: ./src/app/services/free-website/page.tsx (301:46)
+> Parsing ecmascript source code failed
+>   299 |                                 <Card className="border"><CardHeader><div className="mb-4 flex items-center gap-2"><div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">1</div><CardTitle>Basic Support</CardTitle></div><CardDescription className="min-h-[40px] text-sm">Perfect for small business owners who need consistent peace-of-mind support.</CardDescription></CardHeader><CardContent><div className="mb-6 border-b pb-6"><span className="text-4xl font-bold text-primary">INR 499</span><span className="text-muted-foreground">/month</span></div><ul className="mb-8 space-y-4 text-sm"><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Up to 5 Support Tickets</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>24-48 Hour Response</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Monthly Site Monitoring</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Email Support</li></ul><Button variant="outline" className="w-full">Choose Plan</Button></CardContent></Card>
+>   300 |                                 <Card className="relative z-10 scale-105 transform border-2 border-primary bg-primary text-primary-foreground shadow-2xl"><div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">Most Popular</div><CardHeader><div className="mb-4 flex items-center gap-2"><div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-sm font-bold text-white">2</div><CardTitle>Growth Support</CardTitle></div><CardDescription className="min-h-[40px] text-indigo-100 text-sm">For growing businesses ready to scale with priority support.</CardDescription></CardHeader><CardContent><div className="mb-6 border-b border-white/20 pb-6"><span className="text-4xl font-bold">INR 1,499</span><span className="text-indigo-200">/month</span></div><ul className="mb-8 space-y-4 text-sm"><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>30 Support Tickets/mo</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>12-24 Hour Response</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>WhatsApp & Email</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>Priority Bug Fixes</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>Monthly Backups</li></ul><Button variant="secondary" className="w-full bg-white text-primary hover:bg-slate-200">Choose Growth</Button></CardContent></Card>
+> > 301 |                                 <Card className="border"><CardHeader><div className="mb-4 flex items-center gap-2"><div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100 text-sm font-bold text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">3</div><CardTitle>Premium Support</CardTitle></div><CardDescription className="min-h-[40px] text-sm">Ideal for mission-critical websites & eCommerce.</CardDescription></CardHeader><CardContent><div className="mb-6 border-b pb-6"><span className="text-4xl font-bold text-primary">INR 3,499</span><span className="text-muted-foreground">/month</span></div><ul className="mb-8 space-y-4 text-sm"><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Dedicated Engineer</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>4-Hour Response SLA</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Phone Consultations</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Weekly Backups</li></ul><Button variant="outline" className="w-full">Choose Plan</Button></CardContent></Card>
+>       |                                            ^
+>   302 |                             </div>
+>   303 |                         </TabsContent>
+>   304 |                         <TabsContent value="marketing" className="mt-8">
+> 
+> Expected '>', got 'className'
+> 
+> Import traces:
+>   Client Component Browser:
+>     ./src/app/services/free-website/page.tsx [Client Component Browser]
+>     ./src/app/services/free-website/page.tsx [Server Component]
+> 
+>   Client Component SSR:
+>     ./src/app/services/free-website/page.tsx [Client Component SSR]
+>     ./src/app/services/free-website/page.tsx [Server Component]
