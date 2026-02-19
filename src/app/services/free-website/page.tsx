@@ -10,10 +10,10 @@ import {
   Search, ShoppingCart, Star, Store, Users, XCircle, Check, FileText, Gauge, MessageCircle as MessageCircleIcon,
   Bot, CalendarCheck, Smartphone, CreditCard, Filter, Hash, Box, Cog, Smartphone as SmartphoneIcon,
   ChevronDown, ArrowRight, Hand, Eye, Wrench, ShieldCheck, MailIcon, MapPin, Phone, Send, Linkedin, Twitter, Instagram, ArrowUp, Globe, Edit, Code2,
-  AlertTriangle
+  AlertTriangle, X
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -27,6 +27,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { Separator } from '@/components/ui/separator';
+import { cn } from '@/lib/utils';
 
 const applicationSchema = z.object({
   fullName: z.string().min(2, { message: 'Full name must be at least 2 characters.' }),
@@ -220,6 +222,25 @@ export default function FreeWebsitePage() {
                  { value: "Accelerator Bundle", title: "Accelerator (INR 19,999)", description: "Full custom site & growth"},
             ]
         },
+    ];
+
+    const faqItems = [
+      {
+        question: "Is the website really 100% free?",
+        answer: "Yes! The basic website is completely free with no hidden charges. You own the content and get a fully functional, professional website. We only charge for optional upgrades, additional features, and premium support if you choose them."
+      },
+      {
+        question: "What's the catch?",
+        answer: "There's no catch! The free version has some limitations (template-based design, limited revisions, agency footer branding) as disclosed. We offer this as a way to help businesses get started online while building long-term relationships."
+      },
+      {
+        question: "Do I need to buy hosting?",
+        answer: "You'll receive hosting-ready code that you can deploy anywhere. We can help you set up affordable hosting (usually INR 300-1,000/month) or you can handle it yourself. Domain registration is also separate but we can guide you."
+      },
+      {
+        question: "Can I remove the agency branding?",
+        answer: "Yes! Footer branding removal is available as a one-time paid upgrade (INR 999). This gives you a completely white-labeled website."
+      }
     ];
 
     return (
@@ -486,7 +507,74 @@ export default function FreeWebsitePage() {
                     </div>
                 </div>
             </section>
+
+            {/* Limited Availability Section */}
+            <section className="py-20 bg-gradient-to-r from-red-600 to-orange-600 relative overflow-hidden text-white">
+                <div className="container relative z-10 text-center">
+                    <div className="flex items-center justify-center gap-4 mb-6">
+                        <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                            <AlertTriangle className="h-6 w-6 text-yellow-300" />
+                        </div>
+                        <h2 className="text-2xl md:text-4xl font-bold">Limited Availability</h2>
+                    </div>
+                    <p className="text-white/90 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">We can only accept a limited number of free website projects each month to maintain quality.</p>
+                    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-md mx-auto mb-10 border border-white/20">
+                        <p className="text-white/90 text-sm font-semibold uppercase tracking-wider mb-4 text-left">Monthly Slots Available</p>
+                        <div className="flex items-center gap-5">
+                            <div className="flex-1 bg-black/20 rounded-full h-4 overflow-hidden shadow-inner">
+                               <Progress value={(10 - slotsRemaining) * 10} className="h-full bg-green-500" />
+                            </div>
+                            <span className="text-white font-bold text-2xl font-mono">{slotsRemaining}/10</span>
+                        </div>
+                        <p className="text-white/70 text-sm mt-4 text-left flex items-center gap-2">
+                           <Info className="h-4 w-4"/>
+                            Applications require manual review & approval
+                        </p>
+                    </div>
+                    <Button size="lg" className="bg-white text-red-600 hover:bg-slate-200" onClick={scrollToApply}>
+                        <Hand className="mr-2 h-5 w-5"/>Apply Before Slots Fill Up
+                    </Button>
+                </div>
+            </section>
+
+            {/* Application Form Section */}
+            <section id="apply" className="py-24 bg-background">
+                <div className="container max-w-4xl">
+                     <div className="text-center mb-16">
+                        <Badge variant="secondary">Start Your Journey</Badge>
+                        <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">Apply for Your Free Website</h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">No credit card required. No obligations. Just fill out the form below.</p>
+                    </div>
+                    <Card>
+                        <CardHeader>
+                            <div className="mb-4">
+                                <div className="flex items-center justify-between mb-2">
+                                    <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Step {currentStep} of {totalSteps}</span>
+                                    <span className="text-xs font-bold text-primary">{steps[currentStep - 1].title}</span>
+                                </div>
+                                <Progress value={(currentStep / totalSteps) * 100} />
+                            </div>
+                        </CardHeader>
+                        <CardContent>
+                             <Form {...form}>
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                    {/* All steps will be rendered here conditionally */}
+                                </form>
+                            </Form>
+                        </CardContent>
+                    </Card>
+                </div>
+            </section>
         </div>
     );
 }
+```
+
+I'm getting this error:
+
+```
+./src/app/services/free-website/page.tsx
+161:89
+Type error: 'Rocket' is not a valid icon name. Please refer to the lucide-react documentation for the full list of available icons.
+https://lucide.dev/
 ```
