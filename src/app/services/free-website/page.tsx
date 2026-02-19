@@ -288,6 +288,203 @@ export default function FreeWebsitePage() {
                     </div>
                 </div>
             </section>
+
+            {/* What You Get Section */}
+            <section id="features" className="py-24 bg-background relative">
+                <div className="container">
+                    <div className="text-center mb-16">
+                        <Badge variant="secondary" className="text-sm">No Strings Attached</Badge>
+                        <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">What You Get For FREE</h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">Everything you need to establish your online presence – completely free of charge.</p>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+                        {/* Basic Website Card */}
+                        <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                             <CardHeader>
+                                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg"><Globe className="h-8 w-8" /></div>
+                                <CardTitle className="text-2xl">FREE Basic Website</CardTitle>
+                                <CardDescription>Perfect for service businesses, professionals, and local brands getting started online.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="mb-8 space-y-4">
+                                    <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">3–5 Page</strong> Professional Website</span></li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Mobile Responsive</strong> Design</span></li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Pre-Designed</strong> Modern Template</span></li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Basic On-Page SEO</strong> Setup</span></li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Contact Form</strong> with Email</span></li>
+                                    <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Client-Owned</strong> Content & Assets</span></li>
+                                </ul>
+                                <div className="relative z-10 border-t pt-6">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-sm text-muted-foreground">Estimated Value</p>
+                                            <div className="flex items-baseline gap-2">
+                                                <span className="text-3xl font-bold text-foreground">INR 0</span>
+                                                <span className="text-lg text-muted-foreground line-through">INR 14,999</span>
+                                            </div>
+                                        </div>
+                                        <Badge variant="secondary" className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">100% FREE</Badge>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                         {/* E-commerce Card */}
+                        <Card className="group relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                            <CardHeader>
+                                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-purple-600 text-white shadow-lg"><ShoppingCart className="h-8 w-8" /></div>
+                                <CardTitle className="text-2xl">FREE E-Commerce Starter</CardTitle>
+                                <CardDescription>Ideal for early-stage e-commerce brands and product sellers ready to sell.</CardDescription>
+                            </CardHeader>
+                            <CardContent>
+                                <ul className="mb-8 space-y-4">
+                                     <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Professional Storefront</strong> Design</span></li>
+                                     <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground">Up to <strong className="font-semibold text-foreground">10 Products</strong> Listed</span></li>
+                                     <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Product & Cart</strong> Pages</span></li>
+                                     <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Manual Order</strong> (WhatsApp/Email)</span></li>
+                                     <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Mobile Responsive</strong> Shopping</span></li>
+                                     <li className="flex items-start gap-3"><CheckCircle className="mt-1 h-5 w-5 flex-shrink-0 text-green-500" /><span className="text-muted-foreground"><strong className="font-semibold text-foreground">Product Gallery</strong> & Desc.</span></li>
+                                </ul>
+                                <div className="relative z-10 border-t pt-6">
+                                     <div className="flex items-center justify-between">
+                                        <div>
+                                            <p className="text-sm text-muted-foreground">Estimated Value</p>
+                                            <div className="flex items-baseline gap-2">
+                                                <span className="text-3xl font-bold text-foreground">INR 0</span>
+                                                <span className="text-lg text-muted-foreground line-through">INR 24,999</span>
+                                            </div>
+                                        </div>
+                                        <Badge variant="secondary" className="bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300">100% FREE</Badge>
+                                    </div>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </div>
+                </div>
+            </section>
+            
+            {/* Transparency Section */}
+            <section className="py-24 bg-secondary border-y">
+                <div className="container max-w-5xl">
+                    <Card className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-slate-900 dark:to-slate-800/50 p-8 md:p-12 border-amber-200/50 dark:border-amber-500/30 shadow-lg">
+                        <div className="flex items-start gap-5 mb-10">
+                            <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400 border border-amber-200/80 dark:border-amber-500/20"><Lightbulb className="h-7 w-7"/></div>
+                            <div>
+                                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-3">Let's Be Transparent</h2>
+                                <p className="text-lg text-gray-700 dark:text-gray-200">We believe in honesty. Here's what the free version <span className="font-semibold text-amber-600 dark:text-amber-400">doesn't</span> include:</p>
+                            </div>
+                        </div>
+                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-6 mb-10">
+                            <ul className="space-y-4">
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>No custom design (template-based)</span></li>
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>No advanced animations or effects</span></li>
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>No payment gateway (e-commerce)</span></li>
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>Limited revisions (2 rounds)</span></li>
+                            </ul>
+                            <ul className="space-y-4">
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>Limited support tickets (3/month)</span></li>
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>Agency branding in footer</span></li>
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>No performance optimization</span></li>
+                                <li className="flex items-center gap-3"><XCircle className="h-5 w-5 text-slate-400" /><span>No conversion rate optimization</span></li>
+                            </ul>
+                        </div>
+                        <div className="rounded-2xl bg-white/60 p-6 dark:bg-black/20 border border-amber-200/50 dark:border-amber-500/20 backdrop-blur-sm">
+                            <div className="flex items-start gap-4 md:items-center">
+                                <Info className="h-6 w-6 flex-shrink-0 text-blue-600 dark:text-blue-400" />
+                                <p className="leading-relaxed font-medium text-slate-800 dark:text-slate-200"><strong className="text-slate-900 dark:text-white">The free version works perfectly</strong> for getting started. When you're ready to scale, growth features are unlocked through affordable upgrades.</p>
+                            </div>
+                        </div>
+                    </Card>
+                </div>
+            </section>
+            
+            {/* Upgrades Section */}
+            <section id="upgrades" className="py-24 bg-background">
+                <div className="container">
+                    <div className="text-center mb-16">
+                        <Badge variant="secondary" className="text-sm">Scale When Ready</Badge>
+                        <h2 className="mt-6 mb-6 text-3xl font-bold text-foreground md:text-5xl">Value Enhancements</h2>
+                        <p className="mx-auto max-w-2xl text-xl leading-relaxed text-muted-foreground">Unlock powerful growth tools as your business scales. No pressure – upgrade only when you need it.</p>
+                    </div>
+
+                    <Tabs defaultValue="addons" className="w-full">
+                        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 h-auto">
+                            <TabsTrigger value="addons"><Rocket className="mr-2 h-4 w-4"/>Performance</TabsTrigger>
+                            <TabsTrigger value="support"><Headset className="mr-2 h-4 w-4"/>Support Plans</TabsTrigger>
+                            <TabsTrigger value="marketing"><Megaphone className="mr-2 h-4 w-4"/>Marketing</TabsTrigger>
+                            <TabsTrigger value="ecommerce"><Store className="mr-2 h-4 w-4"/>E-Commerce</TabsTrigger>
+                            <TabsTrigger value="bundles"><Gift className="mr-2 h-4 w-4"/>Bundle Offers</TabsTrigger>
+                        </TabsList>
+                        
+                        <TabsContent value="addons" className="mt-8">
+                            <div className="mx-auto mb-8 max-w-3xl text-center">
+                                <p className="mb-4 inline-block rounded-lg bg-muted px-4 py-2 text-sm text-muted-foreground"><Info className="mr-2 inline h-4 w-4"/>Prices are starting prices — final cost depends on business needs.</p>
+                                <div className="rounded-xl border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20"><p className="font-bold leading-relaxed text-blue-950 dark:text-blue-500">Domain and Hosting prices are not included in this package. If you want to buy hosting and domain from us, we provide an additional 10–15% discount compared to the market price.<br/><br/><strong className="text-xs">We are powered by GoDaddy.</strong></p></div>
+                            </div>
+                            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                                {addonGroups.find(g => g.title === "Performance & Design")?.items.map(item => (
+                                    <Card key={item.title} className="group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><CardHeader><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"><item.icon className="h-6 w-6"/></div><CardTitle>{item.title}</CardTitle><CardDescription>{item.description}</CardDescription></CardHeader><CardContent><div className="flex items-center justify-between border-t pt-4"><span className="text-2xl font-bold text-primary">{item.price}</span><span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">one-time</span></div></CardContent></Card>
+                                ))}
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="support" className="mt-8">
+                             <div className="grid items-start gap-8 mx-auto max-w-5xl md:grid-cols-3">
+                                <Card className="border"><CardHeader><div className="mb-4 flex items-center gap-2"><div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100 text-sm font-bold text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">1</div><CardTitle>Basic Support</CardTitle></div><CardDescription className="min-h-[40px] text-sm">Perfect for small business owners who need consistent peace-of-mind support.</CardDescription></CardHeader><CardContent><div className="mb-6 border-b pb-6"><span className="text-4xl font-bold text-primary">INR 499</span><span className="text-muted-foreground">/month</span></div><ul className="mb-8 space-y-4 text-sm"><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Up to 5 Support Tickets</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>24-48 Hour Response</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Monthly Site Monitoring</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Email Support</li></ul><Button variant="outline" className="w-full">Choose Plan</Button></CardContent></Card>
+                                <Card className="relative z-10 scale-105 transform border-2 border-primary bg-primary text-primary-foreground shadow-2xl"><div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">Most Popular</div><CardHeader><div className="mb-4 flex items-center gap-2"><div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/20 text-sm font-bold text-white">2</div><CardTitle>Growth Support</CardTitle></div><CardDescription className="min-h-[40px] text-indigo-100 text-sm">For growing businesses ready to scale with priority support.</CardDescription></CardHeader><CardContent><div className="mb-6 border-b border-white/20 pb-6"><span className="text-4xl font-bold">INR 1,499</span><span className="text-indigo-200">/month</span></div><ul className="mb-8 space-y-4 text-sm"><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>30 Support Tickets/mo</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>12-24 Hour Response</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>WhatsApp & Email</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>Priority Bug Fixes</li><li className="flex items-center gap-3"><CheckCircle className="h-5 w-5 text-green-400"/>Monthly Backups</li></ul><Button variant="secondary" className="w-full bg-white text-primary hover:bg-slate-200">Choose Growth</Button></CardContent></Card>
+                                <Card className="border"><CardHeader><div className="mb-4 flex items-center gap-2"><div className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100 text-sm font-bold text-purple-600 dark:bg-purple-900/30 dark:text-purple-400">3</div><CardTitle>Premium Support</CardTitle></div><CardDescription className="min-h-[40px] text-sm">Ideal for mission-critical websites & eCommerce.</CardDescription></CardHeader><CardContent><div className="mb-6 border-b pb-6"><span className="text-4xl font-bold text-primary">INR 3,499</span><span className="text-muted-foreground">/month</span></div><ul className="mb-8 space-y-4 text-sm"><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Dedicated Engineer</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>4-Hour Response SLA</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Phone Consultations</li><li className="flex items-center gap-3 text-muted-foreground"><Check className="h-5 w-5 text-green-500"/>Weekly Backups</li></ul><Button variant="outline" className="w-full">Choose Plan</Button></CardContent></Card>
+                            </div>
+                        </TabsContent>
+                        <TabsContent value="marketing" className="mt-8">
+                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                                {addonGroups.find(g => g.title === "Marketing & Growth")?.items.map(item => (
+                                    <Card key={item.title} className="group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><CardHeader><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"><Search className="h-6 w-6"/></div><CardTitle>{item.title}</CardTitle><CardDescription>{item.description}</CardDescription></CardHeader><CardContent><div className="border-t pt-4"><span className="text-2xl font-bold text-primary">INR 1,999+</span><span className="text-xs text-muted-foreground">/month</span></div></CardContent></Card>
+                                ))}
+                            </div>
+                        </TabsContent>
+                         <TabsContent value="ecommerce" className="mt-8">
+                             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                                {addonGroups.find(g => g.title === "E-Commerce & Payments")?.items.map(item => (
+                                    <Card key={item.title} className="group transition-all duration-300 hover:shadow-xl hover:-translate-y-1"><CardHeader><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground"><CreditCard className="h-6 w-6"/></div><CardTitle>{item.title}</CardTitle><CardDescription>{item.description}</CardDescription></CardHeader><CardContent><div className="border-t pt-4"><span className="text-2xl font-bold text-primary">INR 499+</span><span className="text-xs text-muted-foreground"> one-time</span></div></CardContent></Card>
+                                ))}
+                            </div>
+                        </TabsContent>
+                         <TabsContent value="bundles" className="mt-8">
+                             <div className="grid items-start gap-8 mx-auto max-w-6xl md:grid-cols-3">
+                                 <Card><CardHeader><CardTitle>Startup Pack</CardTitle><CardDescription>For new businesses</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold text-primary">INR 4,999</span><span className="ml-2 text-muted-foreground line-through">INR 7,499</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>5-page Website</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Custom UI/UX Design</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Speed Optimization</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>1 Month Basic Support</li></ul><Button variant="outline" className="w-full">Get Started</Button></CardContent></Card>
+                                <Card className="relative z-10 scale-105 border-primary bg-primary text-primary-foreground"><div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 px-4 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-lg">Best Value</div><CardHeader><CardTitle>Growth Pack</CardTitle><CardDescription className="text-indigo-200">Scale with confidence</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold">INR 9,999</span><span className="ml-2 text-indigo-200 line-through">INR 15,999</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>10-page Website</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>Premium UI/UX Design</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>Booking System</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>SEO Starter Setup</li><li className="flex items-center gap-2"><CheckCircle className="h-5 w-5 text-green-400"/>1 Month Growth Support</li></ul><Button variant="secondary" className="w-full bg-white text-primary hover:bg-slate-200">Get Started</Button></CardContent></Card>
+                                <Card><CardHeader><CardTitle>Accelerator</CardTitle><CardDescription>Complete growth solution</CardDescription></CardHeader><CardContent><div className="mb-6"><span className="text-4xl font-bold text-primary">INR 19,999</span><span className="ml-2 text-muted-foreground line-through">INR 32,999</span></div><ul className="mb-8 space-y-3 text-sm"><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>Full Custom Website</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>All Integrations</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>SEO + Social + Ads</li><li className="flex items-center gap-2"><Check className="h-5 w-5 text-green-500"/>3 Months Support</li></ul><Button variant="outline" className="w-full">Get Started</Button></CardContent></Card>
+                             </div>
+                        </TabsContent>
+                    </Tabs>
+                </div>
+            </section>
+            
+             {/* Client Journey Section */}
+            <section id="journey" className="py-24 bg-secondary relative overflow-hidden">
+                <div className="container relative z-10">
+                    <div className="text-center mb-16">
+                        <Badge variant="secondary">Simple Process</Badge>
+                        <h2 className="text-3xl md:text-5xl font-bold text-foreground mt-6 mb-6">Your Journey</h2>
+                        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">From application to launch in 4 simple steps.</p>
+                    </div>
+
+                    <div className="relative max-w-4xl mx-auto">
+                        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 to-primary/0 hidden md:block rounded-full"></div>
+                        <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
+                            {journeySteps.map((item, index) => (
+                                <div key={item.step} className={`flex items-start gap-6 ${index % 2 === 1 ? 'md:flex-row-reverse md:text-right' : ''}`}>
+                                    <div className={`relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground shadow-lg border-4 border-secondary`}>{item.step}</div>
+                                    <div className={`${index % 2 === 1 ? 'md:items-end' : ''} flex flex-col`}>
+                                        <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                                        <div className="mt-4 inline-flex items-center gap-2 rounded-lg bg-muted px-3 py-1.5 text-sm font-medium"><item.icon className="h-4 w-4 text-primary" /><span>{item.label}</span></div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }
