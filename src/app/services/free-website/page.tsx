@@ -9,7 +9,8 @@ import {
   CheckCircle, Code, Gift, Headset, Info, Lightbulb, Mail, Megaphone, Paintbrush, Puzzle, Rocket,
   Search, ShoppingCart, Star, Store, Users, XCircle, Check, FileText, Gauge, MessageCircle as MessageCircleIcon,
   Bot, CalendarCheck, Smartphone, CreditCard, Filter, Hash, Box, Cog, Smartphone as SmartphoneIcon,
-  ChevronDown, ArrowRight, Hand, Eye, Wrench, ShieldCheck, MailIcon, MapPin, Phone, Send, Linkedin, Twitter, Instagram, ArrowUp, Globe, Edit, Code2
+  ChevronDown, ArrowRight, Hand, Eye, Wrench, ShieldCheck, MailIcon, MapPin, Phone, Send, Linkedin, Twitter, Instagram, ArrowUp, Globe, Edit, Code2,
+  AlertTriangle
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -112,7 +113,7 @@ export default function FreeWebsitePage() {
             case 5: fieldsToValidate = ['terms']; break;
         }
 
-        const isValid = await form.trigger(fieldsToValidate);
+        const isValid = fieldsToValidate.length > 0 ? await form.trigger(fieldsToValidate) : true;
         if (isValid) {
             if(currentStep < totalSteps) {
                 setCurrentStep(currentStep + 1);
@@ -469,7 +470,7 @@ export default function FreeWebsitePage() {
                     </div>
 
                     <div className="relative max-w-4xl mx-auto">
-                        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 to-primary/0 hidden md:block rounded-full"></div>
+                        <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 to-primary/0 hidden md:block rounded-full"></div>
                         <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
                             {journeySteps.map((item, index) => (
                                 <div key={item.step} className={`flex items-start gap-6 ${index % 2 === 1 ? 'md:flex-row-reverse md:text-right' : ''}`}>
@@ -488,3 +489,4 @@ export default function FreeWebsitePage() {
         </div>
     );
 }
+```
