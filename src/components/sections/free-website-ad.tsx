@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -27,7 +28,7 @@ export default function FreeWebsiteAd() {
         <div
           className={cn(
             'relative rounded-2xl bg-gradient-to-tr from-blue-900 via-blue-800 to-purple-800 p-8 text-white md:p-12 transition-all duration-500 ease-in-out',
-            isExiting && 'opacity-0 -translate-y-4'
+            isExiting ? 'opacity-0 -translate-y-4' : 'opacity-100 translate-y-0'
           )}
         >
           <button
@@ -72,3 +73,5 @@ export default function FreeWebsiteAd() {
     </section>
   );
 }
+
+    

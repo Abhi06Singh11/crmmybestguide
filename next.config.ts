@@ -70,8 +70,15 @@ const nextConfig: NextConfig = {
         destination: '/d/developer/available-projects',
         permanent: true,
       },
+       {
+        source: '/free-website',
+        destination: '/services/free-website',
+        permanent: true,
+      },
     ]
   },
 };
 
 export default nextConfig;
+
+    

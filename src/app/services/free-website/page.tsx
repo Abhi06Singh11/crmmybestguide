@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -24,6 +24,7 @@ import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 const applicationSchema = z.object({
   fullName: z.string().min(2, { message: 'Full name must be at least 2 characters.' }),
@@ -52,7 +53,25 @@ export default function FreeWebsitePage() {
     const { toast } = useToast();
     const [currentStep, setCurrentStep] = useState(1);
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
     const INR = String.fromCharCode(8377);
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            const now = new Date();
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            const distance = endOfMonth.getTime() - now.getTime();
+
+            setTimeLeft({
+                days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((distance % (1000 * 60)) / 1000),
+            });
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
 
     const form = useForm<z.infer<typeof applicationSchema>>({
         resolver: zodResolver(applicationSchema),
@@ -141,7 +160,7 @@ export default function FreeWebsitePage() {
     return (
         <div className="bg-background text-foreground">
             {/* Hero */}
-             <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 to-slate-900 py-20 text-white md:py-32">
+            <section className="relative overflow-hidden bg-gradient-to-br from-blue-900 to-slate-900 py-20 text-white md:py-32">
                 <div className="container relative z-10 text-center">
                     <div className="mb-8 inline-flex animate-fade-in-up items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2 text-sm font-medium backdrop-blur-md">
                         <span className="relative flex h-3 w-3">
@@ -342,172 +361,8 @@ export default function FreeWebsitePage() {
                     </Tabs>
                 </div>
             </section>
-            
-            {/* Journey Section */}
-            <section id="journey" className="bg-secondary py-24">
-                <div className="container">
-                    <div className="mb-16 text-center">
-                        <span className="text-sm font-bold uppercase tracking-widest text-primary">Simple Process</span>
-                        <h2 className="mt-6 mb-6 text-3xl font-bold md:text-5xl">Your Journey</h2>
-                        <p className="mx-auto max-w-2xl text-xl text-muted-foreground">From application to launch in 4 simple steps.</p>
-                    </div>
-                    <div className="relative mx-auto max-w-4xl">
-                        <div className="absolute top-0 bottom-0 left-1/2 -ml-0.5 hidden w-1 bg-gradient-to-b from-primary to-purple-500 opacity-30 md:block"></div>
-                        <div className="space-y-16">
-                            {journeySteps.map((item, index) => (
-                                <div key={item.step} className="group relative flex flex-col items-center gap-8 md:flex-row">
-                                    <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:order-3 md:text-left md:pl-12'}`}>
-                                        <h3 className="mb-3 text-2xl font-bold">{item.title}</h3>
-                                        <p className="leading-relaxed text-muted-foreground">{item.description}</p>
-                                    </div>
-                                    <div className="z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary font-bold text-white shadow-lg transition-transform group-hover:scale-110 md:order-2">
-                                        {item.step}
-                                    </div>
-                                    <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:order-1 md:text-right md:pr-12'}`}>
-                                        <div className="inline-flex items-center gap-4 rounded-2xl border bg-background p-4 shadow-sm">
-                                            <item.icon className="h-6 w-6 text-primary" />
-                                            <span className="font-medium text-muted-foreground">{item.label}</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            {/* Application Form */}
-            <section id="apply" className="py-24">
-                <div className="container max-w-4xl">
-                     <div className="mb-16 text-center">
-                        <span className="text-sm font-bold uppercase tracking-widest text-primary">Start Your Journey</span>
-                        <h2 className="mt-6 mb-6 text-3xl font-bold md:text-5xl">Apply for Your Free Website</h2>
-                        <p className="mx-auto max-w-2xl text-xl text-muted-foreground">No credit card required. No obligations. Just fill out the form below.</p>
-                    </div>
-                     <Card>
-                        <CardHeader>
-                            <div className="mb-2 flex items-center justify-between">
-                                <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Step {currentStep} of {totalSteps}</span>
-                                <span className="text-xs font-bold text-primary">{steps[currentStep - 1].title}</span>
-                            </div>
-                            <Progress value={(currentStep / totalSteps) * 100} />
-                        </CardHeader>
-                        <CardContent>
-                           <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    {currentStep === 1 && (
-                                        <div className="space-y-6">
-                                            <h3 className="text-xl font-bold">Tell us about yourself</h3>
-                                            <div className="grid gap-8 md:grid-cols-2">
-                                                <FormField control={form.control} name="fullName" render={({ field }) => (<FormItem><FormLabel>Your Full Name</FormLabel><FormControl><Input placeholder="John Smith" {...field} /></FormControl><FormMessage /></FormItem>)}/>
-                                                <FormField control={form.control} name="email" render={({ field }) => (<FormItem><FormLabel>Email Address</FormLabel><FormControl><Input type="email" placeholder="john@company.com" {...field} /></FormControl><FormMessage /></FormItem>)}/>
-                                            </div>
-                                             <div className="grid gap-8 md:grid-cols-2">
-                                                <FormField control={form.control} name="phone" render={({ field }) => (<FormItem><FormLabel>Phone Number</FormLabel><FormControl><Input placeholder="+91 98765 43210" {...field} /></FormControl><FormMessage /></FormItem>)}/>
-                                                <FormField control={form.control} name="businessName" render={({ field }) => (<FormItem><FormLabel>Business Name</FormLabel><FormControl><Input placeholder="Your Business Name" {...field} /></FormControl><FormMessage /></FormItem>)}/>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {currentStep === 2 && (
-                                        <div className="space-y-6">
-                                            <h3 className="text-xl font-bold">What type of website do you need?</h3>
-                                            <FormField control={form.control} name="websiteType" render={({ field }) => (
-                                                <FormItem className="space-y-3"><FormLabel>Website Category</FormLabel>
-                                                    <FormControl>
-                                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                            <SelectTrigger><SelectValue /></SelectTrigger>
-                                                            <SelectContent>
-                                                                <SelectItem value="Basic Website">Basic Website</SelectItem>
-                                                                <SelectItem value="E-Commerce">E-Commerce</SelectItem>
-                                                            </SelectContent>
-                                                        </Select>
-                                                    </FormControl>
-                                                <FormMessage /></FormItem>
-                                            )}/>
-                                        </div>
-                                    )}
-                                    {currentStep === 3 && (
-                                        <div className="space-y-6">
-                                            <h3 className="text-xl font-bold">Select Add-Ons & Enhancements (Optional)</h3>
-                                            <FormField control={form.control} name="addons" render={() => (
-                                                <FormItem>
-                                                    <div className="grid gap-3 md:grid-cols-2">
-                                                    {[ "Custom UI/UX Design", "Speed Optimization", "Extra Pages", "WhatsApp Integration", "Chatbot Integration", "Booking System" ].map((item) => (
-                                                        <FormField key={item} control={form.control} name="addons"
-                                                            render={({ field }) => (
-                                                            <FormItem key={item} className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-3">
-                                                                <FormControl><Checkbox checked={field.value?.includes(item)} onCheckedChange={(checked) => {return checked ? field.onChange([...(field.value || []), item]) : field.onChange(field.value?.filter((value) => value !== item))}}/></FormControl>
-                                                                <FormLabel className="font-normal">{item}</FormLabel>
-                                                            </FormItem>
-                                                            )}
-                                                        />
-                                                    ))}
-                                                    </div>
-                                                </FormItem>
-                                            )}/>
-                                        </div>
-                                    )}
-                                    {currentStep === 4 && (
-                                        <div className="space-y-6">
-                                             <h3 className="text-xl font-bold">Select Industry</h3>
-                                             <FormField control={form.control} name="industry" render={({ field }) => (
-                                                 <FormItem><FormLabel>Industry/Niche</FormLabel>
-                                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                                        <FormControl><SelectTrigger><SelectValue placeholder="Select your industry..." /></SelectTrigger></FormControl>
-                                                        <SelectContent>
-                                                            {[ "Professional Services", "Healthcare & Wellness", "Retail & E-Commerce", "Food & Restaurant", "Real Estate", "Education & Coaching", "Technology & SaaS", "Creative & Design", "Construction & Home Services", "Custom" ].map(item => (
-                                                                <SelectItem key={item} value={item}>{item}</SelectItem>
-                                                            ))}
-                                                        </SelectContent>
-                                                    </Select>
-                                                 <FormMessage /></FormItem>
-                                             )}/>
-                                             {industry === 'Custom' && (
-                                                 <FormField control={form.control} name="customIndustry" render={({ field }) => (
-                                                     <FormItem><FormLabel>Please Specify</FormLabel><FormControl><Input placeholder="Enter your industry" {...field} /></FormControl><FormMessage /></FormItem>
-                                                 )}/>
-                                             )}
-                                        </div>
-                                    )}
-                                     {currentStep === 5 && (
-                                        <div className="space-y-6">
-                                             <h3 className="text-xl font-bold">Review & Submit</h3>
-                                             <div className="space-y-4 rounded-xl border bg-secondary p-6">
-                                                 <div className="grid grid-cols-2 gap-4 text-sm"><p><span className="block text-xs uppercase text-muted-foreground">Name</span><span className="font-semibold">{form.watch('fullName') || '-'}</span></p><p><span className="block text-xs uppercase text-muted-foreground">Email</span><span className="font-semibold">{form.watch('email') || '-'}</span></p></div>
-                                                 <div className="grid grid-cols-2 gap-4 text-sm"><p><span className="block text-xs uppercase text-muted-foreground">Phone</span><span className="font-semibold">{form.watch('phone') || '-'}</span></p><p><span className="block text-xs uppercase text-muted-foreground">Business</span><span className="font-semibold">{form.watch('businessName') || '-'}</span></p></div>
-                                                 <div className="grid grid-cols-2 gap-4 text-sm"><p><span className="block text-xs uppercase text-muted-foreground">Plan</span><span className="font-semibold">{form.watch('websiteType') || '-'}</span></p><p><span className="block text-xs uppercase text-muted-foreground">Industry</span><span className="font-semibold">{form.watch('industry') === 'Custom' ? form.watch('customIndustry') : form.watch('industry') || '-'}</span></p></div>
-                                                 {form.watch('addons')?.length > 0 && <div className="text-sm"><span className="block text-xs uppercase text-muted-foreground">Add-Ons</span><ul className="list-inside list-disc font-medium">{(form.watch('addons') || []).map(a => <li key={a}>{a}</li>)}</ul></div>}
-                                             </div>
-                                             <FormField control={form.control} name="terms" render={({ field }) => (
-                                                 <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4"><FormControl><Checkbox checked={field.value} onCheckedChange={field.onChange} /></FormControl><div className="space-y-1 leading-none"><FormLabel>I agree to the Terms of Service and understand I will be redirected to WhatsApp to complete my application.</FormLabel><FormMessage/></div></FormItem>
-                                             )}/>
-                                        </div>
-                                    )}
-                                    <div className="mt-8 flex items-center justify-between border-t pt-6">
-                                        <Button type="button" variant="ghost" onClick={handlePrevStep} className={currentStep === 1 ? 'hidden' : ''}>Back</Button>
-                                        <div className="flex-1"></div>
-                                        {currentStep < totalSteps && <Button type="button" onClick={handleNextStep}>Next Step <ArrowRight className="ml-2 h-4 w-4"/></Button>}
-                                        {currentStep === totalSteps && <Button type="submit"><MessageCircleIcon className="mr-2 h-4 w-4"/>Submit via WhatsApp</Button>}
-                                    </div>
-                                </form>
-                           </Form>
-                        </CardContent>
-                     </Card>
-                </div>
-            </section>
-            
-            <Dialog open={isSuccessModalOpen} onOpenChange={setIsSuccessModalOpen}>
-                <DialogContent>
-                    <DialogHeader className="text-center items-center">
-                        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30 mb-6"><Check className="h-10 w-10 text-green-500"/></div>
-                        <DialogTitle className="text-2xl">Application Submitted!</DialogTitle>
-                        <p className="text-muted-foreground">Thank you for applying! We'll review your application and get back to you within 24 hours.</p>
-                        <div className="mt-8 rounded-xl bg-secondary p-4"><p className="flex items-center justify-center gap-2 text-sm text-muted-foreground"><MailIcon className="h-4 w-4"/>Check your email for a confirmation message.</p></div>
-                    </DialogHeader>
-                    <DialogClose asChild><Button className="w-full">Got It!</Button></DialogClose>
-                </DialogContent>
-            </Dialog>
         </div>
     );
 }
 
+    
