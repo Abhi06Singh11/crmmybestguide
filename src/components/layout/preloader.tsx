@@ -65,7 +65,7 @@ const Preloader = () => {
             document.body.style.overflow = 'auto';
           }}
         >
-          <svg className="h-auto w-[140px]" viewBox="0 0 187.3 93.7" preserveAspectRatio="xMidYMid meet">
+          <svg className="h-auto w-[120px] sm:w-[140px]" viewBox="0 0 187.3 93.7" preserveAspectRatio="xMidYMid meet">
             <defs>
               <linearGradient id="preloader_gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="hsl(var(--primary))" />
@@ -89,10 +89,10 @@ const Preloader = () => {
               className="animate-preloader-anim [filter:drop-shadow(0_0_8px_hsl(var(--primary)/0.7))]"
             ></path>
           </svg>
-          <div className="mt-[25px] font-headline text-3xl font-bold tracking-wider text-foreground">
+          <div className="mt-[25px] font-headline text-2xl sm:text-3xl font-bold tracking-wider text-foreground">
             MyBestGuide
           </div>
-          <div className="mt-[10px] h-5 min-w-[1px] whitespace-nowrap border-r-2 border-accent text-sm text-muted-foreground animate-blinkCursor">
+          <div className="mt-[10px] h-5 min-w-[1px] whitespace-nowrap border-r-2 border-accent text-xs sm:text-sm text-muted-foreground animate-blinkCursor">
             {taglineText}
           </div>
         </motion.div>
