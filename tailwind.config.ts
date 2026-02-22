@@ -108,12 +108,32 @@ export default {
             '0%, 100%': { transform: 'scale(1)' },
             '50%': { transform: 'scale(1.05)' },
         },
+        'preloader-anim': {
+          '12.5%': {
+            strokeDasharray: '33.98873px, 242.77666px',
+            strokeDashoffset: '-26.70543px',
+          },
+          '43.75%': {
+            strokeDasharray: '84.97183px, 242.77666px',
+            strokeDashoffset: '-84.97183px',
+          },
+          '100%': {
+            strokeDasharray: '2.42777px, 242.77666px',
+            strokeDashoffset: '-240.34889px',
+          },
+        },
+        'blink-cursor': {
+          '0%, 50%, 100%': { borderColor: 'hsl(var(--accent))' },
+          '25%, 75%': { borderColor: 'transparent' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
         'pulse-strong': 'pulse-strong 1.5s infinite',
+        'preloader-anim': 'preloader-anim 1.6s linear infinite',
+        'blinkCursor': 'blink-cursor 0.8s infinite',
       },
     },
   },

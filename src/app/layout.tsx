@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import GoToTop from '@/components/layout/go-to-top';
+import Preloader from '@/components/layout/preloader';
 
 export default function RootLayout({
   children,
@@ -23,6 +24,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
+        <noscript>
+          <style>{`
+            #preloader {
+              display: none;
+            }
+          `}</style>
+        </noscript>
       </head>
       <body className={cn('min-h-screen bg-background text-foreground antialiased flex flex-col')} suppressHydrationWarning>
         <script
@@ -41,6 +49,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <Preloader />
         {!isCrmPage && <Header />}
         <main className={cn('flex-1 flex', !isCrmPage && 'flex-col')}>
           {children}
