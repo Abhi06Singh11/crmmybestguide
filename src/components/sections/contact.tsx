@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -62,7 +63,7 @@ const industries = [
 const socialLinks = [
     { href: '#', icon: Twitter, label: 'Twitter' },
     { href: '#', icon: Linkedin, label: 'LinkedIn' },
-    { href: '#', icon: Instagram, label: 'Instagram' },
+    { href: 'https://www.instagram.com/mybestguide.in', icon: Instagram, label: 'Instagram' },
   ];
 
 export default function Contact() {
@@ -103,7 +104,7 @@ export default function Contact() {
   }
 
   async function onQuickInquirySubmit(values: z.infer<typeof quickInquirySchema>) {
-    const phoneNumber = '917379848171';
+    const phoneNumber = '918005414588';
     const message = encodeURIComponent(values.inquiry);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappUrl, '_blank');
@@ -262,7 +263,7 @@ export default function Contact() {
                             <Phone className="h-6 w-6 text-primary" />
                             <div>
                                 <h4 className="font-semibold">Phone Number</h4>
-                                <a href="tel:+917379848171" className="text-muted-foreground hover:text-primary transition-colors">+91-7379848171</a>
+                                <a href="tel:+918005414588" className="text-muted-foreground hover:text-primary transition-colors">+91 80054 14588</a>
                             </div>
                         </div>
                         <div className="flex items-start gap-4">
@@ -298,7 +299,7 @@ export default function Contact() {
                     </CardHeader>
                     <CardContent className="flex space-x-4">
                         {socialLinks.map((social) => (
-                            <Link key={social.label} href={social.href} className="text-muted-foreground hover:text-primary transition-colors">
+                            <Link key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                                 <social.icon className="h-7 w-7" />
                                 <span className="sr-only">{social.label}</span>
                             </Link>

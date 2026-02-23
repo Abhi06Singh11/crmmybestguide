@@ -15,7 +15,7 @@ export default function Footer() {
   const socialLinks = [
     { href: '#', icon: Twitter, label: 'Twitter' },
     { href: '#', icon: Linkedin, label: 'LinkedIn' },
-    { href: '#', icon: Instagram, label: 'Instagram' },
+    { href: 'https://www.instagram.com/mybestguide.in', icon: Instagram, label: 'Instagram' },
   ];
 
   return (
@@ -65,7 +65,7 @@ export default function Footer() {
             <h4 className="font-headline font-semibold text-foreground">Follow Us</h4>
             <div className="mt-4 flex space-x-4">
               {socialLinks.map((social) => (
-                <a key={social.label} href={social.href} className="text-muted-foreground hover:text-primary">
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
                   <social.icon className="h-6 w-6" />
                   <span className="sr-only">{social.label}</span>
                 </a>

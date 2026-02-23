@@ -1,3 +1,4 @@
+
 'use client';
 
 import type { Metadata } from 'next';
@@ -9,6 +10,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import GoToTop from '@/components/layout/go-to-top';
 import Preloader from '@/components/layout/preloader';
+import FloatingWhatsApp from '@/components/layout/floating-whatsapp';
 
 export default function RootLayout({
   children,
@@ -57,6 +59,7 @@ export default function RootLayout({
         {!isCrmPage && <Footer />}
         <Toaster />
         {!isCrmPage && <GoToTop />}
+        {!isCrmPage && <FloatingWhatsApp />}
       </body>
     </html>
   );
